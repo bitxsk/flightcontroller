@@ -1,0 +1,2515 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM         31/Aug/2018  16:56:59
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\CPU\system_MK60.c
+#    Command line =  
+#        -f C:\Users\XSK199~1\AppData\Local\Temp\EW8839.tmp
+#        (C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\CPU\system_MK60.c
+#        -D K60 -D USE_K60F15 -D ARM_MATH_CM4 -D __FPU_PRESENT=1 -D
+#        __FPU_USED=1 -lCN
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -lB
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -o
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
+#        D:\iar\arm\inc\c\DLib_Config_Full.h -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\Sensor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\CPU\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\option\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\driver\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\class\
+#        -On --c++ -I D:\iar\arm\CMSIS\Core\Include\ -I
+#        D:\iar\arm\CMSIS\DSP\Include\ -D ARM_MATH_CM4)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List\system_MK60.lst
+#    Object file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj\system_MK60.o
+#
+###############################################################################
+
+C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\CPU\system_MK60.c
+      1          /**
+      2           * @file system_MK60.c
+      3           * @version 1.2.1[By LPLD]
+      4           * @date 2013-06-18
+      5           * @brief MK60系列单片机系统配置文件
+      6           *
+      7           * 更改建议:禁止修改
+      8           *
+      9           * 该代码提供系统配置函数以及一个储存系统主频的全局变量。
+     10           * 配置函数主要负责建立系统各模块的时钟。
+     11           * 代码还实现常见的系统中断函数。
+     12           *
+     13           * 版权所有:北京拉普兰德电子技术有限公司
+     14           * http://www.lpld.cn
+     15           * mail:support@lpld.cn
+     16           *
+     17           * @par
+     18           * 本代码由拉普兰德[LPLD]开发并维护，并向所有使用者开放源代码。
+     19           * 开发者可以随意修使用或改源代码。但本段及以上注释应予以保留。
+     20           * 不得更改或删除原版权所有者姓名，二次开发者可以加注二次版权所有者。
+     21           * 但应在遵守此协议的基础上，开放源代码、不得出售代码本身。
+     22           * 拉普兰德不负责由于使用本代码所带来的任何事故、法律责任或相关不良影响。
+     23           * 拉普兰德无义务解释、说明本代码的具体原理、功能、实现方法。
+     24           * 除非拉普兰德[LPLD]授权，开发者不得将本代码用于商业产品。
+     25           */
+     26          
+     27          //#ifdef __cplusplus
+     28          //extern "C" {
+     29          //#endif
+     30          
+     31          #include <stdint.h>
+     32          #include "common.h"
+     33          
+     34          #define DISABLE_WDOG    1
+     35          
+     36          /*----------------------------------------------------------------------------
+     37            定义时钟相关值
+     38           *----------------------------------------------------------------------------*/
+     39          #define CPU_XTAL32k_CLK_HZ              32768u          //外部32k时钟晶振频率，单位Hz    
+     40          #define CPU_INT_SLOW_CLK_HZ             32768u          //慢速内部振荡器的值，单位Hz
+     41          #define CPU_INT_FAST_CLK_HZ             4000000u        //快速内部振荡器的值，单位Hz
+     42          #define DEFAULT_SYSTEM_CLOCK            100000000u      //默认系统主频，单位Hz
+     43          
+     44          static void flash_identify (void);
+     45          static void cpu_identify (void);
+     46          static void Diagnostic_Reset_Source(void);
+     47          /**
+     48           * @brief 系统主频（单位Hz）
+     49           */
+
+   \                                 In section .data, align 4
+     50          uint32_t SystemCoreClock = DEFAULT_SYSTEM_CLOCK;
+   \                     SystemCoreClock:
+   \        0x0   0x05F5'E100        DC32 100000000
+     51          
+     52          /**
+     53           * 初始化系统
+     54           *
+     55           * @param  none
+     56           * @return none
+     57           *
+     58           * @brief  初始化MCU硬件系统，包括开放IO时钟、初始化主频、初始化调试串口，
+     59           *         打印调试信息。SystemInit由MCU启动文件调用。
+     60           *         
+     61           */
+
+   \                                 In section .text, align 2, keep-with-next
+     62          void SystemInit (void) {
+   \                     SystemInit: (+1)
+   \        0x0   0xB5F8             PUSH     {R3-R7,LR}
+   \        0x2   0xB08A             SUB      SP,SP,#+40
+     63            UART_InitTypeDef term_port_structure;
+     64            //使能全部IO时钟
+     65            SIM->SCGC5 |= (SIM_SCGC5_PORTA_MASK
+     66                        | SIM_SCGC5_PORTB_MASK
+     67                        | SIM_SCGC5_PORTC_MASK
+     68                        | SIM_SCGC5_PORTD_MASK
+     69                        | SIM_SCGC5_PORTE_MASK );
+   \        0x4   0x.... 0x....      LDR.W    R0,??DataTable6  ;; 0x40048038
+   \        0x8   0x6801             LDR      R1,[R0, #+0]
+   \        0xA   0xF451 0x5178      ORRS     R1,R1,#0x3E00
+   \        0xE   0x6001             STR      R1,[R0, #+0]
+     70          #if (DISABLE_WDOG)
+     71            //禁用看门狗模块
+     72            /* WDOG_UNLOCK: WDOGUNLOCK=0xC520 */
+     73            WDOG->UNLOCK = (uint16_t)0xC520u;     /* Key 1 */
+   \       0x10   0x.... 0x....      LDR.W    R0,??DataTable6_1  ;; 0x4005200e
+   \       0x14   0xF24C 0x5120      MOVW     R1,#+50464
+   \       0x18   0x8001             STRH     R1,[R0, #+0]
+     74            /* WDOG_UNLOCK : WDOGUNLOCK=0xD928 */
+     75            WDOG->UNLOCK  = (uint16_t)0xD928u;    /* Key 2 */
+   \       0x1A   0xF64D 0x1128      MOVW     R1,#+55592
+   \       0x1E   0x8001             STRH     R1,[R0, #+0]
+     76            /* WDOG_STCTRLH: ??=0,DISTESTWDOG=0,BYTESEL=0,TESTSEL=0,TESTWDOG=0,??=0,STNDBYEN=1,WAITEN=1,STOPEN=1,DBGEN=0,ALLOWUPDATE=1,WINEN=0,IRQRSTEN=0,CLKSRC=1,WDOGEN=0 */
+     77            WDOG->STCTRLH = (uint16_t)0x01D2u;
+   \       0x20   0xF44F 0x70E9      MOV      R0,#+466
+   \       0x24   0x.... 0x....      LDR.W    R1,??DataTable6_2  ;; 0x40052000
+   \       0x28   0x8008             STRH     R0,[R1, #+0]
+     78          #endif /* (DISABLE_WDOG) */
+     79            
+     80            //将中断向量表、需在RAM中运行的函数等数据拷贝到RAM中
+     81            common_relocate();
+   \       0x2A   0x.... 0x....      BL       common_relocate
+     82            
+     83            //初始化各部分时钟：系统内核主频、总线时钟、FlexBus时钟、Flash时钟
+     84            PLL_Setup(CORE_CLK_MHZ);
+   \       0x2E   0x2078             MOVS     R0,#+120
+   \       0x30   0x.... 0x....      BL       PLL_Setup
+     85            
+     86            //更新内核主频
+     87            SystemCoreClockUpdate();
+   \       0x34   0x.... 0x....      BL       SystemCoreClockUpdate
+     88            
+     89            //获取各部分时钟
+     90            g_core_clock = SystemCoreClock;
+   \       0x38   0x.... 0x....      LDR.W    R4,??DataTable6_3
+   \       0x3C   0x.... 0x....      LDR.W    R0,??DataTable6_4
+   \       0x40   0x6800             LDR      R0,[R0, #+0]
+   \       0x42   0x6020             STR      R0,[R4, #+0]
+     91            g_bus_clock = g_core_clock / ((uint32_t)((SIM->CLKDIV1 & SIM_CLKDIV1_OUTDIV2_MASK) >> SIM_CLKDIV1_OUTDIV2_SHIFT)+ 1u);
+   \       0x44   0x.... 0x....      LDR.W    R5,??DataTable6_5
+   \       0x48   0x.... 0x....      LDR.W    R0,??DataTable6_6  ;; 0x40048044
+   \       0x4C   0x6821             LDR      R1,[R4, #+0]
+   \       0x4E   0x6802             LDR      R2,[R0, #+0]
+   \       0x50   0xF3C2 0x6203      UBFX     R2,R2,#+24,#+4
+   \       0x54   0x1C52             ADDS     R2,R2,#+1
+   \       0x56   0xFBB1 0xF1F2      UDIV     R1,R1,R2
+   \       0x5A   0x6029             STR      R1,[R5, #+0]
+     92            g_flexbus_clock =  g_core_clock / ((uint32_t)((SIM->CLKDIV1 & SIM_CLKDIV1_OUTDIV3_MASK) >> SIM_CLKDIV1_OUTDIV3_SHIFT)+ 1u);
+   \       0x5C   0x.... 0x....      LDR.W    R6,??DataTable6_7
+   \       0x60   0x6821             LDR      R1,[R4, #+0]
+   \       0x62   0x6802             LDR      R2,[R0, #+0]
+   \       0x64   0xF3C2 0x5203      UBFX     R2,R2,#+20,#+4
+   \       0x68   0x1C52             ADDS     R2,R2,#+1
+   \       0x6A   0xFBB1 0xF1F2      UDIV     R1,R1,R2
+   \       0x6E   0x6031             STR      R1,[R6, #+0]
+     93            g_flash_clock =  g_core_clock / ((uint32_t)((SIM->CLKDIV1 & SIM_CLKDIV1_OUTDIV4_MASK) >> SIM_CLKDIV1_OUTDIV4_SHIFT)+ 1u);
+   \       0x70   0x.... 0x....      LDR.W    R7,??DataTable6_8
+   \       0x74   0x6821             LDR      R1,[R4, #+0]
+   \       0x76   0x6800             LDR      R0,[R0, #+0]
+   \       0x78   0xF3C0 0x4003      UBFX     R0,R0,#+16,#+4
+   \       0x7C   0x1C40             ADDS     R0,R0,#+1
+   \       0x7E   0xFBB1 0xF0F0      UDIV     R0,R1,R0
+   \       0x82   0x6038             STR      R0,[R7, #+0]
+     94            
+     95            //初始化用于打印调试信息的串口模块
+     96            //TERM_PORT为UART通道，在k60_card.h中定义
+     97            //TERMINAL_BAUD为UART波特率，在k60_card.h中定义
+     98            term_port_structure.UART_Uartx = TERM_PORT;
+   \       0x84   0x.... 0x....      LDR.W    R0,??DataTable6_9  ;; 0x400ea000
+   \       0x88   0x9003             STR      R0,[SP, #+12]
+     99            term_port_structure.UART_BaudRate = TERMINAL_BAUD;
+   \       0x8A   0xF45F 0x30E1      MOVS     R0,#+115200
+   \       0x8E   0x9004             STR      R0,[SP, #+16]
+    100            term_port_structure.UART_TxPin = PTE24;
+   \       0x90   0x2094             MOVS     R0,#+148
+   \       0x92   0xF88D 0x0014      STRB     R0,[SP, #+20]
+    101            term_port_structure.UART_RxPin = PTE25;
+   \       0x96   0x2095             MOVS     R0,#+149
+   \       0x98   0xF88D 0x0015      STRB     R0,[SP, #+21]
+    102            UART_Init(term_port_structure);
+   \       0x9C   0xA903             ADD      R1,SP,#+12
+   \       0x9E   0xB084             SUB      SP,SP,#+16
+   \       0xA0   0x4668             MOV      R0,SP
+   \       0xA2   0x221C             MOVS     R2,#+28
+   \       0xA4   0x.... 0x....      BL       __aeabi_memcpy4
+   \       0xA8   0xBC0F             POP      {R0-R3}
+   \       0xAA   0x.... 0x....      BL       UART_Init
+    103            
+    104             #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)        //FPU相关
+    105              SCB->CPACR |= ((3UL << 10*2)|(3UL << 11*2)); 
+   \       0xAE   0x.... 0x....      LDR.W    R0,??DataTable6_10  ;; 0xe000ed88
+   \       0xB2   0x6801             LDR      R1,[R0, #+0]
+   \       0xB4   0xF451 0x0170      ORRS     R1,R1,#0xF00000
+   \       0xB8   0x6001             STR      R1,[R0, #+0]
+    106            #endif
+    107              
+    108            //打印系统调试信息
+    109          #ifdef DEBUG_PRINT     
+    110            printf("\r\n");   
+   \       0xBA   0x....             ADR.N    R0,??DataTable3  ;; 0x0D, 0x0A, 0x00, 0x00
+   \       0xBC   0x.... 0x....      BL       printf
+    111            printf("*********** 基于拉普兰德K60底层库 http://www.lpld.cn ***********\r\n");
+   \       0xC0   0x.... 0x....      LDR.W    R0,??DataTable6_11
+   \       0xC4   0x.... 0x....      BL       printf
+    112            printf("OSKinetis固件库版本:%s\tmail:support@lpld.cn\r\n", OSKinetis_Version);
+   \       0xC8   0x.... 0x....      LDR.W    R1,??DataTable6_12
+   \       0xCC   0x.... 0x....      LDR.W    R0,??DataTable6_13
+   \       0xD0   0x.... 0x....      BL       printf
+    113            printf("系统内核时钟:%dMHz\t总线时钟:%dMHz\r\n", g_core_clock/1000000u, g_bus_clock/1000000u);
+   \       0xD4   0x6828             LDR      R0,[R5, #+0]
+   \       0xD6   0x.... 0x....      LDR.W    R1,??DataTable6_14  ;; 0xf4240
+   \       0xDA   0xFBB0 0xF2F1      UDIV     R2,R0,R1
+   \       0xDE   0x6820             LDR      R0,[R4, #+0]
+   \       0xE0   0x.... 0x....      LDR.W    R1,??DataTable6_14  ;; 0xf4240
+   \       0xE4   0xFBB0 0xF1F1      UDIV     R1,R0,R1
+   \       0xE8   0x.... 0x....      LDR.W    R0,??DataTable6_15
+   \       0xEC   0x.... 0x....      BL       printf
+    114            printf("FlexBus时钟:%dMHz\tFlash时钟:%dMHz\r\n", g_flexbus_clock/1000000u, g_flash_clock/1000000u);
+   \       0xF0   0x6838             LDR      R0,[R7, #+0]
+   \       0xF2   0x.... 0x....      LDR.W    R1,??DataTable6_14  ;; 0xf4240
+   \       0xF6   0xFBB0 0xF2F1      UDIV     R2,R0,R1
+   \       0xFA   0x6830             LDR      R0,[R6, #+0]
+   \       0xFC   0x.... 0x....      LDR.W    R1,??DataTable6_14  ;; 0xf4240
+   \      0x100   0xFBB0 0xF1F1      UDIV     R1,R0,R1
+   \      0x104   0x.... 0x....      LDR.W    R0,??DataTable6_16
+   \      0x108   0x.... 0x....      BL       printf
+    115            printf("系统启动完毕，若要禁用调试输出请定义PRINT_ON_OFF为1(k60_card.h)\r\n");
+   \      0x10C   0x.... 0x....      LDR.W    R0,??DataTable6_17
+   \      0x110   0x.... 0x....      BL       printf
+    116            cpu_identify();
+   \      0x114   0x.... 0x....      BL       _ZN35_INTERNAL_13_system_MK60_c_5d646a6712cpu_identifyEv
+    117            Diagnostic_Reset_Source();
+   \      0x118   0x.... 0x....      BL       _ZN35_INTERNAL_13_system_MK60_c_5d646a6723Diagnostic_Reset_SourceEv
+    118            printf("********************************************************************\r\n");
+   \      0x11C   0x.... 0x....      LDR.W    R0,??DataTable6_18
+   \      0x120   0x.... 0x....      BL       printf
+    119          #endif
+    120            
+    121          }
+   \                     ??SystemInit_0: (+1)
+   \      0x124   0xB00B             ADD      SP,SP,#+44
+   \      0x126   0xBDF0             POP      {R4-R7,PC}       ;; return
+    122          
+    123          /**
+    124           * 更新SystemCoreClock
+    125           *
+    126           * @param  none
+    127           * @return none
+    128           *
+    129           * @brief  更新全局变量SystemCoreClock的值，以便获取最新的系统内核频率。
+    130           *         
+    131           */
+
+   \                                 In section .text, align 2, keep-with-next
+    132          void SystemCoreClockUpdate (void) {
+    133            uint32_t temp;
+    134          #if (defined(CPU_MK60DZ10))
+    135            #if OSC_CIRCUIT_TPYE == CANNED_OSC_CIRCUIT
+    136            temp =  CANNED_OSC_CLK_HZ *((uint32_t)(MCG->C6 & MCG_C6_VDIV_MASK) + 24u );
+    137            temp = (uint32_t)(temp/((uint32_t)(MCG->C5 & MCG_C5_PRDIV_MASK) +1u ));
+    138            #elif OSC_CIRCUIT_TPYE == CRYSTAL_OSC_CIRCUIT
+    139            temp =  CRYSTAL_OSC_CLK_HZ *((uint32_t)(MCG->C6 & MCG_C6_VDIV_MASK) + 24u );
+    140            temp = (uint32_t)(temp/((uint32_t)(MCG->C5 & MCG_C5_PRDIV_MASK) +1u ));
+    141            #endif
+    142          #elif (defined(CPU_MK60D10))
+    143            #if OSC_CIRCUIT_TPYE == CANNED_OSC_CIRCUIT
+    144            temp =  CANNED_OSC_CLK_HZ *((uint32_t)(MCG->C6 & MCG_C6_VDIV0_MASK) + 24u );
+    145            temp = (uint32_t)(temp/((uint32_t)(MCG->C5 & MCG_C5_PRDIV0_MASK) +1u ));
+    146            temp = temp;
+    147            #elif OSC_CIRCUIT_TPYE == CRYSTAL_OSC_CIRCUIT
+    148            temp =  CRYSTAL_OSC_CLK_HZ *((uint32_t)(MCG->C6 & MCG_C6_VDIV0_MASK) + 24u );
+    149            temp = (uint32_t)(temp/((uint32_t)(MCG->C5 & MCG_C5_PRDIV0_MASK) +1u ));
+    150            temp = temp;
+    151            #endif
+    152          #elif (defined(CPU_MK60F12) || defined(CPU_MK60F15))
+    153            #if OSC_CIRCUIT_TPYE == CANNED_OSC_CIRCUIT
+    154            temp =  CANNED_OSC_CLK_HZ /((uint32_t)(MCG->C5 & MCG_C5_PRDIV0_MASK) + 1u );
+   \                     SystemCoreClockUpdate: (+1)
+   \        0x0   0x.... 0x....      LDR.W    R0,??DataTable6_19  ;; 0x2faf080
+   \        0x4   0x.... 0x....      LDR.W    R1,??DataTable6_20  ;; 0x40064004
+   \        0x8   0x7809             LDRB     R1,[R1, #+0]
+   \        0xA   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \        0xC   0xF011 0x0107      ANDS     R1,R1,#0x7
+   \       0x10   0x1C49             ADDS     R1,R1,#+1
+   \       0x12   0xFBB0 0xF0F1      UDIV     R0,R0,R1
+    155            temp = (uint32_t)(temp*((uint32_t)(MCG->C6 & MCG_C6_VDIV0_MASK) +16u ));
+   \       0x16   0x.... 0x....      LDR.W    R1,??DataTable6_21  ;; 0x40064005
+   \       0x1A   0x7809             LDRB     R1,[R1, #+0]
+   \       0x1C   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x1E   0xF011 0x011F      ANDS     R1,R1,#0x1F
+   \       0x22   0x3110             ADDS     R1,R1,#+16
+   \       0x24   0x4348             MULS     R0,R1,R0
+    156            temp = temp/2;
+   \       0x26   0x0840             LSRS     R0,R0,#+1
+    157            #elif OSC_CIRCUIT_TPYE == CRYSTAL_OSC_CIRCUIT
+    158            temp =  CRYSTAL_OSC_CLK_HZ /((uint32_t)(MCG->C5 & MCG_C5_PRDIV0_MASK) + 1u );
+    159            temp = (uint32_t)(temp*((uint32_t)(MCG->C6 & MCG_C6_VDIV0_MASK) +16u ));
+    160            temp = temp/2;
+    161            #endif
+    162          #endif
+    163            SystemCoreClock = temp;
+   \       0x28   0x.... 0x....      LDR.W    R1,??DataTable6_4
+   \       0x2C   0x6008             STR      R0,[R1, #+0]
+    164          }
+   \       0x2E   0x4770             BX       LR               ;; return
+    165          
+    166          /**
+    167           * 硬件错误中断函数
+    168           *
+    169           * @param  none
+    170           * @return none
+    171           *
+    172           * @brief  触发此中断的原因一般为：模块使用未初始化、错误的寻址空间等。
+    173           *         
+    174           */
+
+   \                                 In section .text, align 2, keep-with-next
+    175          void HardFault_Handler(void)
+    176          {
+   \                     HardFault_Handler: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+    177          #ifdef DEBUG_PRINT 
+    178             printf("\r\n****内核发生硬件错误*****\r\n");
+   \        0x2   0x.... 0x....      LDR.W    R0,??DataTable6_22
+   \        0x6   0x.... 0x....      BL       printf
+    179          #endif
+    180             return;
+   \                     ??HardFault_Handler_0: (+1)
+   \        0xA   0xBD01             POP      {R0,PC}          ;; return
+    181          }
+    182          
+    183          /**
+    184           * 默认中断函数
+    185           *
+    186           * @param  none
+    187           * @return none
+    188           *
+    189           * @brief  未定义中断处理函数的中断源会进入此函数，并打印中断向量号。
+    190           *         
+    191           */
+
+   \                                 In section .text, align 2, keep-with-next
+    192          void DefaultISR(void)
+    193          {
+   \                     DefaultISR: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+    194             #define VECTORNUM                     (*(volatile uint8_t*)(0xE000ED04)) 
+    195          #ifdef DEBUG_PRINT 
+    196             printf("\r\n****进入未定义中断,Interrupt Number %d*****\r\n",VECTORNUM-16);
+   \        0x2   0x.... 0x....      LDR.W    R0,??DataTable6_23  ;; 0xe000ed04
+   \        0x6   0x7801             LDRB     R1,[R0, #+0]
+   \        0x8   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \        0xA   0x3910             SUBS     R1,R1,#+16
+   \        0xC   0x.... 0x....      LDR.W    R0,??DataTable6_24
+   \       0x10   0x.... 0x....      BL       printf
+    197          #endif
+    198             return;
+   \                     ??DefaultISR_0: (+1)
+   \       0x14   0xBD01             POP      {R0,PC}          ;; return
+    199          }
+    200          
+    201          /**
+    202           * 初始化操作系统的滴答定时器(OS Tick)
+    203           *
+    204           * @param  none
+    205           * @return none
+    206           *
+    207           * @brief  该函数仅在uC/OS等系统中调用，切必须在OSStart()和处理器初始化后调用
+    208           *         
+    209           */
+    210          #if UCOS_II > 0u
+    211          void SystemTickInit (void)
+    212          {
+    213            uint32  cpu_clk_freq;
+    214            uint32  cnts;
+    215          
+    216            cpu_clk_freq = g_core_clock;  //获取SysTick时钟
+    217          
+    218          #if (OS_VERSION >= 30000u)
+    219            cnts  = cpu_clk_freq / (uint32)OSCfg_TickRate_Hz;    
+    220          #else
+    221            cnts  = cpu_clk_freq / (uint32)OS_TICKS_PER_SEC;        
+    222          #endif
+    223          
+    224            OS_CPU_SysTickInit(cnts);     //初始化uCOS滴答定时器SysTick
+    225          }
+    226          #endif
+    227          
+    228          /**
+    229           * Kinetis CPU Identify
+    230           *
+    231           * @param  none
+    232           * @return none
+    233           *
+    234           * @brief 输出Kinetis以下信息
+    235           * - Kinetis family
+    236           * - package
+    237           * - die revision
+    238           * - P-flash size
+    239           * - Ram size
+    240           */
+
+   \                                 In section .text, align 2, keep-with-next
+    241          static void cpu_identify (void)
+    242          {
+   \                     _ZN35_INTERNAL_13_system_MK60_c_5d646a6712cpu_identifyEv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+    243              /* 判断Kinetis 单片机的型号 */
+    244              switch((SIM->SDID & SIM_SDID_FAMID(0x7))>>SIM_SDID_FAMID_SHIFT) 
+   \        0x2   0x.... 0x....      LDR.W    R4,??DataTable6_25  ;; 0x40048024
+   \        0x6   0x6820             LDR      R0,[R4, #+0]
+   \        0x8   0x0900             LSRS     R0,R0,#+4
+   \        0xA   0xF010 0x0007      ANDS     R0,R0,#0x7
+   \        0xE   0x2800             CMP      R0,#+0
+   \       0x10   0xD00B             BEQ.N    ??cpu_identify_0
+   \       0x12   0x2802             CMP      R0,#+2
+   \       0x14   0xD013             BEQ.N    ??cpu_identify_1
+   \       0x16   0xD30D             BCC.N    ??cpu_identify_2
+   \       0x18   0x2804             CMP      R0,#+4
+   \       0x1A   0xD01A             BEQ.N    ??cpu_identify_3
+   \       0x1C   0xD314             BCC.N    ??cpu_identify_4
+   \       0x1E   0x2806             CMP      R0,#+6
+   \       0x20   0xD021             BEQ.N    ??cpu_identify_5
+   \       0x22   0xD31B             BCC.N    ??cpu_identify_6
+   \       0x24   0x2807             CMP      R0,#+7
+   \       0x26   0xD023             BEQ.N    ??cpu_identify_7
+   \       0x28   0xE027             B.N      ??cpu_identify_8
+    245              {
+    246          #ifdef DEBUG_PRINT 
+    247              	case 0x0:printf("\nK10-");break;
+   \                     ??cpu_identify_0: (+1)
+   \       0x2A   0x.... 0x....      LDR.W    R0,??DataTable6_26
+   \       0x2E   0x.... 0x....      BL       printf
+   \       0x32   0xE026             B.N      ??cpu_identify_9
+    248              	case 0x1:printf("\nK20-");break;
+   \                     ??cpu_identify_2: (+1)
+   \       0x34   0x.... 0x....      LDR.W    R0,??DataTable6_27
+   \       0x38   0x.... 0x....      BL       printf
+   \       0x3C   0xE021             B.N      ??cpu_identify_9
+    249              	case 0x2:printf("\nK30-");break;
+   \                     ??cpu_identify_1: (+1)
+   \       0x3E   0x.... 0x....      LDR.W    R0,??DataTable6_28
+   \       0x42   0x.... 0x....      BL       printf
+   \       0x46   0xE01C             B.N      ??cpu_identify_9
+    250              	case 0x3:printf("\nK40-");break;
+   \                     ??cpu_identify_4: (+1)
+   \       0x48   0x.... 0x....      LDR.W    R0,??DataTable6_29
+   \       0x4C   0x.... 0x....      BL       printf
+   \       0x50   0xE017             B.N      ??cpu_identify_9
+    251              	case 0x4:printf("\nK60-");break;
+   \                     ??cpu_identify_3: (+1)
+   \       0x52   0x.... 0x....      LDR.W    R0,??DataTable6_30
+   \       0x56   0x.... 0x....      BL       printf
+   \       0x5A   0xE012             B.N      ??cpu_identify_9
+    252              	case 0x5:printf("\nK70-");break;
+   \                     ??cpu_identify_6: (+1)
+   \       0x5C   0x.... 0x....      LDR.W    R0,??DataTable6_31
+   \       0x60   0x.... 0x....      BL       printf
+   \       0x64   0xE00D             B.N      ??cpu_identify_9
+    253              	case 0x6:printf("\nK50-");break;
+   \                     ??cpu_identify_5: (+1)
+   \       0x66   0x.... 0x....      LDR.W    R0,??DataTable6_32
+   \       0x6A   0x.... 0x....      BL       printf
+   \       0x6E   0xE008             B.N      ??cpu_identify_9
+    254              	case 0x7:printf("\nK53-");break;
+   \                     ??cpu_identify_7: (+1)
+   \       0x70   0x.... 0x....      LDR.W    R0,??DataTable6_33
+   \       0x74   0x.... 0x....      BL       printf
+   \       0x78   0xE003             B.N      ??cpu_identify_9
+    255          	default:printf("\n不能识别单片机型号-");break; 
+   \                     ??cpu_identify_8: (+1)
+   \       0x7A   0x.... 0x....      LDR.W    R0,??DataTable6_34
+   \       0x7E   0x.... 0x....      BL       printf
+    256          #else 	
+    257                  default:break; 
+    258          #endif
+    259              }
+    260          
+    261               /* 判断Kinetis 单片机的封装 */
+    262              switch((SIM->SDID & SIM_SDID_PINID(0xF))>>SIM_SDID_PINID_SHIFT) 
+   \                     ??cpu_identify_9: (+1)
+   \       0x82   0x6820             LDR      R0,[R4, #+0]
+   \       0x84   0xF010 0x000F      ANDS     R0,R0,#0xF
+   \       0x88   0x2802             CMP      R0,#+2
+   \       0x8A   0xD012             BEQ.N    ??cpu_identify_10
+   \       0x8C   0x2804             CMP      R0,#+4
+   \       0x8E   0xD014             BEQ.N    ??cpu_identify_11
+   \       0x90   0x2805             CMP      R0,#+5
+   \       0x92   0xD016             BEQ.N    ??cpu_identify_12
+   \       0x94   0x2806             CMP      R0,#+6
+   \       0x96   0xD018             BEQ.N    ??cpu_identify_13
+   \       0x98   0x2807             CMP      R0,#+7
+   \       0x9A   0xD01A             BEQ.N    ??cpu_identify_14
+   \       0x9C   0x2808             CMP      R0,#+8
+   \       0x9E   0xD01C             BEQ.N    ??cpu_identify_15
+   \       0xA0   0x2809             CMP      R0,#+9
+   \       0xA2   0xD01E             BEQ.N    ??cpu_identify_16
+   \       0xA4   0x280A             CMP      R0,#+10
+   \       0xA6   0xD020             BEQ.N    ??cpu_identify_17
+   \       0xA8   0x280C             CMP      R0,#+12
+   \       0xAA   0xD022             BEQ.N    ??cpu_identify_18
+   \       0xAC   0x280E             CMP      R0,#+14
+   \       0xAE   0xD024             BEQ.N    ??cpu_identify_19
+   \       0xB0   0xE027             B.N      ??cpu_identify_20
+    263              {
+    264          #ifdef DEBUG_PRINT
+    265              	case 0x2:printf("32pin-");break;
+   \                     ??cpu_identify_10: (+1)
+   \       0xB2   0x....             LDR.N    R0,??DataTable6_35
+   \       0xB4   0x.... 0x....      BL       printf
+   \       0xB8   0xE026             B.N      ??cpu_identify_21
+    266              	case 0x4:printf("48pin-");break;
+   \                     ??cpu_identify_11: (+1)
+   \       0xBA   0x....             LDR.N    R0,??DataTable6_36
+   \       0xBC   0x.... 0x....      BL       printf
+   \       0xC0   0xE022             B.N      ??cpu_identify_21
+    267              	case 0x5:printf("64pin-");break;
+   \                     ??cpu_identify_12: (+1)
+   \       0xC2   0x....             LDR.N    R0,??DataTable6_37
+   \       0xC4   0x.... 0x....      BL       printf
+   \       0xC8   0xE01E             B.N      ??cpu_identify_21
+    268              	case 0x6:printf("80pin-");break;
+   \                     ??cpu_identify_13: (+1)
+   \       0xCA   0x....             LDR.N    R0,??DataTable6_38
+   \       0xCC   0x.... 0x....      BL       printf
+   \       0xD0   0xE01A             B.N      ??cpu_identify_21
+    269              	case 0x7:printf("81pin-");break;
+   \                     ??cpu_identify_14: (+1)
+   \       0xD2   0x....             LDR.N    R0,??DataTable6_39
+   \       0xD4   0x.... 0x....      BL       printf
+   \       0xD8   0xE016             B.N      ??cpu_identify_21
+    270              	case 0x8:printf("100pin-");break;
+   \                     ??cpu_identify_15: (+1)
+   \       0xDA   0x....             LDR.N    R0,??DataTable6_40
+   \       0xDC   0x.... 0x....      BL       printf
+   \       0xE0   0xE012             B.N      ??cpu_identify_21
+    271              	case 0x9:printf("104pin-");break;
+   \                     ??cpu_identify_16: (+1)
+   \       0xE2   0x....             LDR.N    R0,??DataTable6_41
+   \       0xE4   0x.... 0x....      BL       printf
+   \       0xE8   0xE00E             B.N      ??cpu_identify_21
+    272              	case 0xA:printf("144pin-");break;
+   \                     ??cpu_identify_17: (+1)
+   \       0xEA   0x....             LDR.N    R0,??DataTable6_42
+   \       0xEC   0x.... 0x....      BL       printf
+   \       0xF0   0xE00A             B.N      ??cpu_identify_21
+    273              	case 0xC:printf("196pin-");break;
+   \                     ??cpu_identify_18: (+1)
+   \       0xF2   0x....             LDR.N    R0,??DataTable6_43
+   \       0xF4   0x.... 0x....      BL       printf
+   \       0xF8   0xE006             B.N      ??cpu_identify_21
+    274              	case 0xE:printf("256pin-");break;
+   \                     ??cpu_identify_19: (+1)
+   \       0xFA   0x....             LDR.N    R0,??DataTable6_44
+   \       0xFC   0x.... 0x....      BL       printf
+   \      0x100   0xE002             B.N      ??cpu_identify_21
+    275          	default:printf("不能识别单片机封装-.");break;
+   \                     ??cpu_identify_20: (+1)
+   \      0x102   0x....             LDR.N    R0,??DataTable6_45
+   \      0x104   0x.... 0x....      BL       printf
+    276          #else 	
+    277                  default:break; 
+    278          #endif  	
+    279              }                
+    280          
+    281          #ifdef DEBUG_PRINT
+    282              printf("Silicon rev 1.%d\n",(SIM->SDID & SIM_SDID_REVID(0xF))>>SIM_SDID_REVID_SHIFT);
+   \                     ??cpu_identify_21: (+1)
+   \      0x108   0x6820             LDR      R0,[R4, #+0]
+   \      0x10A   0xF3C0 0x3103      UBFX     R1,R0,#+12,#+4
+   \      0x10E   0x....             LDR.N    R0,??DataTable6_46
+   \      0x110   0x.... 0x....      BL       printf
+    283          #endif  
+    284              /* 判断Kinetis 单片机的P-flash size */
+    285              switch((SIM->FCFG1 & SIM_FCFG1_PFSIZE(0xF))>>SIM_FCFG1_PFSIZE_SHIFT)
+   \      0x114   0x....             LDR.N    R0,??DataTable6_47  ;; 0x4004804c
+   \      0x116   0x6800             LDR      R0,[R0, #+0]
+   \      0x118   0x0E00             LSRS     R0,R0,#+24
+   \      0x11A   0xF010 0x000F      ANDS     R0,R0,#0xF
+   \      0x11E   0x280B             CMP      R0,#+11
+   \      0x120   0xD004             BEQ.N    ??cpu_identify_22
+   \      0x122   0x280D             CMP      R0,#+13
+   \      0x124   0xD006             BEQ.N    ??cpu_identify_23
+   \      0x126   0x280F             CMP      R0,#+15
+   \      0x128   0xD008             BEQ.N    ??cpu_identify_24
+   \      0x12A   0xE00B             B.N      ??cpu_identify_25
+    286              {
+    287          #ifdef DEBUG_PRINT
+    288            #if (defined(CPU_MK60DZ10) || defined(CPU_MK60D10)) 
+    289              	case 0x7:printf("128 kBytes of P-flash	");break;
+    290              	case 0x9:printf("256 kBytes of P-flash	");break;
+    291                  case 0xB:printf("512 kBytes of P-flash	");break;
+    292              	case 0xF:printf("512 kBytes of P-flash	");break;
+    293          	default:printf("不能识别单片机 P-flash size\n");break;
+    294            #elif (defined(CPU_MK60F12) || defined(CPU_MK60F15)) 
+    295                  case 0xB:printf("512 kBytes of P-flash	");break;
+   \                     ??cpu_identify_22: (+1)
+   \      0x12C   0x....             LDR.N    R0,??DataTable6_48
+   \      0x12E   0x.... 0x....      BL       printf
+   \      0x132   0xE00A             B.N      ??cpu_identify_26
+    296              	case 0xD:printf("1024 kBytes of P-flash	");break;
+   \                     ??cpu_identify_23: (+1)
+   \      0x134   0x....             LDR.N    R0,??DataTable6_49
+   \      0x136   0x.... 0x....      BL       printf
+   \      0x13A   0xE006             B.N      ??cpu_identify_26
+    297              	case 0xF:printf("1024 kBytes of P-flash	");break;
+   \                     ??cpu_identify_24: (+1)
+   \      0x13C   0x....             LDR.N    R0,??DataTable6_49
+   \      0x13E   0x.... 0x....      BL       printf
+   \      0x142   0xE002             B.N      ??cpu_identify_26
+    298          	default:printf("不能识别单片机 P-flash size\n");break;
+   \                     ??cpu_identify_25: (+1)
+   \      0x144   0x....             LDR.N    R0,??DataTable6_50
+   \      0x146   0x.... 0x....      BL       printf
+    299            #endif
+    300          #else 	
+    301                  default:break; 
+    302          #endif
+    303              }
+    304          
+    305          #if (defined(CPU_MK60DZ10) || defined(CPU_MK60D10))
+    306              /* 判断是否只有 P-flash  或者 P-flash 和 FlexNVM */
+    307              if (SIM->FCFG2 & SIM_FCFG2_PFLSH_MASK) 
+    308            #ifdef DEBUG_PRINT
+    309                printf("P-flash only\n");
+    310            #else 
+    311                asm("nop");
+    312            #endif
+    313              else
+    314                /* 如果单片机有FlexNVM、判断Kinetis 单片机的FlexNVM size */
+    315                switch((SIM->FCFG1 & SIM_FCFG1_NVMSIZE(0xF))>>SIM_FCFG1_NVMSIZE_SHIFT)
+    316                {
+    317            #ifdef DEBUG_PRINT
+    318          
+    319                	case 0x0:printf("0 kBytes of FlexNVM\n");break;
+    320              	case 0x7:printf("128 kBytes of FlexNVM\n");break;
+    321                  case 0x9:printf("256 kBytes of FlexNVM\n");break;
+    322              	case 0xF:printf("256 kBytes of FlexNVM\n");break;
+    323          	default:printf("不能识别单片机 FlexNVM size\n");break;
+    324            #else 	
+    325                  default:break; 
+    326            #endif
+    327                }
+    328          #endif
+    329              
+    330              /* 判断Kinetis 单片机的RAM size */
+    331              switch((SIM->SOPT1 & SIM_SOPT1_RAMSIZE(0xF))>>SIM_SOPT1_RAMSIZE_SHIFT)
+   \                     ??cpu_identify_26: (+1)
+   \      0x14A   0x....             LDR.N    R0,??DataTable6_51  ;; 0x40047000
+   \      0x14C   0x6800             LDR      R0,[R0, #+0]
+   \      0x14E   0xF3C0 0x3003      UBFX     R0,R0,#+12,#+4
+   \      0x152   0x2809             CMP      R0,#+9
+   \      0x154   0xD103             BNE.N    ??cpu_identify_27
+    332              {
+    333          #ifdef DEBUG_PRINT
+    334            #if (defined(CPU_MK60DZ10) || defined(CPU_MK60D10))
+    335              	case 0x5:printf("32 kBytes of RAM\n");break;
+    336              	case 0x7:printf("64 kBytes of RAM\n");break;
+    337              	case 0x8:printf("96 kBytes of RAM\n");break;
+    338              	case 0x9:printf("128 kBytes of RAM\n");break;
+    339          	default:printf("不能识别单片机 RAM size\n");break; 
+    340            #elif (defined(CPU_MK60F12) || defined(CPU_MK60F15))
+    341                  case 0x9:printf("128 kBytes of RAM\n");break;
+   \      0x156   0x....             LDR.N    R0,??DataTable6_52
+   \      0x158   0x.... 0x....      BL       printf
+   \      0x15C   0xE002             B.N      ??cpu_identify_28
+    342          	default:printf("不能识别单片机 RAM size\n");break;
+   \                     ??cpu_identify_27: (+1)
+   \      0x15E   0x....             LDR.N    R0,??DataTable6_53
+   \      0x160   0x.... 0x....      BL       printf
+    343            #endif
+    344          #else 	
+    345                  default:break; 
+    346          #endif
+    347              }
+    348              flash_identify(); 
+   \                     ??cpu_identify_28: (+1)
+   \      0x164   0x.... 0x....      BL       _ZN35_INTERNAL_13_system_MK60_c_5d646a6714flash_identifyEv
+    349          }
+   \                     ??cpu_identify_29: (+1)
+   \      0x168   0xBD10             POP      {R4,PC}          ;; return
+    350          
+    351          /**
+    352           * Kinetis flash Identify
+    353           *
+    354           * @param  none
+    355           * @return none
+    356           *
+    357           * @brief 输出Kinetis以下信息
+    358           * - flash parameter revision
+    359           * - flash version ID
+    360           */
+
+   \                                 In section .text, align 2, keep-with-next
+    361          static void flash_identify (void)
+    362          {
+   \                     _ZN35_INTERNAL_13_system_MK60_c_5d646a6714flash_identifyEv: (+1)
+   \        0x0   0xB53E             PUSH     {R1-R5,LR}
+    363            char info[8];
+    364          #if (defined(CPU_MK60DZ10) || defined(CPU_MK60D10)) 
+    365              FTFL->FCCOB0 = 0x03;
+    366              FTFL->FCCOB1 = 0x00;
+    367              FTFL->FCCOB2 = 0x00;
+    368              FTFL->FCCOB3 = 0x00;
+    369              FTFL->FCCOB8 = 0x01;
+    370              FTFL->FSTAT = FTFL_FSTAT_CCIF_MASK;
+    371              while(!(FTFL->FSTAT & FTFL_FSTAT_CCIF_MASK));
+    372              info[0] = FTFL->FCCOB4; info[4] = FTFL->FCCOB8;
+    373              info[1] = FTFL->FCCOB5; info[5] = FTFL->FCCOB9;
+    374              info[2] = FTFL->FCCOB6; info[6] = FTFL->FCCOBA;
+    375              info[3] = FTFL->FCCOB7; info[7] = FTFL->FCCOBB;
+    376          #ifdef DEBUG_PRINT  
+    377              printf("Flash parameter version %d.%d.%d.%d\n",info[0],info[1],info[2],info[3]);
+    378              printf("Flash version ID %d.%d.%d.%d\n",info[4],info[5],info[6],info[7]); 
+    379          #endif  
+    380              FTFL->FSTAT = 0xFF;
+    381          #elif (defined(CPU_MK60F12) || defined(CPU_MK60F15))
+    382              FTFE->FCCOB0 = 0x03;
+   \        0x2   0x2003             MOVS     R0,#+3
+   \        0x4   0x....             LDR.N    R1,??DataTable6_54  ;; 0x40020007
+   \        0x6   0x7008             STRB     R0,[R1, #+0]
+    383              FTFE->FCCOB1 = 0x00;
+   \        0x8   0x2000             MOVS     R0,#+0
+   \        0xA   0x....             LDR.N    R1,??DataTable6_55  ;; 0x40020006
+   \        0xC   0x7008             STRB     R0,[R1, #+0]
+    384              FTFE->FCCOB2 = 0x00;
+   \        0xE   0x2000             MOVS     R0,#+0
+   \       0x10   0x....             LDR.N    R1,??DataTable6_56  ;; 0x40020005
+   \       0x12   0x7008             STRB     R0,[R1, #+0]
+    385              FTFE->FCCOB3 = 0x08;
+   \       0x14   0x2008             MOVS     R0,#+8
+   \       0x16   0x....             LDR.N    R1,??DataTable6_57  ;; 0x40020004
+   \       0x18   0x7008             STRB     R0,[R1, #+0]
+    386              FTFE->FCCOB4 = 0x01;   
+   \       0x1A   0x....             LDR.N    R0,??DataTable6_58  ;; 0x4002000b
+   \       0x1C   0x2101             MOVS     R1,#+1
+   \       0x1E   0x7001             STRB     R1,[R0, #+0]
+    387              FTFE->FSTAT = FTFE_FSTAT_CCIF_MASK;
+   \       0x20   0x....             LDR.N    R4,??DataTable6_59  ;; 0x40020000
+   \       0x22   0x2180             MOVS     R1,#+128
+   \       0x24   0x7021             STRB     R1,[R4, #+0]
+    388              while(!(FTFE->FSTAT & FTFE_FSTAT_CCIF_MASK));
+   \                     ??flash_identify_0: (+1)
+   \       0x26   0x7821             LDRB     R1,[R4, #+0]
+   \       0x28   0x0609             LSLS     R1,R1,#+24
+   \       0x2A   0xD5FC             BPL.N    ??flash_identify_0
+    389              info[0] = FTFE->FCCOB4; info[4] = FTFE->FCCOB8;
+   \       0x2C   0x7800             LDRB     R0,[R0, #+0]
+   \       0x2E   0xF88D 0x0004      STRB     R0,[SP, #+4]
+   \       0x32   0xAD01             ADD      R5,SP,#+4
+   \       0x34   0x....             LDR.N    R0,??DataTable6_60  ;; 0x4002000f
+   \       0x36   0x7800             LDRB     R0,[R0, #+0]
+   \       0x38   0x7128             STRB     R0,[R5, #+4]
+    390              info[1] = FTFE->FCCOB5; info[5] = FTFE->FCCOB9;
+   \       0x3A   0x....             LDR.N    R0,??DataTable6_61  ;; 0x4002000a
+   \       0x3C   0x7800             LDRB     R0,[R0, #+0]
+   \       0x3E   0x7068             STRB     R0,[R5, #+1]
+   \       0x40   0x....             LDR.N    R0,??DataTable6_62  ;; 0x4002000e
+   \       0x42   0x7800             LDRB     R0,[R0, #+0]
+   \       0x44   0x7168             STRB     R0,[R5, #+5]
+    391              info[2] = FTFE->FCCOB6; info[6] = FTFE->FCCOBA;
+   \       0x46   0x....             LDR.N    R0,??DataTable6_63  ;; 0x40020009
+   \       0x48   0x7800             LDRB     R0,[R0, #+0]
+   \       0x4A   0x70A8             STRB     R0,[R5, #+2]
+   \       0x4C   0x....             LDR.N    R0,??DataTable6_64  ;; 0x4002000d
+   \       0x4E   0x7800             LDRB     R0,[R0, #+0]
+   \       0x50   0x71A8             STRB     R0,[R5, #+6]
+    392              info[3] = FTFE->FCCOB7; info[7] = FTFE->FCCOBB;
+   \       0x52   0x....             LDR.N    R0,??DataTable6_65  ;; 0x40020008
+   \       0x54   0x7800             LDRB     R0,[R0, #+0]
+   \       0x56   0x70E8             STRB     R0,[R5, #+3]
+   \       0x58   0x....             LDR.N    R0,??DataTable6_66  ;; 0x4002000c
+   \       0x5A   0x7800             LDRB     R0,[R0, #+0]
+   \       0x5C   0x71E8             STRB     R0,[R5, #+7]
+    393          #ifdef DEBUG_PRINT    
+    394              printf("Flash parameter version %d.%d.%d.%d\n",info[0],info[1],info[2],info[3]);
+   \       0x5E   0x78E8             LDRB     R0,[R5, #+3]
+   \       0x60   0x9000             STR      R0,[SP, #+0]
+   \       0x62   0x78AB             LDRB     R3,[R5, #+2]
+   \       0x64   0x786A             LDRB     R2,[R5, #+1]
+   \       0x66   0xF89D 0x1004      LDRB     R1,[SP, #+4]
+   \       0x6A   0x....             LDR.N    R0,??DataTable6_67
+   \       0x6C   0x.... 0x....      BL       printf
+    395              printf("Flash version ID %d.%d.%d.%d\n",info[4],info[5],info[6],info[7]);  
+   \       0x70   0x79E8             LDRB     R0,[R5, #+7]
+   \       0x72   0x9000             STR      R0,[SP, #+0]
+   \       0x74   0x79AB             LDRB     R3,[R5, #+6]
+   \       0x76   0x796A             LDRB     R2,[R5, #+5]
+   \       0x78   0x7929             LDRB     R1,[R5, #+4]
+   \       0x7A   0x....             LDR.N    R0,??DataTable6_68
+   \       0x7C   0x.... 0x....      BL       printf
+    396          #endif   
+    397              FTFE->FSTAT = 0x7F;
+   \       0x80   0x207F             MOVS     R0,#+127
+   \       0x82   0x7020             STRB     R0,[R4, #+0]
+    398          #endif
+    399          }
+   \                     ??flash_identify_1: (+1)
+   \       0x84   0xBD37             POP      {R0-R2,R4,R5,PC}  ;; return
+    400          
+    401          /**
+    402           * Diagnostic_Reset_Source
+    403           *
+    404           * @param  none
+    405           * @return none
+    406           *
+    407           * @brief 输出Kinetis复位信息
+    408           */
+
+   \                                 In section .text, align 2, keep-with-next
+    409          void Diagnostic_Reset_Source(void)
+    410          {
+   \                     _ZN35_INTERNAL_13_system_MK60_c_5d646a6723Diagnostic_Reset_SourceEv: (+1)
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
+    411          #ifdef DEBUG_PRINT 
+    412          #if (defined(CPU_MK60DZ10)) 
+    413            /* 判断上一次复位的原因*/
+    414            if (MC->SRSH & MC_SRSH_SW_MASK)
+    415                    printf("Software Reset\n");
+    416            if (MC->SRSH & MC_SRSH_LOCKUP_MASK)
+    417                    printf("Core Lockup Event Reset\n");
+    418            if (MC->SRSH & MC_SRSH_JTAG_MASK)
+    419                    printf("JTAG Reset\n");
+    420            if (MC->SRSL & MC_SRSL_POR_MASK)
+    421                    printf("Power-on Reset\n");
+    422            if (MC->SRSL & MC_SRSL_PIN_MASK)
+    423                    printf("External Pin Reset\n");
+    424            if (MC->SRSL & MC_SRSL_COP_MASK)
+    425                    printf("Watchdog(COP) Reset\n");
+    426            if (MC->SRSL & MC_SRSL_LOC_MASK)
+    427                    printf("Loss of Clock Reset\n");
+    428            if (MC->SRSL & MC_SRSL_LVD_MASK)
+    429                    printf("Low-voltage Detect Reset\n");
+    430            if (MC->SRSL & MC_SRSL_WAKEUP_MASK)
+    431                    printf("LLWU Reset\n");
+    432          #elif (defined(CPU_MK60F12) || defined(CPU_MK60F15) || defined(CPU_MK60D10))
+    433            
+    434            if (RCM->SRS1 & RCM_SRS1_SACKERR_MASK)
+   \        0x2   0x....             LDR.N    R4,??DataTable6_69  ;; 0x4007f001
+   \        0x4   0x7820             LDRB     R0,[R4, #+0]
+   \        0x6   0x0680             LSLS     R0,R0,#+26
+   \        0x8   0xD502             BPL.N    ??Diagnostic_Reset_Source_0
+    435                    printf("Stop Mode Acknowledge Error Reset\n");
+   \        0xA   0x....             LDR.N    R0,??DataTable6_70
+   \        0xC   0x.... 0x....      BL       printf
+    436            if (RCM->SRS1 & RCM_SRS1_EZPT_MASK)
+   \                     ??Diagnostic_Reset_Source_0: (+1)
+   \       0x10   0x7820             LDRB     R0,[R4, #+0]
+   \       0x12   0x06C0             LSLS     R0,R0,#+27
+   \       0x14   0xD502             BPL.N    ??Diagnostic_Reset_Source_1
+    437                    printf("EzPort Reset\n");
+   \       0x16   0x....             LDR.N    R0,??DataTable6_71
+   \       0x18   0x.... 0x....      BL       printf
+    438            if (RCM->SRS1 & RCM_SRS1_MDM_AP_MASK)
+   \                     ??Diagnostic_Reset_Source_1: (+1)
+   \       0x1C   0x7820             LDRB     R0,[R4, #+0]
+   \       0x1E   0x0700             LSLS     R0,R0,#+28
+   \       0x20   0xD502             BPL.N    ??Diagnostic_Reset_Source_2
+    439                    printf("MDM-AP Reset\n");
+   \       0x22   0x....             LDR.N    R0,??DataTable6_72
+   \       0x24   0x.... 0x....      BL       printf
+    440            if (RCM->SRS1 & RCM_SRS1_SW_MASK)
+   \                     ??Diagnostic_Reset_Source_2: (+1)
+   \       0x28   0x7820             LDRB     R0,[R4, #+0]
+   \       0x2A   0x0740             LSLS     R0,R0,#+29
+   \       0x2C   0xD502             BPL.N    ??Diagnostic_Reset_Source_3
+    441                    printf("Software Reset\n");
+   \       0x2E   0x....             LDR.N    R0,??DataTable6_73
+   \       0x30   0x.... 0x....      BL       printf
+    442            if (RCM->SRS1 & RCM_SRS1_LOCKUP_MASK)
+   \                     ??Diagnostic_Reset_Source_3: (+1)
+   \       0x34   0x7820             LDRB     R0,[R4, #+0]
+   \       0x36   0x0780             LSLS     R0,R0,#+30
+   \       0x38   0xD502             BPL.N    ??Diagnostic_Reset_Source_4
+    443                    printf("Core Lockup Event Reset\n");
+   \       0x3A   0x....             LDR.N    R0,??DataTable6_74
+   \       0x3C   0x.... 0x....      BL       printf
+    444            if (RCM->SRS1 & RCM_SRS1_JTAG_MASK)
+   \                     ??Diagnostic_Reset_Source_4: (+1)
+   \       0x40   0x7820             LDRB     R0,[R4, #+0]
+   \       0x42   0x07C0             LSLS     R0,R0,#+31
+   \       0x44   0xD502             BPL.N    ??Diagnostic_Reset_Source_5
+    445                    printf("JTAG Reset\n");
+   \       0x46   0x....             LDR.N    R0,??DataTable6_75
+   \       0x48   0x.... 0x....      BL       printf
+    446            if (RCM->SRS0 & RCM_SRS0_POR_MASK)
+   \                     ??Diagnostic_Reset_Source_5: (+1)
+   \       0x4C   0x....             LDR.N    R4,??DataTable6_76  ;; 0x4007f000
+   \       0x4E   0x7820             LDRB     R0,[R4, #+0]
+   \       0x50   0x0600             LSLS     R0,R0,#+24
+   \       0x52   0xD502             BPL.N    ??Diagnostic_Reset_Source_6
+    447                    printf("Power-on Reset\n");
+   \       0x54   0x....             LDR.N    R0,??DataTable6_77
+   \       0x56   0x.... 0x....      BL       printf
+    448            if (RCM->SRS0 & RCM_SRS0_PIN_MASK)
+   \                     ??Diagnostic_Reset_Source_6: (+1)
+   \       0x5A   0x7820             LDRB     R0,[R4, #+0]
+   \       0x5C   0x0640             LSLS     R0,R0,#+25
+   \       0x5E   0xD502             BPL.N    ??Diagnostic_Reset_Source_7
+    449                    printf("External Pin Reset\n");
+   \       0x60   0x....             LDR.N    R0,??DataTable6_78
+   \       0x62   0x.... 0x....      BL       printf
+    450            if (RCM->SRS0 & RCM_SRS0_WDOG_MASK)
+   \                     ??Diagnostic_Reset_Source_7: (+1)
+   \       0x66   0x7820             LDRB     R0,[R4, #+0]
+   \       0x68   0x0680             LSLS     R0,R0,#+26
+   \       0x6A   0xD502             BPL.N    ??Diagnostic_Reset_Source_8
+    451                    printf("Watchdog(COP) Reset\n");
+   \       0x6C   0x....             LDR.N    R0,??DataTable6_79
+   \       0x6E   0x.... 0x....      BL       printf
+    452            if (RCM->SRS0 & RCM_SRS0_LOC_MASK)
+   \                     ??Diagnostic_Reset_Source_8: (+1)
+   \       0x72   0x7820             LDRB     R0,[R4, #+0]
+   \       0x74   0x0740             LSLS     R0,R0,#+29
+   \       0x76   0xD502             BPL.N    ??Diagnostic_Reset_Source_9
+    453                    printf("Loss of Clock Reset\n");
+   \       0x78   0x....             LDR.N    R0,??DataTable6_80
+   \       0x7A   0x.... 0x....      BL       printf
+    454            if (RCM->SRS0 & RCM_SRS0_LVD_MASK)
+   \                     ??Diagnostic_Reset_Source_9: (+1)
+   \       0x7E   0x7820             LDRB     R0,[R4, #+0]
+   \       0x80   0x0780             LSLS     R0,R0,#+30
+   \       0x82   0xD502             BPL.N    ??Diagnostic_Reset_Source_10
+    455                    printf("Low-voltage Detect Reset\n");
+   \       0x84   0x....             LDR.N    R0,??DataTable6_81
+   \       0x86   0x.... 0x....      BL       printf
+    456            if (RCM->SRS0 & RCM_SRS0_WAKEUP_MASK)
+   \                     ??Diagnostic_Reset_Source_10: (+1)
+   \       0x8A   0x7820             LDRB     R0,[R4, #+0]
+   \       0x8C   0x07C0             LSLS     R0,R0,#+31
+   \       0x8E   0xD547             BPL.N    ??Diagnostic_Reset_Source_11
+    457            {
+    458              printf("[outSRS]Wakeup bit set from low power mode exit\n");
+   \       0x90   0x....             LDR.N    R0,??DataTable6_82
+   \       0x92   0x.... 0x....      BL       printf
+    459              printf("[outSRS]SMC_PMPROT = %#02X ", (SMC->PMPROT))  ;
+   \       0x96   0x....             LDR.N    R0,??DataTable6_83  ;; 0x4007e000
+   \       0x98   0x7801             LDRB     R1,[R0, #+0]
+   \       0x9A   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x9C   0x....             LDR.N    R0,??DataTable6_84
+   \       0x9E   0x.... 0x....      BL       printf
+    460              printf("[outSRS]SMC_PMCTRL = %#02X ", (SMC->PMCTRL))  ;
+   \       0xA2   0x....             LDR.N    R5,??DataTable6_85  ;; 0x4007e001
+   \       0xA4   0x7829             LDRB     R1,[R5, #+0]
+   \       0xA6   0x....             LDR.N    R0,??DataTable6_86
+   \       0xA8   0x.... 0x....      BL       printf
+    461              printf("[outSRS]SMC_VLLSCTRL = %#02X ", (SMC->VLLSCTRL))  ;
+   \       0xAC   0x....             LDR.N    R4,??DataTable6_87  ;; 0x4007e002
+   \       0xAE   0x7821             LDRB     R1,[R4, #+0]
+   \       0xB0   0x....             LDR.N    R0,??DataTable6_88
+   \       0xB2   0x.... 0x....      BL       printf
+    462              printf("[outSRS]SMC_PMSTAT = %#02X \r\n", (SMC->PMSTAT))  ;
+   \       0xB6   0x....             LDR.N    R0,??DataTable6_89  ;; 0x4007e003
+   \       0xB8   0x7801             LDRB     R1,[R0, #+0]
+   \       0xBA   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0xBC   0x....             LDR.N    R0,??DataTable6_90
+   \       0xBE   0x.... 0x....      BL       printf
+    463          
+    464              if ((SMC->PMCTRL & SMC_PMCTRL_STOPM_MASK)== 3)
+   \       0xC2   0x7828             LDRB     R0,[R5, #+0]
+   \       0xC4   0xF010 0x0007      ANDS     R0,R0,#0x7
+   \       0xC8   0x2803             CMP      R0,#+3
+   \       0xCA   0xD102             BNE.N    ??Diagnostic_Reset_Source_12
+    465                printf("[outSRS] LLS exit \n") ;
+   \       0xCC   0x....             LDR.N    R0,??DataTable6_91
+   \       0xCE   0x.... 0x....      BL       printf
+    466              if (((SMC->PMCTRL & SMC_PMCTRL_STOPM_MASK)== 4) && ((SMC->VLLSCTRL & SMC_VLLSCTRL_VLLSM_MASK)== 1))
+   \                     ??Diagnostic_Reset_Source_12: (+1)
+   \       0xD2   0x7828             LDRB     R0,[R5, #+0]
+   \       0xD4   0xF010 0x0007      ANDS     R0,R0,#0x7
+   \       0xD8   0x2804             CMP      R0,#+4
+   \       0xDA   0xD107             BNE.N    ??Diagnostic_Reset_Source_13
+   \       0xDC   0x7820             LDRB     R0,[R4, #+0]
+   \       0xDE   0xF010 0x0007      ANDS     R0,R0,#0x7
+   \       0xE2   0x2801             CMP      R0,#+1
+   \       0xE4   0xD102             BNE.N    ??Diagnostic_Reset_Source_13
+    467                printf("[outSRS] VLLS1 exit \n") ;
+   \       0xE6   0x....             LDR.N    R0,??DataTable6_92
+   \       0xE8   0x.... 0x....      BL       printf
+    468              if (((SMC->PMCTRL & SMC_PMCTRL_STOPM_MASK)== 4) && ((SMC->VLLSCTRL & SMC_VLLSCTRL_VLLSM_MASK)== 2))
+   \                     ??Diagnostic_Reset_Source_13: (+1)
+   \       0xEC   0x7828             LDRB     R0,[R5, #+0]
+   \       0xEE   0xF010 0x0007      ANDS     R0,R0,#0x7
+   \       0xF2   0x2804             CMP      R0,#+4
+   \       0xF4   0xD107             BNE.N    ??Diagnostic_Reset_Source_14
+   \       0xF6   0x7820             LDRB     R0,[R4, #+0]
+   \       0xF8   0xF010 0x0007      ANDS     R0,R0,#0x7
+   \       0xFC   0x2802             CMP      R0,#+2
+   \       0xFE   0xD102             BNE.N    ??Diagnostic_Reset_Source_14
+    469                printf("[outSRS] VLLS2 exit \n") ;
+   \      0x100   0x....             LDR.N    R0,??DataTable6_93
+   \      0x102   0x.... 0x....      BL       printf
+    470              if (((SMC->PMCTRL & SMC_PMCTRL_STOPM_MASK)== 4) && ((SMC->VLLSCTRL & SMC_VLLSCTRL_VLLSM_MASK)== 3))
+   \                     ??Diagnostic_Reset_Source_14: (+1)
+   \      0x106   0x7828             LDRB     R0,[R5, #+0]
+   \      0x108   0xF010 0x0007      ANDS     R0,R0,#0x7
+   \      0x10C   0x2804             CMP      R0,#+4
+   \      0x10E   0xD107             BNE.N    ??Diagnostic_Reset_Source_11
+   \      0x110   0x7820             LDRB     R0,[R4, #+0]
+   \      0x112   0xF010 0x0007      ANDS     R0,R0,#0x7
+   \      0x116   0x2803             CMP      R0,#+3
+   \      0x118   0xD102             BNE.N    ??Diagnostic_Reset_Source_11
+    471                printf("[outSRS] VLLS3 exit \n") ; 
+   \      0x11A   0x....             LDR.N    R0,??DataTable6_94
+   \      0x11C   0x.... 0x....      BL       printf
+    472            }
+    473          #endif
+    474          #endif
+    475          }
+   \                     ??Diagnostic_Reset_Source_11: (+1)
+   \                     ??Diagnostic_Reset_Source_15: (+1)
+   \      0x120   0xBD31             POP      {R0,R4,R5,PC}    ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3:
+   \        0x0   0x0D 0x0A          DC8      0x0D, 0x0A, 0x00, 0x00
+   \              0x00 0x00    
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6:
+   \        0x0   0x4004'8038        DC32     0x40048038
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_1:
+   \        0x0   0x4005'200E        DC32     0x4005200e
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_2:
+   \        0x0   0x4005'2000        DC32     0x40052000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_3:
+   \        0x0   0x....'....        DC32     g_core_clock
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_4:
+   \        0x0   0x....'....        DC32     SystemCoreClock
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_5:
+   \        0x0   0x....'....        DC32     g_bus_clock
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_6:
+   \        0x0   0x4004'8044        DC32     0x40048044
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_7:
+   \        0x0   0x....'....        DC32     g_flexbus_clock
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_8:
+   \        0x0   0x....'....        DC32     g_flash_clock
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_9:
+   \        0x0   0x400E'A000        DC32     0x400ea000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_10:
+   \        0x0   0xE000'ED88        DC32     0xe000ed88
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_11:
+   \        0x0   0x....'....        DC32     ?_1
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_12:
+   \        0x0   0x....'....        DC32     ?_3
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_13:
+   \        0x0   0x....'....        DC32     ?_2
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_14:
+   \        0x0   0x000F'4240        DC32     0xf4240
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_15:
+   \        0x0   0x....'....        DC32     ?_4
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_16:
+   \        0x0   0x....'....        DC32     ?_5
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_17:
+   \        0x0   0x....'....        DC32     ?_6
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_18:
+   \        0x0   0x....'....        DC32     ?_7
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_19:
+   \        0x0   0x02FA'F080        DC32     0x2faf080
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_20:
+   \        0x0   0x4006'4004        DC32     0x40064004
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_21:
+   \        0x0   0x4006'4005        DC32     0x40064005
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_22:
+   \        0x0   0x....'....        DC32     ?_8
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_23:
+   \        0x0   0xE000'ED04        DC32     0xe000ed04
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_24:
+   \        0x0   0x....'....        DC32     ?_9
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_25:
+   \        0x0   0x4004'8024        DC32     0x40048024
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_26:
+   \        0x0   0x....'....        DC32     ?_10
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_27:
+   \        0x0   0x....'....        DC32     ?_11
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_28:
+   \        0x0   0x....'....        DC32     ?_12
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_29:
+   \        0x0   0x....'....        DC32     ?_13
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_30:
+   \        0x0   0x....'....        DC32     ?_14
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_31:
+   \        0x0   0x....'....        DC32     ?_15
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_32:
+   \        0x0   0x....'....        DC32     ?_16
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_33:
+   \        0x0   0x....'....        DC32     ?_17
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_34:
+   \        0x0   0x....'....        DC32     ?_18
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_35:
+   \        0x0   0x....'....        DC32     ?_19
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_36:
+   \        0x0   0x....'....        DC32     ?_20
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_37:
+   \        0x0   0x....'....        DC32     ?_21
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_38:
+   \        0x0   0x....'....        DC32     ?_22
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_39:
+   \        0x0   0x....'....        DC32     ?_23
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_40:
+   \        0x0   0x....'....        DC32     ?_24
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_41:
+   \        0x0   0x....'....        DC32     ?_25
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_42:
+   \        0x0   0x....'....        DC32     ?_26
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_43:
+   \        0x0   0x....'....        DC32     ?_27
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_44:
+   \        0x0   0x....'....        DC32     ?_28
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_45:
+   \        0x0   0x....'....        DC32     ?_29
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_46:
+   \        0x0   0x....'....        DC32     ?_30
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_47:
+   \        0x0   0x4004'804C        DC32     0x4004804c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_48:
+   \        0x0   0x....'....        DC32     ?_31
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_49:
+   \        0x0   0x....'....        DC32     ?_32
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_50:
+   \        0x0   0x....'....        DC32     ?_33
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_51:
+   \        0x0   0x4004'7000        DC32     0x40047000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_52:
+   \        0x0   0x....'....        DC32     ?_34
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_53:
+   \        0x0   0x....'....        DC32     ?_35
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_54:
+   \        0x0   0x4002'0007        DC32     0x40020007
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_55:
+   \        0x0   0x4002'0006        DC32     0x40020006
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_56:
+   \        0x0   0x4002'0005        DC32     0x40020005
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_57:
+   \        0x0   0x4002'0004        DC32     0x40020004
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_58:
+   \        0x0   0x4002'000B        DC32     0x4002000b
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_59:
+   \        0x0   0x4002'0000        DC32     0x40020000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_60:
+   \        0x0   0x4002'000F        DC32     0x4002000f
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_61:
+   \        0x0   0x4002'000A        DC32     0x4002000a
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_62:
+   \        0x0   0x4002'000E        DC32     0x4002000e
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_63:
+   \        0x0   0x4002'0009        DC32     0x40020009
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_64:
+   \        0x0   0x4002'000D        DC32     0x4002000d
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_65:
+   \        0x0   0x4002'0008        DC32     0x40020008
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_66:
+   \        0x0   0x4002'000C        DC32     0x4002000c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_67:
+   \        0x0   0x....'....        DC32     ?_36
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_68:
+   \        0x0   0x....'....        DC32     ?_37
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_69:
+   \        0x0   0x4007'F001        DC32     0x4007f001
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_70:
+   \        0x0   0x....'....        DC32     ?_38
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_71:
+   \        0x0   0x....'....        DC32     ?_39
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_72:
+   \        0x0   0x....'....        DC32     ?_40
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_73:
+   \        0x0   0x....'....        DC32     ?_41
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_74:
+   \        0x0   0x....'....        DC32     ?_42
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_75:
+   \        0x0   0x....'....        DC32     ?_43
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_76:
+   \        0x0   0x4007'F000        DC32     0x4007f000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_77:
+   \        0x0   0x....'....        DC32     ?_44
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_78:
+   \        0x0   0x....'....        DC32     ?_45
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_79:
+   \        0x0   0x....'....        DC32     ?_46
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_80:
+   \        0x0   0x....'....        DC32     ?_47
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_81:
+   \        0x0   0x....'....        DC32     ?_48
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_82:
+   \        0x0   0x....'....        DC32     ?_49
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_83:
+   \        0x0   0x4007'E000        DC32     0x4007e000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_84:
+   \        0x0   0x....'....        DC32     ?_50
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_85:
+   \        0x0   0x4007'E001        DC32     0x4007e001
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_86:
+   \        0x0   0x....'....        DC32     ?_51
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_87:
+   \        0x0   0x4007'E002        DC32     0x4007e002
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_88:
+   \        0x0   0x....'....        DC32     ?_52
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_89:
+   \        0x0   0x4007'E003        DC32     0x4007e003
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_90:
+   \        0x0   0x....'....        DC32     ?_53
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_91:
+   \        0x0   0x....'....        DC32     ?_54
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_92:
+   \        0x0   0x....'....        DC32     ?_55
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_93:
+   \        0x0   0x....'....        DC32     ?_56
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_94:
+   \        0x0   0x....'....        DC32     ?_57
+
+   \                                 In section .rodata, align 4
+   \        0x0   0x0D 0x0A          DC8 "\015\012"
+   \              0x00         
+   \        0x3   0x00               DC8 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_1:
+   \        0x0   0x2A 0x2A          DC8 2AH, 2AH, 2AH, 2AH, 2AH, 2AH, 2AH, 2AH
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \        0x8   0x2A 0x2A          DC8 2AH, 2AH, 2AH, 20H, 0BBH, 0F9H, 0D3H, 0DAH
+   \              0x2A 0x20    
+   \              0xBB 0xF9    
+   \              0xD3 0xDA    
+   \       0x10   0xC0 0xAD          DC8 0C0H, 0ADH, 0C6H, 0D5H, 0C0H, 0BCH, 0B5H, 0C2H
+   \              0xC6 0xD5    
+   \              0xC0 0xBC    
+   \              0xB5 0xC2    
+   \       0x18   0x4B 0x36          DC8 4BH, 36H, 30H, 0B5H, 0D7H, 0B2H, 0E3H, 0BFH
+   \              0x30 0xB5    
+   \              0xD7 0xB2    
+   \              0xE3 0xBF    
+   \       0x20   0xE2 0x20          DC8 0E2H, 20H, 68H, 74H, 74H, 70H, 3AH, 2FH
+   \              0x68 0x74    
+   \              0x74 0x70    
+   \              0x3A 0x2F    
+   \       0x28   0x2F 0x77          DC8 2FH, 77H, 77H, 77H, 2EH, 6CH, 70H, 6CH
+   \              0x77 0x77    
+   \              0x2E 0x6C    
+   \              0x70 0x6C    
+   \       0x30   0x64 0x2E          DC8 64H, 2EH, 63H, 6EH, 20H, 2AH, 2AH, 2AH
+   \              0x63 0x6E    
+   \              0x20 0x2A    
+   \              0x2A 0x2A    
+   \       0x38   0x2A 0x2A          DC8 2AH, 2AH, 2AH, 2AH, 2AH, 2AH, 2AH, 2AH
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \       0x40   0x0D 0x0A          DC8 0DH, 0AH, 0
+   \              0x00         
+   \       0x43   0x00               DC8 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_2:
+   \        0x0   0x4F 0x53          DC8 "OSKinetis\271\314\274\376\277\342\260\346\261\276:%s\tmail:support@lpld.cn\015\012"
+   \              0x4B 0x69    
+   \              0x6E 0x65    
+   \              0x74 0x69    
+   \              0x73 0xB9    
+   \              0xCC 0xBC    
+   \              0xFE 0xBF    
+   \              0xE2 0xB0    
+   \              0xE6 0xB1    
+   \              0xBE 0x3A    
+   \              0x25 0x73    
+   \              0x09 0x6D    
+   \              0x61 0x69    
+   \              0x6C 0x3A    
+   \              0x73 0x75    
+   \              0x70 0x70    
+   \              0x6F 0x72    
+   \              0x74 0x40    
+   \              0x6C 0x70    
+   \              0x6C 0x64    
+   \              0x2E 0x63    
+   \              0x6E 0x0D    
+   \              0x0A 0x00    
+   \       0x2E   0x00 0x00          DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_3:
+   \        0x0   0x33 0x2E          DC8 "3.1 b1"
+   \              0x31 0x20    
+   \              0x62 0x31    
+   \              0x00         
+   \        0x7   0x00               DC8 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_4:
+   \        0x0   0xCF 0xB5          DC8 "\317\265\315\263\304\332\272\313\312\261\326\323:%dMHz\t\327\334\317\337\312\261\326\323:%dMHz\015\012"
+   \              0xCD 0xB3    
+   \              0xC4 0xDA    
+   \              0xBA 0xCB    
+   \              0xCA 0xB1    
+   \              0xD6 0xD3    
+   \              0x3A 0x25    
+   \              0x64 0x4D    
+   \              0x48 0x7A    
+   \              0x09 0xD7    
+   \              0xDC 0xCF    
+   \              0xDF 0xCA    
+   \              0xB1 0xD6    
+   \              0xD3 0x3A    
+   \              0x25 0x64    
+   \              0x4D 0x48    
+   \              0x7A 0x0D    
+   \              0x0A 0x00    
+
+   \                                 In section .rodata, align 4
+   \                     ?_5:
+   \        0x0   0x46 0x6C          DC8 "FlexBus\312\261\326\323:%dMHz\tFlash\312\261\326\323:%dMHz\015\012"
+   \              0x65 0x78    
+   \              0x42 0x75    
+   \              0x73 0xCA    
+   \              0xB1 0xD6    
+   \              0xD3 0x3A    
+   \              0x25 0x64    
+   \              0x4D 0x48    
+   \              0x7A 0x09    
+   \              0x46 0x6C    
+   \              0x61 0x73    
+   \              0x68 0xCA    
+   \              0xB1 0xD6    
+   \              0xD3 0x3A    
+   \              0x25 0x64    
+   \              0x4D 0x48    
+   \              0x7A 0x0D    
+   \              0x0A 0x00    
+
+   \                                 In section .rodata, align 4
+   \                     ?_6:
+   \        0x0   0xCF 0xB5          DC8 0CFH, 0B5H, 0CDH, 0B3H, 0C6H, 0F4H, 0B6H, 0AFH
+   \              0xCD 0xB3    
+   \              0xC6 0xF4    
+   \              0xB6 0xAF    
+   \        0x8   0xCD 0xEA          DC8 0CDH, 0EAH, 0B1H, 0CFH, 0A3H, 0ACH, 0C8H, 0F4H
+   \              0xB1 0xCF    
+   \              0xA3 0xAC    
+   \              0xC8 0xF4    
+   \       0x10   0xD2 0xAA          DC8 0D2H, 0AAH, 0BDH, 0FBH, 0D3H, 0C3H, 0B5H, 0F7H
+   \              0xBD 0xFB    
+   \              0xD3 0xC3    
+   \              0xB5 0xF7    
+   \       0x18   0xCA 0xD4          DC8 0CAH, 0D4H, 0CAH, 0E4H, 0B3H, 0F6H, 0C7H, 0EBH
+   \              0xCA 0xE4    
+   \              0xB3 0xF6    
+   \              0xC7 0xEB    
+   \       0x20   0xB6 0xA8          DC8 0B6H, 0A8H, 0D2H, 0E5H, 50H, 52H, 49H, 4EH
+   \              0xD2 0xE5    
+   \              0x50 0x52    
+   \              0x49 0x4E    
+   \       0x28   0x54 0x5F          DC8 54H, 5FH, 4FH, 4EH, 5FH, 4FH, 46H, 46H
+   \              0x4F 0x4E    
+   \              0x5F 0x4F    
+   \              0x46 0x46    
+   \       0x30   0xCE 0xAA          DC8 0CEH, 0AAH, 31H, 28H, 6BH, 36H, 30H, 5FH
+   \              0x31 0x28    
+   \              0x6B 0x36    
+   \              0x30 0x5F    
+   \       0x38   0x63 0x61          DC8 63H, 61H, 72H, 64H, 2EH, 68H, 29H, 0DH
+   \              0x72 0x64    
+   \              0x2E 0x68    
+   \              0x29 0x0D    
+   \       0x40   0x0A 0x00          DC8 0AH, 0
+   \       0x42   0x00 0x00          DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_7:
+   \        0x0   0x2A 0x2A          DC8 2AH, 2AH, 2AH, 2AH, 2AH, 2AH, 2AH, 2AH
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \        0x8   0x2A 0x2A          DC8 2AH, 2AH, 2AH, 2AH, 2AH, 2AH, 2AH, 2AH
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \       0x10   0x2A 0x2A          DC8 2AH, 2AH, 2AH, 2AH, 2AH, 2AH, 2AH, 2AH
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \       0x18   0x2A 0x2A          DC8 2AH, 2AH, 2AH, 2AH, 2AH, 2AH, 2AH, 2AH
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \       0x20   0x2A 0x2A          DC8 2AH, 2AH, 2AH, 2AH, 2AH, 2AH, 2AH, 2AH
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \       0x28   0x2A 0x2A          DC8 2AH, 2AH, 2AH, 2AH, 2AH, 2AH, 2AH, 2AH
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \       0x30   0x2A 0x2A          DC8 2AH, 2AH, 2AH, 2AH, 2AH, 2AH, 2AH, 2AH
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \       0x38   0x2A 0x2A          DC8 2AH, 2AH, 2AH, 2AH, 2AH, 2AH, 2AH, 2AH
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \       0x40   0x2A 0x2A          DC8 2AH, 2AH, 2AH, 2AH, 0DH, 0AH, 0
+   \              0x2A 0x2A    
+   \              0x0D 0x0A    
+   \              0x00         
+   \       0x47   0x00               DC8 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_8:
+   \        0x0   0x0D 0x0A          DC8 "\015\012****\304\332\272\313\267\242\311\372\323\262\274\376\264\355\316\363*****\015\012"
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \              0xC4 0xDA    
+   \              0xBA 0xCB    
+   \              0xB7 0xA2    
+   \              0xC9 0xFA    
+   \              0xD3 0xB2    
+   \              0xBC 0xFE    
+   \              0xB4 0xED    
+   \              0xCE 0xF3    
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \              0x2A 0x0D    
+   \              0x0A 0x00    
+   \       0x1E   0x00 0x00          DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_9:
+   \        0x0   0x0D 0x0A          DC8 "\015\012****\275\370\310\353\316\264\266\250\322\345\326\320\266\317,Interrupt Number %d*****\015\012"
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \              0xBD 0xF8    
+   \              0xC8 0xEB    
+   \              0xCE 0xB4    
+   \              0xB6 0xA8    
+   \              0xD2 0xE5    
+   \              0xD6 0xD0    
+   \              0xB6 0xCF    
+   \              0x2C 0x49    
+   \              0x6E 0x74    
+   \              0x65 0x72    
+   \              0x72 0x75    
+   \              0x70 0x74    
+   \              0x20 0x4E    
+   \              0x75 0x6D    
+   \              0x62 0x65    
+   \              0x72 0x20    
+   \              0x25 0x64    
+   \              0x2A 0x2A    
+   \              0x2A 0x2A    
+   \              0x2A 0x0D    
+   \              0x0A 0x00    
+
+   \                                 In section .rodata, align 4
+   \                     ?_10:
+   \        0x0   0x0A 0x4B          DC8 "\012K10-"
+   \              0x31 0x30    
+   \              0x2D 0x00    
+   \        0x6   0x00 0x00          DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_11:
+   \        0x0   0x0A 0x4B          DC8 "\012K20-"
+   \              0x32 0x30    
+   \              0x2D 0x00    
+   \        0x6   0x00 0x00          DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_12:
+   \        0x0   0x0A 0x4B          DC8 "\012K30-"
+   \              0x33 0x30    
+   \              0x2D 0x00    
+   \        0x6   0x00 0x00          DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_13:
+   \        0x0   0x0A 0x4B          DC8 "\012K40-"
+   \              0x34 0x30    
+   \              0x2D 0x00    
+   \        0x6   0x00 0x00          DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_14:
+   \        0x0   0x0A 0x4B          DC8 "\012K60-"
+   \              0x36 0x30    
+   \              0x2D 0x00    
+   \        0x6   0x00 0x00          DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_15:
+   \        0x0   0x0A 0x4B          DC8 "\012K70-"
+   \              0x37 0x30    
+   \              0x2D 0x00    
+   \        0x6   0x00 0x00          DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_16:
+   \        0x0   0x0A 0x4B          DC8 "\012K50-"
+   \              0x35 0x30    
+   \              0x2D 0x00    
+   \        0x6   0x00 0x00          DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_17:
+   \        0x0   0x0A 0x4B          DC8 "\012K53-"
+   \              0x35 0x33    
+   \              0x2D 0x00    
+   \        0x6   0x00 0x00          DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_18:
+   \        0x0   0x0A 0xB2          DC8 "\012\262\273\304\334\312\266\261\360\265\245\306\254\273\372\320\315\272\305-"
+   \              0xBB 0xC4    
+   \              0xDC 0xCA    
+   \              0xB6 0xB1    
+   \              0xF0 0xB5    
+   \              0xA5 0xC6    
+   \              0xAC 0xBB    
+   \              0xFA 0xD0    
+   \              0xCD 0xBA    
+   \              0xC5 0x2D    
+   \              0x00         
+   \       0x15   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .rodata, align 4
+   \                     ?_19:
+   \        0x0   0x33 0x32          DC8 "32pin-"
+   \              0x70 0x69    
+   \              0x6E 0x2D    
+   \              0x00         
+   \        0x7   0x00               DC8 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_20:
+   \        0x0   0x34 0x38          DC8 "48pin-"
+   \              0x70 0x69    
+   \              0x6E 0x2D    
+   \              0x00         
+   \        0x7   0x00               DC8 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_21:
+   \        0x0   0x36 0x34          DC8 "64pin-"
+   \              0x70 0x69    
+   \              0x6E 0x2D    
+   \              0x00         
+   \        0x7   0x00               DC8 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_22:
+   \        0x0   0x38 0x30          DC8 "80pin-"
+   \              0x70 0x69    
+   \              0x6E 0x2D    
+   \              0x00         
+   \        0x7   0x00               DC8 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_23:
+   \        0x0   0x38 0x31          DC8 "81pin-"
+   \              0x70 0x69    
+   \              0x6E 0x2D    
+   \              0x00         
+   \        0x7   0x00               DC8 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_24:
+   \        0x0   0x31 0x30          DC8 "100pin-"
+   \              0x30 0x70    
+   \              0x69 0x6E    
+   \              0x2D 0x00    
+
+   \                                 In section .rodata, align 4
+   \                     ?_25:
+   \        0x0   0x31 0x30          DC8 "104pin-"
+   \              0x34 0x70    
+   \              0x69 0x6E    
+   \              0x2D 0x00    
+
+   \                                 In section .rodata, align 4
+   \                     ?_26:
+   \        0x0   0x31 0x34          DC8 "144pin-"
+   \              0x34 0x70    
+   \              0x69 0x6E    
+   \              0x2D 0x00    
+
+   \                                 In section .rodata, align 4
+   \                     ?_27:
+   \        0x0   0x31 0x39          DC8 "196pin-"
+   \              0x36 0x70    
+   \              0x69 0x6E    
+   \              0x2D 0x00    
+
+   \                                 In section .rodata, align 4
+   \                     ?_28:
+   \        0x0   0x32 0x35          DC8 "256pin-"
+   \              0x36 0x70    
+   \              0x69 0x6E    
+   \              0x2D 0x00    
+
+   \                                 In section .rodata, align 4
+   \                     ?_29:
+   \        0x0   0xB2 0xBB          DC8 "\262\273\304\334\312\266\261\360\265\245\306\254\273\372\267\342\327\260-."
+   \              0xC4 0xDC    
+   \              0xCA 0xB6    
+   \              0xB1 0xF0    
+   \              0xB5 0xA5    
+   \              0xC6 0xAC    
+   \              0xBB 0xFA    
+   \              0xB7 0xE2    
+   \              0xD7 0xB0    
+   \              0x2D 0x2E    
+   \              0x00         
+   \       0x15   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .rodata, align 4
+   \                     ?_30:
+   \        0x0   0x53 0x69          DC8 "Silicon rev 1.%d\012"
+   \              0x6C 0x69    
+   \              0x63 0x6F    
+   \              0x6E 0x20    
+   \              0x72 0x65    
+   \              0x76 0x20    
+   \              0x31 0x2E    
+   \              0x25 0x64    
+   \              0x0A 0x00    
+   \       0x12   0x00 0x00          DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_31:
+   \        0x0   0x35 0x31          DC8 "512 kBytes of P-flash\t"
+   \              0x32 0x20    
+   \              0x6B 0x42    
+   \              0x79 0x74    
+   \              0x65 0x73    
+   \              0x20 0x6F    
+   \              0x66 0x20    
+   \              0x50 0x2D    
+   \              0x66 0x6C    
+   \              0x61 0x73    
+   \              0x68 0x09    
+   \              0x00         
+   \       0x17   0x00               DC8 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_32:
+   \        0x0   0x31 0x30          DC8 "1024 kBytes of P-flash\t"
+   \              0x32 0x34    
+   \              0x20 0x6B    
+   \              0x42 0x79    
+   \              0x74 0x65    
+   \              0x73 0x20    
+   \              0x6F 0x66    
+   \              0x20 0x50    
+   \              0x2D 0x66    
+   \              0x6C 0x61    
+   \              0x73 0x68    
+   \              0x09 0x00    
+
+   \                                 In section .rodata, align 4
+   \                     ?_33:
+   \        0x0   0xB2 0xBB          DC8 "\262\273\304\334\312\266\261\360\265\245\306\254\273\372 P-flash size\012"
+   \              0xC4 0xDC    
+   \              0xCA 0xB6    
+   \              0xB1 0xF0    
+   \              0xB5 0xA5    
+   \              0xC6 0xAC    
+   \              0xBB 0xFA    
+   \              0x20 0x50    
+   \              0x2D 0x66    
+   \              0x6C 0x61    
+   \              0x73 0x68    
+   \              0x20 0x73    
+   \              0x69 0x7A    
+   \              0x65 0x0A    
+   \              0x00         
+   \       0x1D   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .rodata, align 4
+   \                     ?_34:
+   \        0x0   0x31 0x32          DC8 "128 kBytes of RAM\012"
+   \              0x38 0x20    
+   \              0x6B 0x42    
+   \              0x79 0x74    
+   \              0x65 0x73    
+   \              0x20 0x6F    
+   \              0x66 0x20    
+   \              0x52 0x41    
+   \              0x4D 0x0A    
+   \              0x00         
+   \       0x13   0x00               DC8 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_35:
+   \        0x0   0xB2 0xBB          DC8 "\262\273\304\334\312\266\261\360\265\245\306\254\273\372 RAM size\012"
+   \              0xC4 0xDC    
+   \              0xCA 0xB6    
+   \              0xB1 0xF0    
+   \              0xB5 0xA5    
+   \              0xC6 0xAC    
+   \              0xBB 0xFA    
+   \              0x20 0x52    
+   \              0x41 0x4D    
+   \              0x20 0x73    
+   \              0x69 0x7A    
+   \              0x65 0x0A    
+   \              0x00         
+   \       0x19   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .rodata, align 4
+   \                     ?_36:
+   \        0x0   0x46 0x6C          DC8 "Flash parameter version %d.%d.%d.%d\012"
+   \              0x61 0x73    
+   \              0x68 0x20    
+   \              0x70 0x61    
+   \              0x72 0x61    
+   \              0x6D 0x65    
+   \              0x74 0x65    
+   \              0x72 0x20    
+   \              0x76 0x65    
+   \              0x72 0x73    
+   \              0x69 0x6F    
+   \              0x6E 0x20    
+   \              0x25 0x64    
+   \              0x2E 0x25    
+   \              0x64 0x2E    
+   \              0x25 0x64    
+   \              0x2E 0x25    
+   \              0x64 0x0A    
+   \              0x00         
+   \       0x25   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .rodata, align 4
+   \                     ?_37:
+   \        0x0   0x46 0x6C          DC8 "Flash version ID %d.%d.%d.%d\012"
+   \              0x61 0x73    
+   \              0x68 0x20    
+   \              0x76 0x65    
+   \              0x72 0x73    
+   \              0x69 0x6F    
+   \              0x6E 0x20    
+   \              0x49 0x44    
+   \              0x20 0x25    
+   \              0x64 0x2E    
+   \              0x25 0x64    
+   \              0x2E 0x25    
+   \              0x64 0x2E    
+   \              0x25 0x64    
+   \              0x0A 0x00    
+   \       0x1E   0x00 0x00          DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_38:
+   \        0x0   0x53 0x74          DC8 "Stop Mode Acknowledge Error Reset\012"
+   \              0x6F 0x70    
+   \              0x20 0x4D    
+   \              0x6F 0x64    
+   \              0x65 0x20    
+   \              0x41 0x63    
+   \              0x6B 0x6E    
+   \              0x6F 0x77    
+   \              0x6C 0x65    
+   \              0x64 0x67    
+   \              0x65 0x20    
+   \              0x45 0x72    
+   \              0x72 0x6F    
+   \              0x72 0x20    
+   \              0x52 0x65    
+   \              0x73 0x65    
+   \              0x74 0x0A    
+   \              0x00         
+   \       0x23   0x00               DC8 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_39:
+   \        0x0   0x45 0x7A          DC8 "EzPort Reset\012"
+   \              0x50 0x6F    
+   \              0x72 0x74    
+   \              0x20 0x52    
+   \              0x65 0x73    
+   \              0x65 0x74    
+   \              0x0A 0x00    
+   \        0xE   0x00 0x00          DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_40:
+   \        0x0   0x4D 0x44          DC8 "MDM-AP Reset\012"
+   \              0x4D 0x2D    
+   \              0x41 0x50    
+   \              0x20 0x52    
+   \              0x65 0x73    
+   \              0x65 0x74    
+   \              0x0A 0x00    
+   \        0xE   0x00 0x00          DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_41:
+   \        0x0   0x53 0x6F          DC8 "Software Reset\012"
+   \              0x66 0x74    
+   \              0x77 0x61    
+   \              0x72 0x65    
+   \              0x20 0x52    
+   \              0x65 0x73    
+   \              0x65 0x74    
+   \              0x0A 0x00    
+
+   \                                 In section .rodata, align 4
+   \                     ?_42:
+   \        0x0   0x43 0x6F          DC8 "Core Lockup Event Reset\012"
+   \              0x72 0x65    
+   \              0x20 0x4C    
+   \              0x6F 0x63    
+   \              0x6B 0x75    
+   \              0x70 0x20    
+   \              0x45 0x76    
+   \              0x65 0x6E    
+   \              0x74 0x20    
+   \              0x52 0x65    
+   \              0x73 0x65    
+   \              0x74 0x0A    
+   \              0x00         
+   \       0x19   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .rodata, align 4
+   \                     ?_43:
+   \        0x0   0x4A 0x54          DC8 "JTAG Reset\012"
+   \              0x41 0x47    
+   \              0x20 0x52    
+   \              0x65 0x73    
+   \              0x65 0x74    
+   \              0x0A 0x00    
+
+   \                                 In section .rodata, align 4
+   \                     ?_44:
+   \        0x0   0x50 0x6F          DC8 "Power-on Reset\012"
+   \              0x77 0x65    
+   \              0x72 0x2D    
+   \              0x6F 0x6E    
+   \              0x20 0x52    
+   \              0x65 0x73    
+   \              0x65 0x74    
+   \              0x0A 0x00    
+
+   \                                 In section .rodata, align 4
+   \                     ?_45:
+   \        0x0   0x45 0x78          DC8 "External Pin Reset\012"
+   \              0x74 0x65    
+   \              0x72 0x6E    
+   \              0x61 0x6C    
+   \              0x20 0x50    
+   \              0x69 0x6E    
+   \              0x20 0x52    
+   \              0x65 0x73    
+   \              0x65 0x74    
+   \              0x0A 0x00    
+
+   \                                 In section .rodata, align 4
+   \                     ?_46:
+   \        0x0   0x57 0x61          DC8 "Watchdog(COP) Reset\012"
+   \              0x74 0x63    
+   \              0x68 0x64    
+   \              0x6F 0x67    
+   \              0x28 0x43    
+   \              0x4F 0x50    
+   \              0x29 0x20    
+   \              0x52 0x65    
+   \              0x73 0x65    
+   \              0x74 0x0A    
+   \              0x00         
+   \       0x15   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .rodata, align 4
+   \                     ?_47:
+   \        0x0   0x4C 0x6F          DC8 "Loss of Clock Reset\012"
+   \              0x73 0x73    
+   \              0x20 0x6F    
+   \              0x66 0x20    
+   \              0x43 0x6C    
+   \              0x6F 0x63    
+   \              0x6B 0x20    
+   \              0x52 0x65    
+   \              0x73 0x65    
+   \              0x74 0x0A    
+   \              0x00         
+   \       0x15   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .rodata, align 4
+   \                     ?_48:
+   \        0x0   0x4C 0x6F          DC8 "Low-voltage Detect Reset\012"
+   \              0x77 0x2D    
+   \              0x76 0x6F    
+   \              0x6C 0x74    
+   \              0x61 0x67    
+   \              0x65 0x20    
+   \              0x44 0x65    
+   \              0x74 0x65    
+   \              0x63 0x74    
+   \              0x20 0x52    
+   \              0x65 0x73    
+   \              0x65 0x74    
+   \              0x0A 0x00    
+   \       0x1A   0x00 0x00          DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_49:
+   \        0x0   0x5B 0x6F          DC8 "[outSRS]Wakeup bit set from low power mode exit\012"
+   \              0x75 0x74    
+   \              0x53 0x52    
+   \              0x53 0x5D    
+   \              0x57 0x61    
+   \              0x6B 0x65    
+   \              0x75 0x70    
+   \              0x20 0x62    
+   \              0x69 0x74    
+   \              0x20 0x73    
+   \              0x65 0x74    
+   \              0x20 0x66    
+   \              0x72 0x6F    
+   \              0x6D 0x20    
+   \              0x6C 0x6F    
+   \              0x77 0x20    
+   \              0x70 0x6F    
+   \              0x77 0x65    
+   \              0x72 0x20    
+   \              0x6D 0x6F    
+   \              0x64 0x65    
+   \              0x20 0x65    
+   \              0x78 0x69    
+   \              0x74 0x0A    
+   \              0x00         
+   \       0x31   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .rodata, align 4
+   \                     ?_50:
+   \        0x0   0x5B 0x6F          DC8 "[outSRS]SMC_PMPROT = %#02X "
+   \              0x75 0x74    
+   \              0x53 0x52    
+   \              0x53 0x5D    
+   \              0x53 0x4D    
+   \              0x43 0x5F    
+   \              0x50 0x4D    
+   \              0x50 0x52    
+   \              0x4F 0x54    
+   \              0x20 0x3D    
+   \              0x20 0x25    
+   \              0x23 0x30    
+   \              0x32 0x58    
+   \              0x20 0x00    
+
+   \                                 In section .rodata, align 4
+   \                     ?_51:
+   \        0x0   0x5B 0x6F          DC8 "[outSRS]SMC_PMCTRL = %#02X "
+   \              0x75 0x74    
+   \              0x53 0x52    
+   \              0x53 0x5D    
+   \              0x53 0x4D    
+   \              0x43 0x5F    
+   \              0x50 0x4D    
+   \              0x43 0x54    
+   \              0x52 0x4C    
+   \              0x20 0x3D    
+   \              0x20 0x25    
+   \              0x23 0x30    
+   \              0x32 0x58    
+   \              0x20 0x00    
+
+   \                                 In section .rodata, align 4
+   \                     ?_52:
+   \        0x0   0x5B 0x6F          DC8 "[outSRS]SMC_VLLSCTRL = %#02X "
+   \              0x75 0x74    
+   \              0x53 0x52    
+   \              0x53 0x5D    
+   \              0x53 0x4D    
+   \              0x43 0x5F    
+   \              0x56 0x4C    
+   \              0x4C 0x53    
+   \              0x43 0x54    
+   \              0x52 0x4C    
+   \              0x20 0x3D    
+   \              0x20 0x25    
+   \              0x23 0x30    
+   \              0x32 0x58    
+   \              0x20 0x00    
+   \       0x1E   0x00 0x00          DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_53:
+   \        0x0   0x5B 0x6F          DC8 "[outSRS]SMC_PMSTAT = %#02X \015\012"
+   \              0x75 0x74    
+   \              0x53 0x52    
+   \              0x53 0x5D    
+   \              0x53 0x4D    
+   \              0x43 0x5F    
+   \              0x50 0x4D    
+   \              0x53 0x54    
+   \              0x41 0x54    
+   \              0x20 0x3D    
+   \              0x20 0x25    
+   \              0x23 0x30    
+   \              0x32 0x58    
+   \              0x20 0x0D    
+   \              0x0A 0x00    
+   \       0x1E   0x00 0x00          DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_54:
+   \        0x0   0x5B 0x6F          DC8 "[outSRS] LLS exit \012"
+   \              0x75 0x74    
+   \              0x53 0x52    
+   \              0x53 0x5D    
+   \              0x20 0x4C    
+   \              0x4C 0x53    
+   \              0x20 0x65    
+   \              0x78 0x69    
+   \              0x74 0x20    
+   \              0x0A 0x00    
+
+   \                                 In section .rodata, align 4
+   \                     ?_55:
+   \        0x0   0x5B 0x6F          DC8 "[outSRS] VLLS1 exit \012"
+   \              0x75 0x74    
+   \              0x53 0x52    
+   \              0x53 0x5D    
+   \              0x20 0x56    
+   \              0x4C 0x4C    
+   \              0x53 0x31    
+   \              0x20 0x65    
+   \              0x78 0x69    
+   \              0x74 0x20    
+   \              0x0A 0x00    
+   \       0x16   0x00 0x00          DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_56:
+   \        0x0   0x5B 0x6F          DC8 "[outSRS] VLLS2 exit \012"
+   \              0x75 0x74    
+   \              0x53 0x52    
+   \              0x53 0x5D    
+   \              0x20 0x56    
+   \              0x4C 0x4C    
+   \              0x53 0x32    
+   \              0x20 0x65    
+   \              0x78 0x69    
+   \              0x74 0x20    
+   \              0x0A 0x00    
+   \       0x16   0x00 0x00          DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_57:
+   \        0x0   0x5B 0x6F          DC8 "[outSRS] VLLS3 exit \012"
+   \              0x75 0x74    
+   \              0x53 0x52    
+   \              0x53 0x5D    
+   \              0x20 0x56    
+   \              0x4C 0x4C    
+   \              0x53 0x33    
+   \              0x20 0x65    
+   \              0x78 0x69    
+   \              0x74 0x20    
+   \              0x0A 0x00    
+   \       0x16   0x00 0x00          DC8 0, 0
+    476          
+    477          //#ifdef __cplusplus
+    478          //}
+    479          //#endif
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   DefaultISR
+         8   -> printf
+      16   Diagnostic_Reset_Source()
+        16   -> printf
+       8   HardFault_Handler
+         8   -> printf
+       0   SystemCoreClockUpdate
+      80   SystemInit
+        64   -> Diagnostic_Reset_Source()
+        64   -> PLL_Setup
+        64   -> SystemCoreClockUpdate
+        64   -> UART_Init
+        80   -> __aeabi_memcpy4
+        64   -> common_relocate
+        64   -> cpu_identify()
+        64   -> printf
+       8   cpu_identify()
+         8   -> flash_identify()
+         8   -> printf
+      24   flash_identify()
+        24   -> printf
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable3
+       4  ??DataTable6
+       4  ??DataTable6_1
+       4  ??DataTable6_10
+       4  ??DataTable6_11
+       4  ??DataTable6_12
+       4  ??DataTable6_13
+       4  ??DataTable6_14
+       4  ??DataTable6_15
+       4  ??DataTable6_16
+       4  ??DataTable6_17
+       4  ??DataTable6_18
+       4  ??DataTable6_19
+       4  ??DataTable6_2
+       4  ??DataTable6_20
+       4  ??DataTable6_21
+       4  ??DataTable6_22
+       4  ??DataTable6_23
+       4  ??DataTable6_24
+       4  ??DataTable6_25
+       4  ??DataTable6_26
+       4  ??DataTable6_27
+       4  ??DataTable6_28
+       4  ??DataTable6_29
+       4  ??DataTable6_3
+       4  ??DataTable6_30
+       4  ??DataTable6_31
+       4  ??DataTable6_32
+       4  ??DataTable6_33
+       4  ??DataTable6_34
+       4  ??DataTable6_35
+       4  ??DataTable6_36
+       4  ??DataTable6_37
+       4  ??DataTable6_38
+       4  ??DataTable6_39
+       4  ??DataTable6_4
+       4  ??DataTable6_40
+       4  ??DataTable6_41
+       4  ??DataTable6_42
+       4  ??DataTable6_43
+       4  ??DataTable6_44
+       4  ??DataTable6_45
+       4  ??DataTable6_46
+       4  ??DataTable6_47
+       4  ??DataTable6_48
+       4  ??DataTable6_49
+       4  ??DataTable6_5
+       4  ??DataTable6_50
+       4  ??DataTable6_51
+       4  ??DataTable6_52
+       4  ??DataTable6_53
+       4  ??DataTable6_54
+       4  ??DataTable6_55
+       4  ??DataTable6_56
+       4  ??DataTable6_57
+       4  ??DataTable6_58
+       4  ??DataTable6_59
+       4  ??DataTable6_6
+       4  ??DataTable6_60
+       4  ??DataTable6_61
+       4  ??DataTable6_62
+       4  ??DataTable6_63
+       4  ??DataTable6_64
+       4  ??DataTable6_65
+       4  ??DataTable6_66
+       4  ??DataTable6_67
+       4  ??DataTable6_68
+       4  ??DataTable6_69
+       4  ??DataTable6_7
+       4  ??DataTable6_70
+       4  ??DataTable6_71
+       4  ??DataTable6_72
+       4  ??DataTable6_73
+       4  ??DataTable6_74
+       4  ??DataTable6_75
+       4  ??DataTable6_76
+       4  ??DataTable6_77
+       4  ??DataTable6_78
+       4  ??DataTable6_79
+       4  ??DataTable6_8
+       4  ??DataTable6_80
+       4  ??DataTable6_81
+       4  ??DataTable6_82
+       4  ??DataTable6_83
+       4  ??DataTable6_84
+       4  ??DataTable6_85
+       4  ??DataTable6_86
+       4  ??DataTable6_87
+       4  ??DataTable6_88
+       4  ??DataTable6_89
+       4  ??DataTable6_9
+       4  ??DataTable6_90
+       4  ??DataTable6_91
+       4  ??DataTable6_92
+       4  ??DataTable6_93
+       4  ??DataTable6_94
+       4  ?_0
+      68  ?_1
+       8  ?_10
+       8  ?_11
+       8  ?_12
+       8  ?_13
+       8  ?_14
+       8  ?_15
+       8  ?_16
+       8  ?_17
+      24  ?_18
+       8  ?_19
+      48  ?_2
+       8  ?_20
+       8  ?_21
+       8  ?_22
+       8  ?_23
+       8  ?_24
+       8  ?_25
+       8  ?_26
+       8  ?_27
+       8  ?_28
+      24  ?_29
+       8  ?_3
+      20  ?_30
+      24  ?_31
+      24  ?_32
+      32  ?_33
+      20  ?_34
+      28  ?_35
+      40  ?_36
+      32  ?_37
+      36  ?_38
+      16  ?_39
+      36  ?_4
+      16  ?_40
+      16  ?_41
+      28  ?_42
+      12  ?_43
+      16  ?_44
+      20  ?_45
+      24  ?_46
+      24  ?_47
+      28  ?_48
+      52  ?_49
+      36  ?_5
+      28  ?_50
+      28  ?_51
+      32  ?_52
+      32  ?_53
+      20  ?_54
+      24  ?_55
+      24  ?_56
+      24  ?_57
+      68  ?_6
+      72  ?_7
+      32  ?_8
+      48  ?_9
+      22  DefaultISR
+     290  Diagnostic_Reset_Source()
+      12  HardFault_Handler
+       4  SystemCoreClock
+      48  SystemCoreClockUpdate
+     296  SystemInit
+     362  cpu_identify()
+     134  flash_identify()
+      48  -- Other
+
+ 
+    48 bytes in section .ARM.exidx
+     4 bytes in section .data
+ 1 332 bytes in section .rodata
+ 1 548 bytes in section .text
+ 
+ 1 548 bytes of CODE  memory
+ 1 380 bytes of CONST memory
+     4 bytes of DATA  memory
+
+Errors: none
+Warnings: none

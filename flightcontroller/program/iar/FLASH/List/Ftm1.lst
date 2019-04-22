@@ -1,0 +1,1204 @@
+﻿###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM         30/Jul/2018  16:03:59
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\Ftm1.c
+#    Command line =  
+#        -f C:\Users\XSK199~1\AppData\Local\Temp\EW2F6F.tmp
+#        (C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\Ftm1.c
+#        -D K60 -D USE_K60F15 -D ARM_MATH_CM4 -D __FPU_PRESENT=1 -D
+#        __FPU_USED=1 -lCN
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -lB
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -o
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
+#        D:\iar\arm\inc\c\DLib_Config_Full.h -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\Sensor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\CPU\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\option\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\driver\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\class\
+#        -On --c++ -I D:\iar\arm\CMSIS\Core\Include\ -I
+#        D:\iar\arm\CMSIS\DSP\Include\ -D ARM_MATH_CM4 --text_out utf8
+#        --utf8_text_in)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List\Ftm1.lst
+#    Object file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj\Ftm1.o
+#
+###############################################################################
+
+C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\Ftm1.c
+      1          
+      2          #include "Ftm1.h"
+
+   \                                 In section .text, align 2
+   \   __interwork __softfp uint8 GPIO_Input_b(GPIO_Type *, uint8)
+   \                     GPIO_Input_b: (+1)
+   \        0x0   0x6900             LDR      R0,[R0, #+16]
+   \        0x2   0x40C8             LSRS     R0,R0,R1
+   \        0x4   0xF010 0x0001      ANDS     R0,R0,#0x1
+   \        0x8   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 2
+   \   __interwork __softfp boolean FTM_IsCHnF(FTM_Type *, FtmChnEnum)
+   \                     FTM_IsCHnF: (+1)
+   \        0x0   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \        0x2   0xEB00 0x00C1      ADD      R0,R0,R1, LSL #+3
+   \        0x6   0x68C0             LDR      R0,[R0, #+12]
+   \        0x8   0xF3C0 0x10C0      UBFX     R0,R0,#+7,#+1
+   \        0xC   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \        0xE   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 2
+   \   __interwork __softfp uint16 FTM_GetChVal(FTM_Type *, FtmChnEnum)
+   \                     FTM_GetChVal: (+1)
+   \        0x0   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \        0x2   0xEB00 0x00C1      ADD      R0,R0,R1, LSL #+3
+   \        0x6   0x6900             LDR      R0,[R0, #+16]
+   \        0x8   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
+   \        0xA   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 2
+   \   __interwork __softfp void FTM_ClearCHnF(FTM_Type *, FtmChnEnum)
+   \                     FTM_ClearCHnF: (+1)
+   \        0x0   0x000A             MOVS     R2,R1
+   \        0x2   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \        0x4   0xEB00 0x02C2      ADD      R2,R0,R2, LSL #+3
+   \        0x8   0x68D2             LDR      R2,[R2, #+12]
+   \        0xA   0xF032 0x0280      BICS     R2,R2,#0x80
+   \        0xE   0x000B             MOVS     R3,R1
+   \       0x10   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
+   \       0x12   0xEB00 0x03C3      ADD      R3,R0,R3, LSL #+3
+   \       0x16   0x60DA             STR      R2,[R3, #+12]
+   \       0x18   0x4770             BX       LR               ;; return
+      3          extern "C"{
+      4            #include "GPIO.h"
+
+   \                                 In section .bss, align 4
+      5          static int Remote_Leftknob,Remote_Roll,accelerator,rotate,Remote_Throttle,rotaryknob,Remote_Yaw,
+   \                     Remote_Leftknob:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     Remote_Roll:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     accelerator:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     rotate:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     Remote_Throttle:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     rotaryknob:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     Remote_Yaw:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+      6                          Remote_Pitch,old0,old1,old2,old3,old4,old5,old6,old7;
+   \                     Remote_Pitch:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     old0:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     old1:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     old2:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     old3:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     old4:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     old5:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     old6:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     old7:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+      7          FTM_InitTypeDef ftm_init_structure1;
+   \                     ftm_init_structure1:
+   \        0x0                      DS8 28
+
+   \                                 In section .bss, align 4
+      8          uint32 cnt1,cnt11,cnt12,cnt0,cnt01,cnt02,cnt2,cnt21,cnt22,cnt3,cnt31,cnt32,cnt4,cnt41,cnt42,cnt5,cnt51,cnt52,cnt6,cnt61,cnt62,cnt7,cnt71,cnt72;
+   \                     cnt1:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt11:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt12:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt0:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt01:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt02:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt2:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt21:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt22:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt3:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt31:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt32:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt4:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt41:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt42:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt5:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt51:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt52:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt6:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt61:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt62:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt7:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt71:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     cnt72:
+   \        0x0                      DS8 4
+
+   \                                 In section .text, align 4, keep-with-next
+      9          void ic_isr(void)	
+     10          {
+   \                     ic_isr: (+1)
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
+     11            
+     12            if(FTM_IsCHnF(FTM0, FTM_Ch0))	
+   \        0x2   0xF8DF 0x44FC      LDR.W    R4,??ic_isr_0    ;; 0x40038000
+   \        0x6   0x2100             MOVS     R1,#+0
+   \        0x8   0x0020             MOVS     R0,R4
+   \        0xA   0x.... 0x....      BL       FTM_IsCHnF
+   \        0xE   0x2800             CMP      R0,#+0
+   \       0x10   0xD001             BEQ.N    ??ic_isr_1
+   \       0x12   0x2001             MOVS     R0,#+1
+   \       0x14   0xE000             B.N      ??ic_isr_2
+   \                     ??ic_isr_1: (+1)
+   \       0x16   0x2000             MOVS     R0,#+0
+   \                     ??ic_isr_2: (+1)
+   \       0x18   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x1A   0x2800             CMP      R0,#+0
+   \       0x1C   0xD04C             BEQ.N    ??ic_isr_3
+     13            {
+     14              //cnt1=FTM_GetChVal(FTM0, FTM_Ch0);
+     15              //GPIO_Init(gpio_init_structure1);
+     16              cnt0=GPIO_Input_b(PTC,1);
+   \       0x1E   0xF8DF 0x54E4      LDR.W    R5,??ic_isr_0+0x4
+   \       0x22   0x2101             MOVS     R1,#+1
+   \       0x24   0xF8DF 0x04E0      LDR.W    R0,??ic_isr_0+0x8  ;; 0x400ff080
+   \       0x28   0x.... 0x....      BL       GPIO_Input_b
+   \       0x2C   0x6028             STR      R0,[R5, #+0]
+     17             
+     18              if(cnt0==1)
+   \       0x2E   0x6828             LDR      R0,[R5, #+0]
+   \       0x30   0x2801             CMP      R0,#+1
+   \       0x32   0xD107             BNE.N    ??ic_isr_4
+     19              {
+     20                cnt01=FTM_GetChVal(FTM0, FTM_Ch0); 
+   \       0x34   0x2100             MOVS     R1,#+0
+   \       0x36   0x0020             MOVS     R0,R4
+   \       0x38   0x.... 0x....      BL       FTM_GetChVal
+   \       0x3C   0xF8DF 0x14CC      LDR.W    R1,??ic_isr_0+0xC
+   \       0x40   0x6008             STR      R0,[R1, #+0]
+   \       0x42   0xE009             B.N      ??ic_isr_5
+     21              }
+     22              else if(cnt0==0)
+   \                     ??ic_isr_4: (+1)
+   \       0x44   0x6828             LDR      R0,[R5, #+0]
+   \       0x46   0x2800             CMP      R0,#+0
+   \       0x48   0xD106             BNE.N    ??ic_isr_5
+     23              {
+     24                cnt02=FTM_GetChVal(FTM0, FTM_Ch0); 
+   \       0x4A   0x2100             MOVS     R1,#+0
+   \       0x4C   0x0020             MOVS     R0,R4
+   \       0x4E   0x.... 0x....      BL       FTM_GetChVal
+   \       0x52   0xF8DF 0x14BC      LDR.W    R1,??ic_isr_0+0x10
+   \       0x56   0x6008             STR      R0,[R1, #+0]
+     25              }
+     26              if(cnt02>=cnt01)
+   \                     ??ic_isr_5: (+1)
+   \       0x58   0xF8DF 0x04B4      LDR.W    R0,??ic_isr_0+0x10
+   \       0x5C   0xF8DF 0x14AC      LDR.W    R1,??ic_isr_0+0xC
+   \       0x60   0x6802             LDR      R2,[R0, #+0]
+   \       0x62   0x680B             LDR      R3,[R1, #+0]
+   \       0x64   0x429A             CMP      R2,R3
+   \       0x66   0xD322             BCC.N    ??ic_isr_6
+     27              {
+     28                Remote_Leftknob=cnt02-cnt01;
+   \       0x68   0xF8DF 0x54A8      LDR.W    R5,??ic_isr_0+0x14
+   \       0x6C   0x6802             LDR      R2,[R0, #+0]
+   \       0x6E   0x6808             LDR      R0,[R1, #+0]
+   \       0x70   0x1A12             SUBS     R2,R2,R0
+   \       0x72   0x602A             STR      R2,[R5, #+0]
+     29                if(Remote_Leftknob>1000)Remote_Leftknob=old0;
+   \       0x74   0x6828             LDR      R0,[R5, #+0]
+   \       0x76   0xF240 0x31E9      MOVW     R1,#+1001
+   \       0x7A   0x4288             CMP      R0,R1
+   \       0x7C   0xDB03             BLT.N    ??ic_isr_7
+   \       0x7E   0xF8DF 0x0498      LDR.W    R0,??ic_isr_0+0x18
+   \       0x82   0x6800             LDR      R0,[R0, #+0]
+   \       0x84   0x6028             STR      R0,[R5, #+0]
+     30                old0=Remote_Leftknob;
+   \                     ??ic_isr_7: (+1)
+   \       0x86   0x6828             LDR      R0,[R5, #+0]
+   \       0x88   0xF8DF 0x148C      LDR.W    R1,??ic_isr_0+0x18
+   \       0x8C   0x6008             STR      R0,[R1, #+0]
+     31                
+     32                Remote_Leftknob -= 700;
+   \       0x8E   0x6828             LDR      R0,[R5, #+0]
+   \       0x90   0xF5B0 0x702F      SUBS     R0,R0,#+700
+   \       0x94   0x6028             STR      R0,[R5, #+0]
+     33                Remote_Leftknob *= 3.157;
+   \       0x96   0x6828             LDR      R0,[R5, #+0]
+   \       0x98   0x.... 0x....      BL       __aeabi_i2d
+   \       0x9C   0xF8DF 0x247C      LDR.W    R2,??ic_isr_0+0x1C  ;; 0x374bc6a8
+   \       0xA0   0xF8DF 0x347C      LDR.W    R3,??ic_isr_0+0x20  ;; 0x40094189
+   \       0xA4   0x.... 0x....      BL       __aeabi_dmul
+   \       0xA8   0x.... 0x....      BL       __aeabi_d2iz
+   \       0xAC   0x6028             STR      R0,[R5, #+0]
+     34              }
+     35              /*
+     36              duty=cnt-cnt1;
+     37              cyc=cnt-cnt2;
+     38              cnt2=cnt1;
+     39              cnt1=cnt;*/
+     40              //Freq0=(g_bus_clock/FTM_GetClkDiv(FTM0))/cnt; 	
+     41              //FTM_ClearCounter(FTM0);	
+     42              FTM_ClearCHnF(FTM0, FTM_Ch0); 	
+   \                     ??ic_isr_6: (+1)
+   \       0xAE   0x2100             MOVS     R1,#+0
+   \       0xB0   0x0020             MOVS     R0,R4
+   \       0xB2   0x.... 0x....      BL       FTM_ClearCHnF
+   \       0xB6   0xE222             B.N      ??ic_isr_8
+     43            }	
+     44             else if(FTM_IsCHnF(FTM0, FTM_Ch1))	
+   \                     ??ic_isr_3: (+1)
+   \       0xB8   0x2101             MOVS     R1,#+1
+   \       0xBA   0x0020             MOVS     R0,R4
+   \       0xBC   0x.... 0x....      BL       FTM_IsCHnF
+   \       0xC0   0x2800             CMP      R0,#+0
+   \       0xC2   0xD001             BEQ.N    ??ic_isr_9
+   \       0xC4   0x2001             MOVS     R0,#+1
+   \       0xC6   0xE000             B.N      ??ic_isr_10
+   \                     ??ic_isr_9: (+1)
+   \       0xC8   0x2000             MOVS     R0,#+0
+   \                     ??ic_isr_10: (+1)
+   \       0xCA   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0xCC   0x2800             CMP      R0,#+0
+   \       0xCE   0xD04C             BEQ.N    ??ic_isr_11
+     45            {
+     46              cnt1=GPIO_Input_b(PTC,2);
+   \       0xD0   0xF8DF 0x5450      LDR.W    R5,??ic_isr_0+0x24
+   \       0xD4   0x2102             MOVS     R1,#+2
+   \       0xD6   0xF8DF 0x0430      LDR.W    R0,??ic_isr_0+0x8  ;; 0x400ff080
+   \       0xDA   0x.... 0x....      BL       GPIO_Input_b
+   \       0xDE   0x6028             STR      R0,[R5, #+0]
+     47              if(cnt1==1)
+   \       0xE0   0x6828             LDR      R0,[R5, #+0]
+   \       0xE2   0x2801             CMP      R0,#+1
+   \       0xE4   0xD107             BNE.N    ??ic_isr_12
+     48              {
+     49                cnt11=FTM_GetChVal(FTM0, FTM_Ch1); 
+   \       0xE6   0x2101             MOVS     R1,#+1
+   \       0xE8   0x0020             MOVS     R0,R4
+   \       0xEA   0x.... 0x....      BL       FTM_GetChVal
+   \       0xEE   0xF8DF 0x1438      LDR.W    R1,??ic_isr_0+0x28
+   \       0xF2   0x6008             STR      R0,[R1, #+0]
+   \       0xF4   0xE009             B.N      ??ic_isr_13
+     50              }
+     51              else if(cnt1==0)
+   \                     ??ic_isr_12: (+1)
+   \       0xF6   0x6828             LDR      R0,[R5, #+0]
+   \       0xF8   0x2800             CMP      R0,#+0
+   \       0xFA   0xD106             BNE.N    ??ic_isr_13
+     52              {
+     53                cnt12=FTM_GetChVal(FTM0, FTM_Ch1); 
+   \       0xFC   0x2101             MOVS     R1,#+1
+   \       0xFE   0x0020             MOVS     R0,R4
+   \      0x100   0x.... 0x....      BL       FTM_GetChVal
+   \      0x104   0xF8DF 0x1424      LDR.W    R1,??ic_isr_0+0x2C
+   \      0x108   0x6008             STR      R0,[R1, #+0]
+     54              }
+     55              if(cnt12>=cnt11) 
+   \                     ??ic_isr_13: (+1)
+   \      0x10A   0xF8DF 0x0420      LDR.W    R0,??ic_isr_0+0x2C
+   \      0x10E   0xF8DF 0x1418      LDR.W    R1,??ic_isr_0+0x28
+   \      0x112   0x6802             LDR      R2,[R0, #+0]
+   \      0x114   0x680B             LDR      R3,[R1, #+0]
+   \      0x116   0x429A             CMP      R2,R3
+   \      0x118   0xD322             BCC.N    ??ic_isr_14
+     56              {
+     57                Remote_Roll=cnt12-cnt11;
+   \      0x11A   0xF8DF 0x5414      LDR.W    R5,??ic_isr_0+0x30
+   \      0x11E   0x6802             LDR      R2,[R0, #+0]
+   \      0x120   0x6808             LDR      R0,[R1, #+0]
+   \      0x122   0x1A12             SUBS     R2,R2,R0
+   \      0x124   0x602A             STR      R2,[R5, #+0]
+     58                if(Remote_Roll>1000)Remote_Roll=old1;
+   \      0x126   0x6828             LDR      R0,[R5, #+0]
+   \      0x128   0xF240 0x31E9      MOVW     R1,#+1001
+   \      0x12C   0x4288             CMP      R0,R1
+   \      0x12E   0xDB03             BLT.N    ??ic_isr_15
+   \      0x130   0xF8DF 0x0400      LDR.W    R0,??ic_isr_0+0x34
+   \      0x134   0x6800             LDR      R0,[R0, #+0]
+   \      0x136   0x6028             STR      R0,[R5, #+0]
+     59                old1=Remote_Roll;
+   \                     ??ic_isr_15: (+1)
+   \      0x138   0x6828             LDR      R0,[R5, #+0]
+   \      0x13A   0xF8DF 0x13F8      LDR.W    R1,??ic_isr_0+0x34
+   \      0x13E   0x6008             STR      R0,[R1, #+0]
+     60                
+     61                Remote_Roll -= 700;
+   \      0x140   0x6828             LDR      R0,[R5, #+0]
+   \      0x142   0xF5B0 0x702F      SUBS     R0,R0,#+700
+   \      0x146   0x6028             STR      R0,[R5, #+0]
+     62                Remote_Roll *= 3.157;
+   \      0x148   0x6828             LDR      R0,[R5, #+0]
+   \      0x14A   0x.... 0x....      BL       __aeabi_i2d
+   \      0x14E   0xF8DF 0x23CC      LDR.W    R2,??ic_isr_0+0x1C  ;; 0x374bc6a8
+   \      0x152   0xF8DF 0x33CC      LDR.W    R3,??ic_isr_0+0x20  ;; 0x40094189
+   \      0x156   0x.... 0x....      BL       __aeabi_dmul
+   \      0x15A   0x.... 0x....      BL       __aeabi_d2iz
+   \      0x15E   0x6028             STR      R0,[R5, #+0]
+     63              }
+     64              FTM_ClearCHnF(FTM0, FTM_Ch1); 	
+   \                     ??ic_isr_14: (+1)
+   \      0x160   0x2101             MOVS     R1,#+1
+   \      0x162   0x0020             MOVS     R0,R4
+   \      0x164   0x.... 0x....      BL       FTM_ClearCHnF
+   \      0x168   0xE1C9             B.N      ??ic_isr_8
+     65            }	
+     66             else if(FTM_IsCHnF(FTM0, FTM_Ch2))	
+   \                     ??ic_isr_11: (+1)
+   \      0x16A   0x2102             MOVS     R1,#+2
+   \      0x16C   0x0020             MOVS     R0,R4
+   \      0x16E   0x.... 0x....      BL       FTM_IsCHnF
+   \      0x172   0x2800             CMP      R0,#+0
+   \      0x174   0xD001             BEQ.N    ??ic_isr_16
+   \      0x176   0x2001             MOVS     R0,#+1
+   \      0x178   0xE000             B.N      ??ic_isr_17
+   \                     ??ic_isr_16: (+1)
+   \      0x17A   0x2000             MOVS     R0,#+0
+   \                     ??ic_isr_17: (+1)
+   \      0x17C   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x17E   0x2800             CMP      R0,#+0
+   \      0x180   0xD03C             BEQ.N    ??ic_isr_18
+     67            {	
+     68              cnt2=GPIO_Input_b(PTC,3);
+   \      0x182   0xF8DF 0x53B4      LDR.W    R5,??ic_isr_0+0x38
+   \      0x186   0x2103             MOVS     R1,#+3
+   \      0x188   0xF8DF 0x037C      LDR.W    R0,??ic_isr_0+0x8  ;; 0x400ff080
+   \      0x18C   0x.... 0x....      BL       GPIO_Input_b
+   \      0x190   0x6028             STR      R0,[R5, #+0]
+     69              if(cnt2==1)
+   \      0x192   0x6828             LDR      R0,[R5, #+0]
+   \      0x194   0x2801             CMP      R0,#+1
+   \      0x196   0xD107             BNE.N    ??ic_isr_19
+     70              {
+     71                cnt21=FTM_GetChVal(FTM0, FTM_Ch2); 
+   \      0x198   0x2102             MOVS     R1,#+2
+   \      0x19A   0x0020             MOVS     R0,R4
+   \      0x19C   0x.... 0x....      BL       FTM_GetChVal
+   \      0x1A0   0xF8DF 0x1398      LDR.W    R1,??ic_isr_0+0x3C
+   \      0x1A4   0x6008             STR      R0,[R1, #+0]
+   \      0x1A6   0xE009             B.N      ??ic_isr_20
+     72              }
+     73              else if(cnt2==0)
+   \                     ??ic_isr_19: (+1)
+   \      0x1A8   0x6828             LDR      R0,[R5, #+0]
+   \      0x1AA   0x2800             CMP      R0,#+0
+   \      0x1AC   0xD106             BNE.N    ??ic_isr_20
+     74              {
+     75                cnt22=FTM_GetChVal(FTM0, FTM_Ch2); 
+   \      0x1AE   0x2102             MOVS     R1,#+2
+   \      0x1B0   0x0020             MOVS     R0,R4
+   \      0x1B2   0x.... 0x....      BL       FTM_GetChVal
+   \      0x1B6   0xF8DF 0x1388      LDR.W    R1,??ic_isr_0+0x40
+   \      0x1BA   0x6008             STR      R0,[R1, #+0]
+     76              }
+     77              if(cnt22>=cnt21)
+   \                     ??ic_isr_20: (+1)
+   \      0x1BC   0xF8DF 0x0380      LDR.W    R0,??ic_isr_0+0x40
+   \      0x1C0   0xF8DF 0x1378      LDR.W    R1,??ic_isr_0+0x3C
+   \      0x1C4   0x6802             LDR      R2,[R0, #+0]
+   \      0x1C6   0x680B             LDR      R3,[R1, #+0]
+   \      0x1C8   0x429A             CMP      R2,R3
+   \      0x1CA   0xD312             BCC.N    ??ic_isr_21
+     78              {
+     79                accelerator=cnt22-cnt21;
+   \      0x1CC   0xF8DF 0x2374      LDR.W    R2,??ic_isr_0+0x44
+   \      0x1D0   0x6803             LDR      R3,[R0, #+0]
+   \      0x1D2   0x6808             LDR      R0,[R1, #+0]
+   \      0x1D4   0x1A1B             SUBS     R3,R3,R0
+   \      0x1D6   0x6013             STR      R3,[R2, #+0]
+     80                if(accelerator>1000)accelerator=old2;
+   \      0x1D8   0x6810             LDR      R0,[R2, #+0]
+   \      0x1DA   0xF240 0x31E9      MOVW     R1,#+1001
+   \      0x1DE   0x4288             CMP      R0,R1
+   \      0x1E0   0xDB03             BLT.N    ??ic_isr_22
+   \      0x1E2   0xF8DF 0x0364      LDR.W    R0,??ic_isr_0+0x48
+   \      0x1E6   0x6800             LDR      R0,[R0, #+0]
+   \      0x1E8   0x6010             STR      R0,[R2, #+0]
+     81                old2=accelerator;
+   \                     ??ic_isr_22: (+1)
+   \      0x1EA   0x6810             LDR      R0,[R2, #+0]
+   \      0x1EC   0xF8DF 0x1358      LDR.W    R1,??ic_isr_0+0x48
+   \      0x1F0   0x6008             STR      R0,[R1, #+0]
+     82              }
+     83              FTM_ClearCHnF(FTM0, FTM_Ch2); 	
+   \                     ??ic_isr_21: (+1)
+   \      0x1F2   0x2102             MOVS     R1,#+2
+   \      0x1F4   0x0020             MOVS     R0,R4
+   \      0x1F6   0x.... 0x....      BL       FTM_ClearCHnF
+   \      0x1FA   0xE180             B.N      ??ic_isr_8
+     84            }	
+     85             else if(FTM_IsCHnF(FTM0, FTM_Ch3))	
+   \                     ??ic_isr_18: (+1)
+   \      0x1FC   0x2103             MOVS     R1,#+3
+   \      0x1FE   0x0020             MOVS     R0,R4
+   \      0x200   0x.... 0x....      BL       FTM_IsCHnF
+   \      0x204   0x2800             CMP      R0,#+0
+   \      0x206   0xD001             BEQ.N    ??ic_isr_23
+   \      0x208   0x2001             MOVS     R0,#+1
+   \      0x20A   0xE000             B.N      ??ic_isr_24
+   \                     ??ic_isr_23: (+1)
+   \      0x20C   0x2000             MOVS     R0,#+0
+   \                     ??ic_isr_24: (+1)
+   \      0x20E   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x210   0x2800             CMP      R0,#+0
+   \      0x212   0xD037             BEQ.N    ??ic_isr_25
+     86            {
+     87              cnt3=GPIO_Input_b(PTC,4);
+   \      0x214   0xF8DF 0x5334      LDR.W    R5,??ic_isr_0+0x4C
+   \      0x218   0x2104             MOVS     R1,#+4
+   \      0x21A   0x48BB             LDR.N    R0,??ic_isr_0+0x8  ;; 0x400ff080
+   \      0x21C   0x.... 0x....      BL       GPIO_Input_b
+   \      0x220   0x6028             STR      R0,[R5, #+0]
+     88              if(cnt3==1)
+   \      0x222   0x6828             LDR      R0,[R5, #+0]
+   \      0x224   0x2801             CMP      R0,#+1
+   \      0x226   0xD107             BNE.N    ??ic_isr_26
+     89              {
+     90                cnt31=FTM_GetChVal(FTM0, FTM_Ch3); 
+   \      0x228   0x2103             MOVS     R1,#+3
+   \      0x22A   0x0020             MOVS     R0,R4
+   \      0x22C   0x.... 0x....      BL       FTM_GetChVal
+   \      0x230   0xF8DF 0x131C      LDR.W    R1,??ic_isr_0+0x50
+   \      0x234   0x6008             STR      R0,[R1, #+0]
+   \      0x236   0xE009             B.N      ??ic_isr_27
+     91              }
+     92              else if(cnt3==0)
+   \                     ??ic_isr_26: (+1)
+   \      0x238   0x6828             LDR      R0,[R5, #+0]
+   \      0x23A   0x2800             CMP      R0,#+0
+   \      0x23C   0xD106             BNE.N    ??ic_isr_27
+     93              {
+     94                cnt32=FTM_GetChVal(FTM0, FTM_Ch3); 
+   \      0x23E   0x2103             MOVS     R1,#+3
+   \      0x240   0x0020             MOVS     R0,R4
+   \      0x242   0x.... 0x....      BL       FTM_GetChVal
+   \      0x246   0xF8DF 0x130C      LDR.W    R1,??ic_isr_0+0x54
+   \      0x24A   0x6008             STR      R0,[R1, #+0]
+     95              }
+     96              if(cnt32>=cnt31) 
+   \                     ??ic_isr_27: (+1)
+   \      0x24C   0xF8DF 0x0304      LDR.W    R0,??ic_isr_0+0x54
+   \      0x250   0x49BF             LDR.N    R1,??ic_isr_0+0x50
+   \      0x252   0x6802             LDR      R2,[R0, #+0]
+   \      0x254   0x680B             LDR      R3,[R1, #+0]
+   \      0x256   0x429A             CMP      R2,R3
+   \      0x258   0xD30F             BCC.N    ??ic_isr_28
+     97              {
+     98                rotate=cnt32-cnt31;
+   \      0x25A   0x4ABF             LDR.N    R2,??ic_isr_0+0x58
+   \      0x25C   0x6803             LDR      R3,[R0, #+0]
+   \      0x25E   0x6808             LDR      R0,[R1, #+0]
+   \      0x260   0x1A1B             SUBS     R3,R3,R0
+   \      0x262   0x6013             STR      R3,[R2, #+0]
+     99                if(rotate>1000)rotate=old3;
+   \      0x264   0x6810             LDR      R0,[R2, #+0]
+   \      0x266   0xF240 0x31E9      MOVW     R1,#+1001
+   \      0x26A   0x4288             CMP      R0,R1
+   \      0x26C   0xDB02             BLT.N    ??ic_isr_29
+   \      0x26E   0x48BB             LDR.N    R0,??ic_isr_0+0x5C
+   \      0x270   0x6800             LDR      R0,[R0, #+0]
+   \      0x272   0x6010             STR      R0,[R2, #+0]
+    100                old3=rotate;
+   \                     ??ic_isr_29: (+1)
+   \      0x274   0x6810             LDR      R0,[R2, #+0]
+   \      0x276   0x49B9             LDR.N    R1,??ic_isr_0+0x5C
+   \      0x278   0x6008             STR      R0,[R1, #+0]
+    101              }
+    102              FTM_ClearCHnF(FTM0, FTM_Ch3); 	
+   \                     ??ic_isr_28: (+1)
+   \      0x27A   0x2103             MOVS     R1,#+3
+   \      0x27C   0x0020             MOVS     R0,R4
+   \      0x27E   0x.... 0x....      BL       FTM_ClearCHnF
+   \      0x282   0xE13C             B.N      ??ic_isr_8
+    103            }
+    104             else if(FTM_IsCHnF(FTM0, FTM_Ch4))	
+   \                     ??ic_isr_25: (+1)
+   \      0x284   0x2104             MOVS     R1,#+4
+   \      0x286   0x0020             MOVS     R0,R4
+   \      0x288   0x.... 0x....      BL       FTM_IsCHnF
+   \      0x28C   0x2800             CMP      R0,#+0
+   \      0x28E   0xD001             BEQ.N    ??ic_isr_30
+   \      0x290   0x2001             MOVS     R0,#+1
+   \      0x292   0xE000             B.N      ??ic_isr_31
+   \                     ??ic_isr_30: (+1)
+   \      0x294   0x2000             MOVS     R0,#+0
+   \                     ??ic_isr_31: (+1)
+   \      0x296   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x298   0x2800             CMP      R0,#+0
+   \      0x29A   0xD047             BEQ.N    ??ic_isr_32
+    105            {	
+    106              cnt4=GPIO_Input_b(PTD,4);
+   \      0x29C   0x4DB0             LDR.N    R5,??ic_isr_0+0x60
+   \      0x29E   0x2104             MOVS     R1,#+4
+   \      0x2A0   0x48B0             LDR.N    R0,??ic_isr_0+0x64  ;; 0x400ff0c0
+   \      0x2A2   0x.... 0x....      BL       GPIO_Input_b
+   \      0x2A6   0x6028             STR      R0,[R5, #+0]
+    107              if(cnt4==1)
+   \      0x2A8   0x6828             LDR      R0,[R5, #+0]
+   \      0x2AA   0x2801             CMP      R0,#+1
+   \      0x2AC   0xD106             BNE.N    ??ic_isr_33
+    108              {
+    109                cnt41=FTM_GetChVal(FTM0, FTM_Ch4); 
+   \      0x2AE   0x2104             MOVS     R1,#+4
+   \      0x2B0   0x0020             MOVS     R0,R4
+   \      0x2B2   0x.... 0x....      BL       FTM_GetChVal
+   \      0x2B6   0x49AC             LDR.N    R1,??ic_isr_0+0x68
+   \      0x2B8   0x6008             STR      R0,[R1, #+0]
+   \      0x2BA   0xE008             B.N      ??ic_isr_34
+    110              }
+    111              else if(cnt4==0)
+   \                     ??ic_isr_33: (+1)
+   \      0x2BC   0x6828             LDR      R0,[R5, #+0]
+   \      0x2BE   0x2800             CMP      R0,#+0
+   \      0x2C0   0xD105             BNE.N    ??ic_isr_34
+    112              {
+    113                cnt42=FTM_GetChVal(FTM0, FTM_Ch4); 
+   \      0x2C2   0x2104             MOVS     R1,#+4
+   \      0x2C4   0x0020             MOVS     R0,R4
+   \      0x2C6   0x.... 0x....      BL       FTM_GetChVal
+   \      0x2CA   0x49A8             LDR.N    R1,??ic_isr_0+0x6C
+   \      0x2CC   0x6008             STR      R0,[R1, #+0]
+    114              }
+    115              if(cnt42>=cnt41) 
+   \                     ??ic_isr_34: (+1)
+   \      0x2CE   0x48A7             LDR.N    R0,??ic_isr_0+0x6C
+   \      0x2D0   0x49A5             LDR.N    R1,??ic_isr_0+0x68
+   \      0x2D2   0x6802             LDR      R2,[R0, #+0]
+   \      0x2D4   0x680B             LDR      R3,[R1, #+0]
+   \      0x2D6   0x429A             CMP      R2,R3
+   \      0x2D8   0xD323             BCC.N    ??ic_isr_35
+    116              {
+    117                Remote_Throttle=cnt42-cnt41;
+   \      0x2DA   0x4DA5             LDR.N    R5,??ic_isr_0+0x70
+   \      0x2DC   0x6802             LDR      R2,[R0, #+0]
+   \      0x2DE   0x6808             LDR      R0,[R1, #+0]
+   \      0x2E0   0x1A12             SUBS     R2,R2,R0
+   \      0x2E2   0x602A             STR      R2,[R5, #+0]
+    118                if(Remote_Throttle>1000)Remote_Throttle=old4;
+   \      0x2E4   0x6828             LDR      R0,[R5, #+0]
+   \      0x2E6   0xF240 0x31E9      MOVW     R1,#+1001
+   \      0x2EA   0x4288             CMP      R0,R1
+   \      0x2EC   0xDB02             BLT.N    ??ic_isr_36
+   \      0x2EE   0x48A1             LDR.N    R0,??ic_isr_0+0x74
+   \      0x2F0   0x6800             LDR      R0,[R0, #+0]
+   \      0x2F2   0x6028             STR      R0,[R5, #+0]
+    119                old4=Remote_Throttle;
+   \                     ??ic_isr_36: (+1)
+   \      0x2F4   0x6828             LDR      R0,[R5, #+0]
+   \      0x2F6   0x499F             LDR.N    R1,??ic_isr_0+0x74
+   \      0x2F8   0x6008             STR      R0,[R1, #+0]
+    120                
+    121                Remote_Throttle -= 510;
+   \      0x2FA   0x6828             LDR      R0,[R5, #+0]
+   \      0x2FC   0xF5B0 0x70FF      SUBS     R0,R0,#+510
+   \      0x300   0x6028             STR      R0,[R5, #+0]
+    122                Remote_Throttle *=2.05;
+   \      0x302   0x6828             LDR      R0,[R5, #+0]
+   \      0x304   0x.... 0x....      BL       __aeabi_i2d
+   \      0x308   0xF05F 0x3266      MOVS     R2,#+1717986918
+   \      0x30C   0x4B9A             LDR.N    R3,??ic_isr_0+0x78  ;; 0x40006666
+   \      0x30E   0x.... 0x....      BL       __aeabi_dmul
+   \      0x312   0x.... 0x....      BL       __aeabi_d2iz
+   \      0x316   0x6028             STR      R0,[R5, #+0]
+    123                if(Remote_Throttle < 0) Remote_Throttle = 0;
+   \      0x318   0x6828             LDR      R0,[R5, #+0]
+   \      0x31A   0x2800             CMP      R0,#+0
+   \      0x31C   0xD501             BPL.N    ??ic_isr_35
+   \      0x31E   0x2000             MOVS     R0,#+0
+   \      0x320   0x6028             STR      R0,[R5, #+0]
+    124              }
+    125              FTM_ClearCHnF(FTM0, FTM_Ch4); 	
+   \                     ??ic_isr_35: (+1)
+   \      0x322   0x2104             MOVS     R1,#+4
+   \      0x324   0x0020             MOVS     R0,R4
+   \      0x326   0x.... 0x....      BL       FTM_ClearCHnF
+   \      0x32A   0xE0E8             B.N      ??ic_isr_8
+    126            }	
+    127             else if(FTM_IsCHnF(FTM0, FTM_Ch5))	
+   \                     ??ic_isr_32: (+1)
+   \      0x32C   0x2105             MOVS     R1,#+5
+   \      0x32E   0x0020             MOVS     R0,R4
+   \      0x330   0x.... 0x....      BL       FTM_IsCHnF
+   \      0x334   0x2800             CMP      R0,#+0
+   \      0x336   0xD001             BEQ.N    ??ic_isr_37
+   \      0x338   0x2001             MOVS     R0,#+1
+   \      0x33A   0xE000             B.N      ??ic_isr_38
+   \                     ??ic_isr_37: (+1)
+   \      0x33C   0x2000             MOVS     R0,#+0
+   \                     ??ic_isr_38: (+1)
+   \      0x33E   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x340   0x2800             CMP      R0,#+0
+   \      0x342   0xD041             BEQ.N    ??ic_isr_39
+    128            {
+    129              cnt5=GPIO_Input_b(PTD,5);
+   \      0x344   0x4D8D             LDR.N    R5,??ic_isr_0+0x7C
+   \      0x346   0x2105             MOVS     R1,#+5
+   \      0x348   0x4886             LDR.N    R0,??ic_isr_0+0x64  ;; 0x400ff0c0
+   \      0x34A   0x.... 0x....      BL       GPIO_Input_b
+   \      0x34E   0x6028             STR      R0,[R5, #+0]
+    130              if(cnt5==1)
+   \      0x350   0x6828             LDR      R0,[R5, #+0]
+   \      0x352   0x2801             CMP      R0,#+1
+   \      0x354   0xD106             BNE.N    ??ic_isr_40
+    131              {
+    132                cnt51=FTM_GetChVal(FTM0, FTM_Ch5); 
+   \      0x356   0x2105             MOVS     R1,#+5
+   \      0x358   0x0020             MOVS     R0,R4
+   \      0x35A   0x.... 0x....      BL       FTM_GetChVal
+   \      0x35E   0x4988             LDR.N    R1,??ic_isr_0+0x80
+   \      0x360   0x6008             STR      R0,[R1, #+0]
+   \      0x362   0xE008             B.N      ??ic_isr_41
+    133              }
+    134              else if(cnt5==0)
+   \                     ??ic_isr_40: (+1)
+   \      0x364   0x6828             LDR      R0,[R5, #+0]
+   \      0x366   0x2800             CMP      R0,#+0
+   \      0x368   0xD105             BNE.N    ??ic_isr_41
+    135              {
+    136                cnt52=FTM_GetChVal(FTM0, FTM_Ch5); 
+   \      0x36A   0x2105             MOVS     R1,#+5
+   \      0x36C   0x0020             MOVS     R0,R4
+   \      0x36E   0x.... 0x....      BL       FTM_GetChVal
+   \      0x372   0x4984             LDR.N    R1,??ic_isr_0+0x84
+   \      0x374   0x6008             STR      R0,[R1, #+0]
+    137              }
+    138              if(cnt52>=cnt51)
+   \                     ??ic_isr_41: (+1)
+   \      0x376   0x4883             LDR.N    R0,??ic_isr_0+0x84
+   \      0x378   0x4981             LDR.N    R1,??ic_isr_0+0x80
+   \      0x37A   0x6802             LDR      R2,[R0, #+0]
+   \      0x37C   0x680B             LDR      R3,[R1, #+0]
+   \      0x37E   0x429A             CMP      R2,R3
+   \      0x380   0xD31D             BCC.N    ??ic_isr_42
+    139              {
+    140                rotaryknob=cnt52-cnt51;
+   \      0x382   0x4D81             LDR.N    R5,??ic_isr_0+0x88
+   \      0x384   0x6802             LDR      R2,[R0, #+0]
+   \      0x386   0x6808             LDR      R0,[R1, #+0]
+   \      0x388   0x1A12             SUBS     R2,R2,R0
+   \      0x38A   0x602A             STR      R2,[R5, #+0]
+    141                if(rotaryknob>1000)rotaryknob=old5;
+   \      0x38C   0x6828             LDR      R0,[R5, #+0]
+   \      0x38E   0xF240 0x31E9      MOVW     R1,#+1001
+   \      0x392   0x4288             CMP      R0,R1
+   \      0x394   0xDB02             BLT.N    ??ic_isr_43
+   \      0x396   0x487D             LDR.N    R0,??ic_isr_0+0x8C
+   \      0x398   0x6800             LDR      R0,[R0, #+0]
+   \      0x39A   0x6028             STR      R0,[R5, #+0]
+    142                old5=rotaryknob;
+   \                     ??ic_isr_43: (+1)
+   \      0x39C   0x6828             LDR      R0,[R5, #+0]
+   \      0x39E   0x497B             LDR.N    R1,??ic_isr_0+0x8C
+   \      0x3A0   0x6008             STR      R0,[R1, #+0]
+    143                
+    144                rotaryknob -= 700;
+   \      0x3A2   0x6828             LDR      R0,[R5, #+0]
+   \      0x3A4   0xF5B0 0x702F      SUBS     R0,R0,#+700
+   \      0x3A8   0x6028             STR      R0,[R5, #+0]
+    145                rotaryknob *= 3.157;
+   \      0x3AA   0x6828             LDR      R0,[R5, #+0]
+   \      0x3AC   0x.... 0x....      BL       __aeabi_i2d
+   \      0x3B0   0x4A5A             LDR.N    R2,??ic_isr_0+0x1C  ;; 0x374bc6a8
+   \      0x3B2   0x4B5B             LDR.N    R3,??ic_isr_0+0x20  ;; 0x40094189
+   \      0x3B4   0x.... 0x....      BL       __aeabi_dmul
+   \      0x3B8   0x.... 0x....      BL       __aeabi_d2iz
+   \      0x3BC   0x6028             STR      R0,[R5, #+0]
+    146                
+    147              }
+    148              FTM_ClearCHnF(FTM0, FTM_Ch5); 	
+   \                     ??ic_isr_42: (+1)
+   \      0x3BE   0x2105             MOVS     R1,#+5
+   \      0x3C0   0x0020             MOVS     R0,R4
+   \      0x3C2   0x.... 0x....      BL       FTM_ClearCHnF
+   \      0x3C6   0xE09A             B.N      ??ic_isr_8
+    149            }	
+    150             else if(FTM_IsCHnF(FTM0, FTM_Ch6))	
+   \                     ??ic_isr_39: (+1)
+   \      0x3C8   0x2106             MOVS     R1,#+6
+   \      0x3CA   0x0020             MOVS     R0,R4
+   \      0x3CC   0x.... 0x....      BL       FTM_IsCHnF
+   \      0x3D0   0x2800             CMP      R0,#+0
+   \      0x3D2   0xD001             BEQ.N    ??ic_isr_44
+   \      0x3D4   0x2001             MOVS     R0,#+1
+   \      0x3D6   0xE000             B.N      ??ic_isr_45
+   \                     ??ic_isr_44: (+1)
+   \      0x3D8   0x2000             MOVS     R0,#+0
+   \                     ??ic_isr_45: (+1)
+   \      0x3DA   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x3DC   0x2800             CMP      R0,#+0
+   \      0x3DE   0xD041             BEQ.N    ??ic_isr_46
+    151            {	
+    152              cnt6=GPIO_Input_b(PTD,6);
+   \      0x3E0   0x4D6B             LDR.N    R5,??ic_isr_0+0x90
+   \      0x3E2   0x2106             MOVS     R1,#+6
+   \      0x3E4   0x485F             LDR.N    R0,??ic_isr_0+0x64  ;; 0x400ff0c0
+   \      0x3E6   0x.... 0x....      BL       GPIO_Input_b
+   \      0x3EA   0x6028             STR      R0,[R5, #+0]
+    153              if(cnt6==1)
+   \      0x3EC   0x6828             LDR      R0,[R5, #+0]
+   \      0x3EE   0x2801             CMP      R0,#+1
+   \      0x3F0   0xD106             BNE.N    ??ic_isr_47
+    154              {
+    155                cnt61=FTM_GetChVal(FTM0, FTM_Ch6); 
+   \      0x3F2   0x2106             MOVS     R1,#+6
+   \      0x3F4   0x0020             MOVS     R0,R4
+   \      0x3F6   0x.... 0x....      BL       FTM_GetChVal
+   \      0x3FA   0x4966             LDR.N    R1,??ic_isr_0+0x94
+   \      0x3FC   0x6008             STR      R0,[R1, #+0]
+   \      0x3FE   0xE008             B.N      ??ic_isr_48
+    156              }
+    157              else if(cnt6==0)
+   \                     ??ic_isr_47: (+1)
+   \      0x400   0x6828             LDR      R0,[R5, #+0]
+   \      0x402   0x2800             CMP      R0,#+0
+   \      0x404   0xD105             BNE.N    ??ic_isr_48
+    158              {
+    159                cnt62=FTM_GetChVal(FTM0, FTM_Ch6); 
+   \      0x406   0x2106             MOVS     R1,#+6
+   \      0x408   0x0020             MOVS     R0,R4
+   \      0x40A   0x.... 0x....      BL       FTM_GetChVal
+   \      0x40E   0x4962             LDR.N    R1,??ic_isr_0+0x98
+   \      0x410   0x6008             STR      R0,[R1, #+0]
+    160              }
+    161              if(cnt62>=cnt61) 
+   \                     ??ic_isr_48: (+1)
+   \      0x412   0x4861             LDR.N    R0,??ic_isr_0+0x98
+   \      0x414   0x495F             LDR.N    R1,??ic_isr_0+0x94
+   \      0x416   0x6802             LDR      R2,[R0, #+0]
+   \      0x418   0x680B             LDR      R3,[R1, #+0]
+   \      0x41A   0x429A             CMP      R2,R3
+   \      0x41C   0xD31D             BCC.N    ??ic_isr_49
+    162              {
+    163                Remote_Yaw=cnt62-cnt61;
+   \      0x41E   0x4D5F             LDR.N    R5,??ic_isr_0+0x9C
+   \      0x420   0x6802             LDR      R2,[R0, #+0]
+   \      0x422   0x6808             LDR      R0,[R1, #+0]
+   \      0x424   0x1A12             SUBS     R2,R2,R0
+   \      0x426   0x602A             STR      R2,[R5, #+0]
+    164                if(Remote_Yaw>1000)Remote_Yaw=old6;
+   \      0x428   0x6828             LDR      R0,[R5, #+0]
+   \      0x42A   0xF240 0x31E9      MOVW     R1,#+1001
+   \      0x42E   0x4288             CMP      R0,R1
+   \      0x430   0xDB02             BLT.N    ??ic_isr_50
+   \      0x432   0x485B             LDR.N    R0,??ic_isr_0+0xA0
+   \      0x434   0x6800             LDR      R0,[R0, #+0]
+   \      0x436   0x6028             STR      R0,[R5, #+0]
+    165                old6=Remote_Yaw;
+   \                     ??ic_isr_50: (+1)
+   \      0x438   0x6828             LDR      R0,[R5, #+0]
+   \      0x43A   0x4959             LDR.N    R1,??ic_isr_0+0xA0
+   \      0x43C   0x6008             STR      R0,[R1, #+0]
+    166                
+    167                Remote_Yaw -= 700;
+   \      0x43E   0x6828             LDR      R0,[R5, #+0]
+   \      0x440   0xF5B0 0x702F      SUBS     R0,R0,#+700
+   \      0x444   0x6028             STR      R0,[R5, #+0]
+    168                Remote_Yaw *= 3.157;
+   \      0x446   0x6828             LDR      R0,[R5, #+0]
+   \      0x448   0x.... 0x....      BL       __aeabi_i2d
+   \      0x44C   0x4A33             LDR.N    R2,??ic_isr_0+0x1C  ;; 0x374bc6a8
+   \      0x44E   0x4B34             LDR.N    R3,??ic_isr_0+0x20  ;; 0x40094189
+   \      0x450   0x.... 0x....      BL       __aeabi_dmul
+   \      0x454   0x.... 0x....      BL       __aeabi_d2iz
+   \      0x458   0x6028             STR      R0,[R5, #+0]
+    169              }
+    170              FTM_ClearCHnF(FTM0, FTM_Ch6); 	
+   \                     ??ic_isr_49: (+1)
+   \      0x45A   0x2106             MOVS     R1,#+6
+   \      0x45C   0x0020             MOVS     R0,R4
+   \      0x45E   0x.... 0x....      BL       FTM_ClearCHnF
+   \      0x462   0xE04C             B.N      ??ic_isr_8
+    171            }	
+    172             else if(FTM_IsCHnF(FTM0, FTM_Ch7))	
+   \                     ??ic_isr_46: (+1)
+   \      0x464   0x2107             MOVS     R1,#+7
+   \      0x466   0x0020             MOVS     R0,R4
+   \      0x468   0x.... 0x....      BL       FTM_IsCHnF
+   \      0x46C   0x2800             CMP      R0,#+0
+   \      0x46E   0xD001             BEQ.N    ??ic_isr_51
+   \      0x470   0x2001             MOVS     R0,#+1
+   \      0x472   0xE000             B.N      ??ic_isr_52
+   \                     ??ic_isr_51: (+1)
+   \      0x474   0x2000             MOVS     R0,#+0
+   \                     ??ic_isr_52: (+1)
+   \      0x476   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x478   0x2800             CMP      R0,#+0
+   \      0x47A   0xD040             BEQ.N    ??ic_isr_8
+    173            {
+    174              cnt7=GPIO_Input_b(PTD,7);
+   \      0x47C   0x4D49             LDR.N    R5,??ic_isr_0+0xA4
+   \      0x47E   0x2107             MOVS     R1,#+7
+   \      0x480   0x4838             LDR.N    R0,??ic_isr_0+0x64  ;; 0x400ff0c0
+   \      0x482   0x.... 0x....      BL       GPIO_Input_b
+   \      0x486   0x6028             STR      R0,[R5, #+0]
+    175              if(cnt7==1)
+   \      0x488   0x6828             LDR      R0,[R5, #+0]
+   \      0x48A   0x2801             CMP      R0,#+1
+   \      0x48C   0xD106             BNE.N    ??ic_isr_53
+    176              {
+    177                cnt71=FTM_GetChVal(FTM0, FTM_Ch7); 
+   \      0x48E   0x2107             MOVS     R1,#+7
+   \      0x490   0x0020             MOVS     R0,R4
+   \      0x492   0x.... 0x....      BL       FTM_GetChVal
+   \      0x496   0x4944             LDR.N    R1,??ic_isr_0+0xA8
+   \      0x498   0x6008             STR      R0,[R1, #+0]
+   \      0x49A   0xE008             B.N      ??ic_isr_54
+    178              }
+    179              else if(cnt7==0)
+   \                     ??ic_isr_53: (+1)
+   \      0x49C   0x6828             LDR      R0,[R5, #+0]
+   \      0x49E   0x2800             CMP      R0,#+0
+   \      0x4A0   0xD105             BNE.N    ??ic_isr_54
+    180              {
+    181                cnt72=FTM_GetChVal(FTM0, FTM_Ch7); 
+   \      0x4A2   0x2107             MOVS     R1,#+7
+   \      0x4A4   0x0020             MOVS     R0,R4
+   \      0x4A6   0x.... 0x....      BL       FTM_GetChVal
+   \      0x4AA   0x4940             LDR.N    R1,??ic_isr_0+0xAC
+   \      0x4AC   0x6008             STR      R0,[R1, #+0]
+    182              }
+    183              if(cnt72>=cnt71) 
+   \                     ??ic_isr_54: (+1)
+   \      0x4AE   0x483F             LDR.N    R0,??ic_isr_0+0xAC
+   \      0x4B0   0x493D             LDR.N    R1,??ic_isr_0+0xA8
+   \      0x4B2   0x6802             LDR      R2,[R0, #+0]
+   \      0x4B4   0x680B             LDR      R3,[R1, #+0]
+   \      0x4B6   0x429A             CMP      R2,R3
+   \      0x4B8   0xD31D             BCC.N    ??ic_isr_55
+    184              {
+    185                Remote_Pitch=cnt72-cnt71;
+   \      0x4BA   0x4D3D             LDR.N    R5,??ic_isr_0+0xB0
+   \      0x4BC   0x6802             LDR      R2,[R0, #+0]
+   \      0x4BE   0x6808             LDR      R0,[R1, #+0]
+   \      0x4C0   0x1A12             SUBS     R2,R2,R0
+   \      0x4C2   0x602A             STR      R2,[R5, #+0]
+    186                if(Remote_Pitch>1000)Remote_Pitch=old7;
+   \      0x4C4   0x6828             LDR      R0,[R5, #+0]
+   \      0x4C6   0xF240 0x31E9      MOVW     R1,#+1001
+   \      0x4CA   0x4288             CMP      R0,R1
+   \      0x4CC   0xDB02             BLT.N    ??ic_isr_56
+   \      0x4CE   0x4839             LDR.N    R0,??ic_isr_0+0xB4
+   \      0x4D0   0x6800             LDR      R0,[R0, #+0]
+   \      0x4D2   0x6028             STR      R0,[R5, #+0]
+    187                old7=Remote_Pitch;
+   \                     ??ic_isr_56: (+1)
+   \      0x4D4   0x6828             LDR      R0,[R5, #+0]
+   \      0x4D6   0x4937             LDR.N    R1,??ic_isr_0+0xB4
+   \      0x4D8   0x6008             STR      R0,[R1, #+0]
+    188                
+    189                Remote_Pitch -= 700;
+   \      0x4DA   0x6828             LDR      R0,[R5, #+0]
+   \      0x4DC   0xF5B0 0x702F      SUBS     R0,R0,#+700
+   \      0x4E0   0x6028             STR      R0,[R5, #+0]
+    190                Remote_Pitch *= -3.157;
+   \      0x4E2   0x6828             LDR      R0,[R5, #+0]
+   \      0x4E4   0x.... 0x....      BL       __aeabi_i2d
+   \      0x4E8   0x4A0C             LDR.N    R2,??ic_isr_0+0x1C  ;; 0x374bc6a8
+   \      0x4EA   0x4B33             LDR.N    R3,??ic_isr_0+0xB8  ;; 0xc0094189
+   \      0x4EC   0x.... 0x....      BL       __aeabi_dmul
+   \      0x4F0   0x.... 0x....      BL       __aeabi_d2iz
+   \      0x4F4   0x6028             STR      R0,[R5, #+0]
+    191              }
+    192              FTM_ClearCHnF(FTM0, FTM_Ch7); 	
+   \                     ??ic_isr_55: (+1)
+   \      0x4F6   0x2107             MOVS     R1,#+7
+   \      0x4F8   0x0020             MOVS     R0,R4
+   \      0x4FA   0x.... 0x....      BL       FTM_ClearCHnF
+    193            }      
+    194          //      EVB.Yaw       = Remote_Yaw; 
+    195          //      EVB.Roll      = Remote_Roll;
+    196          //      EVB.Pitch     = Remote_Pitch;
+    197          //      EVB.ConstSpd  = Remote_Throttle;
+    198          //      EVB.LeftKnob  = Remote_Leftknob;
+    199          }
+   \                     ??ic_isr_8: (+1)
+   \      0x4FE   0xBD31             POP      {R0,R4,R5,PC}    ;; return
+   \                     ??ic_isr_0:
+   \      0x500   0x4003'8000        DC32     0x40038000
+   \      0x504   0x....'....        DC32     cnt0
+   \      0x508   0x400F'F080        DC32     0x400ff080
+   \      0x50C   0x....'....        DC32     cnt01
+   \      0x510   0x....'....        DC32     cnt02
+   \      0x514   0x....'....        DC32     Remote_Leftknob
+   \      0x518   0x....'....        DC32     old0
+   \      0x51C   0x374B'C6A8        DC32     0x374bc6a8
+   \      0x520   0x4009'4189        DC32     0x40094189
+   \      0x524   0x....'....        DC32     cnt1
+   \      0x528   0x....'....        DC32     cnt11
+   \      0x52C   0x....'....        DC32     cnt12
+   \      0x530   0x....'....        DC32     Remote_Roll
+   \      0x534   0x....'....        DC32     old1
+   \      0x538   0x....'....        DC32     cnt2
+   \      0x53C   0x....'....        DC32     cnt21
+   \      0x540   0x....'....        DC32     cnt22
+   \      0x544   0x....'....        DC32     accelerator
+   \      0x548   0x....'....        DC32     old2
+   \      0x54C   0x....'....        DC32     cnt3
+   \      0x550   0x....'....        DC32     cnt31
+   \      0x554   0x....'....        DC32     cnt32
+   \      0x558   0x....'....        DC32     rotate
+   \      0x55C   0x....'....        DC32     old3
+   \      0x560   0x....'....        DC32     cnt4
+   \      0x564   0x400F'F0C0        DC32     0x400ff0c0
+   \      0x568   0x....'....        DC32     cnt41
+   \      0x56C   0x....'....        DC32     cnt42
+   \      0x570   0x....'....        DC32     Remote_Throttle
+   \      0x574   0x....'....        DC32     old4
+   \      0x578   0x4000'6666        DC32     0x40006666
+   \      0x57C   0x....'....        DC32     cnt5
+   \      0x580   0x....'....        DC32     cnt51
+   \      0x584   0x....'....        DC32     cnt52
+   \      0x588   0x....'....        DC32     rotaryknob
+   \      0x58C   0x....'....        DC32     old5
+   \      0x590   0x....'....        DC32     cnt6
+   \      0x594   0x....'....        DC32     cnt61
+   \      0x598   0x....'....        DC32     cnt62
+   \      0x59C   0x....'....        DC32     Remote_Yaw
+   \      0x5A0   0x....'....        DC32     old6
+   \      0x5A4   0x....'....        DC32     cnt7
+   \      0x5A8   0x....'....        DC32     cnt71
+   \      0x5AC   0x....'....        DC32     cnt72
+   \      0x5B0   0x....'....        DC32     Remote_Pitch
+   \      0x5B4   0x....'....        DC32     old7
+   \      0x5B8   0xC009'4189        DC32     0xc0094189
+    200          
+    201          }
+    202          /*
+    203          
+    204          Line 4£ºÊ×ÏÈµ÷ÓÃLPLD_FTM_IsCHnF()º¯ÊýÅÐ¶ÏÊÇ²»ÊÇFTM1µÄCh0Í¨µÀ²úÉúµÄ²¶»ñÊÂ¼þ£¬ÒòÎªÃ¿¸öFTMxµÄËùÓÐÍ¨µÀÖÐ¶Ï¶¼ÊÇ¹«ÓÃÒ»¸öÖÐ¶Ïº¯ÊýµÄ£¬ËùÒÔÎªÁË°²È«£¬±ØÐëÔÚÖÐ¶ÏÖÐÅÐ¶ÏÊÇÄÄ¸öÍ¨µÀ²úÉúµÄÖÐ¶Ï¡£
+    205          Line 6£º»ñµÃCh0Í¨µÀµÄ¼ÆÊýÖµ£¬²¢´æµ½ÁÙÊ±±äÁ¿cntÖÐ¡£Õâ¸öÖµ¾ÍÊÇC0VÐ¡ÅóÓÑÔÚÊÂ¼þÀ´ÁÙµÄÒ»Ë²¼ä£¬´ÓCNTÄÇÀï¼ÇÂ¼ÏÂÀ´µÄ¼ÆÊýÖµ¡£
+    206          Line 7£ºÓÃÉÏ½«½²µ½µÄÆµÂÊ¼ÆËã¹«Ê½À´¼ÆËã³öPWMµÄÆµÂÊ¡£ÕâÀïLPLD_FTM_GetClkDiv()¿ÉÒÔµÃµ½ÎÒÃÇ³õÊ¼»¯Ê±ÉèÖÃµÄ¼ÆÊýÆ÷·ÖÆµÏµÊý£¬g_bus_clock±äÁ¿ÊÇ×ÜÏßÆµÂÊµÄÊýÖµ£¬ÓÃ(g_bus_clock/LPLD_FTM_GetClkDiv(FTM1))¾ÍµÃµ½ÁË¼ÆÊýÆ÷CNTµÄ¼¼ÊõÆµÂÊ£¬ÔÚ³ýÒÔcnt¼ÆÊýÖµ£¬µÃµ½µÄ¾ÍÊÇÊäÈë·½²¨µÄÆµÂÊ¡£
+    207          Line 8£ºÓÃLPLD_FTM_ClearCounter()º¯ÊýÇå¿ÕCNTÐ¡ÅóÓÑµÄ¼ÆÊýÖµ£¬ÒÔ±ãÎÒÃÇÏÂ´ÎÖÐ¶Ï»ñÈ¡µÄÖµÊÇ´Ó0¿ªÊ¼µÄ£¬·½±ã¼ÆËã¡£
+    208          Line 9£ºÓÃLPLD_FTM_ClearCHnF()º¯ÊýÇå³ýCh0Í¨µÀµÄÖÐ¶Ï±êÖ¾¡£
+    209          
+    210          Line 2£ºÅäÖÃFTM1ÎªÊäÈë²¶»ñÄ£Ê½¡£
+    211          Line 3£ºÉèÖÃ¼ÆÊýÆ÷µÄ·ÖÆµÏµÊýÎª128,¸Õ²ÅÎÒÃÇ½²¹ýÒª¼ÆËãPWMµÄÆµÂÊ£¬¾ÍÒªÖªµÀCNT¼ÆÊýÆ÷µÄÆµÂÊ£¬ÔÚOSKinetis¹Ì¼þ¿âÖÐ£¬CNTµÄÊ±ÖÓÔ´Îª×ÜÏßÊ±ÖÓ£¬Èç¹ûÕâÀïÉèÖÃÎªFTM_CLK_DIV128£¬ÄÇÃ´CNTµÄÆµÂÊ¾ÍÊÇ×ÜÏßÆµÂÊ/128¡£
+    212          Line 4£ºÉèÖÃFTMµÄÖÐ¶Ïº¯Êý£¬ÓÃÓÚ´¦Àí²¶»ñÊÂ¼þ¡£
+    213          Line 6£ºÊ¹ÄÜÊäÈë²¶»ñµÄÊäÈëÍ¨µÀ£¬ºÍPWMµÄÊ¹ÄÜÍ¨µÀÍ¬Àí£¬ÕâÀïÒªÉèÖÃÐèÒªÓÃµ½µÄÍ¨µÀºÅÎªFTM_Ch0£¬Í¨µÀ¶ÔÓ¦µÄÎïÀíÒý½ÅÎªPTB0£¬²¶»ñ±ßÔµÎªÉÏÉýÑØCAPTURE_RI¡£¹ØÓÚ´Ëº¯ÊýµÄ²ÎÊýµÄ¾ßÌå·¶Î§£¬Çë²Î¿¼FTMÄ£¿éµÄÔÚÏßº¯ÊýÊÖ²á£¨µã»÷½øÈë£©¡£
+    214          Line 7£ºÒ»¶¨Òª¼Ç×¡Ê¹ÄÜÖÐ¶Ï¡£
+    215          
+    216          */
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   FTM_ClearCHnF
+       0   FTM_GetChVal
+       0   FTM_IsCHnF
+       0   GPIO_Input_b
+      16   ic_isr
+        16   -> FTM_ClearCHnF
+        16   -> FTM_GetChVal
+        16   -> FTM_IsCHnF
+        16   -> GPIO_Input_b
+        16   -> __aeabi_d2iz
+        16   -> __aeabi_dmul
+        16   -> __aeabi_i2d
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      26  FTM_ClearCHnF
+      12  FTM_GetChVal
+      16  FTM_IsCHnF
+      10  GPIO_Input_b
+       4  Remote_Leftknob
+       4  Remote_Pitch
+       4  Remote_Roll
+       4  Remote_Throttle
+       4  Remote_Yaw
+       4  accelerator
+       4  cnt0
+       4  cnt01
+       4  cnt02
+       4  cnt1
+       4  cnt11
+       4  cnt12
+       4  cnt2
+       4  cnt21
+       4  cnt22
+       4  cnt3
+       4  cnt31
+       4  cnt32
+       4  cnt4
+       4  cnt41
+       4  cnt42
+       4  cnt5
+       4  cnt51
+       4  cnt52
+       4  cnt6
+       4  cnt61
+       4  cnt62
+       4  cnt7
+       4  cnt71
+       4  cnt72
+      28  ftm_init_structure1
+    1468  ic_isr
+       4  old0
+       4  old1
+       4  old2
+       4  old3
+       4  old4
+       4  old5
+       4  old6
+       4  old7
+       4  rotaryknob
+       4  rotate
+
+ 
+   188 bytes in section .bss
+ 1 532 bytes in section .text
+ 
+ 1 468 bytes of CODE memory (+ 64 bytes shared)
+   188 bytes of DATA memory
+
+Errors: none
+Warnings: none

@@ -1,0 +1,487 @@
+﻿###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM         30/Jul/2018  16:03:55
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\AHRS.c
+#    Command line =  
+#        -f C:\Users\XSK199~1\AppData\Local\Temp\EW22E6.tmp
+#        (C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\AHRS.c
+#        -D K60 -D USE_K60F15 -D ARM_MATH_CM4 -D __FPU_PRESENT=1 -D
+#        __FPU_USED=1 -lCN
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -lB
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -o
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
+#        D:\iar\arm\inc\c\DLib_Config_Full.h -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\Sensor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\CPU\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\option\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\driver\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\class\
+#        -On --c++ -I D:\iar\arm\CMSIS\Core\Include\ -I
+#        D:\iar\arm\CMSIS\DSP\Include\ -D ARM_MATH_CM4 --text_out utf8
+#        --utf8_text_in)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List\AHRS.lst
+#    Object file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj\AHRS.o
+#
+###############################################################################
+
+C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\AHRS.c
+      1          #include "AHRS.h"
+
+   \                                 In section .bss, align 4
+      2          CAHRS *AHRS; 
+   \                     AHRS:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+      3          int iii=0;
+   \                     iii:
+   \        0x0                      DS8 4
+
+   \                                 In section .text, align 2, keep-with-next
+      4          void AHRS_init()
+      5          {
+      6            static CAHRS AHRS_in;
+      7            AHRS = &AHRS_in;
+   \                     _Z9AHRS_initv: (+1)
+   \        0x0   0x....             LDR.N    R0,??DataTable3
+   \        0x2   0x....             LDR.N    R1,??DataTable3_9
+   \        0x4   0x6008             STR      R0,[R1, #+0]
+      8            
+      9          }
+   \        0x6   0x4770             BX       LR               ;; return
+
+   \                                 In section .bss, align 4
+   \                     `AHRS_init()::AHRS_in`:
+   \        0x0                      DS8 24
+     10          
+
+   \                                 In section .text, align 4, keep-with-next
+     11          void CAHRS::Sensordata()
+     12          {
+   \                     _ZN5CAHRS10SensordataEv: (+1)
+   \        0x0   0xB570             PUSH     {R4-R6,LR}
+   \        0x2   0xED2D 0x8B04      VPUSH    {D8-D9}
+   \        0x6   0x0004             MOVS     R4,R0
+     13            R_acclx=accle_choose(-ADXL355.SensorX,33.0,MPU6000.accel_x*GRAVITATIONAL_ACC);
+   \        0x8   0xED9F 0x....      VLDR.W   S18,??DataTable3_1  ;; 0x42040000
+   \        0xC   0xED9F 0x....      VLDR.W   D8,??DataTable3_2
+   \       0x10   0x....             LDR.N    R5,??DataTable3_3
+   \       0x12   0x....             LDR.N    R6,??DataTable3_4
+   \       0x14   0x6B28             LDR      R0,[R5, #+48]
+   \       0x16   0x.... 0x....      BL       __aeabi_f2d
+   \       0x1A   0xEC53 0x2B18      VMOV     R2,R3,D8
+   \       0x1E   0x.... 0x....      BL       __aeabi_dmul
+   \       0x22   0x.... 0x....      BL       __aeabi_d2f
+   \       0x26   0xEE01 0x0A10      VMOV     S2,R0
+   \       0x2A   0xEEF0 0x0A49      VMOV.F32 S1,S18
+   \       0x2E   0xED96 0x0A00      VLDR     S0,[R6, #0]
+   \       0x32   0xEEB1 0x0A40      VNEG.F32 S0,S0
+   \       0x36   0x0020             MOVS     R0,R4
+   \       0x38   0x.... 0x....      BL       _ZN5CAHRS12accle_chooseEfff
+   \       0x3C   0xED84 0x0A00      VSTR     S0,[R4, #0]
+     14            R_accly=accle_choose(-ADXL355.SensorY,33.0,MPU6000.accel_y*GRAVITATIONAL_ACC);
+   \       0x40   0x6B68             LDR      R0,[R5, #+52]
+   \       0x42   0x.... 0x....      BL       __aeabi_f2d
+   \       0x46   0xEC53 0x2B18      VMOV     R2,R3,D8
+   \       0x4A   0x.... 0x....      BL       __aeabi_dmul
+   \       0x4E   0x.... 0x....      BL       __aeabi_d2f
+   \       0x52   0xEE01 0x0A10      VMOV     S2,R0
+   \       0x56   0xEEF0 0x0A49      VMOV.F32 S1,S18
+   \       0x5A   0xED96 0x0A01      VLDR     S0,[R6, #+4]
+   \       0x5E   0xEEB1 0x0A40      VNEG.F32 S0,S0
+   \       0x62   0x0020             MOVS     R0,R4
+   \       0x64   0x.... 0x....      BL       _ZN5CAHRS12accle_chooseEfff
+   \       0x68   0xED84 0x0A01      VSTR     S0,[R4, #+4]
+     15            R_acclz=accle_choose(ADXL355.SensorZ,33.0,MPU6000.accel_z*GRAVITATIONAL_ACC);
+   \       0x6C   0x6BA8             LDR      R0,[R5, #+56]
+   \       0x6E   0x.... 0x....      BL       __aeabi_f2d
+   \       0x72   0xEC53 0x2B18      VMOV     R2,R3,D8
+   \       0x76   0x.... 0x....      BL       __aeabi_dmul
+   \       0x7A   0x.... 0x....      BL       __aeabi_d2f
+   \       0x7E   0xEE01 0x0A10      VMOV     S2,R0
+   \       0x82   0xEEF0 0x0A49      VMOV.F32 S1,S18
+   \       0x86   0xED96 0x0A02      VLDR     S0,[R6, #+8]
+   \       0x8A   0x0020             MOVS     R0,R4
+   \       0x8C   0x.... 0x....      BL       _ZN5CAHRS12accle_chooseEfff
+   \       0x90   0xED84 0x0A02      VSTR     S0,[R4, #+8]
+     16          //  if(ADXL355.SensorX <= 35 && ADXL355.SensorX >= -35)
+     17          //  {
+     18          //    R_acclx = -ADXL355.SensorX;
+     19          //  }
+     20          //  else
+     21          //  {
+     22          //    R_acclx = 0.5*R_acclx + 0.5 * MPU6000.accel_x*GRAVITATIONAL_ACC ;
+     23          //  }
+     24          //
+     25          //  if(ADXL355.SensorY <= 35 && ADXL355.SensorY >= -35)
+     26          //  {
+     27          //    R_accly = - ADXL355.SensorY;
+     28          //  }
+     29          //  else
+     30          //  {
+     31          //    R_accly = 0.5*R_accly + 0.5* MPU6000.accel_y*GRAVITATIONAL_ACC ;
+     32          //  }
+     33          //
+     34          //  if(ADXL355.SensorZ <= 35 && ADXL355.SensorZ >= -35)
+     35          //  {
+     36          //    R_acclz = ADXL355.SensorZ;
+     37          //  }
+     38          //  else
+     39          //  {
+     40          //    R_acclz = 0.7*R_acclz + 0.3*MPU6000.accel_z*GRAVITATIONAL_ACC ;
+     41          //  }
+     42          
+     43            
+     44            R_gyrox = gyro_choose(-ADXRS453.x,300.0,MPU6000.gyro_x);
+   \       0x94   0x....             LDR.N    R6,??DataTable3_5
+   \       0x96   0xED9F 0x....      VLDR.W   S16,??DataTable3_10  ;; 0x43960000
+   \       0x9A   0xED95 0x1A0F      VLDR     S2,[R5, #+60]
+   \       0x9E   0xEEF0 0x0A48      VMOV.F32 S1,S16
+   \       0xA2   0xED96 0x0A00      VLDR     S0,[R6, #0]
+   \       0xA6   0xEEB1 0x0A40      VNEG.F32 S0,S0
+   \       0xAA   0x0020             MOVS     R0,R4
+   \       0xAC   0x.... 0x....      BL       _ZN5CAHRS11gyro_chooseEfff
+   \       0xB0   0xED84 0x0A03      VSTR     S0,[R4, #+12]
+     45            R_gyroy = gyro_choose(ADXRS453.y,300.0,MPU6000.gyro_y);
+   \       0xB4   0xED95 0x1A10      VLDR     S2,[R5, #+64]
+   \       0xB8   0xEEF0 0x0A48      VMOV.F32 S1,S16
+   \       0xBC   0xED96 0x0A01      VLDR     S0,[R6, #+4]
+   \       0xC0   0x0020             MOVS     R0,R4
+   \       0xC2   0x.... 0x....      BL       _ZN5CAHRS11gyro_chooseEfff
+   \       0xC6   0xED84 0x0A04      VSTR     S0,[R4, #+16]
+     46            R_gyroz = gyro_choose(ADXRS453.z,300.0,MPU6000.gyro_z);
+   \       0xCA   0xED95 0x1A11      VLDR     S2,[R5, #+68]
+   \       0xCE   0xEEF0 0x0A48      VMOV.F32 S1,S16
+   \       0xD2   0xED96 0x0A02      VLDR     S0,[R6, #+8]
+   \       0xD6   0x0020             MOVS     R0,R4
+   \       0xD8   0x.... 0x....      BL       _ZN5CAHRS11gyro_chooseEfff
+   \       0xDC   0xED84 0x0A05      VSTR     S0,[R4, #+20]
+     47          
+     48          }
+   \       0xE0   0xECBD 0x8B04      VPOP     {D8-D9}
+   \       0xE4   0xBD70             POP      {R4-R6,PC}       ;; return
+     49          
+     50          
+
+   \                                 In section .text, align 4, keep-with-next
+     51          float CAHRS::gyro_choose(float gyro1,float threshold,float gyro2)
+     52          {
+   \                     _ZN5CAHRS11gyro_chooseEfff: (+1)
+   \        0x0   0xEEF0 0x1A40      VMOV.F32 S3,S0
+     53            float gyro_f=0,tmp;
+   \        0x4   0xED9F 0x....      VLDR.W   S4,??DataTable3_6  ;; 0x0
+     54            if(gyro1 <= threshold && gyro1 >= -threshold)
+   \        0x8   0xEEF4 0x0A61      VCMP.F32 S1,S3
+   \        0xC   0xEEF1 0xFA10      FMSTAT   
+   \       0x10   0xDB0C             BLT.N    ??gyro_choose_0
+   \       0x12   0xEEB1 0x0A60      VNEG.F32 S0,S1
+   \       0x16   0xEEF4 0x1A40      VCMP.F32 S3,S0
+   \       0x1A   0xEEF1 0xFA10      FMSTAT   
+   \       0x1E   0xDB05             BLT.N    ??gyro_choose_0
+     55            {
+     56              iii = 1;
+   \       0x20   0x2101             MOVS     R1,#+1
+   \       0x22   0x....             LDR.N    R2,??DataTable3_11
+   \       0x24   0x6011             STR      R1,[R2, #+0]
+     57              gyro_f = gyro1;
+   \       0x26   0xEEB0 0x0A61      VMOV.F32 S0,S3
+   \       0x2A   0xE04C             B.N      ??gyro_choose_1
+     58              
+     59            }
+     60            else if( gyro1 <= (threshold+50)&& gyro1>threshold)
+   \                     ??gyro_choose_0: (+1)
+   \       0x2C   0xED9F 0x....      VLDR.W   S0,??DataTable3_8  ;; 0x42480000
+   \       0x30   0xEE30 0x0A80      VADD.F32 S0,S1,S0
+   \       0x34   0xEEB4 0x0A61      VCMP.F32 S0,S3
+   \       0x38   0xEEF1 0xFA10      FMSTAT   
+   \       0x3C   0xDB18             BLT.N    ??gyro_choose_2
+   \       0x3E   0xEEF4 0x0A61      VCMP.F32 S1,S3
+   \       0x42   0xEEF1 0xFA10      FMSTAT   
+   \       0x46   0xD513             BPL.N    ??gyro_choose_2
+     61            {
+     62              iii = 2;
+   \       0x48   0x2102             MOVS     R1,#+2
+   \       0x4A   0x....             LDR.N    R2,??DataTable3_11
+   \       0x4C   0x6011             STR      R1,[R2, #+0]
+     63              tmp = (gyro1-threshold)/50;
+   \       0x4E   0xEE31 0x0AE0      VSUB.F32 S0,S3,S1
+   \       0x52   0xED9F 0x....      VLDR.W   S6,??DataTable3_8  ;; 0x42480000
+   \       0x56   0xEE80 0x0A03      VDIV.F32 S0,S0,S6
+   \       0x5A   0xEEF0 0x2A40      VMOV.F32 S5,S0
+     64              gyro_f = tmp*gyro2 + (1-tmp)*gyro1;
+   \       0x5E   0xEE22 0x0A81      VMUL.F32 S0,S5,S2
+   \       0x62   0xEEB7 0x3A00      VMOV.F32 S6,#1.0
+   \       0x66   0xEE33 0x3A62      VSUB.F32 S6,S6,S5
+   \       0x6A   0xEE03 0x0A21      VMLA.F32 S0,S6,S3
+   \       0x6E   0xE02A             B.N      ??gyro_choose_1
+     65             
+     66            }
+     67            else if( gyro1 >= -threshold-50&& gyro1<-threshold)
+   \                     ??gyro_choose_2: (+1)
+   \       0x70   0xED9F 0x....      VLDR.W   S0,??DataTable3_7  ;; 0xc2480000
+   \       0x74   0xEE30 0x0A60      VSUB.F32 S0,S0,S1
+   \       0x78   0xEEF4 0x1A40      VCMP.F32 S3,S0
+   \       0x7C   0xEEF1 0xFA10      FMSTAT   
+   \       0x80   0xDB1C             BLT.N    ??gyro_choose_3
+   \       0x82   0xEEB1 0x0A60      VNEG.F32 S0,S1
+   \       0x86   0xEEF4 0x1A40      VCMP.F32 S3,S0
+   \       0x8A   0xEEF1 0xFA10      FMSTAT   
+   \       0x8E   0xD515             BPL.N    ??gyro_choose_3
+     68            {
+     69              iii = 3;
+   \       0x90   0x2103             MOVS     R1,#+3
+   \       0x92   0x....             LDR.N    R2,??DataTable3_11
+   \       0x94   0x6011             STR      R1,[R2, #+0]
+     70              tmp = (-threshold-gyro1)/50;
+   \       0x96   0xEEB1 0x0A60      VNEG.F32 S0,S1
+   \       0x9A   0xEE30 0x0A61      VSUB.F32 S0,S0,S3
+   \       0x9E   0xED9F 0x....      VLDR.W   S6,??DataTable3_8  ;; 0x42480000
+   \       0xA2   0xEE80 0x0A03      VDIV.F32 S0,S0,S6
+   \       0xA6   0xEEF0 0x2A40      VMOV.F32 S5,S0
+     71              gyro_f = tmp*gyro2 + (1-tmp)*gyro1;
+   \       0xAA   0xEE22 0x0A81      VMUL.F32 S0,S5,S2
+   \       0xAE   0xEEB7 0x3A00      VMOV.F32 S6,#1.0
+   \       0xB2   0xEE33 0x3A62      VSUB.F32 S6,S6,S5
+   \       0xB6   0xEE03 0x0A21      VMLA.F32 S0,S6,S3
+   \       0xBA   0xE004             B.N      ??gyro_choose_1
+     72               
+     73            }
+     74            else//(gyro1 < -threshold || gyro1 > threshold)
+     75            {
+     76              iii = 4;
+   \                     ??gyro_choose_3: (+1)
+   \       0xBC   0x2104             MOVS     R1,#+4
+   \       0xBE   0x....             LDR.N    R2,??DataTable3_11
+   \       0xC0   0x6011             STR      R1,[R2, #+0]
+     77              gyro_f = gyro2;
+   \       0xC2   0xEEB0 0x0A41      VMOV.F32 S0,S2
+     78            
+     79            }
+     80            return gyro_f;
+   \                     ??gyro_choose_1: (+1)
+   \       0xC6   0x4770             BX       LR               ;; return
+     81          }
+     82          
+     83          
+
+   \                                 In section .text, align 4, keep-with-next
+     84          float CAHRS::accle_choose(float accle1,float threshold2,float accle2)
+     85          {
+   \                     _ZN5CAHRS12accle_chooseEfff: (+1)
+   \        0x0   0xEEF0 0x1A40      VMOV.F32 S3,S0
+     86            float accle_f=0,tmp;
+   \        0x4   0xED9F 0x....      VLDR.W   S4,??DataTable3_6  ;; 0x0
+     87            if(accle1 <= threshold2 && accle1 >= -threshold2)
+   \        0x8   0xEEF4 0x0A61      VCMP.F32 S1,S3
+   \        0xC   0xEEF1 0xFA10      FMSTAT   
+   \       0x10   0xDB09             BLT.N    ??accle_choose_0
+   \       0x12   0xEEB1 0x0A60      VNEG.F32 S0,S1
+   \       0x16   0xEEF4 0x1A40      VCMP.F32 S3,S0
+   \       0x1A   0xEEF1 0xFA10      FMSTAT   
+   \       0x1E   0xDB02             BLT.N    ??accle_choose_0
+     88            {
+     89              accle_f = accle1;
+   \       0x20   0xEEB0 0x0A61      VMOV.F32 S0,S3
+   \       0x24   0xE043             B.N      ??accle_choose_1
+     90              
+     91            }
+     92            else if( accle1 <= (threshold2+5)&& accle1>threshold2)
+   \                     ??accle_choose_0: (+1)
+   \       0x26   0xEEB1 0x0A04      VMOV.F32 S0,#5.0
+   \       0x2A   0xEE30 0x0A80      VADD.F32 S0,S1,S0
+   \       0x2E   0xEEB4 0x0A61      VCMP.F32 S0,S3
+   \       0x32   0xEEF1 0xFA10      FMSTAT   
+   \       0x36   0xDB15             BLT.N    ??accle_choose_2
+   \       0x38   0xEEF4 0x0A61      VCMP.F32 S1,S3
+   \       0x3C   0xEEF1 0xFA10      FMSTAT   
+   \       0x40   0xD510             BPL.N    ??accle_choose_2
+     93            {
+     94              tmp = (accle1-threshold2)/5;
+   \       0x42   0xEE31 0x0AE0      VSUB.F32 S0,S3,S1
+   \       0x46   0xEEB1 0x3A04      VMOV.F32 S6,#5.0
+   \       0x4A   0xEE80 0x0A03      VDIV.F32 S0,S0,S6
+   \       0x4E   0xEEF0 0x2A40      VMOV.F32 S5,S0
+     95              accle_f = tmp*accle2 + (1-tmp)*accle1;
+   \       0x52   0xEE22 0x0A81      VMUL.F32 S0,S5,S2
+   \       0x56   0xEEB7 0x3A00      VMOV.F32 S6,#1.0
+   \       0x5A   0xEE33 0x3A62      VSUB.F32 S6,S6,S5
+   \       0x5E   0xEE03 0x0A21      VMLA.F32 S0,S6,S3
+   \       0x62   0xE024             B.N      ??accle_choose_1
+     96             
+     97            }
+     98            else if( accle1 >= -threshold2-5&& accle1<-threshold2)
+   \                     ??accle_choose_2: (+1)
+   \       0x64   0xEEB9 0x0A04      VMOV.F32 S0,#-5.0
+   \       0x68   0xEE30 0x0A60      VSUB.F32 S0,S0,S1
+   \       0x6C   0xEEF4 0x1A40      VCMP.F32 S3,S0
+   \       0x70   0xEEF1 0xFA10      FMSTAT   
+   \       0x74   0xDB19             BLT.N    ??accle_choose_3
+   \       0x76   0xEEB1 0x0A60      VNEG.F32 S0,S1
+   \       0x7A   0xEEF4 0x1A40      VCMP.F32 S3,S0
+   \       0x7E   0xEEF1 0xFA10      FMSTAT   
+   \       0x82   0xD512             BPL.N    ??accle_choose_3
+     99            {
+    100              tmp = (-threshold2-accle1)/5;
+   \       0x84   0xEEB1 0x0A60      VNEG.F32 S0,S1
+   \       0x88   0xEE30 0x0A61      VSUB.F32 S0,S0,S3
+   \       0x8C   0xEEB1 0x3A04      VMOV.F32 S6,#5.0
+   \       0x90   0xEE80 0x0A03      VDIV.F32 S0,S0,S6
+   \       0x94   0xEEF0 0x2A40      VMOV.F32 S5,S0
+    101              accle_f = tmp*accle2 + (1-tmp)*accle1;
+   \       0x98   0xEE22 0x0A81      VMUL.F32 S0,S5,S2
+   \       0x9C   0xEEB7 0x3A00      VMOV.F32 S6,#1.0
+   \       0xA0   0xEE33 0x3A62      VSUB.F32 S6,S6,S5
+   \       0xA4   0xEE03 0x0A21      VMLA.F32 S0,S6,S3
+   \       0xA8   0xE001             B.N      ??accle_choose_1
+    102               
+    103            }
+    104            else//(gyro1 < -threshold || gyro1 > threshold)
+    105            {
+    106              accle_f = accle2;
+   \                     ??accle_choose_3: (+1)
+   \       0xAA   0xEEB0 0x0A41      VMOV.F32 S0,S2
+    107            
+    108            }
+    109            return accle_f;
+   \                     ??accle_choose_1: (+1)
+   \       0xAE   0x4770             BX       LR               ;; return
+    110          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3:
+   \        0x0   0x....'....        DC32     `AHRS_init()::AHRS_in`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_1:
+   \        0x0   0x4204'0000        DC32     0x42040000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_2:
+   \        0x0   0x84CA'D57C        DC32     0x84CAD57C,0x40239A5F
+   \              0x4023'9A5F  
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_3:
+   \        0x0   0x....'....        DC32     MPU6000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_4:
+   \        0x0   0x....'....        DC32     ADXL355
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_5:
+   \        0x0   0x....'....        DC32     ADXRS453
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_6:
+   \        0x0   0x0000'0000        DC32     0x0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_7:
+   \        0x0   0xC248'0000        DC32     0xc2480000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_8:
+   \        0x0   0x4248'0000        DC32     0x42480000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_9:
+   \        0x0   0x....'....        DC32     AHRS
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_10:
+   \        0x0   0x4396'0000        DC32     0x43960000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_11:
+   \        0x0   0x....'....        DC32     iii
+    111          
+    112          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   AHRS_init()
+      32   CAHRS::Sensordata()
+        32   -> CAHRS::accle_choose(float, float, float)
+        32   -> CAHRS::gyro_choose(float, float, float)
+        32   -> __aeabi_d2f
+        32   -> __aeabi_dmul
+        32   -> __aeabi_f2d
+       0   CAHRS::accle_choose(float, float, float)
+       0   CAHRS::gyro_choose(float, float, float)
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable3
+       4  ??DataTable3_1
+       4  ??DataTable3_10
+       4  ??DataTable3_11
+       8  ??DataTable3_2
+       4  ??DataTable3_3
+       4  ??DataTable3_4
+       4  ??DataTable3_5
+       4  ??DataTable3_6
+       4  ??DataTable3_7
+       4  ??DataTable3_8
+       4  ??DataTable3_9
+       4  AHRS
+      24  AHRS_in
+       8  AHRS_init()
+     230  CAHRS::Sensordata()
+     176  CAHRS::accle_choose(float, float, float)
+     200  CAHRS::gyro_choose(float, float, float)
+       4  iii
+
+ 
+  32 bytes in section .bss
+ 666 bytes in section .text
+ 
+ 666 bytes of CODE memory
+  32 bytes of DATA memory
+
+Errors: none
+Warnings: none

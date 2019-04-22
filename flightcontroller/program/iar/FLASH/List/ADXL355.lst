@@ -1,0 +1,686 @@
+﻿###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM         30/Jul/2018  16:03:55
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\ADXL355.cpp
+#    Command line =  
+#        -f C:\Users\XSK199~1\AppData\Local\Temp\EW1E60.tmp
+#        (C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\ADXL355.cpp
+#        -D K60 -D USE_K60F15 -D ARM_MATH_CM4 -D __FPU_PRESENT=1 -D
+#        __FPU_USED=1 -lCN
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -lB
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -o
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
+#        D:\iar\arm\inc\c\DLib_Config_Full.h -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\Sensor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\CPU\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\option\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\driver\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\class\
+#        -On --c++ -I D:\iar\arm\CMSIS\Core\Include\ -I
+#        D:\iar\arm\CMSIS\DSP\Include\ -D ARM_MATH_CM4 --text_out utf8
+#        --utf8_text_in)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List\ADXL355.lst
+#    Object file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj\ADXL355.o
+#
+###############################################################################
+
+C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\ADXL355.cpp
+      1          #include "common.h"
+      2          
+      3          #include "ADXL355.h"
+      4          
+
+   \                                 In section .data, align 4
+      5          int  ADXL355_CS = 1;
+   \                     ADXL355_CS:
+   \        0x0   0x0000'0001        DC32 1
+
+   \                                 In section .bss, align 4
+      6          ADXL355_type ADXL355;
+   \                     ADXL355:
+   \        0x0                      DS8 60
+
+   \                                 In section .data, align 4
+      7          float g = 9.80151; 
+   \                     g:
+   \        0x0   0x411C'D2FC        DC32 411CD2FCH
+
+   \                                 In section .text, align 2, keep-with-next
+      8          void ADXL355_Init(void)
+      9          {
+   \                     _Z12ADXL355_Initv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+     10          #if ADXL_RANGE == 2
+     11             ADXL355_WriteByte(RANGE, 0x81);          /* Set sensor range within RANGE register */
+     12             ADXL355.adxl355Scale = 256000.0f;
+     13          #endif
+     14          
+     15          #if ADXL_RANGE == 4
+     16             ADXL355_WriteByte(RANGE, 0x82);          /* Set sensor range within RANGE register */
+   \        0x2   0x2182             MOVS     R1,#+130
+   \        0x4   0x202C             MOVS     R0,#+44
+   \        0x6   0x.... 0x....      BL       _Z17ADXL355_WriteBytehh
+     17             ADXL355.adxl355Scale = 128000.0f;
+   \        0xA   0x....             LDR.N    R4,??DataTable7
+   \        0xC   0x....             LDR.N    R0,??DataTable7_1  ;; 0x47fa0000
+   \        0xE   0x6120             STR      R0,[R4, #+16]
+     18          #endif
+     19          
+     20          #if ADXL_RANGE == 8
+     21             ADXL355_WriteByte(RANGE, 0x83);          /* Set sensor range within RANGE register */
+     22             ADXL355.adxl355Scale = 64000.0f;
+     23          #endif
+     24            
+     25              ADXL355_Start_Sensor();
+   \       0x10   0x.... 0x....      BL       _Z20ADXL355_Start_Sensorv
+     26          
+     27             /* Quick verification test for boards */
+     28               ADXL355.ui32test = ADXL355_ReadByte(DEVID_AD);                  /* Read the ID register */
+   \       0x14   0x2000             MOVS     R0,#+0
+   \       0x16   0x.... 0x....      BL       _Z16ADXL355_ReadByteh
+   \       0x1A   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x1C   0x62A0             STR      R0,[R4, #+40]
+     29               ADXL355.ui32test2 = ADXL355_ReadByte(DEVID_MST);                  /* Read the ID register */
+   \       0x1E   0x2001             MOVS     R0,#+1
+   \       0x20   0x.... 0x....      BL       _Z16ADXL355_ReadByteh
+   \       0x24   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x26   0x62E0             STR      R0,[R4, #+44]
+     30               ADXL355.ui32test3 = ADXL355_ReadByte(PARTID);                  /* Read the ID register */
+   \       0x28   0x2002             MOVS     R0,#+2
+   \       0x2A   0x.... 0x....      BL       _Z16ADXL355_ReadByteh
+   \       0x2E   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x30   0x6320             STR      R0,[R4, #+48]
+     31               ADXL355.ui32test4 = ADXL355_ReadByte(REVID);                 /* Read the ID register */
+   \       0x32   0x2003             MOVS     R0,#+3
+   \       0x34   0x.... 0x....      BL       _Z16ADXL355_ReadByteh
+   \       0x38   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x3A   0x6360             STR      R0,[R4, #+52]
+     32               ADXL355.status355 = ADXL355_ReadByte(STATUS);
+   \       0x3C   0x2004             MOVS     R0,#+4
+   \       0x3E   0x.... 0x....      BL       _Z16ADXL355_ReadByteh
+   \       0x42   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x44   0x63A0             STR      R0,[R4, #+56]
+     33          }
+   \                     ??ADXL355_Init_0: (+1)
+   \       0x46   0xBD10             POP      {R4,PC}          ;; return
+     34          
+     35          /**
+     36             @brief Turns on accelerometer measurement mode.
+     37          
+     38             @return none
+     39          
+     40          **/
+
+   \                                 In section .text, align 2, keep-with-next
+     41          void ADXL355_Start_Sensor(void)
+     42          {
+   \                     _Z20ADXL355_Start_Sensorv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+     43             u8 temp;
+     44          
+     45             temp = (u8)ADXL355_ReadByte(POWER_CTL);       /* Read POWER_CTL register, before modifying it */
+   \        0x2   0x202D             MOVS     R0,#+45
+   \        0x4   0x.... 0x....      BL       _Z16ADXL355_ReadByteh
+   \        0x8   0x0004             MOVS     R4,R0
+     46          
+     47             temp = temp & 0xFE;                                          /* Set measurement bit in POWER_CTL register */
+   \        0xA   0xF014 0x04FE      ANDS     R4,R4,#0xFE
+     48          
+     49             ADXL355_WriteByte(POWER_CTL, temp);                    /* Write the new value to POWER_CTL register */
+   \        0xE   0x0021             MOVS     R1,R4
+   \       0x10   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x12   0x202D             MOVS     R0,#+45
+   \       0x14   0x.... 0x....      BL       _Z17ADXL355_WriteBytehh
+     50          }
+   \                     ??ADXL355_Start_Sensor_0: (+1)
+   \       0x18   0xBD10             POP      {R4,PC}          ;; return
+     51          
+     52          
+     53          /**
+     54             @brief Puts the accelerometer into standby mode.
+     55          
+     56             @return none
+     57          
+     58          **/
+
+   \                                 In section .text, align 2, keep-with-next
+     59          void ADXL355_Stop_Sensor(void)
+     60          {
+   \                     _Z19ADXL355_Stop_Sensorv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+     61             u8 temp;
+     62          
+     63             temp = (u8)ADXL355_ReadByte(POWER_CTL);        /*Read POWER_CTL register, before modifying it */
+   \        0x2   0x202D             MOVS     R0,#+45
+   \        0x4   0x.... 0x....      BL       _Z16ADXL355_ReadByteh
+   \        0x8   0x0004             MOVS     R4,R0
+     64          
+     65             temp = temp | 0x01;                                      /* Clear measurement bit in POWER_CTL register */
+   \        0xA   0xF054 0x0401      ORRS     R4,R4,#0x1
+     66          
+     67             ADXL355_WriteByte(POWER_CTL, temp);                 /* Write the new value to POWER_CTL register */
+   \        0xE   0x0021             MOVS     R1,R4
+   \       0x10   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x12   0x202D             MOVS     R0,#+45
+   \       0x14   0x.... 0x....      BL       _Z17ADXL355_WriteBytehh
+     68          
+     69          }
+   \                     ??ADXL355_Stop_Sensor_0: (+1)
+   \       0x18   0xBD10             POP      {R4,PC}          ;; return
+     70          
+     71          /**
+     72             @brief Reads the accelerometer data.
+     73          
+     74             @return none
+     75          
+     76          **/
+
+   \                                 In section .text, align 2, keep-with-next
+     77          void ADXL355_Data_Scan(void)
+     78          {
+   \                     _Z17ADXL355_Data_Scanv: (+1)
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
+     79          
+     80                ADXL355.SensorX_raw = ADXL355_ReadWrite_32bits(XDATA3);
+   \        0x2   0x2008             MOVS     R0,#+8
+   \        0x4   0x.... 0x....      BL       _Z24ADXL355_ReadWrite_32bitsh
+   \        0x8   0x....             LDR.N    R4,??DataTable7
+   \        0xA   0x6160             STR      R0,[R4, #+20]
+     81                ADXL355.SensorY_raw = ADXL355_ReadWrite_32bits(YDATA3);
+   \        0xC   0x200B             MOVS     R0,#+11
+   \        0xE   0x.... 0x....      BL       _Z24ADXL355_ReadWrite_32bitsh
+   \       0x12   0x61A0             STR      R0,[R4, #+24]
+     82                ADXL355.SensorZ_raw = ADXL355_ReadWrite_32bits(ZDATA3);
+   \       0x14   0x200E             MOVS     R0,#+14
+   \       0x16   0x.... 0x....      BL       _Z24ADXL355_ReadWrite_32bitsh
+   \       0x1A   0x61E0             STR      R0,[R4, #+28]
+     83                
+     84                ADXL355.SensorT = ADXL355_ReadWrite_16bits(TEMPURE2);
+   \       0x1C   0x2006             MOVS     R0,#+6
+   \       0x1E   0x.... 0x....      BL       _Z24ADXL355_ReadWrite_16bitsh
+   \       0x22   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
+   \       0x24   0xEE00 0x0A10      VMOV     S0,R0
+   \       0x28   0xEEB8 0x0A40      VCVT.F32.U32 S0,S0
+   \       0x2C   0xED84 0x0A03      VSTR     S0,[R4, #+12]
+     85                ADXL355.SensorX = ADXL355_Acceleration_Data_Conversion(ADXL355.SensorX_raw)/ADXL355.adxl355Scale*g;
+   \       0x30   0x....             LDR.N    R5,??DataTable7_2
+   \       0x32   0x6960             LDR      R0,[R4, #+20]
+   \       0x34   0x.... 0x....      BL       _Z36ADXL355_Acceleration_Data_Conversioni
+   \       0x38   0xEE00 0x0A10      VMOV     S0,R0
+   \       0x3C   0xEEB8 0x0AC0      VCVT.F32.S32 S0,S0
+   \       0x40   0xEDD4 0x0A04      VLDR     S1,[R4, #+16]
+   \       0x44   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \       0x48   0xEDD5 0x0A00      VLDR     S1,[R5, #0]
+   \       0x4C   0xEE20 0x0A20      VMUL.F32 S0,S0,S1
+   \       0x50   0xED84 0x0A00      VSTR     S0,[R4, #0]
+     86                ADXL355.SensorY = ADXL355_Acceleration_Data_Conversion(ADXL355.SensorY_raw)/ADXL355.adxl355Scale*g;
+   \       0x54   0x69A0             LDR      R0,[R4, #+24]
+   \       0x56   0x.... 0x....      BL       _Z36ADXL355_Acceleration_Data_Conversioni
+   \       0x5A   0xEE00 0x0A10      VMOV     S0,R0
+   \       0x5E   0xEEB8 0x0AC0      VCVT.F32.S32 S0,S0
+   \       0x62   0xEDD4 0x0A04      VLDR     S1,[R4, #+16]
+   \       0x66   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \       0x6A   0xEDD5 0x0A00      VLDR     S1,[R5, #0]
+   \       0x6E   0xEE20 0x0A20      VMUL.F32 S0,S0,S1
+   \       0x72   0xED84 0x0A01      VSTR     S0,[R4, #+4]
+     87                ADXL355.SensorZ = ADXL355_Acceleration_Data_Conversion(ADXL355.SensorZ_raw)/ADXL355.adxl355Scale*g;
+   \       0x76   0x69E0             LDR      R0,[R4, #+28]
+   \       0x78   0x.... 0x....      BL       _Z36ADXL355_Acceleration_Data_Conversioni
+   \       0x7C   0xEE00 0x0A10      VMOV     S0,R0
+   \       0x80   0xEEB8 0x0AC0      VCVT.F32.S32 S0,S0
+   \       0x84   0xEDD4 0x0A04      VLDR     S1,[R4, #+16]
+   \       0x88   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \       0x8C   0xEDD5 0x0A00      VLDR     S1,[R5, #0]
+   \       0x90   0xEE20 0x0A20      VMUL.F32 S0,S0,S1
+   \       0x94   0xED84 0x0A02      VSTR     S0,[R4, #+8]
+     88          
+     89          }
+   \                     ??ADXL355_Data_Scan_0: (+1)
+   \       0x98   0xBD31             POP      {R0,R4,R5,PC}    ;; return
+     90          
+     91          
+     92          /**
+     93             @brief Convert the two's complement data in X,Y,Z registers to signed integers
+     94          
+     95             @param ui32SensorData - raw data from register
+     96          
+     97             @return int32_t - signed integer data
+     98          
+     99          **/
+
+   \                                 In section .text, align 2, keep-with-next
+    100          int32_t ADXL355_Acceleration_Data_Conversion (int32 SensorData)
+    101          {
+   \                     _Z36ADXL355_Acceleration_Data_Conversioni: (+1)
+   \        0x0   0xB081             SUB      SP,SP,#+4
+   \        0x2   0x0001             MOVS     R1,R0
+    102             int32 volatile Conversion = 0;
+   \        0x4   0x2000             MOVS     R0,#+0
+   \        0x6   0x9000             STR      R0,[SP, #+0]
+    103          
+    104             SensorData = (SensorData  >> 4);
+   \        0x8   0x1109             ASRS     R1,R1,#+4
+    105             SensorData = (SensorData & 0x000FFFFF);
+   \        0xA   0x0309             LSLS     R1,R1,#+12       ;; ZeroExtS R1,R1,#+12,#+12
+   \        0xC   0x0B09             LSRS     R1,R1,#+12
+    106          
+    107             if((SensorData & 0x00080000)  == 0x00080000){
+   \        0xE   0x0308             LSLS     R0,R1,#+12
+   \       0x10   0xD503             BPL.N    ??ADXL355_Acceleration_Data_Conversion_0
+    108          
+    109                   Conversion = (SensorData | 0xFFF00000);
+   \       0x12   0x....             LDR.N    R0,??DataTable7_3  ;; 0xfff00000
+   \       0x14   0x4308             ORRS     R0,R0,R1
+   \       0x16   0x9000             STR      R0,[SP, #+0]
+   \       0x18   0xE000             B.N      ??ADXL355_Acceleration_Data_Conversion_1
+    110          
+    111             }
+    112             else{
+    113                   Conversion = SensorData;
+   \                     ??ADXL355_Acceleration_Data_Conversion_0: (+1)
+   \       0x1A   0x9100             STR      R1,[SP, #+0]
+    114             }
+    115             return Conversion;
+   \                     ??ADXL355_Acceleration_Data_Conversion_1: (+1)
+   \       0x1C   0x9800             LDR      R0,[SP, #+0]
+   \       0x1E   0xB001             ADD      SP,SP,#+4
+   \       0x20   0x4770             BX       LR               ;; return
+    116          }
+    117          
+
+   \                                 In section .text, align 2, keep-with-next
+    118          void ADXL355_WriteByte(u8 Address,u8 byte)
+    119          {
+   \                     _Z17ADXL355_WriteBytehh: (+1)
+   \        0x0   0xB5F8             PUSH     {R3-R7,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+    120            SPI_Master_WriteRead(ADXL355_SPIx, (Address<<1)|0X00, ADXL355_CS, SPI_PCS_ASSERTED);    //&0X7F½«µÚÒ»Î»±äÎª0
+   \        0x6   0x....             LDR.N    R6,??DataTable7_4  ;; 0x4002d000
+   \        0x8   0x....             LDR.N    R7,??DataTable7_5
+   \        0xA   0x2301             MOVS     R3,#+1
+   \        0xC   0x6838             LDR      R0,[R7, #+0]
+   \        0xE   0x0002             MOVS     R2,R0
+   \       0x10   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x12   0x0061             LSLS     R1,R4,#+1
+   \       0x14   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x16   0x0030             MOVS     R0,R6
+   \       0x18   0x.... 0x....      BL       SPI_Master_WriteRead
+    121            SPI_Master_WriteRead(ADXL355_SPIx, byte, ADXL355_CS, SPI_PCS_INACTIVE);
+   \       0x1C   0x2300             MOVS     R3,#+0
+   \       0x1E   0x6838             LDR      R0,[R7, #+0]
+   \       0x20   0x0002             MOVS     R2,R0
+   \       0x22   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x24   0x0029             MOVS     R1,R5
+   \       0x26   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x28   0x0030             MOVS     R0,R6
+   \       0x2A   0x.... 0x....      BL       SPI_Master_WriteRead
+    122          }
+   \                     ??ADXL355_WriteByte_0: (+1)
+   \       0x2E   0xBDF1             POP      {R0,R4-R7,PC}    ;; return
+    123          
+
+   \                                 In section .text, align 2, keep-with-next
+    124          u8 ADXL355_ReadByte(u8 Address)
+    125          {
+   \                     _Z16ADXL355_ReadByteh: (+1)
+   \        0x0   0xB5F8             PUSH     {R3-R7,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+    126            u8 temp=0;
+   \        0x4   0x2500             MOVS     R5,#+0
+    127            SPI_Master_WriteRead(ADXL355_SPIx, (Address<<1)|0x01, ADXL355_CS, SPI_PCS_ASSERTED);
+   \        0x6   0x....             LDR.N    R6,??DataTable7_4  ;; 0x4002d000
+   \        0x8   0x....             LDR.N    R7,??DataTable7_5
+   \        0xA   0x2301             MOVS     R3,#+1
+   \        0xC   0x6838             LDR      R0,[R7, #+0]
+   \        0xE   0x0002             MOVS     R2,R0
+   \       0x10   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x12   0x0061             LSLS     R1,R4,#+1
+   \       0x14   0xF051 0x0101      ORRS     R1,R1,#0x1
+   \       0x18   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x1A   0x0030             MOVS     R0,R6
+   \       0x1C   0x.... 0x....      BL       SPI_Master_WriteRead
+    128            temp = SPI_Master_WriteRead(ADXL355_SPIx, Dummy_Byte2, ADXL355_CS, SPI_PCS_INACTIVE);
+   \       0x20   0x2300             MOVS     R3,#+0
+   \       0x22   0x6838             LDR      R0,[R7, #+0]
+   \       0x24   0x0002             MOVS     R2,R0
+   \       0x26   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x28   0x2180             MOVS     R1,#+128
+   \       0x2A   0x0030             MOVS     R0,R6
+   \       0x2C   0x.... 0x....      BL       SPI_Master_WriteRead
+    129            return temp;
+   \       0x30   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \                     ??ADXL355_ReadByte_0: (+1)
+   \       0x32   0xBDF2             POP      {R1,R4-R7,PC}    ;; return
+    130          }
+    131          
+
+   \                                 In section .text, align 2, keep-with-next
+    132          uint16 ADXL355_ReadWrite_16bits(unsigned char addr)
+    133          {
+   \                     _Z24ADXL355_ReadWrite_16bitsh: (+1)
+   \        0x0   0xB5F8             PUSH     {R3-R7,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+    134            unsigned char byteH,byteL;
+    135            unsigned int return_value;
+    136              
+    137            SPI_Master_WriteRead(ADXL355_SPIx,(addr<<1)|0x01,ADXL355_CS,SPI_PCS_ASSERTED);
+   \        0x4   0x....             LDR.N    R6,??DataTable7_4  ;; 0x4002d000
+   \        0x6   0x....             LDR.N    R7,??DataTable7_5
+   \        0x8   0x2301             MOVS     R3,#+1
+   \        0xA   0x6838             LDR      R0,[R7, #+0]
+   \        0xC   0x0002             MOVS     R2,R0
+   \        0xE   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x10   0x0061             LSLS     R1,R4,#+1
+   \       0x12   0xF051 0x0101      ORRS     R1,R1,#0x1
+   \       0x16   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x18   0x0030             MOVS     R0,R6
+   \       0x1A   0x.... 0x....      BL       SPI_Master_WriteRead
+    138            byteH = SPI_Master_WriteRead(ADXL355_SPIx,Dummy_Byte2,ADXL355_CS, SPI_PCS_ASSERTED);
+   \       0x1E   0x2301             MOVS     R3,#+1
+   \       0x20   0x6838             LDR      R0,[R7, #+0]
+   \       0x22   0x0002             MOVS     R2,R0
+   \       0x24   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x26   0x2180             MOVS     R1,#+128
+   \       0x28   0x0030             MOVS     R0,R6
+   \       0x2A   0x.... 0x....      BL       SPI_Master_WriteRead
+   \       0x2E   0x0005             MOVS     R5,R0
+    139            byteL = SPI_Master_WriteRead(ADXL355_SPIx,Dummy_Byte2,ADXL355_CS, SPI_PCS_INACTIVE);
+   \       0x30   0x2300             MOVS     R3,#+0
+   \       0x32   0x6838             LDR      R0,[R7, #+0]
+   \       0x34   0x0002             MOVS     R2,R0
+   \       0x36   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x38   0x2180             MOVS     R1,#+128
+   \       0x3A   0x0030             MOVS     R0,R6
+   \       0x3C   0x.... 0x....      BL       SPI_Master_WriteRead
+   \       0x40   0x0001             MOVS     R1,R0
+    140            
+    141            return_value = ((unsigned int)byteH<<8) | (byteL);
+   \       0x42   0x002A             MOVS     R2,R5
+   \       0x44   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x46   0x0008             MOVS     R0,R1
+   \       0x48   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x4A   0xEA50 0x2002      ORRS     R0,R0,R2, LSL #+8
+    142            return(return_value);    
+   \       0x4E   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
+   \                     ??ADXL355_ReadWrite_16bits_0: (+1)
+   \       0x50   0xBDF2             POP      {R1,R4-R7,PC}    ;; return
+    143          }
+    144          
+
+   \                                 In section .text, align 2, keep-with-next
+    145          uint32 ADXL355_ReadWrite_32bits(unsigned char addr)
+    146          {
+   \                     _Z24ADXL355_ReadWrite_32bitsh: (+1)
+   \        0x0   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+   \        0x4   0x0004             MOVS     R4,R0
+    147            unsigned char byteH,byteM,byteL;
+    148            unsigned int return_value;
+    149              
+    150            SPI_Master_WriteRead(ADXL355_SPIx,(addr<<1)|0x01,ADXL355_CS,SPI_PCS_ASSERTED);
+   \        0x6   0x....             LDR.N    R6,??DataTable7_4  ;; 0x4002d000
+   \        0x8   0x.... 0x....      LDR.W    R8,??DataTable7_5
+   \        0xC   0x2301             MOVS     R3,#+1
+   \        0xE   0xF8D8 0x0000      LDR      R0,[R8, #+0]
+   \       0x12   0x0002             MOVS     R2,R0
+   \       0x14   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x16   0x0061             LSLS     R1,R4,#+1
+   \       0x18   0xF051 0x0101      ORRS     R1,R1,#0x1
+   \       0x1C   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x1E   0x0030             MOVS     R0,R6
+   \       0x20   0x.... 0x....      BL       SPI_Master_WriteRead
+    151            byteH = SPI_Master_WriteRead(ADXL355_SPIx,Dummy_Byte2,ADXL355_CS, SPI_PCS_ASSERTED);
+   \       0x24   0x2301             MOVS     R3,#+1
+   \       0x26   0xF8D8 0x0000      LDR      R0,[R8, #+0]
+   \       0x2A   0x0002             MOVS     R2,R0
+   \       0x2C   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x2E   0x2180             MOVS     R1,#+128
+   \       0x30   0x0030             MOVS     R0,R6
+   \       0x32   0x.... 0x....      BL       SPI_Master_WriteRead
+   \       0x36   0x0005             MOVS     R5,R0
+    152            byteM = SPI_Master_WriteRead(ADXL355_SPIx,Dummy_Byte2,ADXL355_CS, SPI_PCS_ASSERTED);
+   \       0x38   0x2301             MOVS     R3,#+1
+   \       0x3A   0xF8D8 0x0000      LDR      R0,[R8, #+0]
+   \       0x3E   0x0002             MOVS     R2,R0
+   \       0x40   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x42   0x2180             MOVS     R1,#+128
+   \       0x44   0x0030             MOVS     R0,R6
+   \       0x46   0x.... 0x....      BL       SPI_Master_WriteRead
+   \       0x4A   0x0007             MOVS     R7,R0
+    153            byteL = SPI_Master_WriteRead(ADXL355_SPIx,Dummy_Byte2,ADXL355_CS, SPI_PCS_INACTIVE);
+   \       0x4C   0x2300             MOVS     R3,#+0
+   \       0x4E   0xF8D8 0x0000      LDR      R0,[R8, #+0]
+   \       0x52   0x0002             MOVS     R2,R0
+   \       0x54   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x56   0x2180             MOVS     R1,#+128
+   \       0x58   0x0030             MOVS     R0,R6
+   \       0x5A   0x.... 0x....      BL       SPI_Master_WriteRead
+   \       0x5E   0x0002             MOVS     R2,R0
+    154            
+    155            return_value = ((unsigned int)byteH << 16)|((unsigned int)byteM<<8)| (byteL);
+   \       0x60   0x0029             MOVS     R1,R5
+   \       0x62   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x64   0x0038             MOVS     R0,R7
+   \       0x66   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x68   0x0200             LSLS     R0,R0,#+8
+   \       0x6A   0xEA50 0x4001      ORRS     R0,R0,R1, LSL #+16
+   \       0x6E   0x0011             MOVS     R1,R2
+   \       0x70   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x72   0x4308             ORRS     R0,R1,R0
+    156            return(return_value);    
+   \                     ??ADXL355_ReadWrite_32bits_0: (+1)
+   \       0x74   0xE8BD 0x81F0      POP      {R4-R8,PC}       ;; return
+    157          }
+    158          
+    159          
+
+   \                                 In section .text, align 2, keep-with-next
+    160          void ADXL355_ReadBuf(u8 Address, u8 *Buf, u8 len)
+    161          {
+   \                     _Z15ADXL355_ReadBufhPhh: (+1)
+   \        0x0   0xE92D 0x43F8      PUSH     {R3-R9,LR}
+   \        0x4   0x0004             MOVS     R4,R0
+   \        0x6   0x000D             MOVS     R5,R1
+   \        0x8   0x0016             MOVS     R6,R2
+    162            uint8 i;
+    163            
+    164            SPI_Master_WriteRead(ADXL355_SPIx, (Address<<1)|0x01, ADXL355_CS, SPI_PCS_ASSERTED);
+   \        0xA   0x....             LDR.N    R7,??DataTable7_4  ;; 0x4002d000
+   \        0xC   0x.... 0x....      LDR.W    R8,??DataTable7_5
+   \       0x10   0x2301             MOVS     R3,#+1
+   \       0x12   0xF8D8 0x0000      LDR      R0,[R8, #+0]
+   \       0x16   0x0002             MOVS     R2,R0
+   \       0x18   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x1A   0x0061             LSLS     R1,R4,#+1
+   \       0x1C   0xF051 0x0101      ORRS     R1,R1,#0x1
+   \       0x20   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x22   0x0038             MOVS     R0,R7
+   \       0x24   0x.... 0x....      BL       SPI_Master_WriteRead
+    165            
+    166            for(i = 0 ;i < len ;i++)
+   \       0x28   0xF05F 0x0900      MOVS     R9,#+0
+   \                     ??ADXL355_ReadBuf_0: (+1)
+   \       0x2C   0x4648             MOV      R0,R9
+   \       0x2E   0x0031             MOVS     R1,R6
+   \       0x30   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x32   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x34   0x4288             CMP      R0,R1
+   \       0x36   0xD222             BCS.N    ??ADXL355_ReadBuf_1
+    167            {
+    168              if( i == (len-1) )
+   \       0x38   0x4648             MOV      R0,R9
+   \       0x3A   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x3C   0x0031             MOVS     R1,R6
+   \       0x3E   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x40   0x1E49             SUBS     R1,R1,#+1
+   \       0x42   0x4288             CMP      R0,R1
+   \       0x44   0xD10C             BNE.N    ??ADXL355_ReadBuf_2
+    169              {
+    170                Buf[i] = SPI_Master_WriteRead(ADXL355_SPIx, Dummy_Byte2, ADXL355_CS, SPI_PCS_INACTIVE);
+   \       0x46   0x2300             MOVS     R3,#+0
+   \       0x48   0xF8D8 0x0000      LDR      R0,[R8, #+0]
+   \       0x4C   0x0002             MOVS     R2,R0
+   \       0x4E   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x50   0x2180             MOVS     R1,#+128
+   \       0x52   0x0038             MOVS     R0,R7
+   \       0x54   0x.... 0x....      BL       SPI_Master_WriteRead
+   \       0x58   0x4649             MOV      R1,R9
+   \       0x5A   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x5C   0x5468             STRB     R0,[R5, R1]
+   \       0x5E   0xE00B             B.N      ??ADXL355_ReadBuf_3
+    171              }
+    172              else
+    173              {
+    174                Buf[i] = SPI_Master_WriteRead(ADXL355_SPIx, Dummy_Byte2, ADXL355_CS, SPI_PCS_ASSERTED);
+   \                     ??ADXL355_ReadBuf_2: (+1)
+   \       0x60   0x2301             MOVS     R3,#+1
+   \       0x62   0xF8D8 0x0000      LDR      R0,[R8, #+0]
+   \       0x66   0x0002             MOVS     R2,R0
+   \       0x68   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x6A   0x2180             MOVS     R1,#+128
+   \       0x6C   0x0038             MOVS     R0,R7
+   \       0x6E   0x.... 0x....      BL       SPI_Master_WriteRead
+   \       0x72   0x4649             MOV      R1,R9
+   \       0x74   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x76   0x5468             STRB     R0,[R5, R1]
+    175              }
+    176            }
+   \                     ??ADXL355_ReadBuf_3: (+1)
+   \       0x78   0xF119 0x0901      ADDS     R9,R9,#+1
+   \       0x7C   0xE7D6             B.N      ??ADXL355_ReadBuf_0
+    177          }
+   \                     ??ADXL355_ReadBuf_1: (+1)
+   \                     ??ADXL355_ReadBuf_4: (+1)
+   \       0x7E   0xE8BD 0x83F1      POP      {R0,R4-R9,PC}    ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7:
+   \        0x0   0x....'....        DC32     ADXL355
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_1:
+   \        0x0   0x47FA'0000        DC32     0x47fa0000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_2:
+   \        0x0   0x....'....        DC32     g
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_3:
+   \        0x0   0xFFF0'0000        DC32     0xfff00000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_4:
+   \        0x0   0x4002'D000        DC32     0x4002d000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_5:
+   \        0x0   0x....'....        DC32     ADXL355_CS
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       4   ADXL355_Acceleration_Data_Conversion(int)
+      16   ADXL355_Data_Scan()
+        16   -> ADXL355_Acceleration_Data_Conversion(int)
+        16   -> ADXL355_ReadWrite_16bits(unsigned char)
+        16   -> ADXL355_ReadWrite_32bits(unsigned char)
+       8   ADXL355_Init()
+         8   -> ADXL355_ReadByte(u8)
+         8   -> ADXL355_Start_Sensor()
+         8   -> ADXL355_WriteByte(u8, u8)
+      32   ADXL355_ReadBuf(u8, u8 *, u8)
+        32   -> SPI_Master_WriteRead
+      24   ADXL355_ReadByte(u8)
+        24   -> SPI_Master_WriteRead
+      24   ADXL355_ReadWrite_16bits(unsigned char)
+        24   -> SPI_Master_WriteRead
+      24   ADXL355_ReadWrite_32bits(unsigned char)
+        24   -> SPI_Master_WriteRead
+       8   ADXL355_Start_Sensor()
+         8   -> ADXL355_ReadByte(u8)
+         8   -> ADXL355_WriteByte(u8, u8)
+       8   ADXL355_Stop_Sensor()
+         8   -> ADXL355_ReadByte(u8)
+         8   -> ADXL355_WriteByte(u8, u8)
+      24   ADXL355_WriteByte(u8, u8)
+        24   -> SPI_Master_WriteRead
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable7
+       4  ??DataTable7_1
+       4  ??DataTable7_2
+       4  ??DataTable7_3
+       4  ??DataTable7_4
+       4  ??DataTable7_5
+      60  ADXL355
+      34  ADXL355_Acceleration_Data_Conversion(int)
+       4  ADXL355_CS
+     154  ADXL355_Data_Scan()
+      72  ADXL355_Init()
+     130  ADXL355_ReadBuf(u8, u8 *, u8)
+      52  ADXL355_ReadByte(u8)
+      82  ADXL355_ReadWrite_16bits(unsigned char)
+     120  ADXL355_ReadWrite_32bits(unsigned char)
+      26  ADXL355_Start_Sensor()
+      26  ADXL355_Stop_Sensor()
+      48  ADXL355_WriteByte(u8, u8)
+       4  g
+      72  -- Other
+
+ 
+  72 bytes in section .ARM.exidx
+  60 bytes in section .bss
+   8 bytes in section .data
+ 768 bytes in section .text
+ 
+ 768 bytes of CODE  memory
+  72 bytes of CONST memory
+  68 bytes of DATA  memory
+
+Errors: none
+Warnings: none

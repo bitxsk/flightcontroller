@@ -1,0 +1,1063 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.11.2.13589/W32 for ARM       18/Jun/2018  19:47:58
+# Copyright 1999-2017 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\LidarLite.cpp
+#    Command line =  
+#        -f C:\Users\XSK199~1\AppData\Local\Temp\EW1FB8.tmp
+#        (C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\LidarLite.cpp
+#        -D K60 -D USE_K60F15 -D ARM_MATH_CM4 -D __FPU_PRESENT=1 -D
+#        __FPU_USED=1 -lCN
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\RAM\List
+#        -lB
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\RAM\List
+#        -o
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\RAM\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
+#        D:\iar\arm\INC\c\DLib_Config_Normal.h -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\Sensor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\CPU\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\option\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\driver\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\class\
+#        -On --c++ -I D:\iar\arm\CMSIS\Include\ -D ARM_MATH_CM4)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\RAM\List\LidarLite.lst
+#    Object file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\RAM\Obj\LidarLite.o
+#
+###############################################################################
+
+C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\LidarLite.cpp
+      1          #include "LidarLite.h"
+
+   \                                 In section .text, align 4
+   \   __code __interwork __softfp CJumpFilter::CJumpFilter()
+   \                     _ZN11CJumpFilterC1Ev: (+1)
+   \   00000000   0x4904             LDR.N    R1,??CJumpFilter_0  ;; 0x42c80000
+   \   00000002   0x6081             STR      R1,[R0, #+8]
+   \   00000004   0xF44F 0x7196      MOV      R1,#+300
+   \   00000008   0x6281             STR      R1,[R0, #+40]
+   \   0000000A   0xF05F 0x517E      MOVS     R1,#+1065353216
+   \   0000000E   0x62C1             STR      R1,[R0, #+44]
+   \   00000010   0x4770             BX       LR               ;; return
+   \   00000012   0xBF00             Nop      
+   \                     ??CJumpFilter_0:
+   \   00000014   0x42C80000         DC32     0x42c80000
+
+   \                                 In section .text, align 4
+   \   __code __interwork __softfp CoordinateElement::CoordinateElement()
+   \                     _ZN17CoordinateElementC1Ev: (+1)
+   \   00000000   0x4903             LDR.N    R1,??CoordinateElement_0  ;; 0x3f4ccccd
+   \   00000002   0x6101             STR      R1,[R0, #+16]
+   \   00000004   0x4903             LDR.N    R1,??CoordinateElement_0+0x4  ;; 0x461c4000
+   \   00000006   0x6141             STR      R1,[R0, #+20]
+   \   00000008   0x4903             LDR.N    R1,??CoordinateElement_0+0x8  ;; 0xc61c4000
+   \   0000000A   0x6181             STR      R1,[R0, #+24]
+   \   0000000C   0x4770             BX       LR               ;; return
+   \   0000000E   0xBF00             Nop      
+   \                     ??CoordinateElement_0:
+   \   00000010   0x3F4CCCCD         DC32     0x3f4ccccd
+   \   00000014   0x461C4000         DC32     0x461c4000
+   \   00000018   0xC61C4000         DC32     0xc61c4000
+
+   \                                 In section .text, align 2
+   \   __code __interwork __softfp Coordinate::Coordinate()
+   \                     _ZN10CoordinateC1Ev: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+   \   00000004   0x0020             MOVS     R0,R4
+   \   00000006   0x.... 0x....      BL       _ZN17CoordinateElementC1Ev
+   \   0000000A   0xF114 0x001C      ADDS     R0,R4,#+28
+   \   0000000E   0x.... 0x....      BL       _ZN17CoordinateElementC1Ev
+   \   00000012   0xF114 0x0038      ADDS     R0,R4,#+56
+   \   00000016   0x.... 0x....      BL       _ZN17CoordinateElementC1Ev
+   \   0000001A   0x0020             MOVS     R0,R4
+   \   0000001C   0xBD10             POP      {R4,PC}          ;; return
+      2          // Interface for Lidar-Lite V2 (Blue Label) with NVIDIA Jetson TK1
+      3          
+
+   \                                 In section .bss, align 4
+      4          LidarLite__* LidarLite;
+   \                     LidarLite:
+   \   00000000                      DS8 4
+
+   \                                 In section .text, align 4, keep-with-next
+      5          void LidarLiteInit()
+      6          {
+   \                     _Z13LidarLiteInitv: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+   \   00000002   0x.... 0x....      LDR.W    R0,??DataTable4_1
+   \   00000006   0x7800             LDRB     R0,[R0, #+0]
+   \   00000008   0x2800             CMP      R0,#+0
+   \   0000000A   0xD10D             BNE.N    ??LidarLiteInit_0
+      7            static LidarLite__ LidarLite_0;
+   \   0000000C   0x.... 0x....      LDR.W    R0,??DataTable4_2
+   \   00000010   0x.... 0x....      BL       _ZN11LidarLite__C1Ev
+   \   00000014   0x.... 0x....      LDR.W    R2,??DataTable4
+   \   00000018   0x.... 0x....      ADR.W    R1,_ZN11LidarLite__D1Ev
+   \   0000001C   0x.... 0x....      BL       __aeabi_atexit
+   \   00000020   0x2001             MOVS     R0,#+1
+   \   00000022   0x.... 0x....      LDR.W    R1,??DataTable4_1
+   \   00000026   0x7008             STRB     R0,[R1, #+0]
+      8            LidarLite = &LidarLite_0;
+   \                     ??LidarLiteInit_0: (+1)
+   \   00000028   0x.... 0x....      LDR.W    R0,??DataTable4_2
+   \   0000002C   0x.... 0x....      LDR.W    R1,??DataTable4_16
+   \   00000030   0x6008             STR      R0,[R1, #+0]
+      9          
+     10            //LidarLite->writeLidarLite(0x08,0x28);
+     11            LidarLite->writeLidarLite(0x08,0x28);
+   \   00000032   0x2228             MOVS     R2,#+40
+   \   00000034   0x2108             MOVS     R1,#+8
+   \   00000036   0x.... 0x....      LDR.W    R0,??DataTable4_16
+   \   0000003A   0x6800             LDR      R0,[R0, #+0]
+   \   0000003C   0x.... 0x....      BL       _ZN11LidarLite__14writeLidarLiteEii
+     12            LidarLite->vel.z.D_smoother = 0.993;
+   \   00000040   0x.... 0x....      LDR.W    R0,??DataTable4_16
+   \   00000044   0x6800             LDR      R0,[R0, #+0]
+   \   00000046   0x.... 0x....      LDR.W    R1,??DataTable4_3  ;; 0x3f7e353f
+   \   0000004A   0xF8C0 0x10A4      STR      R1,[R0, #+164]
+     13            LidarLite->velFilter.setParameter(0.8,500);
+   \   0000004E   0xF44F 0x71FA      MOV      R1,#+500
+   \   00000052   0xED9F 0x....      VLDR.W   S0,??DataTable3  ;; 0x3f4ccccd
+   \   00000056   0x.... 0x....      LDR.W    R0,??DataTable4_16
+   \   0000005A   0x6800             LDR      R0,[R0, #+0]
+   \   0000005C   0xF510 0x7082      ADDS     R0,R0,#+260
+   \   00000060   0x.... 0x....      BL       _ZN11CJumpFilter12setParameterEfi
+     14          }
+   \                     ??LidarLiteInit_1: (+1)
+   \   00000064   0xBD01             POP      {R0,PC}          ;; return
+
+   \                                 In section .bss, align 4
+   \                     `LidarLiteInit()::LidarLite_0`:
+   \   00000000                      DS8 320
+     15          
+     16          
+
+   \                                 In section .text, align 2, keep-with-next
+   \   __code __interwork __softfp LidarLite__::subobject LidarLite__()
+   \                     _ZN11LidarLite__C2Ev: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+   \   00000004   0x0020             MOVS     R0,R4
+   \   00000006   0x.... 0x....      BL       _ZN11LidarLite__C1Ev
+   \   0000000A   0xBD10             POP      {R4,PC}          ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+     17          LidarLite__::LidarLite__()
+   \                     _ZN11LidarLite__C1Ev: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+   \   00000004   0xF114 0x0008      ADDS     R0,R4,#+8
+   \   00000008   0x.... 0x....      BL       _ZN10CoordinateC1Ev
+   \   0000000C   0xF114 0x005C      ADDS     R0,R4,#+92
+   \   00000010   0x.... 0x....      BL       _ZN10CoordinateC1Ev
+   \   00000014   0xF114 0x00B0      ADDS     R0,R4,#+176
+   \   00000018   0x.... 0x....      BL       _ZN10CoordinateC1Ev
+   \   0000001C   0xF514 0x7082      ADDS     R0,R4,#+260
+   \   00000020   0x.... 0x....      BL       _ZN11CJumpFilterC1Ev
+     18          {
+     19              error = 0 ;
+   \   00000024   0x2000             MOVS     R0,#+0
+   \   00000026   0x6060             STR      R0,[R4, #+4]
+     20          }
+   \   00000028   0x0020             MOVS     R0,R4
+   \   0000002A   0xBD10             POP      {R4,PC}          ;; return
+     21          
+
+   \                                 In section .text, align 2, keep-with-next
+   \   __code __interwork __softfp LidarLite__::subobject ~LidarLite__()
+   \                     _ZN11LidarLite__D2Ev: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+   \   00000004   0x0020             MOVS     R0,R4
+   \   00000006   0x.... 0x....      BL       _ZN11LidarLite__D1Ev
+   \   0000000A   0xBD10             POP      {R4,PC}          ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+     22          LidarLite__::~LidarLite__()
+     23          {
+   \                     _ZN11LidarLite__D1Ev: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     24              closeLidarLite() ;
+   \   00000004   0x0020             MOVS     R0,R4
+   \   00000006   0x.... 0x....      BL       _ZN11LidarLite__14closeLidarLiteEv
+     25          }
+   \   0000000A   0x0020             MOVS     R0,R4
+   \   0000000C   0xBD10             POP      {R4,PC}          ;; return
+     26          
+     27          // Returns true if device file descriptor opens correctly, false otherwise
+     28          
+
+   \                                 In section .text, align 2, keep-with-next
+     29          bool LidarLite__::openLidarLite()
+     30          {
+   \                     _ZN11LidarLite__13openLidarLiteEv: (+1)
+   \   00000000   0x0001             MOVS     R1,R0
+     31              return true ;
+   \   00000002   0x2001             MOVS     R0,#+1
+   \   00000004   0x4770             BX       LR               ;; return
+     32          }
+     33          
+
+   \                                 In section .text, align 2, keep-with-next
+     34          void LidarLite__::closeLidarLite()
+     35          {
+     36          //    if (kI2CFileDescriptor > 0) {
+     37          //        close(kI2CFileDescriptor);
+     38          //        // WARNING - This is not quite right, need to check for error first
+     39          //        kI2CFileDescriptor = -1 ;
+     40          //    }
+     41          }
+   \                     _ZN11LidarLite__14closeLidarLiteEv: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+     42          
+     43          // Read the given register on the Lidar-Lite
+
+   \                                 In section .text, align 2, keep-with-next
+     44          int LidarLite__::readLidarLite(int readRegister)
+     45          {
+   \                     _ZN11LidarLite__13readLidarLiteEi: (+1)
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+   \   00000004   0x000D             MOVS     R5,R1
+     46          //    // Do not use i2c_smbus_read_byte_data here ; LidarLite__ V2 needs STOP between write and read
+     47          //    int toReturn ;
+     48          //    //toReturn = i2c_smbus_write_byte(kI2CFileDescriptor, readRegister) ;
+     49          //    toReturn = I2C_WriteByte(I2C0, readRegister) ;
+     50          //    if (toReturn < 0) {
+     51          //  //      error = errno ;
+     52          //        toReturn = -1 ;
+     53          //    }
+     54          //    toReturn = i2c_smbus_read_byte(kI2CFileDescriptor) ;
+     55          //    toReturn = I2C_ReadByte(I2C0) ;
+     56          //    if (toReturn < 0) {
+     57          //   //     error = errno ;
+     58          //        toReturn = -1 ;
+     59          //    }
+     60          //    return toReturn ;
+     61              
+     62              
+     63            uint8 result;
+     64          
+     65            //发送从机地址
+     66          //  I2C_StartTrans(I2C0, kLidarLiteI2CAddress << 1, I2C_MWSR);
+     67            I2C_Start(I2C0);
+   \   00000006   0x.... 0x....      LDR.W    R0,??DataTable4_23  ;; 0x40066000
+   \   0000000A   0x.... 0x....      BL       I2C_Start
+     68            //将从机地址和主机读写位合成一个字节写入
+     69            I2C_WriteByte(I2C0, kLidarLiteI2CAddress << 1 );
+   \   0000000E   0x21C4             MOVS     R1,#+196
+   \   00000010   0x.... 0x....      LDR.W    R0,??DataTable4_23  ;; 0x40066000
+   \   00000014   0x.... 0x....      BL       I2C_WriteByte
+     70            I2C_WaitAck(I2C0, I2C_ACK_ON);
+   \   00000018   0x2101             MOVS     R1,#+1
+   \   0000001A   0x.... 0x....      LDR.W    R0,??DataTable4_23  ;; 0x40066000
+   \   0000001E   0x.... 0x....      BL       I2C_WaitAck
+     71          
+     72            //写寄存器地址
+     73            I2C_WriteByte(I2C0, readRegister);
+   \   00000022   0x0028             MOVS     R0,R5
+   \   00000024   0x0001             MOVS     R1,R0
+   \   00000026   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \   00000028   0x.... 0x....      LDR.W    R0,??DataTable4_23  ;; 0x40066000
+   \   0000002C   0x.... 0x....      BL       I2C_WriteByte
+     74            I2C_WaitAck(I2C0, I2C_ACK_ON);
+   \   00000030   0x2101             MOVS     R1,#+1
+   \   00000032   0x....             LDR.N    R0,??DataTable4_23  ;; 0x40066000
+   \   00000034   0x.... 0x....      BL       I2C_WaitAck
+     75          
+     76            //再次产生开始信号
+     77           // I2C_ReStart(I2C0); //////////////////// K60 硬件ReStart时间太短！ 读数根本就是错的！（但是如果先用长ReStart间隔时间，则可以正确读数）
+     78            I2C_Stop(I2C0);
+   \   00000038   0x....             LDR.N    R0,??DataTable4_23  ;; 0x40066000
+   \   0000003A   0x.... 0x....      BL       I2C_Stop
+     79            for(int i = 0; i < 500; i++)
+   \   0000003E   0x2000             MOVS     R0,#+0
+   \                     ??readLidarLite_0: (+1)
+   \   00000040   0xF5B0 0x7FFA      CMP      R0,#+500
+   \   00000044   0xDA02             BGE.N    ??readLidarLite_1
+     80            {
+     81              i+=1;
+   \   00000046   0x1C40             ADDS     R0,R0,#+1
+     82            }
+   \   00000048   0x1C40             ADDS     R0,R0,#+1
+   \   0000004A   0xE7F9             B.N      ??readLidarLite_0
+     83            I2C_Start(I2C0);
+   \                     ??readLidarLite_1: (+1)
+   \   0000004C   0x....             LDR.N    R0,??DataTable4_23  ;; 0x40066000
+   \   0000004E   0x.... 0x....      BL       I2C_Start
+     84          
+     85          
+     86          //  //发送从机地址和读取位
+     87            I2C_WriteByte(I2C0, kLidarLiteI2CAddress << 1| 0x01);
+   \   00000052   0x21C5             MOVS     R1,#+197
+   \   00000054   0x....             LDR.N    R0,??DataTable4_23  ;; 0x40066000
+   \   00000056   0x.... 0x....      BL       I2C_WriteByte
+     88            I2C_WaitAck(I2C0, I2C_ACK_ON);
+   \   0000005A   0x2101             MOVS     R1,#+1
+   \   0000005C   0x....             LDR.N    R0,??DataTable4_23  ;; 0x40066000
+   \   0000005E   0x.... 0x....      BL       I2C_WaitAck
+     89          //
+     90            //转换主机模式为读
+     91            I2C_SetMasterWR(I2C0, I2C_MRSW);
+   \   00000062   0x2101             MOVS     R1,#+1
+   \   00000064   0x....             LDR.N    R0,??DataTable4_23  ;; 0x40066000
+   \   00000066   0x.... 0x....      BL       I2C_SetMasterWR
+     92          
+     93            //关闭应答ACK
+     94            I2C_WaitAck(I2C0, I2C_ACK_OFF);//关闭ACK
+   \   0000006A   0x2100             MOVS     R1,#+0
+   \   0000006C   0x....             LDR.N    R0,??DataTable4_23  ;; 0x40066000
+   \   0000006E   0x.... 0x....      BL       I2C_WaitAck
+     95          
+     96            //读IIC数据
+     97            result =I2C_ReadByte(I2C0);
+   \   00000072   0x....             LDR.N    R0,??DataTable4_23  ;; 0x40066000
+   \   00000074   0x.... 0x....      BL       I2C_ReadByte
+   \   00000078   0x0006             MOVS     R6,R0
+     98            I2C_WaitAck(I2C0, I2C_ACK_ON);
+   \   0000007A   0x2101             MOVS     R1,#+1
+   \   0000007C   0x....             LDR.N    R0,??DataTable4_23  ;; 0x40066000
+   \   0000007E   0x.... 0x....      BL       I2C_WaitAck
+     99          
+    100            //发送停止信号
+    101            I2C_Stop(I2C0);
+   \   00000082   0x....             LDR.N    R0,??DataTable4_23  ;; 0x40066000
+   \   00000084   0x.... 0x....      BL       I2C_Stop
+    102          
+    103             //读IIC数据
+    104            result = I2C_ReadByte(I2C0);
+   \   00000088   0x....             LDR.N    R0,??DataTable4_23  ;; 0x40066000
+   \   0000008A   0x.... 0x....      BL       I2C_ReadByte
+    105            
+    106            for(int i = 0; i < 500; i++)
+   \   0000008E   0x2100             MOVS     R1,#+0
+   \                     ??readLidarLite_2: (+1)
+   \   00000090   0xF5B1 0x7FFA      CMP      R1,#+500
+   \   00000094   0xDA02             BGE.N    ??readLidarLite_3
+    107            {
+    108              i+=1;
+   \   00000096   0x1C49             ADDS     R1,R1,#+1
+    109            }
+   \   00000098   0x1C49             ADDS     R1,R1,#+1
+   \   0000009A   0xE7F9             B.N      ??readLidarLite_2
+    110            return result;
+   \                     ??readLidarLite_3: (+1)
+   \   0000009C   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \                     ??readLidarLite_4: (+1)
+   \   0000009E   0xBD70             POP      {R4-R6,PC}       ;; return
+    111          }
+    112          
+    113          // Write the the given value to the given register on the Lidar-Lite
+
+   \                                 In section .text, align 2, keep-with-next
+    114          int LidarLite__::writeLidarLite(int writeRegister, int writeValue)
+    115          {
+   \                     _ZN11LidarLite__14writeLidarLiteEii: (+1)
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+   \   00000004   0x000D             MOVS     R5,R1
+   \   00000006   0x0016             MOVS     R6,R2
+    116          //    //int toReturn = i2c_smbus_write_byte_data(kI2CFileDescriptor, writeRegister, writeValue);
+    117          //    int toReturn = I2C_WriteByte(I2C0, writeRegister, writeValue);
+    118          //    // Wait a little bit to make sure it settles
+    119          //    usleep(10000);
+    120          //    if (toReturn < 0) {
+    121          //        error = errno ;
+    122          //        toReturn = -1 ;
+    123          //    }
+    124          //    return toReturn ;
+    125          
+    126            //发送从机地址
+    127            I2C_StartTrans(I2C0, kLidarLiteI2CAddress, I2C_MWSR);
+   \   00000008   0x2200             MOVS     R2,#+0
+   \   0000000A   0x2162             MOVS     R1,#+98
+   \   0000000C   0x....             LDR.N    R0,??DataTable4_23  ;; 0x40066000
+   \   0000000E   0x.... 0x....      BL       I2C_StartTrans
+    128            I2C_WaitAck(I2C0, I2C_ACK_ON);
+   \   00000012   0x2101             MOVS     R1,#+1
+   \   00000014   0x....             LDR.N    R0,??DataTable4_23  ;; 0x40066000
+   \   00000016   0x.... 0x....      BL       I2C_WaitAck
+    129            
+    130            //写寄存器地址
+    131            I2C_WriteByte(I2C0, writeRegister);
+   \   0000001A   0x0028             MOVS     R0,R5
+   \   0000001C   0x0001             MOVS     R1,R0
+   \   0000001E   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \   00000020   0x....             LDR.N    R0,??DataTable4_23  ;; 0x40066000
+   \   00000022   0x.... 0x....      BL       I2C_WriteByte
+    132            I2C_WaitAck(I2C0, I2C_ACK_ON);
+   \   00000026   0x2101             MOVS     R1,#+1
+   \   00000028   0x....             LDR.N    R0,??DataTable4_23  ;; 0x40066000
+   \   0000002A   0x.... 0x....      BL       I2C_WaitAck
+    133            
+    134            //向寄存器中写具体数据
+    135            I2C_WriteByte(I2C0, writeValue);
+   \   0000002E   0x0030             MOVS     R0,R6
+   \   00000030   0x0001             MOVS     R1,R0
+   \   00000032   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \   00000034   0x....             LDR.N    R0,??DataTable4_23  ;; 0x40066000
+   \   00000036   0x.... 0x....      BL       I2C_WriteByte
+    136            I2C_WaitAck(I2C0, I2C_ACK_ON);
+   \   0000003A   0x2101             MOVS     R1,#+1
+   \   0000003C   0x....             LDR.N    R0,??DataTable4_23  ;; 0x40066000
+   \   0000003E   0x.... 0x....      BL       I2C_WaitAck
+    137          
+    138            I2C_Stop(I2C0);
+   \   00000042   0x....             LDR.N    R0,??DataTable4_23  ;; 0x40066000
+   \   00000044   0x.... 0x....      BL       I2C_Stop
+    139            
+    140            for(int i = 0; i < 500; i++)
+   \   00000048   0x2000             MOVS     R0,#+0
+   \                     ??writeLidarLite_0: (+1)
+   \   0000004A   0xF5B0 0x7FFA      CMP      R0,#+500
+   \   0000004E   0xDA02             BGE.N    ??writeLidarLite_1
+    141            {
+    142              i+=1;
+   \   00000050   0x1C40             ADDS     R0,R0,#+1
+    143            }
+   \   00000052   0x1C40             ADDS     R0,R0,#+1
+   \   00000054   0xE7F9             B.N      ??writeLidarLite_0
+    144            return 0;
+   \                     ??writeLidarLite_1: (+1)
+   \   00000056   0x2000             MOVS     R0,#+0
+   \                     ??writeLidarLite_2: (+1)
+   \   00000058   0xBD70             POP      {R4-R6,PC}       ;; return
+    145          }
+    146          
+    147          // Return the current calculated distance in centimeters
+
+   \                                 In section .text, align 2, keep-with-next
+    148          int LidarLite__::getDistance()
+    149          {
+   \                     _ZN11LidarLite__11getDistanceEv: (+1)
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+    150              int ioResult ;
+    151              int msb, lsb ;
+    152              
+    153              extern int ti2;
+    154          
+    155              
+    156              ioResult = readLidarLite(kLidarLiteCalculateDistanceMSB);
+   \   00000004   0x218F             MOVS     R1,#+143
+   \   00000006   0x0020             MOVS     R0,R4
+   \   00000008   0x.... 0x....      BL       _ZN11LidarLite__13readLidarLiteEi
+   \   0000000C   0x0005             MOVS     R5,R0
+    157              if (ioResult < 0) {
+   \   0000000E   0x2D00             CMP      R5,#+0
+   \   00000010   0xD501             BPL.N    ??getDistance_0
+    158                  return ioResult ;
+   \   00000012   0x0028             MOVS     R0,R5
+   \   00000014   0xE00A             B.N      ??getDistance_1
+    159              } else {
+    160                  msb = ioResult ;
+    161              }
+    162              ioResult = readLidarLite(kLidarLiteCalculateDistanceLSB);
+   \                     ??getDistance_0: (+1)
+   \   00000016   0x2110             MOVS     R1,#+16
+   \   00000018   0x0020             MOVS     R0,R4
+   \   0000001A   0x.... 0x....      BL       _ZN11LidarLite__13readLidarLiteEi
+   \   0000001E   0x0001             MOVS     R1,R0
+    163              if (ioResult < 0) {
+   \   00000020   0x2900             CMP      R1,#+0
+   \   00000022   0xD501             BPL.N    ??getDistance_2
+    164                  return ioResult ;
+   \   00000024   0x0008             MOVS     R0,R1
+   \   00000026   0xE001             B.N      ??getDistance_1
+    165              } else {
+    166                  lsb = ioResult ;
+    167              }
+    168          
+    169              int distance = (msb << 8) + lsb ;
+   \                     ??getDistance_2: (+1)
+   \   00000028   0xEB11 0x2005      ADDS     R0,R1,R5, LSL #+8
+    170          
+    171              return distance ;
+   \                     ??getDistance_1: (+1)
+   \   0000002C   0xBD32             POP      {R1,R4,R5,PC}    ;; return
+    172          }
+    173          
+
+   \                                 In section .text, align 2, keep-with-next
+    174          void LidarLite__::measure()
+    175          {
+   \                     _ZN11LidarLite__7measureEv: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+    176              writeLidarLite(kLidarLiteCommandControlRegister,kLidarLiteMeasure);
+   \   00000004   0x2204             MOVS     R2,#+4
+   \   00000006   0x2100             MOVS     R1,#+0
+   \   00000008   0x0020             MOVS     R0,R4
+   \   0000000A   0x.... 0x....      BL       _ZN11LidarLite__14writeLidarLiteEii
+    177          }
+   \                     ??measure_0: (+1)
+   \   0000000E   0xBD10             POP      {R4,PC}          ;; return
+    178          
+    179          // Return the previous measurement in centimeters
+
+   \                                 In section .text, align 2, keep-with-next
+    180          int LidarLite__::getPreviousDistance() 
+    181          {
+   \                     _ZN11LidarLite__19getPreviousDistanceEv: (+1)
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+    182              int ioResult ;
+    183              int msb, lsb ;
+    184              ioResult = readLidarLite(kLidarLitePreviousMeasuredDistanceMSB);
+   \   00000004   0x2194             MOVS     R1,#+148
+   \   00000006   0x0020             MOVS     R0,R4
+   \   00000008   0x.... 0x....      BL       _ZN11LidarLite__13readLidarLiteEi
+   \   0000000C   0x0005             MOVS     R5,R0
+    185              if (ioResult < 0) 
+   \   0000000E   0x2D00             CMP      R5,#+0
+   \   00000010   0xD501             BPL.N    ??getPreviousDistance_0
+    186              {
+    187                  return ioResult ;
+   \   00000012   0x0028             MOVS     R0,R5
+   \   00000014   0xE00A             B.N      ??getPreviousDistance_1
+    188              } else {
+    189                  msb = ioResult ;
+    190              }
+    191              ioResult = readLidarLite(kLidarLitePreviousMeasuredDistanceLSB);
+   \                     ??getPreviousDistance_0: (+1)
+   \   00000016   0x2115             MOVS     R1,#+21
+   \   00000018   0x0020             MOVS     R0,R4
+   \   0000001A   0x.... 0x....      BL       _ZN11LidarLite__13readLidarLiteEi
+   \   0000001E   0x0001             MOVS     R1,R0
+    192              if (ioResult < 0) 
+   \   00000020   0x2900             CMP      R1,#+0
+   \   00000022   0xD501             BPL.N    ??getPreviousDistance_2
+    193              {
+    194                  return ioResult ;
+   \   00000024   0x0008             MOVS     R0,R1
+   \   00000026   0xE001             B.N      ??getPreviousDistance_1
+    195              } else {
+    196                  lsb = ioResult ;
+    197              }
+    198          
+    199              int distance = (msb << 8) + lsb ;
+   \                     ??getPreviousDistance_2: (+1)
+   \   00000028   0xEB11 0x2005      ADDS     R0,R1,R5, LSL #+8
+    200          
+    201              return distance ;
+   \                     ??getPreviousDistance_1: (+1)
+   \   0000002C   0xBD32             POP      {R1,R4,R5,PC}    ;; return
+    202          }
+    203          
+    204          // Return the velocity (rate of change) in centimeters; +/-
+    205          // Velocity is returned from the Lidar-Lite as an 8-bit 2's complement number
+    206          // The returned value is converted to a signed integer
+
+   \                                 In section .text, align 2, keep-with-next
+    207          int LidarLite__::getVelocity()
+    208          {
+   \                     _ZN11LidarLite__11getVelocityEv: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+    209              int ioResult = readLidarLite(kLidarLiteVelocityMeasurementOutput);
+   \   00000004   0x2109             MOVS     R1,#+9
+   \   00000006   0x0020             MOVS     R0,R4
+   \   00000008   0x.... 0x....      BL       _ZN11LidarLite__13readLidarLiteEi
+   \   0000000C   0x0001             MOVS     R1,R0
+    210              if (ioResult == 255) {
+   \   0000000E   0x29FF             CMP      R1,#+255
+   \   00000010   0xD101             BNE.N    ??getVelocity_0
+    211                  return 0 ;
+   \   00000012   0x2000             MOVS     R0,#+0
+   \   00000014   0xE006             B.N      ??getVelocity_1
+    212              }
+    213              if (ioResult > 127) {
+   \                     ??getVelocity_0: (+1)
+   \   00000016   0x2980             CMP      R1,#+128
+   \   00000018   0xDB03             BLT.N    ??getVelocity_2
+    214          
+    215                  return  ioResult - 256 ;
+   \   0000001A   0xF5B1 0x7180      SUBS     R1,R1,#+256
+   \   0000001E   0x0008             MOVS     R0,R1
+   \   00000020   0xE000             B.N      ??getVelocity_1
+    216              }
+    217              return ioResult ;
+   \                     ??getVelocity_2: (+1)
+   \   00000022   0x0008             MOVS     R0,R1
+   \                     ??getVelocity_1: (+1)
+   \   00000024   0xBD10             POP      {R4,PC}          ;; return
+    218          }
+    219          
+    220          // Return the Lidar-Lite hardware version
+
+   \                                 In section .text, align 2, keep-with-next
+    221          int LidarLite__::getHardwareVersion()
+    222          {
+   \                     _ZN11LidarLite__18getHardwareVersionEv: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+    223              return readLidarLite(kLidarLiteHardwareVersion) ;
+   \   00000004   0x2141             MOVS     R1,#+65
+   \   00000006   0x0020             MOVS     R0,R4
+   \   00000008   0x.... 0x....      BL       _ZN11LidarLite__13readLidarLiteEi
+   \                     ??getHardwareVersion_0: (+1)
+   \   0000000C   0xBD10             POP      {R4,PC}          ;; return
+    224          }
+    225          
+    226          // Return the Lidar-Lite software version
+
+   \                                 In section .text, align 2, keep-with-next
+    227          int LidarLite__::getSoftwareVersion() 
+    228          {
+   \                     _ZN11LidarLite__18getSoftwareVersionEv: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+    229              return readLidarLite(kLidarLiteSoftwareVersion) ;
+   \   00000004   0x214F             MOVS     R1,#+79
+   \   00000006   0x0020             MOVS     R0,R4
+   \   00000008   0x.... 0x....      BL       _ZN11LidarLite__13readLidarLiteEi
+   \                     ??getSoftwareVersion_0: (+1)
+   \   0000000C   0xBD10             POP      {R4,PC}          ;; return
+    230          }
+    231          
+    232          // Return the last i/o error
+
+   \                                 In section .text, align 2, keep-with-next
+    233          int LidarLite__::getError()
+    234          {
+    235              return error ;
+   \                     _ZN11LidarLite__8getErrorEv: (+1)
+   \   00000000   0x6840             LDR      R0,[R0, #+4]
+   \   00000002   0x4770             BX       LR               ;; return
+    236          }
+    237          
+
+   \                                 In section .text, align 4, keep-with-next
+    238          void LidarLite__::update()
+    239          {
+   \                     _ZN11LidarLite__6updateEv: (+1)
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+   \   00000002   0xED2D 0x8B06      VPUSH    {D8-D10}
+   \   00000006   0xB088             SUB      SP,SP,#+32
+   \   00000008   0x0006             MOVS     R6,R0
+    240            float rawDistance = LidarLite->getDistance() / 100.0f;
+   \   0000000A   0x....             LDR.N    R0,??DataTable4_16
+   \   0000000C   0x6800             LDR      R0,[R0, #+0]
+   \   0000000E   0x.... 0x....      BL       _ZN11LidarLite__11getDistanceEv
+   \   00000012   0xEE00 0x0A10      VMOV     S0,R0
+   \   00000016   0xEEB8 0x0AC0      VCVT.F32.S32 S0,S0
+   \   0000001A   0xEDDF 0x....      VLDR.W   S1,??DataTable4_13  ;; 0x42c80000
+   \   0000001E   0xEEC0 0x8A20      VDIV.F32 S17,S0,S1
+    241           
+    242            
+    243            //f(x) = p0*x^3 + p1*x^2 + p2*x + p3
+    244            
+    245            double xPowered = 1;
+   \   00000022   0xED9F 0x....      VLDR.W   D9,??DataTable4_4
+    246            double p[4];
+    247            p[0] =  -3.416e-07;
+   \   00000026   0x....             LDR.N    R0,??DataTable4_5  ;; 0xb02d6cbb
+   \   00000028   0x....             LDR.N    R1,??DataTable4_6  ;; 0xbe96eca4
+   \   0000002A   0xE9CD 0x0100      STRD     R0,R1,[SP, #+0]
+    248            p[1] =   0.0003616;
+   \   0000002E   0x....             LDR.N    R0,??DataTable4_7  ;; 0x2c9a92be
+   \   00000030   0x....             LDR.N    R1,??DataTable4_8  ;; 0x3f37b2a4
+   \   00000032   0xE9CD 0x0102      STRD     R0,R1,[SP, #+8]
+    249            p[2] =      0.9125;
+   \   00000036   0xF05F 0x3033      MOVS     R0,#+858993459
+   \   0000003A   0x....             LDR.N    R1,??DataTable4_9  ;; 0x3fed3333
+   \   0000003C   0xE9CD 0x0104      STRD     R0,R1,[SP, #+16]
+    250            p[3] =      -3.989;
+   \   00000040   0x....             LDR.N    R0,??DataTable4_10  ;; 0xd4fdf3b6
+   \   00000042   0x....             LDR.N    R1,??DataTable4_11  ;; 0xc00fe978
+   \   00000044   0xE9CD 0x0106      STRD     R0,R1,[SP, #+24]
+    251            
+    252            double fitted = 0;
+   \   00000048   0xED9F 0x....      VLDR.W   D10,??DataTable4_12
+    253            for(int i = 3; i >= 0; i--)
+   \   0000004C   0x2403             MOVS     R4,#+3
+   \                     ??update_0: (+1)
+   \   0000004E   0x2C00             CMP      R4,#+0
+   \   00000050   0xD41E             BMI.N    ??update_1
+    254            {
+    255              fitted += p[i] * xPowered;
+   \   00000052   0x4668             MOV      R0,SP
+   \   00000054   0xEB00 0x00C4      ADD      R0,R0,R4, LSL #+3
+   \   00000058   0xE9D0 0x0100      LDRD     R0,R1,[R0, #+0]
+   \   0000005C   0xEC53 0x2B19      VMOV     R2,R3,D9
+   \   00000060   0x.... 0x....      BL       __aeabi_dmul
+   \   00000064   0xEC53 0x2B1A      VMOV     R2,R3,D10
+   \   00000068   0x.... 0x....      BL       __aeabi_dadd
+   \   0000006C   0xEC41 0x0B1A      VMOV     D10,R0,R1
+    256              xPowered *= rawDistance * 100.0f;
+   \   00000070   0xED9F 0x....      VLDR.W   S0,??DataTable4_13  ;; 0x42c80000
+   \   00000074   0xEE28 0x0A80      VMUL.F32 S0,S17,S0
+   \   00000078   0xEE10 0x0A10      VMOV     R0,S0
+   \   0000007C   0x.... 0x....      BL       __aeabi_f2d
+   \   00000080   0xEC53 0x2B19      VMOV     R2,R3,D9
+   \   00000084   0x.... 0x....      BL       __aeabi_dmul
+   \   00000088   0xEC41 0x0B19      VMOV     D9,R0,R1
+    257            }
+   \   0000008C   0x1E64             SUBS     R4,R4,#+1
+   \   0000008E   0xE7DE             B.N      ??update_0
+    258            fitted /= 100.0f;
+   \                     ??update_1: (+1)
+   \   00000090   0xEC51 0x0B1A      VMOV     R0,R1,D10
+   \   00000094   0x2200             MOVS     R2,#+0
+   \   00000096   0x....             LDR.N    R3,??DataTable4_14  ;; 0x40590000
+   \   00000098   0x.... 0x....      BL       __aeabi_ddiv
+   \   0000009C   0xEC41 0x0B1A      VMOV     D10,R0,R1
+    259            
+    260            float temp = velFilter.newData(fitted, vel_z_CF, t);
+   \   000000A0   0x....             LDR.N    R0,??DataTable4_24
+   \   000000A2   0x6801             LDR      R1,[R0, #+0]
+   \   000000A4   0xEDD6 0x0A4F      VLDR     S1,[R6, #+316]
+   \   000000A8   0xEEB0 0x8A60      VMOV.F32 S16,S1
+   \   000000AC   0x000C             MOVS     R4,R1
+   \   000000AE   0xEC51 0x0B1A      VMOV     R0,R1,D10
+   \   000000B2   0x.... 0x....      BL       __aeabi_d2f
+   \   000000B6   0xEE00 0x0A10      VMOV     S0,R0
+   \   000000BA   0x0021             MOVS     R1,R4
+   \   000000BC   0xEEF0 0x0A48      VMOV.F32 S1,S16
+   \   000000C0   0xF516 0x7082      ADDS     R0,R6,#+260
+   \   000000C4   0x.... 0x....      BL       _ZN11CJumpFilter7newDataEffi
+   \   000000C8   0xEEB0 0x8A40      VMOV.F32 S16,S0
+    261            temp_111 = rawDistance;
+   \   000000CC   0x....             LDR.N    R0,??DataTable4_15
+   \   000000CE   0xEDC0 0x8A00      VSTR     S17,[R0, #0]
+    262          //    if(!(temp == temp)) //对于NaN temp == temp 返回false
+    263          //    {
+    264          //      while(1){}
+    265          //    }
+    266            if(LidarLite->velFilter.isValid())
+   \   000000D2   0x....             LDR.N    R0,??DataTable4_16
+   \   000000D4   0x6800             LDR      R0,[R0, #+0]
+   \   000000D6   0xF510 0x7082      ADDS     R0,R0,#+260
+   \   000000DA   0x.... 0x....      BL       _ZN11CJumpFilter7isValidEv
+   \   000000DE   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   000000E0   0x2800             CMP      R0,#+0
+   \   000000E2   0xD001             BEQ.N    ??update_2
+   \   000000E4   0x2001             MOVS     R0,#+1
+   \   000000E6   0xE000             B.N      ??update_3
+   \                     ??update_2: (+1)
+   \   000000E8   0x2000             MOVS     R0,#+0
+   \                     ??update_3: (+1)
+   \   000000EA   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   000000EC   0x2800             CMP      R0,#+0
+   \   000000EE   0xD02F             BEQ.N    ??update_4
+    267            {
+    268              position.z = (0.92) * (position.z + vel_z_CF * 0.002) + (0.08)*(temp); 
+   \   000000F0   0xF116 0x0040      ADDS     R0,R6,#+64
+   \   000000F4   0x.... 0x....      BL       _ZN17CoordinateElementcvfEv
+   \   000000F8   0xEE10 0x0A10      VMOV     R0,S0
+   \   000000FC   0x.... 0x....      BL       __aeabi_f2d
+   \   00000100   0x0004             MOVS     R4,R0
+   \   00000102   0x000D             MOVS     R5,R1
+   \   00000104   0xF8D6 0x013C      LDR      R0,[R6, #+316]
+   \   00000108   0x.... 0x....      BL       __aeabi_f2d
+   \   0000010C   0x....             LDR.N    R2,??DataTable4_17  ;; 0xd2f1a9fc
+   \   0000010E   0x....             LDR.N    R3,??DataTable4_18  ;; 0x3f60624d
+   \   00000110   0x.... 0x....      BL       __aeabi_dmul
+   \   00000114   0x0022             MOVS     R2,R4
+   \   00000116   0x002B             MOVS     R3,R5
+   \   00000118   0x.... 0x....      BL       __aeabi_dadd
+   \   0000011C   0x....             LDR.N    R2,??DataTable4_19  ;; 0xd70a3d71
+   \   0000011E   0x....             LDR.N    R3,??DataTable4_20  ;; 0x3fed70a3
+   \   00000120   0x.... 0x....      BL       __aeabi_dmul
+   \   00000124   0x0004             MOVS     R4,R0
+   \   00000126   0x000D             MOVS     R5,R1
+   \   00000128   0xEE18 0x0A10      VMOV     R0,S16
+   \   0000012C   0x.... 0x....      BL       __aeabi_f2d
+   \   00000130   0x....             LDR.N    R2,??DataTable4_21  ;; 0x47ae147b
+   \   00000132   0x....             LDR.N    R3,??DataTable4_22  ;; 0x3fb47ae1
+   \   00000134   0x.... 0x....      BL       __aeabi_dmul
+   \   00000138   0x0022             MOVS     R2,R4
+   \   0000013A   0x002B             MOVS     R3,R5
+   \   0000013C   0x.... 0x....      BL       __aeabi_dadd
+   \   00000140   0x.... 0x....      BL       __aeabi_d2f
+   \   00000144   0xEE00 0x0A10      VMOV     S0,R0
+   \   00000148   0xF116 0x0040      ADDS     R0,R6,#+64
+   \   0000014C   0x.... 0x....      BL       _ZN17CoordinateElementaSEf
+    269            }
+    270            else
+    271            {
+    272              //  position.z = (1) * (position.z + vel_z_CF * 0.002) + (0)*(temp);
+    273            }
+    274            position.z.calculateD(t);
+   \                     ??update_4: (+1)
+   \   00000150   0x....             LDR.N    R0,??DataTable4_24
+   \   00000152   0x6801             LDR      R1,[R0, #+0]
+   \   00000154   0xF116 0x0040      ADDS     R0,R6,#+64
+   \   00000158   0x.... 0x....      BL       _ZN17CoordinateElement10calculateDEi
+    275          }
+   \                     ??update_5: (+1)
+   \   0000015C   0xB008             ADD      SP,SP,#+32
+   \   0000015E   0xECBD 0x8B06      VPOP     {D8-D10}
+   \   00000162   0xBD70             POP      {R4-R6,PC}       ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3:
+   \   00000000   0x3F4CCCCD         DC32     0x3f4ccccd
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4:
+   \   00000000   0x........         DC32     __dso_handle
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_1:
+   \   00000000   0x........         DC32     `LidarLiteInit()::static guard for LidarLite_0`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_2:
+   \   00000000   0x........         DC32     `LidarLiteInit()::LidarLite_0`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_3:
+   \   00000000   0x3F7E353F         DC32     0x3f7e353f
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_4:
+   \   00000000   0x00000000         DC32     0x0,0x3FF00000
+   \              0x3FF00000   
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_5:
+   \   00000000   0xB02D6CBB         DC32     0xb02d6cbb
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_6:
+   \   00000000   0xBE96ECA4         DC32     0xbe96eca4
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_7:
+   \   00000000   0x2C9A92BE         DC32     0x2c9a92be
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_8:
+   \   00000000   0x3F37B2A4         DC32     0x3f37b2a4
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_9:
+   \   00000000   0x3FED3333         DC32     0x3fed3333
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_10:
+   \   00000000   0xD4FDF3B6         DC32     0xd4fdf3b6
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_11:
+   \   00000000   0xC00FE978         DC32     0xc00fe978
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_12:
+   \   00000000   0x00000000         DC32     0x0,0x0
+   \              0x00000000   
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_13:
+   \   00000000   0x42C80000         DC32     0x42c80000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_14:
+   \   00000000   0x40590000         DC32     0x40590000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_15:
+   \   00000000   0x........         DC32     temp_111
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_16:
+   \   00000000   0x........         DC32     LidarLite
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_17:
+   \   00000000   0xD2F1A9FC         DC32     0xd2f1a9fc
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_18:
+   \   00000000   0x3F60624D         DC32     0x3f60624d
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_19:
+   \   00000000   0xD70A3D71         DC32     0xd70a3d71
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_20:
+   \   00000000   0x3FED70A3         DC32     0x3fed70a3
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_21:
+   \   00000000   0x47AE147B         DC32     0x47ae147b
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_22:
+   \   00000000   0x3FB47AE1         DC32     0x3fb47ae1
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_23:
+   \   00000000   0x40066000         DC32     0x40066000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_24:
+   \   00000000   0x........         DC32     t
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   CJumpFilter::CJumpFilter()
+       8   Coordinate::Coordinate()
+         8   -> CoordinateElement::CoordinateElement()
+       0   CoordinateElement::CoordinateElement()
+       8   LidarLiteInit()
+         8   -> CJumpFilter::setParameter(float, int)
+         8   -> LidarLite__::LidarLite__()
+         8   -> LidarLite__::writeLidarLite(int, int)
+         8   -> __aeabi_atexit
+       8   LidarLite__::LidarLite__()
+         8   -> CJumpFilter::CJumpFilter()
+         8   -> Coordinate::Coordinate()
+       0   LidarLite__::closeLidarLite()
+      16   LidarLite__::getDistance()
+        16   -> LidarLite__::readLidarLite(int)
+       0   LidarLite__::getError()
+       8   LidarLite__::getHardwareVersion()
+         8   -> LidarLite__::readLidarLite(int)
+      16   LidarLite__::getPreviousDistance()
+        16   -> LidarLite__::readLidarLite(int)
+       8   LidarLite__::getSoftwareVersion()
+         8   -> LidarLite__::readLidarLite(int)
+       8   LidarLite__::getVelocity()
+         8   -> LidarLite__::readLidarLite(int)
+       8   LidarLite__::measure()
+         8   -> LidarLite__::writeLidarLite(int, int)
+       0   LidarLite__::openLidarLite()
+      16   LidarLite__::readLidarLite(int)
+        16   -> I2C_ReadByte
+        16   -> I2C_SetMasterWR
+        16   -> I2C_Start
+        16   -> I2C_Stop
+        16   -> I2C_WaitAck
+        16   -> I2C_WriteByte
+       8   LidarLite__::subobject LidarLite__()
+         8   -> LidarLite__::LidarLite__()
+       8   LidarLite__::subobject ~LidarLite__()
+         8   -> LidarLite__::~LidarLite__()
+      72   LidarLite__::update()
+        72   -> CJumpFilter::isValid()
+        72   -> CJumpFilter::newData(float, float, int)
+        72   -> CoordinateElement::calculateD(int)
+        72   -> CoordinateElement::operator float()
+        72   -> CoordinateElement::operator=(float)
+        72   -> LidarLite__::getDistance()
+        72   -> __aeabi_d2f
+        72   -> __aeabi_dadd
+        72   -> __aeabi_ddiv
+        72   -> __aeabi_dmul
+        72   -> __aeabi_f2d
+      16   LidarLite__::writeLidarLite(int, int)
+        16   -> I2C_StartTrans
+        16   -> I2C_Stop
+        16   -> I2C_WaitAck
+        16   -> I2C_WriteByte
+       8   LidarLite__::~LidarLite__()
+         8   -> LidarLite__::closeLidarLite()
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable3
+       4  ??DataTable4
+       4  ??DataTable4_1
+       4  ??DataTable4_10
+       4  ??DataTable4_11
+       8  ??DataTable4_12
+       4  ??DataTable4_13
+       4  ??DataTable4_14
+       4  ??DataTable4_15
+       4  ??DataTable4_16
+       4  ??DataTable4_17
+       4  ??DataTable4_18
+       4  ??DataTable4_19
+       4  ??DataTable4_2
+       4  ??DataTable4_20
+       4  ??DataTable4_21
+       4  ??DataTable4_22
+       4  ??DataTable4_23
+       4  ??DataTable4_24
+       4  ??DataTable4_3
+       8  ??DataTable4_4
+       4  ??DataTable4_5
+       4  ??DataTable4_6
+       4  ??DataTable4_7
+       4  ??DataTable4_8
+       4  ??DataTable4_9
+      24  CJumpFilter::CJumpFilter()
+      30  Coordinate::Coordinate()
+      28  CoordinateElement::CoordinateElement()
+       4  LidarLite
+     102  LidarLiteInit()
+     320  LidarLite_0
+      44  LidarLite__::LidarLite__()
+       2  LidarLite__::closeLidarLite()
+      46  LidarLite__::getDistance()
+       4  LidarLite__::getError()
+      14  LidarLite__::getHardwareVersion()
+      46  LidarLite__::getPreviousDistance()
+      14  LidarLite__::getSoftwareVersion()
+      38  LidarLite__::getVelocity()
+      16  LidarLite__::measure()
+       6  LidarLite__::openLidarLite()
+     160  LidarLite__::readLidarLite(int)
+      12  LidarLite__::subobject LidarLite__()
+      12  LidarLite__::subobject ~LidarLite__()
+     356  LidarLite__::update()
+      90  LidarLite__::writeLidarLite(int, int)
+      14  LidarLite__::~LidarLite__()
+      81  -- Other
+
+ 
+    80 bytes in section .ARM.exidx
+   325 bytes in section .bss
+ 1 170 bytes in section .text
+ 
+ 1 088 bytes of CODE  memory (+ 82 bytes shared)
+    80 bytes of CONST memory
+   325 bytes of DATA  memory
+
+Errors: none
+Warnings: none

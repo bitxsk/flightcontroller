@@ -1,0 +1,403 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.11.2.13589/W32 for ARM       11/Jun/2018  09:13:39
+# Copyright 1999-2017 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\General
+#        Class.cpp
+#    Command line =  
+#        -f C:\Users\XSK199~1\AppData\Local\Temp\EWBF80.tmp
+#        ("C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\General
+#        Class.cpp" -D LPLD_K60 -D USE_K60F12 -lCN
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\BOOT\List
+#        -lB
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\BOOT\List
+#        -o
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\BOOT\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
+#        D:\iar\arm\INC\c\DLib_Config_Normal.h -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\..\..\lib\CPU\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\..\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\..\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\..\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\..\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\..\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\..\..\lib\FatFs\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\..\..\lib\FatFs\option\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\..\..\lib\USB\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\..\..\lib\USB\driver\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\..\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\..\..\lib\USB\class\
+#        -Ol -I D:\iar\arm\CMSIS\Include\ -D ARM_MATH_CM4)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\BOOT\List\General
+#        Class.lst
+#    Object file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\BOOT\Obj\General
+#        Class.o
+#
+###############################################################################
+
+C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\General Class.cpp
+      1          #include "General Class.h"
+      2          
+      3          float CJumpFilter::newData(float newData, float dataDerivate, int t)
+      4          {
+      5            //static float lastData;
+      6            if(init)
+      7            {
+      8              if(abs(newData - lastData) > maxRate + abs(dataDerivate) * (t - oldDataTime) * 0.001)
+      9              {
+     10                if(valid)
+     11                {
+     12                  valid = false;
+     13                  invalidTime = t;
+     14                }
+     15              }
+     16              else
+     17              {
+     18                if(!valid)
+     19                {
+     20                  valid = true;
+     21                  validTime = t;
+     22                }
+     23              }
+     24              
+     25              if(t - invalidTime > maxInvalidTime)
+     26              {
+     27                if(!valid)
+     28                {
+     29                  valid = true;
+     30                  validTime = t;
+     31                }
+     32              }
+     33              
+     34              if(!valid)
+     35              {
+     36                lastData += dataDerivate * (t - oldDataTime) * 0.001;
+     37              }
+     38              else
+     39              {
+     40                lastData = newData;
+     41              }
+     42            }
+     43            else
+     44            {
+     45              lastData = newData;
+     46              init = true;
+     47            }
+     48            oldDataTime = t;
+     49            return lastData;
+     50          }
+     51          
+     52          float CJumpFilter::newData(float newData, int t)
+     53          {
+     54            //static float lastData;
+     55            if(init)
+     56            {
+     57              if(abs(newData - lastData) > maxRate + abs(intervalIntegral) * integralThresholdGain)
+     58              {
+     59                if(valid)
+     60                {
+     61                  valid = false;
+     62                  invalidTime = t;
+     63                }
+     64              }
+     65              else
+     66              {
+     67                if(!valid)
+     68                {
+     69                  valid = true;
+     70                  validTime = t;
+     71                }
+     72              }
+     73              
+     74              if(t - invalidTime > maxInvalidTime)
+     75              {
+     76                if(!valid)
+     77                {
+     78                  valid = true;
+     79                  validTime = t;
+     80                }
+     81              }
+     82              
+     83              if(!valid)
+     84              {
+     85                lastData += intervalIntegral;
+     86              }
+     87              else
+     88              {
+     89                lastData = newData;
+     90              }
+     91            }
+     92            else
+     93            {
+     94              lastData = newData;
+     95              init = true;
+     96            }
+     97            oldDataTime = t;
+     98            intervalIntegral = 0;
+     99            return lastData;
+    100          }
+    101          
+    102          float CJumpFilter::newData1(float newData, int t)
+    103          {
+    104            //static float lastData;
+    105            if(init)
+    106            {
+    107              if(abs(newData - lastData) / ((t - lastDataTime) / 1000.0f) > abs(maxRate))
+    108              {
+    109                if(valid)
+    110                {
+    111                  valid = false;
+    112                  invalidTime = t;
+    113                }
+    114              }
+    115              else
+    116              {
+    117                if(!valid)
+    118                {
+    119                  valid = true;
+    120                  validTime = t;
+    121                }
+    122              }
+    123              lastDataTime = t;
+    124              
+    125              if(t - invalidTime > maxInvalidTime)
+    126              {
+    127                if(!valid)
+    128                {
+    129                  valid = true;
+    130                  validTime = t;
+    131                }
+    132              }
+    133              
+    134              if(!valid)
+    135              {
+    136                lastData += intervalIntegral;
+    137              }
+    138              else
+    139              {
+    140                lastData = newData;
+    141              }
+    142            }
+    143            else
+    144            {
+    145              lastData = newData;
+    146              init = true;
+    147            }
+    148            oldDataTime = t;
+    149            intervalIntegral = 0;
+    150            return lastData;
+    151          }
+    152          
+    153          
+    154          float CJumpFilter::newData3(float newData, int t) 
+    155          {
+    156            //static float lastData;
+    157            if(init)
+    158            {
+    159              if(abs(newData - lastData) > maxRate || newData > maxValue || newData < minValue)
+    160              {
+    161                if(valid)
+    162                {
+    163                  valid = false;
+    164                  invalidTime = t;
+    165                }
+    166              }
+    167              else
+    168              {
+    169                if(!valid)
+    170                {
+    171                  valid = true;
+    172                  validTime = t;
+    173                }
+    174              }
+    175              
+    176              if(t - invalidTime > maxInvalidTime && newData < maxValue && newData > minValue)
+    177              {
+    178                if(!valid)
+    179                {
+    180                  valid = true;
+    181                  validTime = t;
+    182                }
+    183              }
+    184              
+    185              if(!valid)
+    186              {
+    187                lastData += intervalIntegral;
+    188              }
+    189              else
+    190              {
+    191                lastData = newData;
+    192              }
+    193            }
+    194            else
+    195            {
+    196              lastData = newData;
+    197              init = true;
+    198            }
+    199            oldDataTime = t;
+    200            intervalIntegral = 0;
+    201            return lastData;
+    202          }
+    203          
+    204          void CJumpFilter::accumulate(float tmp)
+    205          {
+    206            intervalIntegral += tmp;
+    207          }
+    208          
+    209          void CJumpFilter::setParameter(float maxRate, int maxInvalidTime, float integralThresholdGain)
+    210          {
+    211            this->maxRate = maxRate;
+    212            this->maxInvalidTime = maxInvalidTime;
+    213            this->integralThresholdGain = integralThresholdGain;
+    214          }
+    215          
+    216          void CJumpFilter::setParameter(float maxRate, int maxInvalidTime)
+    217          {
+    218            this->maxRate = maxRate;
+    219            this->maxInvalidTime = maxInvalidTime;
+    220          }
+    221          
+    222          bool CJumpFilter::isValid()
+    223          {
+    224            return valid;
+    225          }
+    226          
+    227          void CJumpFilter::setNewDataTime(int t)
+    228          {
+    229            newDataTime = t;
+    230          }
+    231          
+    232          int CJumpFilter::getNewDataTime()
+    233          {
+    234            return newDataTime;
+    235          }
+    236          
+    237          void CJumpFilter::checkIsNewData(int t)
+    238          {
+    239              if(t - oldDataTime > 300)
+    240              {
+    241                valid = false;
+    242              }
+    243          }
+    244          
+    245          void CJumpFilter::setValid(bool temp)
+    246          {
+    247            valid = temp;
+    248          }
+    249          
+    250          
+    251          void CoordinateElement::operator= (float newData)
+    252          {
+    253            this->data = newData;
+    254          }
+    255          
+    256          void CoordinateElement::operator+= (float newData)
+    257          {
+    258            this->data += newData;
+    259          }
+    260          
+    261          void CoordinateElement::operator+= (CoordinateElement newData)
+    262          {
+    263            this->data += newData.data;
+    264          }
+    265          
+    266          void CoordinateElement::operator-= (float newData)
+    267          {
+    268            this->data -= newData;
+    269          }
+    270          
+    271          void CoordinateElement::operator-= (CoordinateElement newData)
+    272          {
+    273            this->data -= newData.data;
+    274          }
+    275          
+    276          void CoordinateElement::operator*= (float newData)
+    277          {
+    278            this->data *= newData;
+    279          }
+    280          
+    281          void CoordinateElement::operator*= (CoordinateElement newData)
+    282          {
+    283            this->data *= newData.data;
+    284          }
+    285          
+    286          void CoordinateElement::operator/= (float newData)
+    287          {
+    288            this->data /= newData;
+    289          }
+    290          
+    291          void CoordinateElement::operator/= (CoordinateElement newData)
+    292          {
+    293            this->data /= newData.data;
+    294          }
+    295          
+    296          
+    297          CoordinateElement::operator float()
+    298          {
+    299            return this->data;
+    300          }
+    301          
+    302          CoordinateElement::CoordinateElement(float D_upperLimit, float D_lowerLimit, float D_smoother)
+    303          {
+    304            this->D_upperLimit = D_upperLimit;
+    305            this->D_lowerLimit = D_lowerLimit;
+    306            this->D_smoother   = D_smoother;
+    307          }
+    308          
+    309          void CoordinateElement::calculateD(int t)
+    310          {
+    311             if(t != oldDataTime)
+    312             {
+    313              D = D * D_smoother + (data - oldData) / (t - oldDataTime) * 1000 * (1 - D_smoother); 
+    314             }
+    315             oldData = data;
+    316             oldDataTime = t;
+    317             if(D > D_upperLimit) 
+    318             {
+    319               D = D_upperLimit;
+    320             }
+    321             else if(D < D_lowerLimit) 
+    322             {
+    323               D = D_lowerLimit;
+    324             }
+    325          }
+    326          
+    327          void timeWindowIntegral::update(float newData)
+    328          {
+    329            newData *= 0.002;
+    330            sum -= data[index];
+    331            sum += newData;
+    332            data[index] = newData;
+    333            index++;
+    334            if(index > timeWindow/2) //2是控制周期
+    335            {
+    336              index = 0;
+    337            }
+    338          }
+
+Errors: 34
+Warnings: 10

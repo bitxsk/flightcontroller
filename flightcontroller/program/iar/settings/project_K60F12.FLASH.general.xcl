@@ -1,0 +1,17 @@
+"D:\iar\arm\bin\armproc.dll" 
+
+"D:\iar\arm\bin\armjlink2.dll" 
+
+"C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Exe\project_K60F12.out" 
+
+--plugin="D:\iar\arm\bin\armbat.dll" 
+
+--device_macro="D:\iar\arm\config\debugger\NXP\Kxx.dmac" 
+
+--device_macro="D:\iar\arm\config\debugger\NXP\Kxx_Trace.dmac" 
+
+--flash_loader="D:\iar\arm\config\flashloader\NXP\FlashK60Fxxx128K.board" 
+
+
+
+

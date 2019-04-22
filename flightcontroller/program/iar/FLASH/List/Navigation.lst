@@ -1,0 +1,665 @@
+﻿###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM         30/Jul/2018  16:04:03
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\Sensor\Navigation.cpp
+#    Command line =  
+#        -f C:\Users\XSK199~1\AppData\Local\Temp\EW4081.tmp
+#        (C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\Sensor\Navigation.cpp
+#        -D K60 -D USE_K60F15 -D ARM_MATH_CM4 -D __FPU_PRESENT=1 -D
+#        __FPU_USED=1 -lCN
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -lB
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -o
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
+#        D:\iar\arm\inc\c\DLib_Config_Full.h -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\Sensor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\CPU\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\option\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\driver\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\class\
+#        -On --c++ -I D:\iar\arm\CMSIS\Core\Include\ -I
+#        D:\iar\arm\CMSIS\DSP\Include\ -D ARM_MATH_CM4 --text_out utf8
+#        --utf8_text_in)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List\Navigation.lst
+#    Object file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj\Navigation.o
+#
+###############################################################################
+
+C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\Sensor\Navigation.cpp
+      1          #include "Navigation.h"
+
+   \                                 In section .text, align 4
+   \   __code __interwork __softfp CJumpFilter::CJumpFilter()
+   \                     _ZN11CJumpFilterC1Ev: (+1)
+   \        0x0   0x4903             LDR.N    R1,??CJumpFilter_0  ;; 0x42c80000
+   \        0x2   0x6081             STR      R1,[R0, #+8]
+   \        0x4   0x2132             MOVS     R1,#+50
+   \        0x6   0x6281             STR      R1,[R0, #+40]
+   \        0x8   0xF05F 0x517E      MOVS     R1,#+1065353216
+   \        0xC   0x62C1             STR      R1,[R0, #+44]
+   \        0xE   0x4770             BX       LR               ;; return
+   \                     ??CJumpFilter_0:
+   \       0x10   0x42C8'0000        DC32     0x42c80000
+
+   \                                 In section .text, align 4
+   \   __code __interwork __softfp CoordinateElement::CoordinateElement()
+   \                     _ZN17CoordinateElementC1Ev: (+1)
+   \        0x0   0x4903             LDR.N    R1,??CoordinateElement_0  ;; 0x3f4ccccd
+   \        0x2   0x6101             STR      R1,[R0, #+16]
+   \        0x4   0x4903             LDR.N    R1,??CoordinateElement_0+0x4  ;; 0x461c4000
+   \        0x6   0x6141             STR      R1,[R0, #+20]
+   \        0x8   0x4903             LDR.N    R1,??CoordinateElement_0+0x8  ;; 0xc61c4000
+   \        0xA   0x6181             STR      R1,[R0, #+24]
+   \        0xC   0x4770             BX       LR               ;; return
+   \        0xE   0xBF00             Nop      
+   \                     ??CoordinateElement_0:
+   \       0x10   0x3F4C'CCCD        DC32     0x3f4ccccd
+   \       0x14   0x461C'4000        DC32     0x461c4000
+   \       0x18   0xC61C'4000        DC32     0xc61c4000
+
+   \                                 In section .text, align 2
+   \   __code __interwork __softfp Coordinate::Coordinate()
+   \                     _ZN10CoordinateC1Ev: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN17CoordinateElementC1Ev
+   \        0xA   0xF114 0x001C      ADDS     R0,R4,#+28
+   \        0xE   0x.... 0x....      BL       _ZN17CoordinateElementC1Ev
+   \       0x12   0xF114 0x0038      ADDS     R0,R4,#+56
+   \       0x16   0x.... 0x....      BL       _ZN17CoordinateElementC1Ev
+   \       0x1A   0x0020             MOVS     R0,R4
+   \       0x1C   0xBD10             POP      {R4,PC}          ;; return
+
+   \                                 In section .text, align 2
+   \   __code __interwork __softfp CNavigation::CNavigation()
+   \                     _ZN11CNavigationC1Ev: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN11CJumpFilterC1Ev
+   \        0xA   0xF114 0x0038      ADDS     R0,R4,#+56
+   \        0xE   0x.... 0x....      BL       _ZN10CoordinateC1Ev
+   \       0x12   0x0020             MOVS     R0,R4
+   \       0x14   0xBD10             POP      {R4,PC}          ;; return
+      2          
+
+   \                                 In section .bss, align 4
+      3          CNavigation *Navigation;
+   \                     Navigation:
+   \        0x0                      DS8 4
+      4          
+      5          
+
+   \                                 In section .text, align 2, keep-with-next
+      6          void Navigation_Init()
+      7          {
+   \                     _Z15Navigation_Initv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x....             LDR.N    R4,??DataTable1
+   \        0x4   0x7820             LDRB     R0,[R4, #+0]
+   \        0x6   0x2800             CMP      R0,#+0
+   \        0x8   0xD105             BNE.N    ??Navigation_Init_0
+      8            static CNavigation Navigation_0;
+   \        0xA   0x.... 0x....      LDR.W    R0,??DataTable1_23
+   \        0xE   0x.... 0x....      BL       _ZN11CNavigationC1Ev
+   \       0x12   0x2001             MOVS     R0,#+1
+   \       0x14   0x7020             STRB     R0,[R4, #+0]
+      9            Navigation = &Navigation_0;
+   \                     ??Navigation_Init_0: (+1)
+   \       0x16   0x....             LDR.N    R0,??DataTable1_1
+   \       0x18   0x....             LDR.N    R1,??DataTable1_23
+   \       0x1A   0x6001             STR      R1,[R0, #+0]
+     10            Navigation->DesiredDistanceToScreen = 1.5f;
+   \       0x1C   0x6801             LDR      R1,[R0, #+0]
+   \       0x1E   0xF05F 0x527F      MOVS     R2,#+1069547520
+   \       0x22   0xF8C1 0x20A8      STR      R2,[R1, #+168]
+     11            Navigation->angleFilter.setParameter(2, 200);
+   \       0x26   0x21C8             MOVS     R1,#+200
+   \       0x28   0xEEB0 0x0A00      VMOV.F32 S0,#2.0
+   \       0x2C   0x6800             LDR      R0,[R0, #+0]
+   \       0x2E   0x.... 0x....      BL       _ZN11CJumpFilter12setParameterEfi
+     12          }
+   \                     ??Navigation_Init_1: (+1)
+   \       0x32   0xBD10             POP      {R4,PC}          ;; return
+
+   \                                 In section .bss, align 4
+   \                     `Navigation_Init()::Navigation_0`:
+   \        0x0                      DS8 172
+     13          
+
+   \                                 In section .text, align 4, keep-with-next
+     14          void CNavigation::update()
+     15          {
+   \                     _ZN11CNavigation6updateEv: (+1)
+   \        0x0   0xB5F8             PUSH     {R3-R7,LR}
+   \        0x2   0xED2D 0x8B02      VPUSH    {D8}
+   \        0x6   0x0006             MOVS     R6,R0
+     16            if(UltrasoundUART->distance2 < 4 && UltrasoundUART->distance3 < 4 && 
+     17               abs(UltrasoundUART->distance2 - UltrasoundUART->distance3) < 0.15 &&  //0.15ÊÇ¾àÆÁÄ»1.5mÊ±µÄ²îÖµãÐÖµ
+     18               t - UltrasoundUART->lastValidTime2 < 200 &&  t - UltrasoundUART->lastValidTime3 < 200 &&
+     19               UltrasoundUART->distanceFilter2.valid && UltrasoundUART->distanceFilter3.valid)
+   \        0x8   0x....             LDR.N    R4,??DataTable1_2
+   \        0xA   0x6820             LDR      R0,[R4, #+0]
+   \        0xC   0xF600 0x4038      ADDW     R0,R0,#+3128
+   \       0x10   0x.... 0x....      BL       _ZN17CoordinateElementcvfEv
+   \       0x14   0xEEF1 0x0A00      VMOV.F32 S1,#4.0
+   \       0x18   0xEEB4 0x0A60      VCMP.F32 S0,S1
+   \       0x1C   0xEEF1 0xFA10      FMSTAT   
+   \       0x20   0xD549             BPL.N    ??update_0
+   \       0x22   0x6820             LDR      R0,[R4, #+0]
+   \       0x24   0xF600 0x4054      ADDW     R0,R0,#+3156
+   \       0x28   0x.... 0x....      BL       _ZN17CoordinateElementcvfEv
+   \       0x2C   0xEEF1 0x0A00      VMOV.F32 S1,#4.0
+   \       0x30   0xEEB4 0x0A60      VCMP.F32 S0,S1
+   \       0x34   0xEEF1 0xFA10      FMSTAT   
+   \       0x38   0xD401             BMI.N    ??update_1
+   \       0x3A   0x2001             MOVS     R0,#+1
+   \       0x3C   0xE000             B.N      ??update_2
+   \                     ??update_1: (+1)
+   \       0x3E   0x2000             MOVS     R0,#+0
+   \                     ??update_2: (+1)
+   \       0x40   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x42   0x2800             CMP      R0,#+0
+   \       0x44   0xD137             BNE.N    ??update_0
+   \       0x46   0x6820             LDR      R0,[R4, #+0]
+   \       0x48   0xF600 0x4038      ADDW     R0,R0,#+3128
+   \       0x4C   0x.... 0x....      BL       _ZN17CoordinateElementcvfEv
+   \       0x50   0xEEB0 0x8A40      VMOV.F32 S16,S0
+   \       0x54   0x6820             LDR      R0,[R4, #+0]
+   \       0x56   0xF600 0x4054      ADDW     R0,R0,#+3156
+   \       0x5A   0x.... 0x....      BL       _ZN17CoordinateElementcvfEv
+   \       0x5E   0xEE38 0x0A40      VSUB.F32 S0,S16,S0
+   \       0x62   0xEEF0 0x0AC0      VABS.F32 S1,S0
+   \       0x66   0xED9F 0x....      VLDR.W   S2,??DataTable1_3  ;; 0x3e19999a
+   \       0x6A   0xEEF4 0x0A41      VCMP.F32 S1,S2
+   \       0x6E   0xEEF1 0xFA10      FMSTAT   
+   \       0x72   0xD401             BMI.N    ??update_3
+   \       0x74   0x2001             MOVS     R0,#+1
+   \       0x76   0xE000             B.N      ??update_4
+   \                     ??update_3: (+1)
+   \       0x78   0x2000             MOVS     R0,#+0
+   \                     ??update_4: (+1)
+   \       0x7A   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x7C   0x2800             CMP      R0,#+0
+   \       0x7E   0xD11A             BNE.N    ??update_0
+   \       0x80   0x....             LDR.N    R1,??DataTable1_4
+   \       0x82   0x680A             LDR      R2,[R1, #+0]
+   \       0x84   0x6820             LDR      R0,[R4, #+0]
+   \       0x86   0xF8D0 0x0D1C      LDR      R0,[R0, #+3356]
+   \       0x8A   0x1A12             SUBS     R2,R2,R0
+   \       0x8C   0x2AC8             CMP      R2,#+200
+   \       0x8E   0xDA12             BGE.N    ??update_0
+   \       0x90   0x6809             LDR      R1,[R1, #+0]
+   \       0x92   0x6820             LDR      R0,[R4, #+0]
+   \       0x94   0xF8D0 0x0D20      LDR      R0,[R0, #+3360]
+   \       0x98   0x1A09             SUBS     R1,R1,R0
+   \       0x9A   0x29C8             CMP      R1,#+200
+   \       0x9C   0xDA0B             BGE.N    ??update_0
+   \       0x9E   0x6820             LDR      R0,[R4, #+0]
+   \       0xA0   0xF890 0x0CDC      LDRB     R0,[R0, #+3292]
+   \       0xA4   0x2800             CMP      R0,#+0
+   \       0xA6   0xD006             BEQ.N    ??update_0
+   \       0xA8   0x6820             LDR      R0,[R4, #+0]
+   \       0xAA   0xF890 0x0D14      LDRB     R0,[R0, #+3348]
+   \       0xAE   0x2800             CMP      R0,#+0
+   \       0xB0   0xD001             BEQ.N    ??update_0
+   \       0xB2   0x2001             MOVS     R0,#+1
+   \       0xB4   0xE000             B.N      ??update_5
+   \                     ??update_0: (+1)
+   \       0xB6   0x2000             MOVS     R0,#+0
+   \                     ??update_5: (+1)
+   \       0xB8   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0xBA   0x2800             CMP      R0,#+0
+   \       0xBC   0xD003             BEQ.N    ??update_6
+     20            {
+     21              angleToScreenValidTmp = true;
+   \       0xBE   0x2001             MOVS     R0,#+1
+   \       0xC0   0xF886 0x0098      STRB     R0,[R6, #+152]
+   \       0xC4   0xE005             B.N      ??update_7
+     22            }
+     23            else
+     24            {
+     25              angleToScreenValidTmp  = false;
+   \                     ??update_6: (+1)
+   \       0xC6   0x2000             MOVS     R0,#+0
+   \       0xC8   0xF886 0x0098      STRB     R0,[R6, #+152]
+     26              angleToScreenValid = false;
+   \       0xCC   0x2000             MOVS     R0,#+0
+   \       0xCE   0xF886 0x009A      STRB     R0,[R6, #+154]
+     27            }
+     28            
+     29            if(!angleToScreenValidTmp && angleToScreenValidTmpLast)
+     30            {
+     31            }
+     32            if(angleToScreenValidTmp && !angleToScreenValidTmpLast)
+   \                     ??update_7: (+1)
+   \       0xD2   0xF896 0x0098      LDRB     R0,[R6, #+152]
+   \       0xD6   0x2800             CMP      R0,#+0
+   \       0xD8   0xD00A             BEQ.N    ??update_8
+   \       0xDA   0xF896 0x0099      LDRB     R0,[R6, #+153]
+   \       0xDE   0x2800             CMP      R0,#+0
+   \       0xE0   0xD106             BNE.N    ??update_8
+     33            {
+     34              angleToScreenValidTime = t;
+   \       0xE2   0x....             LDR.N    R0,??DataTable1_4
+   \       0xE4   0xED90 0x0A00      VLDR     S0,[R0, #0]
+   \       0xE8   0xEEB8 0x0AC0      VCVT.F32.S32 S0,S0
+   \       0xEC   0xED86 0x0A27      VSTR     S0,[R6, #+156]
+     35            }
+     36            angleToScreenValidTmpLast = angleToScreenValidTmp;
+   \                     ??update_8: (+1)
+   \       0xF0   0xF896 0x0098      LDRB     R0,[R6, #+152]
+   \       0xF4   0xF886 0x0099      STRB     R0,[R6, #+153]
+     37            
+     38            if(t - angleToScreenValidTime == 10)
+   \       0xF8   0x....             LDR.N    R5,??DataTable1_4
+   \       0xFA   0xED95 0x0A00      VLDR     S0,[R5, #0]
+   \       0xFE   0xEEB8 0x0AC0      VCVT.F32.S32 S0,S0
+   \      0x102   0xEDD6 0x0A27      VLDR     S1,[R6, #+156]
+   \      0x106   0xEE30 0x0A60      VSUB.F32 S0,S0,S1
+   \      0x10A   0xEEF2 0x0A04      VMOV.F32 S1,#10.0
+   \      0x10E   0xEEB4 0x0A60      VCMP.F32 S0,S1
+   \      0x112   0xEEF1 0xFA10      FMSTAT   
+   \      0x116   0xD103             BNE.N    ??update_9
+     39            {
+     40              angleToScreen_CF = angleToScreen;
+   \      0x118   0xF8D6 0x008C      LDR      R0,[R6, #+140]
+   \      0x11C   0xF8C6 0x0094      STR      R0,[R6, #+148]
+     41            }
+     42            
+     43            if(angleToScreenValidTmp && t - angleToScreenValidTime > 100)
+   \                     ??update_9: (+1)
+   \      0x120   0xF896 0x0098      LDRB     R0,[R6, #+152]
+   \      0x124   0x2800             CMP      R0,#+0
+   \      0x126   0xD011             BEQ.N    ??update_10
+   \      0x128   0xED95 0x0A00      VLDR     S0,[R5, #0]
+   \      0x12C   0xEEB8 0x0AC0      VCVT.F32.S32 S0,S0
+   \      0x130   0xEDD6 0x0A27      VLDR     S1,[R6, #+156]
+   \      0x134   0xEE30 0x0A60      VSUB.F32 S0,S0,S1
+   \      0x138   0xEDDF 0x....      VLDR.W   S1,??DataTable1_5  ;; 0x42c80001
+   \      0x13C   0xEEB4 0x0A60      VCMP.F32 S0,S1
+   \      0x140   0xEEF1 0xFA10      FMSTAT   
+   \      0x144   0xDB02             BLT.N    ??update_10
+     44            {
+     45              angleToScreenValid = true;
+   \      0x146   0x2001             MOVS     R0,#+1
+   \      0x148   0xF886 0x009A      STRB     R0,[R6, #+154]
+     46            }
+     47            
+     48            if(!angleToScreenValid && angleToScreenValidLast)
+   \                     ??update_10: (+1)
+   \      0x14C   0xF896 0x009A      LDRB     R0,[R6, #+154]
+   \      0x150   0x2800             CMP      R0,#+0
+   \      0x152   0xD122             BNE.N    ??update_11
+   \      0x154   0xF896 0x009B      LDRB     R0,[R6, #+155]
+   \      0x158   0x2800             CMP      R0,#+0
+   \      0x15A   0xD01E             BEQ.N    ??update_11
+     49            {
+     50            //  angleZ.referance = yaw1;
+     51              angleZ.Kp0 = angleZ.Kp0 * 0.95 + 1800 * 0.05;
+   \      0x15C   0xED9F 0x....      VLDR.W   D8,??DataTable1_8
+   \      0x160   0x....             LDR.N    R7,??DataTable1_9
+   \      0x162   0x6AB8             LDR      R0,[R7, #+40]
+   \      0x164   0x.... 0x....      BL       __aeabi_f2d
+   \      0x168   0xEC53 0x2B18      VMOV     R2,R3,D8
+   \      0x16C   0x.... 0x....      BL       __aeabi_dmul
+   \      0x170   0x2200             MOVS     R2,#+0
+   \      0x172   0x....             LDR.N    R3,??DataTable1_6  ;; 0x40568000
+   \      0x174   0x.... 0x....      BL       __aeabi_dadd
+   \      0x178   0x.... 0x....      BL       __aeabi_d2f
+   \      0x17C   0x62B8             STR      R0,[R7, #+40]
+     52              angleZ.Kd0 = angleZ.Kd0 * 0.95 + 200 * 0.05;
+   \      0x17E   0x6B38             LDR      R0,[R7, #+48]
+   \      0x180   0x.... 0x....      BL       __aeabi_f2d
+   \      0x184   0xEC53 0x2B18      VMOV     R2,R3,D8
+   \      0x188   0x.... 0x....      BL       __aeabi_dmul
+   \      0x18C   0x2200             MOVS     R2,#+0
+   \      0x18E   0x....             LDR.N    R3,??DataTable1_7  ;; 0x40240000
+   \      0x190   0x.... 0x....      BL       __aeabi_dadd
+   \      0x194   0x.... 0x....      BL       __aeabi_d2f
+   \      0x198   0x6338             STR      R0,[R7, #+48]
+     53            }
+     54            if(angleToScreenValid && !angleToScreenValidLast)
+   \                     ??update_11: (+1)
+   \      0x19A   0xF896 0x009A      LDRB     R0,[R6, #+154]
+   \      0x19E   0x2800             CMP      R0,#+0
+   \      0x1A0   0xD022             BEQ.N    ??update_12
+   \      0x1A2   0xF896 0x009B      LDRB     R0,[R6, #+155]
+   \      0x1A6   0x2800             CMP      R0,#+0
+   \      0x1A8   0xD11E             BNE.N    ??update_12
+     55            {
+     56              angleZ.Kp0 = angleZ.Kp0 * 0.95 + 5000 * 0.05;
+   \      0x1AA   0xED9F 0x....      VLDR.W   D8,??DataTable1_8
+   \      0x1AE   0x....             LDR.N    R7,??DataTable1_9
+   \      0x1B0   0x6AB8             LDR      R0,[R7, #+40]
+   \      0x1B2   0x.... 0x....      BL       __aeabi_f2d
+   \      0x1B6   0xEC53 0x2B18      VMOV     R2,R3,D8
+   \      0x1BA   0x.... 0x....      BL       __aeabi_dmul
+   \      0x1BE   0x2200             MOVS     R2,#+0
+   \      0x1C0   0x....             LDR.N    R3,??DataTable1_10  ;; 0x406f4000
+   \      0x1C2   0x.... 0x....      BL       __aeabi_dadd
+   \      0x1C6   0x.... 0x....      BL       __aeabi_d2f
+   \      0x1CA   0x62B8             STR      R0,[R7, #+40]
+     57              angleZ.Kd0 = angleZ.Kd0 * 0.95 + 400 * 0.05;
+   \      0x1CC   0x6B38             LDR      R0,[R7, #+48]
+   \      0x1CE   0x.... 0x....      BL       __aeabi_f2d
+   \      0x1D2   0xEC53 0x2B18      VMOV     R2,R3,D8
+   \      0x1D6   0x.... 0x....      BL       __aeabi_dmul
+   \      0x1DA   0x2200             MOVS     R2,#+0
+   \      0x1DC   0x....             LDR.N    R3,??DataTable1_11  ;; 0x40340000
+   \      0x1DE   0x.... 0x....      BL       __aeabi_dadd
+   \      0x1E2   0x.... 0x....      BL       __aeabi_d2f
+   \      0x1E6   0x6338             STR      R0,[R7, #+48]
+     58            }
+     59            angleToScreenValidLast = angleToScreenValid;
+   \                     ??update_12: (+1)
+   \      0x1E8   0xF896 0x009A      LDRB     R0,[R6, #+154]
+   \      0x1EC   0xF886 0x009B      STRB     R0,[R6, #+155]
+     60            
+     61            if(angleToScreenValidTmp)
+   \      0x1F0   0xF896 0x0098      LDRB     R0,[R6, #+152]
+   \      0x1F4   0x2800             CMP      R0,#+0
+   \      0x1F6   0xD05A             BEQ.N    ??update_13
+     62            {
+     63              angleToScreen = atan((UltrasoundUART->distance2 - UltrasoundUART->distance3) / 0.48f) * 57.296f;
+   \      0x1F8   0x6820             LDR      R0,[R4, #+0]
+   \      0x1FA   0xF600 0x4038      ADDW     R0,R0,#+3128
+   \      0x1FE   0x.... 0x....      BL       _ZN17CoordinateElementcvfEv
+   \      0x202   0xEEB0 0x8A40      VMOV.F32 S16,S0
+   \      0x206   0x6820             LDR      R0,[R4, #+0]
+   \      0x208   0xF600 0x4054      ADDW     R0,R0,#+3156
+   \      0x20C   0x.... 0x....      BL       _ZN17CoordinateElementcvfEv
+   \      0x210   0xEE38 0x0A40      VSUB.F32 S0,S16,S0
+   \      0x214   0xEDDF 0x....      VLDR.W   S1,??DataTable1_12  ;; 0x3ef5c28f
+   \      0x218   0xEE80 0x8A20      VDIV.F32 S16,S0,S1
+   \      0x21C   0xEEB0 0x0A48      VMOV.F32 S0,S16
+   \      0x220   0x.... 0x....      BL       atanf
+   \      0x224   0xEDDF 0x....      VLDR.W   S1,??DataTable1_13  ;; 0x42652f1b
+   \      0x228   0xEE20 0x0A20      VMUL.F32 S0,S0,S1
+   \      0x22C   0xED86 0x0A23      VSTR     S0,[R6, #+140]
+     64              angleFilter.setParameter((abs(MPU6000.gyro_z) * 90 + 800), 80);
+   \      0x230   0x....             LDR.N    R7,??DataTable1_14
+   \      0x232   0xEDD7 0x8A11      VLDR     S17,[R7, #+68]
+   \      0x236   0xEEF0 0x0AE8      VABS.F32 S1,S17
+   \      0x23A   0x2150             MOVS     R1,#+80
+   \      0x23C   0xED9F 0x....      VLDR.W   S2,??DataTable1_15  ;; 0x42b40000
+   \      0x240   0xED9F 0x....      VLDR.W   S0,??DataTable1_16  ;; 0x44480000
+   \      0x244   0xEE00 0x0A81      VMLA.F32 S0,S1,S2
+   \      0x248   0x0030             MOVS     R0,R6
+   \      0x24A   0x.... 0x....      BL       _ZN11CJumpFilter12setParameterEfi
+     65              angleToScreenJumpF = angleFilter.newData1(angleToScreen, t);
+   \      0x24E   0x6829             LDR      R1,[R5, #+0]
+   \      0x250   0xED96 0x0A23      VLDR     S0,[R6, #+140]
+   \      0x254   0x0030             MOVS     R0,R6
+   \      0x256   0x.... 0x....      BL       _ZN11CJumpFilter8newData1Efi
+   \      0x25A   0xED86 0x0A24      VSTR     S0,[R6, #+144]
+     66              angleToScreen_CF = (angleToScreen_CF + MPU6000.gyro_z * 0.002) * 0.995f + angleToScreenJumpF * 0.005;
+   \      0x25E   0xF8D6 0x0094      LDR      R0,[R6, #+148]
+   \      0x262   0x.... 0x....      BL       __aeabi_f2d
+   \      0x266   0x0004             MOVS     R4,R0
+   \      0x268   0x000D             MOVS     R5,R1
+   \      0x26A   0x6C78             LDR      R0,[R7, #+68]
+   \      0x26C   0x.... 0x....      BL       __aeabi_f2d
+   \      0x270   0x....             LDR.N    R2,??DataTable1_17  ;; 0xd2f1a9fc
+   \      0x272   0x....             LDR.N    R3,??DataTable1_18  ;; 0x3f60624d
+   \      0x274   0x.... 0x....      BL       __aeabi_dmul
+   \      0x278   0x0022             MOVS     R2,R4
+   \      0x27A   0x002B             MOVS     R3,R5
+   \      0x27C   0x.... 0x....      BL       __aeabi_dadd
+   \      0x280   0xF05F 0x4280      MOVS     R2,#+1073741824
+   \      0x284   0x....             LDR.N    R3,??DataTable1_19  ;; 0x3fefd70a
+   \      0x286   0x.... 0x....      BL       __aeabi_dmul
+   \      0x28A   0x0004             MOVS     R4,R0
+   \      0x28C   0x000D             MOVS     R5,R1
+   \      0x28E   0xF8D6 0x0090      LDR      R0,[R6, #+144]
+   \      0x292   0x.... 0x....      BL       __aeabi_f2d
+   \      0x296   0x....             LDR.N    R2,??DataTable1_20  ;; 0x47ae147b
+   \      0x298   0x....             LDR.N    R3,??DataTable1_21  ;; 0x3f747ae1
+   \      0x29A   0x.... 0x....      BL       __aeabi_dmul
+   \      0x29E   0x0022             MOVS     R2,R4
+   \      0x2A0   0x002B             MOVS     R3,R5
+   \      0x2A2   0x.... 0x....      BL       __aeabi_dadd
+   \      0x2A6   0x.... 0x....      BL       __aeabi_d2f
+   \      0x2AA   0xF8C6 0x0094      STR      R0,[R6, #+148]
+     67            }
+     68            if(angleToScreenValid)
+   \                     ??update_13: (+1)
+   \      0x2AE   0xF896 0x009A      LDRB     R0,[R6, #+154]
+   \      0x2B2   0x2800             CMP      R0,#+0
+   \      0x2B4   0xD008             BEQ.N    ??update_14
+     69            {
+     70              yawCompensation = angleToScreen_CF - yaw2;
+   \      0x2B6   0xED96 0x0A25      VLDR     S0,[R6, #+148]
+   \      0x2BA   0x....             LDR.N    R0,??DataTable1_22
+   \      0x2BC   0xEDD0 0x0A00      VLDR     S1,[R0, #0]
+   \      0x2C0   0xEE30 0x0A60      VSUB.F32 S0,S0,S1
+   \      0x2C4   0xED86 0x0A29      VSTR     S0,[R6, #+164]
+     71            }
+     72            yaw1 = yaw2 + yawCompensation;
+   \                     ??update_14: (+1)
+   \      0x2C8   0x....             LDR.N    R0,??DataTable1_22
+   \      0x2CA   0xED90 0x0A00      VLDR     S0,[R0, #0]
+   \      0x2CE   0xEDD6 0x0A29      VLDR     S1,[R6, #+164]
+   \      0x2D2   0xEE30 0x0A20      VADD.F32 S0,S0,S1
+   \      0x2D6   0x....             LDR.N    R0,??DataTable1_24
+   \      0x2D8   0xED80 0x0A00      VSTR     S0,[R0, #0]
+     73          }
+   \                     ??update_15: (+1)
+   \      0x2DC   0xECBD 0x8B02      VPOP     {D8}
+   \      0x2E0   0xBDF1             POP      {R0,R4-R7,PC}    ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1:
+   \        0x0   0x....'....        DC32     `Navigation_Init()::static guard for Navigation_0`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_1:
+   \        0x0   0x....'....        DC32     Navigation
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_2:
+   \        0x0   0x....'....        DC32     UltrasoundUART
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_3:
+   \        0x0   0x3E19'999A        DC32     0x3e19999a
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_4:
+   \        0x0   0x....'....        DC32     t
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_5:
+   \        0x0   0x42C8'0001        DC32     0x42c80001
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_6:
+   \        0x0   0x4056'8000        DC32     0x40568000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_7:
+   \        0x0   0x4024'0000        DC32     0x40240000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_8:
+   \        0x0   0x6666'6666        DC32     0x66666666,0x3FEE6666
+   \              0x3FEE'6666  
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_9:
+   \        0x0   0x....'....        DC32     angleZ
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_10:
+   \        0x0   0x406F'4000        DC32     0x406f4000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_11:
+   \        0x0   0x4034'0000        DC32     0x40340000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_12:
+   \        0x0   0x3EF5'C28F        DC32     0x3ef5c28f
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_13:
+   \        0x0   0x4265'2F1B        DC32     0x42652f1b
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_14:
+   \        0x0   0x....'....        DC32     MPU6000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_15:
+   \        0x0   0x42B4'0000        DC32     0x42b40000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_16:
+   \        0x0   0x4448'0000        DC32     0x44480000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_17:
+   \        0x0   0xD2F1'A9FC        DC32     0xd2f1a9fc
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_18:
+   \        0x0   0x3F60'624D        DC32     0x3f60624d
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_19:
+   \        0x0   0x3FEF'D70A        DC32     0x3fefd70a
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_20:
+   \        0x0   0x47AE'147B        DC32     0x47ae147b
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_21:
+   \        0x0   0x3F74'7AE1        DC32     0x3f747ae1
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_22:
+   \        0x0   0x....'....        DC32     yaw2
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_23:
+   \        0x0   0x....'....        DC32     `Navigation_Init()::Navigation_0`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_24:
+   \        0x0   0x....'....        DC32     yaw1
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   CJumpFilter::CJumpFilter()
+       8   CNavigation::CNavigation()
+         8   -> CJumpFilter::CJumpFilter()
+         8   -> Coordinate::Coordinate()
+      32   CNavigation::update()
+        32   -> CJumpFilter::newData1(float, int)
+        32   -> CJumpFilter::setParameter(float, int)
+        32   -> CoordinateElement::operator float()
+        32   -> __aeabi_d2f
+        32   -> __aeabi_dadd
+        32   -> __aeabi_dmul
+        32   -> __aeabi_f2d
+        32   -> atanf
+       8   Coordinate::Coordinate()
+         8   -> CoordinateElement::CoordinateElement()
+       0   CoordinateElement::CoordinateElement()
+       8   Navigation_Init()
+         8   -> CJumpFilter::setParameter(float, int)
+         8   -> CNavigation::CNavigation()
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable1
+       4  ??DataTable1_1
+       4  ??DataTable1_10
+       4  ??DataTable1_11
+       4  ??DataTable1_12
+       4  ??DataTable1_13
+       4  ??DataTable1_14
+       4  ??DataTable1_15
+       4  ??DataTable1_16
+       4  ??DataTable1_17
+       4  ??DataTable1_18
+       4  ??DataTable1_19
+       4  ??DataTable1_2
+       4  ??DataTable1_20
+       4  ??DataTable1_21
+       4  ??DataTable1_22
+       4  ??DataTable1_23
+       4  ??DataTable1_24
+       4  ??DataTable1_3
+       4  ??DataTable1_4
+       4  ??DataTable1_5
+       4  ??DataTable1_6
+       4  ??DataTable1_7
+       8  ??DataTable1_8
+       4  ??DataTable1_9
+      20  CJumpFilter::CJumpFilter()
+      22  CNavigation::CNavigation()
+     738  CNavigation::update()
+      30  Coordinate::Coordinate()
+      28  CoordinateElement::CoordinateElement()
+       4  Navigation
+     172  Navigation_0
+      52  Navigation_Init()
+      17  -- Other
+
+ 
+  16 bytes in section .ARM.exidx
+ 177 bytes in section .bss
+ 994 bytes in section .text
+ 
+ 894 bytes of CODE  memory (+ 100 bytes shared)
+  16 bytes of CONST memory
+ 177 bytes of DATA  memory
+
+Errors: none
+Warnings: none

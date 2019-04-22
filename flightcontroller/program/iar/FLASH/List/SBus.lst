@@ -1,0 +1,724 @@
+﻿###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM         30/Jul/2018  16:04:06
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\SBus.cpp
+#    Command line =  
+#        -f C:\Users\XSK199~1\AppData\Local\Temp\EW4B07.tmp
+#        (C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\SBus.cpp
+#        -D K60 -D USE_K60F15 -D ARM_MATH_CM4 -D __FPU_PRESENT=1 -D
+#        __FPU_USED=1 -lCN
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -lB
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -o
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
+#        D:\iar\arm\inc\c\DLib_Config_Full.h -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\Sensor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\CPU\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\option\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\driver\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\class\
+#        -On --c++ -I D:\iar\arm\CMSIS\Core\Include\ -I
+#        D:\iar\arm\CMSIS\DSP\Include\ -D ARM_MATH_CM4 --text_out utf8
+#        --utf8_text_in)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List\SBus.lst
+#    Object file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj\SBus.o
+#
+###############################################################################
+
+C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\SBus.cpp
+      1          #include "SBus.h"
+      2          
+
+   \                                 In section .bss, align 4
+      3          CSBus *SBus;
+   \                     SBus:
+   \        0x0                      DS8 4
+      4          
+
+   \                                 In section .text, align 2, keep-with-next
+      5          void SBus_Init()
+      6          {
+   \                     _Z9SBus_Initv: (+1)
+   \        0x0   0x.... 0x....      LDR.W    R1,??DataTable2
+   \        0x4   0x7808             LDRB     R0,[R1, #+0]
+   \        0x6   0x2800             CMP      R0,#+0
+   \        0x8   0xD101             BNE.N    ??SBus_Init_0
+      7            static CSBus SBus_static;
+   \        0xA   0x2001             MOVS     R0,#+1
+   \        0xC   0x7008             STRB     R0,[R1, #+0]
+      8            SBus = &SBus_static;
+   \                     ??SBus_Init_0: (+1)
+   \        0xE   0x.... 0x....      LDR.W    R0,??DataTable2_1
+   \       0x12   0x.... 0x....      LDR.W    R1,??DataTable2_6
+   \       0x16   0x6001             STR      R1,[R0, #+0]
+      9          //  SBus->DMA_CHn_Rx = DMA_CH8;
+     10            SBus->DMA_CHn_Rx = DMA_CH10;
+   \       0x18   0x210A             MOVS     R1,#+10
+   \       0x1A   0x6800             LDR      R0,[R0, #+0]
+   \       0x1C   0x7001             STRB     R1,[R0, #+0]
+     11          }
+   \       0x1E   0x4770             BX       LR               ;; return
+
+   \                                 In section .bss, align 4
+   \                     `SBus_Init()::SBus_static`:
+   \        0x0                      DS8 456
+     12          
+     13          
+
+   \                                 In section .text, align 2, keep-with-next
+     14          void CSBus::update()
+     15          {
+   \                     _ZN5CSBus6updateEv: (+1)
+   \        0x0   0xE92D 0x4FFE      PUSH     {R1-R11,LR}
+   \        0x4   0x0004             MOVS     R4,R0
+     16            int i = 0, i0 = 0, n;
+   \        0x6   0x2500             MOVS     R5,#+0
+   \        0x8   0x2600             MOVS     R6,#+0
+     17            int address0 = (DMA0->TCD[DMA_CHn_Rx].DADDR) - (uint32)(&uartData[0]);
+   \        0xA   0x.... 0x....      LDR.W    R7,??DataTable2_7  ;; 0x40009000
+   \        0xE   0x7820             LDRB     R0,[R4, #+0]
+   \       0x10   0x0140             LSLS     R0,R0,#+5
+   \       0x12   0x4438             ADD      R0,R7,R0
+   \       0x14   0x6900             LDR      R0,[R0, #+16]
+   \       0x16   0xF114 0x0801      ADDS     R8,R4,#+1
+   \       0x1A   0xEBB0 0x0808      SUBS     R8,R0,R8
+     18            int moveLength = 0;
+   \       0x1E   0xF05F 0x0900      MOVS     R9,#+0
+     19            const int packageLength = 25;
+   \       0x22   0x2019             MOVS     R0,#+25
+   \       0x24   0x9001             STR      R0,[SP, #+4]
+     20            convert_valid = false;
+   \       0x26   0x2000             MOVS     R0,#+0
+   \       0x28   0xF884 0x01C6      STRB     R0,[R4, #+454]
+     21            valid = true;
+   \       0x2C   0x2001             MOVS     R0,#+1
+   \       0x2E   0xF884 0x01C5      STRB     R0,[R4, #+453]
+     22            for(; i < address0; i++)
+   \                     ??update_0: (+1)
+   \       0x32   0x4545             CMP      R5,R8
+   \       0x34   0xDA17             BGE.N    ??update_1
+     23            {
+     24              for(;uartData[i] != 0x0F && i < address0;i++)
+   \                     ??update_2: (+1)
+   \       0x36   0xEB04 0x0005      ADD      R0,R4,R5
+   \       0x3A   0x7840             LDRB     R0,[R0, #+1]
+   \       0x3C   0x280F             CMP      R0,#+15
+   \       0x3E   0xD003             BEQ.N    ??update_3
+   \       0x40   0x4545             CMP      R5,R8
+   \       0x42   0xDA01             BGE.N    ??update_3
+   \       0x44   0x1C6D             ADDS     R5,R5,#+1
+   \       0x46   0xE7F6             B.N      ??update_2
+     25              {
+     26              }
+     27              
+     28              if(i - i0 < packageLength )
+   \                     ??update_3: (+1)
+   \       0x48   0x1BA8             SUBS     R0,R5,R6
+   \       0x4A   0x2819             CMP      R0,#+25
+   \       0x4C   0xDB09             BLT.N    ??update_4
+     29              {
+     30                continue;
+     31              } 
+     32              i0 = i; 
+   \                     ??update_5: (+1)
+   \       0x4E   0x002E             MOVS     R6,R5
+     33              int packageTop = i - packageLength ;
+   \       0x50   0xF1B5 0x0A19      SUBS     R10,R5,#+25
+     34              convert_valid = false;
+   \       0x54   0x2000             MOVS     R0,#+0
+   \       0x56   0xF884 0x01C6      STRB     R0,[R4, #+454]
+     35              sbus_convert(packageTop);
+   \       0x5A   0x4651             MOV      R1,R10
+   \       0x5C   0x0020             MOVS     R0,R4
+   \       0x5E   0x.... 0x....      BL       _ZN5CSBus12sbus_convertEj
+     36          
+     37            }
+   \                     ??update_4: (+1)
+   \       0x62   0x1C6D             ADDS     R5,R5,#+1
+   \       0x64   0xE7E5             B.N      ??update_0
+     38            
+     39           if(convert_valid)
+   \                     ??update_1: (+1)
+   \       0x66   0xF894 0x01C6      LDRB     R0,[R4, #+454]
+   \       0x6A   0x2800             CMP      R0,#+0
+   \       0x6C   0xD02D             BEQ.N    ??update_6
+     40            {  
+     41              moveLength = (DMA0->TCD[DMA_CHn_Rx].DADDR - (uint32)&uartData[0]) - i0 + 1;// - 1;
+   \       0x6E   0x7820             LDRB     R0,[R4, #+0]
+   \       0x70   0x0140             LSLS     R0,R0,#+5
+   \       0x72   0x4438             ADD      R0,R7,R0
+   \       0x74   0x6901             LDR      R1,[R0, #+16]
+   \       0x76   0x1C60             ADDS     R0,R4,#+1
+   \       0x78   0x1A09             SUBS     R1,R1,R0
+   \       0x7A   0x1B89             SUBS     R1,R1,R6
+   \       0x7C   0x1C49             ADDS     R1,R1,#+1
+   \       0x7E   0x4689             MOV      R9,R1
+     42              if(moveLength < 0) moveLength = 0;
+   \       0x80   0xF1B9 0x0F00      CMP      R9,#+0
+   \       0x84   0xD501             BPL.N    ??update_7
+   \       0x86   0x2000             MOVS     R0,#+0
+   \       0x88   0x4681             MOV      R9,R0
+     43               
+     44              DMA_LoadDstAddr(DMA_CHn_Rx, (uint32)&uartData[0] + moveLength);
+   \                     ??update_7: (+1)
+   \       0x8A   0x7820             LDRB     R0,[R4, #+0]
+   \       0x8C   0x0140             LSLS     R0,R0,#+5
+   \       0x8E   0x4438             ADD      R0,R7,R0
+   \       0x90   0x1C61             ADDS     R1,R4,#+1
+   \       0x92   0xEB19 0x0101      ADDS     R1,R9,R1
+   \       0x96   0x6101             STR      R1,[R0, #+16]
+     45              for(i = 0; i < moveLength; i++)
+   \       0x98   0x2000             MOVS     R0,#+0
+   \       0x9A   0x0005             MOVS     R5,R0
+   \                     ??update_8: (+1)
+   \       0x9C   0x454D             CMP      R5,R9
+   \       0x9E   0xDA07             BGE.N    ??update_9
+     46              {
+     47                uartData[i] = uartData[i0 + i];
+   \       0xA0   0x19A8             ADDS     R0,R5,R6
+   \       0xA2   0x4420             ADD      R0,R4,R0
+   \       0xA4   0x7840             LDRB     R0,[R0, #+1]
+   \       0xA6   0xEB04 0x0105      ADD      R1,R4,R5
+   \       0xAA   0x7048             STRB     R0,[R1, #+1]
+     48              }
+   \       0xAC   0x1C6D             ADDS     R5,R5,#+1
+   \       0xAE   0xE7F5             B.N      ??update_8
+     49              memset(uartData + moveLength, 1, 200 * sizeof(char));
+   \                     ??update_9: (+1)
+   \       0xB0   0x20C8             MOVS     R0,#+200
+   \       0xB2   0x9000             STR      R0,[SP, #+0]
+   \       0xB4   0xF05F 0x0A01      MOVS     R10,#+1
+   \       0xB8   0xEB04 0x0009      ADD      R0,R4,R9
+   \       0xBC   0xF110 0x0B01      ADDS     R11,R0,#+1
+   \       0xC0   0x4652             MOV      R2,R10
+   \       0xC2   0x9900             LDR      R1,[SP, #+0]
+   \       0xC4   0x4658             MOV      R0,R11
+   \       0xC6   0x.... 0x....      BL       __aeabi_memset
+     50            }
+     51            
+     52            if(address0 > 100)
+   \                     ??update_6: (+1)
+   \       0xCA   0xF1B8 0x0F65      CMP      R8,#+101
+   \       0xCE   0xDB04             BLT.N    ??update_10
+     53            {
+     54              DMA_LoadDstAddr(DMA_CHn_Rx, (uint32)&uartData[0]);
+   \       0xD0   0x7820             LDRB     R0,[R4, #+0]
+   \       0xD2   0x0140             LSLS     R0,R0,#+5
+   \       0xD4   0x4438             ADD      R0,R7,R0
+   \       0xD6   0x1C61             ADDS     R1,R4,#+1
+   \       0xD8   0x6101             STR      R1,[R0, #+16]
+     55            }
+     56            
+     57             
+     58            
+     59          }
+   \                     ??update_10: (+1)
+   \       0xDA   0xE8BD 0x8FF7      POP      {R0-R2,R4-R11,PC}  ;; return
+     60          
+     61          
+     62          
+     63          
+
+   \                                 In section .text, align 4, keep-with-next
+     64          unsigned char CSBus::sbus_convert(unsigned int start)
+     65          { 
+   \                     _ZN5CSBus12sbus_convertEj: (+1)
+   \        0x0   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+   \        0x4   0xED2D 0x8B02      VPUSH    {D8}
+   \        0x8   0x0005             MOVS     R5,R0
+   \        0xA   0x000C             MOVS     R4,R1
+     66              int i;
+     67              if ((uartData[start]==0x0F)&&(uartData[start+24]==0x00))
+   \        0xC   0xEB05 0x0004      ADD      R0,R5,R4
+   \       0x10   0x7840             LDRB     R0,[R0, #+1]
+   \       0x12   0x280F             CMP      R0,#+15
+   \       0x14   0xF040 0x8174      BNE.W    ??sbus_convert_0
+   \       0x18   0xEB05 0x0004      ADD      R0,R5,R4
+   \       0x1C   0x7E40             LDRB     R0,[R0, #+25]
+   \       0x1E   0x2800             CMP      R0,#+0
+   \       0x20   0xF040 0x816E      BNE.W    ??sbus_convert_0
+     68              {   
+     69                for (i=0; i<16; i++) 
+   \       0x24   0x2000             MOVS     R0,#+0
+   \                     ??sbus_convert_1: (+1)
+   \       0x26   0x2810             CMP      R0,#+16
+   \       0x28   0xDA06             BGE.N    ??sbus_convert_2
+     70                {
+     71                  channels[i] = 0;
+   \       0x2A   0x2100             MOVS     R1,#+0
+   \       0x2C   0xEB05 0x0280      ADD      R2,R5,R0, LSL #+2
+   \       0x30   0xF8C2 0x1130      STR      R1,[R2, #+304]
+     72                }
+   \       0x34   0x1C40             ADDS     R0,R0,#+1
+   \       0x36   0xE7F6             B.N      ??sbus_convert_1
+     73                byte_in_sbus = 1;
+   \                     ??sbus_convert_2: (+1)
+   \       0x38   0x2101             MOVS     R1,#+1
+   \       0x3A   0xF885 0x11C1      STRB     R1,[R5, #+449]
+     74                bit_in_sbus = 0;
+   \       0x3E   0x2100             MOVS     R1,#+0
+   \       0x40   0xF885 0x11C2      STRB     R1,[R5, #+450]
+     75                ch = 0;
+   \       0x44   0x2100             MOVS     R1,#+0
+   \       0x46   0xF885 0x11C3      STRB     R1,[R5, #+451]
+     76                bit_in_channel = 0;
+   \       0x4A   0x2100             MOVS     R1,#+0
+   \       0x4C   0xF885 0x11C4      STRB     R1,[R5, #+452]
+     77                
+     78                // process actual sbus data
+     79                for (i = 0; i < 176; i++) 
+   \       0x50   0x2600             MOVS     R6,#+0
+   \                     ??sbus_convert_3: (+1)
+   \       0x52   0x2EB0             CMP      R6,#+176
+   \       0x54   0xDA3F             BGE.N    ??sbus_convert_4
+     80                {
+     81                  if (uartData[start + byte_in_sbus] & (1<<bit_in_sbus)) 
+   \       0x56   0x2101             MOVS     R1,#+1
+   \       0x58   0xF895 0x01C1      LDRB     R0,[R5, #+449]
+   \       0x5C   0x1820             ADDS     R0,R4,R0
+   \       0x5E   0x4428             ADD      R0,R5,R0
+   \       0x60   0x7840             LDRB     R0,[R0, #+1]
+   \       0x62   0xF995 0x21C2      LDRSB    R2,[R5, #+450]
+   \       0x66   0xFA11 0xF202      LSLS     R2,R1,R2
+   \       0x6A   0x4210             TST      R0,R2
+   \       0x6C   0xD00F             BEQ.N    ??sbus_convert_5
+     82                  {
+     83                    channels[ch] |= (1<<bit_in_channel);
+   \       0x6E   0xF895 0x01C3      LDRB     R0,[R5, #+451]
+   \       0x72   0xEB05 0x0280      ADD      R2,R5,R0, LSL #+2
+   \       0x76   0xF895 0x01C3      LDRB     R0,[R5, #+451]
+   \       0x7A   0xEB05 0x0080      ADD      R0,R5,R0, LSL #+2
+   \       0x7E   0xF8D0 0x3130      LDR      R3,[R0, #+304]
+   \       0x82   0xF995 0x01C4      LDRSB    R0,[R5, #+452]
+   \       0x86   0x4081             LSLS     R1,R1,R0
+   \       0x88   0x4319             ORRS     R1,R1,R3
+   \       0x8A   0xF8C2 0x1130      STR      R1,[R2, #+304]
+     84                  }
+     85                  bit_in_sbus++;
+   \                     ??sbus_convert_5: (+1)
+   \       0x8E   0xF895 0x01C2      LDRB     R0,[R5, #+450]
+   \       0x92   0x1C40             ADDS     R0,R0,#+1
+   \       0x94   0xF885 0x01C2      STRB     R0,[R5, #+450]
+     86                  bit_in_channel++;
+   \       0x98   0xF895 0x01C4      LDRB     R0,[R5, #+452]
+   \       0x9C   0x1C40             ADDS     R0,R0,#+1
+   \       0x9E   0xF885 0x01C4      STRB     R0,[R5, #+452]
+     87          
+     88                  if (bit_in_sbus == 8) 
+   \       0xA2   0xF895 0x01C2      LDRB     R0,[R5, #+450]
+   \       0xA6   0x2808             CMP      R0,#+8
+   \       0xA8   0xD107             BNE.N    ??sbus_convert_6
+     89                  {
+     90                    bit_in_sbus =0;
+   \       0xAA   0x2000             MOVS     R0,#+0
+   \       0xAC   0xF885 0x01C2      STRB     R0,[R5, #+450]
+     91                    byte_in_sbus++;
+   \       0xB0   0xF895 0x01C1      LDRB     R0,[R5, #+449]
+   \       0xB4   0x1C40             ADDS     R0,R0,#+1
+   \       0xB6   0xF885 0x01C1      STRB     R0,[R5, #+449]
+     92                  }
+     93                  
+     94                  if (bit_in_channel == 11) 
+   \                     ??sbus_convert_6: (+1)
+   \       0xBA   0xF895 0x01C4      LDRB     R0,[R5, #+452]
+   \       0xBE   0x280B             CMP      R0,#+11
+   \       0xC0   0xD107             BNE.N    ??sbus_convert_7
+     95                  {
+     96                    bit_in_channel =0;
+   \       0xC2   0x2000             MOVS     R0,#+0
+   \       0xC4   0xF885 0x01C4      STRB     R0,[R5, #+452]
+     97                    ch++;
+   \       0xC8   0xF895 0x01C3      LDRB     R0,[R5, #+451]
+   \       0xCC   0x1C40             ADDS     R0,R0,#+1
+   \       0xCE   0xF885 0x01C3      STRB     R0,[R5, #+451]
+     98                  } 
+     99                }
+   \                     ??sbus_convert_7: (+1)
+   \       0xD2   0x1C76             ADDS     R6,R6,#+1
+   \       0xD4   0xE7BD             B.N      ??sbus_convert_3
+    100                
+    101                // DigiChannel 1
+    102                if (uartData[start+23] & (1<<0)) 
+   \                     ??sbus_convert_4: (+1)
+   \       0xD6   0xEB05 0x0004      ADD      R0,R5,R4
+   \       0xDA   0x7E00             LDRB     R0,[R0, #+24]
+   \       0xDC   0x07C0             LSLS     R0,R0,#+31
+   \       0xDE   0xD503             BPL.N    ??sbus_convert_8
+    103                {
+    104                  channels[16] = 1;
+   \       0xE0   0x2001             MOVS     R0,#+1
+   \       0xE2   0xF8C5 0x0170      STR      R0,[R5, #+368]
+   \       0xE6   0xE002             B.N      ??sbus_convert_9
+    105                }
+    106                else
+    107                {
+    108                  channels[16] = 0;
+   \                     ??sbus_convert_8: (+1)
+   \       0xE8   0x2000             MOVS     R0,#+0
+   \       0xEA   0xF8C5 0x0170      STR      R0,[R5, #+368]
+    109                }
+    110                
+    111                // DigiChannel 2
+    112                  if (uartData[start+23] & (1<<1)) 
+   \                     ??sbus_convert_9: (+1)
+   \       0xEE   0xEB05 0x0004      ADD      R0,R5,R4
+   \       0xF2   0x7E00             LDRB     R0,[R0, #+24]
+   \       0xF4   0x0780             LSLS     R0,R0,#+30
+   \       0xF6   0xD503             BPL.N    ??sbus_convert_10
+    113                  {
+    114                    channels[17] = 1;
+   \       0xF8   0x2001             MOVS     R0,#+1
+   \       0xFA   0xF8C5 0x0174      STR      R0,[R5, #+372]
+   \       0xFE   0xE002             B.N      ??sbus_convert_11
+    115                  }
+    116                  else
+    117                  {
+    118                    channels[17] = 0;
+   \                     ??sbus_convert_10: (+1)
+   \      0x100   0x2000             MOVS     R0,#+0
+   \      0x102   0xF8C5 0x0174      STR      R0,[R5, #+372]
+    119                  }
+    120                  
+    121                // check radio signal
+    122                failsafe_status = SBUS_SIGNAL_OK;
+   \                     ??sbus_convert_11: (+1)
+   \      0x106   0x2000             MOVS     R0,#+0
+   \      0x108   0xF885 0x01C0      STRB     R0,[R5, #+448]
+    123                
+    124                if (uartData[start+23] & (1<<2)) 
+   \      0x10C   0xEB05 0x0004      ADD      R0,R5,R4
+   \      0x110   0x7E00             LDRB     R0,[R0, #+24]
+   \      0x112   0x0740             LSLS     R0,R0,#+29
+   \      0x114   0xD502             BPL.N    ??sbus_convert_12
+    125                {
+    126                  failsafe_status = SBUS_SIGNAL_LOST;
+   \      0x116   0x2001             MOVS     R0,#+1
+   \      0x118   0xF885 0x01C0      STRB     R0,[R5, #+448]
+    127                }
+    128                
+    129                if (uartData[start+23] & (1<<3)) 
+   \                     ??sbus_convert_12: (+1)
+   \      0x11C   0xEB05 0x0004      ADD      R0,R5,R4
+   \      0x120   0x7E00             LDRB     R0,[R0, #+24]
+   \      0x122   0x0700             LSLS     R0,R0,#+28
+   \      0x124   0xD502             BPL.N    ??sbus_convert_13
+    130                {
+    131                  failsafe_status = SBUS_SIGNAL_FAILSAFE;
+   \      0x126   0x2002             MOVS     R0,#+2
+   \      0x128   0xF885 0x01C0      STRB     R0,[R5, #+448]
+    132                }
+    133                if(failsafe_status == SBUS_SIGNAL_OK)
+   \                     ??sbus_convert_13: (+1)
+   \      0x12C   0xF895 0x01C0      LDRB     R0,[R5, #+448]
+   \      0x130   0x2800             CMP      R0,#+0
+   \      0x132   0xF040 0x808B      BNE.W    ??sbus_convert_14
+    134                {
+    135                  convert_valid = true;
+   \      0x136   0x2001             MOVS     R0,#+1
+   \      0x138   0xF885 0x01C6      STRB     R0,[R5, #+454]
+    136                  int chl = 0;
+   \      0x13C   0xF05F 0x0800      MOVS     R8,#+0
+    137                  Sbus_Roll = (int16)(channels[chl]);
+   \      0x140   0xEB05 0x0088      ADD      R0,R5,R8, LSL #+2
+   \      0x144   0xF9B0 0x0130      LDRSH    R0,[R0, #+304]
+   \      0x148   0xF8C5 0x0188      STR      R0,[R5, #+392]
+    138                  chl += 1;
+   \      0x14C   0xF118 0x0801      ADDS     R8,R8,#+1
+    139                  Sbus_Pitch = (int16)(channels[chl]);
+   \      0x150   0xEB05 0x0088      ADD      R0,R5,R8, LSL #+2
+   \      0x154   0xF9B0 0x0130      LDRSH    R0,[R0, #+304]
+   \      0x158   0xF8C5 0x018C      STR      R0,[R5, #+396]
+    140                  chl += 1;
+   \      0x15C   0xF118 0x0801      ADDS     R8,R8,#+1
+    141                  Sbus_Throttle = (int16)(channels[chl]);
+   \      0x160   0xEB05 0x0088      ADD      R0,R5,R8, LSL #+2
+   \      0x164   0xF9B0 0x0130      LDRSH    R0,[R0, #+304]
+   \      0x168   0xF8C5 0x0180      STR      R0,[R5, #+384]
+    142                  chl += 1;
+   \      0x16C   0xF118 0x0801      ADDS     R8,R8,#+1
+    143                  Sbus_Yaw = (int16)(channels[chl]);
+   \      0x170   0xEB05 0x0088      ADD      R0,R5,R8, LSL #+2
+   \      0x174   0xF9B0 0x0130      LDRSH    R0,[R0, #+304]
+   \      0x178   0xF8C5 0x0184      STR      R0,[R5, #+388]
+    144                  chl += 1;
+   \      0x17C   0xF118 0x0801      ADDS     R8,R8,#+1
+    145                  Sbus_CSwitch = (int16)(channels[chl]);
+   \      0x180   0xEB05 0x0088      ADD      R0,R5,R8, LSL #+2
+   \      0x184   0xF9B0 0x0130      LDRSH    R0,[R0, #+304]
+   \      0x188   0xF8C5 0x0194      STR      R0,[R5, #+404]
+    146                  chl += 1;
+   \      0x18C   0xF118 0x0801      ADDS     R8,R8,#+1
+    147                  Sbus_Leftknob = (int16)(channels[chl]);
+   \      0x190   0xEB05 0x0088      ADD      R0,R5,R8, LSL #+2
+   \      0x194   0xF9B0 0x0130      LDRSH    R0,[R0, #+304]
+   \      0x198   0xF8C5 0x0190      STR      R0,[R5, #+400]
+    148                  Sbus_Leftknob =  Sbus_Leftknob*1200/1388 - 864.55;
+   \      0x19C   0xED9F 0x....      VLDR.W   D8,??DataTable2_2
+   \      0x1A0   0xF44F 0x6796      MOV      R7,#+1200
+   \      0x1A4   0xF8D5 0x0190      LDR      R0,[R5, #+400]
+   \      0x1A8   0x4378             MULS     R0,R7,R0
+   \      0x1AA   0xF240 0x516C      MOVW     R1,#+1388
+   \      0x1AE   0xFB90 0xF0F1      SDIV     R0,R0,R1
+   \      0x1B2   0x.... 0x....      BL       __aeabi_i2d
+   \      0x1B6   0xEC53 0x2B18      VMOV     R2,R3,D8
+   \      0x1BA   0x.... 0x....      BL       __aeabi_dadd
+   \      0x1BE   0x.... 0x....      BL       __aeabi_d2iz
+   \      0x1C2   0xF8C5 0x0190      STR      R0,[R5, #+400]
+    149                  chl += 1;
+   \      0x1C6   0xF118 0x0801      ADDS     R8,R8,#+1
+    150                  Sbus_BSwitch = (int16)(channels[chl]);
+   \      0x1CA   0xEB05 0x0088      ADD      R0,R5,R8, LSL #+2
+   \      0x1CE   0xF9B0 0x0130      LDRSH    R0,[R0, #+304]
+   \      0x1D2   0xF8C5 0x019C      STR      R0,[R5, #+412]
+    151                  chl += 1;
+   \      0x1D6   0xF118 0x0801      ADDS     R8,R8,#+1
+    152                  Sbus_Rightknob = (int16)(channels[chl]);
+   \      0x1DA   0xEB05 0x0088      ADD      R0,R5,R8, LSL #+2
+   \      0x1DE   0xF9B0 0x0130      LDRSH    R0,[R0, #+304]
+   \      0x1E2   0xF8C5 0x0198      STR      R0,[R5, #+408]
+    153                  Sbus_Rightknob =  Sbus_Rightknob*1200/1388 - 864.55;
+   \      0x1E6   0xF8D5 0x0198      LDR      R0,[R5, #+408]
+   \      0x1EA   0xFB07 0xF700      MUL      R7,R7,R0
+   \      0x1EE   0xF240 0x506C      MOVW     R0,#+1388
+   \      0x1F2   0xFB97 0xF0F0      SDIV     R0,R7,R0
+   \      0x1F6   0x.... 0x....      BL       __aeabi_i2d
+   \      0x1FA   0xEC53 0x2B18      VMOV     R2,R3,D8
+   \      0x1FE   0x.... 0x....      BL       __aeabi_dadd
+   \      0x202   0x.... 0x....      BL       __aeabi_d2iz
+   \      0x206   0xF8C5 0x0198      STR      R0,[R5, #+408]
+    154          
+    155                  Sbus_Throttle_old = Sbus_Throttle;
+   \      0x20A   0xF8D5 0x0180      LDR      R0,[R5, #+384]
+   \      0x20E   0xF8C5 0x01A0      STR      R0,[R5, #+416]
+    156                  Sbus_Yaw_old = Sbus_Yaw;
+   \      0x212   0xF8D5 0x0184      LDR      R0,[R5, #+388]
+   \      0x216   0xF8C5 0x01A4      STR      R0,[R5, #+420]
+    157                  Sbus_Roll_old = Sbus_Roll;
+   \      0x21A   0xF8D5 0x0188      LDR      R0,[R5, #+392]
+   \      0x21E   0xF8C5 0x01A8      STR      R0,[R5, #+424]
+    158                  Sbus_Pitch_old = Sbus_Pitch;
+   \      0x222   0xF8D5 0x018C      LDR      R0,[R5, #+396]
+   \      0x226   0xF8C5 0x01AC      STR      R0,[R5, #+428]
+    159                  Sbus_Leftknob_old = Sbus_Leftknob;
+   \      0x22A   0xF8D5 0x0190      LDR      R0,[R5, #+400]
+   \      0x22E   0xF8C5 0x01B0      STR      R0,[R5, #+432]
+    160                  Sbus_CSwitch_old = Sbus_CSwitch;
+   \      0x232   0xF8D5 0x0194      LDR      R0,[R5, #+404]
+   \      0x236   0xF8C5 0x01B4      STR      R0,[R5, #+436]
+    161                  Sbus_Rightknob_old = Sbus_Rightknob;
+   \      0x23A   0xF8D5 0x0198      LDR      R0,[R5, #+408]
+   \      0x23E   0xF8C5 0x01B8      STR      R0,[R5, #+440]
+    162                  Sbus_BSwitch_old = Sbus_BSwitch;
+   \      0x242   0xF8D5 0x019C      LDR      R0,[R5, #+412]
+   \      0x246   0xF8C5 0x01BC      STR      R0,[R5, #+444]
+   \      0x24A   0xE01F             B.N      ??sbus_convert_15
+    163                }
+    164                else
+    165                {
+    166                  Sbus_Throttle = Sbus_Throttle_old;
+   \                     ??sbus_convert_14: (+1)
+   \      0x24C   0xF8D5 0x01A0      LDR      R0,[R5, #+416]
+   \      0x250   0xF8C5 0x0180      STR      R0,[R5, #+384]
+    167                  Sbus_Yaw = Sbus_Yaw_old;
+   \      0x254   0xF8D5 0x01A4      LDR      R0,[R5, #+420]
+   \      0x258   0xF8C5 0x0184      STR      R0,[R5, #+388]
+    168                  Sbus_Roll = Sbus_Roll_old;
+   \      0x25C   0xF8D5 0x01A8      LDR      R0,[R5, #+424]
+   \      0x260   0xF8C5 0x0188      STR      R0,[R5, #+392]
+    169                  Sbus_Pitch = Sbus_Pitch_old;
+   \      0x264   0xF8D5 0x01AC      LDR      R0,[R5, #+428]
+   \      0x268   0xF8C5 0x018C      STR      R0,[R5, #+396]
+    170                  Sbus_Leftknob = Sbus_Leftknob_old;
+   \      0x26C   0xF8D5 0x01B0      LDR      R0,[R5, #+432]
+   \      0x270   0xF8C5 0x0190      STR      R0,[R5, #+400]
+    171                  Sbus_CSwitch = Sbus_CSwitch_old;
+   \      0x274   0xF8D5 0x01B4      LDR      R0,[R5, #+436]
+   \      0x278   0xF8C5 0x0194      STR      R0,[R5, #+404]
+    172                  Sbus_Rightknob = Sbus_Rightknob_old;
+   \      0x27C   0xF8D5 0x01B8      LDR      R0,[R5, #+440]
+   \      0x280   0xF8C5 0x0198      STR      R0,[R5, #+408]
+    173                  Sbus_BSwitch = Sbus_BSwitch_old;
+   \      0x284   0xF8D5 0x01BC      LDR      R0,[R5, #+444]
+   \      0x288   0xF8C5 0x019C      STR      R0,[R5, #+412]
+    174                }
+    175                
+    176            
+    177                EVB.Yaw       = (Sbus_Yaw - 997)*0.882; 
+   \                     ??sbus_convert_15: (+1)
+   \      0x28C   0x....             LDR.N    R7,??DataTable2_3
+   \      0x28E   0xF8D5 0x0184      LDR      R0,[R5, #+388]
+   \      0x292   0xF2A0 0x30E5      SUBW     R0,R0,#+997
+   \      0x296   0x.... 0x....      BL       __aeabi_i2d
+   \      0x29A   0x....             LDR.N    R2,??DataTable2_4  ;; 0x10624dd3
+   \      0x29C   0x....             LDR.N    R3,??DataTable2_5  ;; 0x3fec3958
+   \      0x29E   0x.... 0x....      BL       __aeabi_dmul
+   \      0x2A2   0x.... 0x....      BL       __aeabi_d2iz
+   \      0x2A6   0xF8C7 0x06F0      STR      R0,[R7, #+1776]
+    178                EVB.Roll      = (Sbus_Roll - 962)*0.29;
+   \      0x2AA   0xED9F 0x....      VLDR.W   D8,??DataTable2_8
+   \      0x2AE   0xF8D5 0x0188      LDR      R0,[R5, #+392]
+   \      0x2B2   0xF2A0 0x30C2      SUBW     R0,R0,#+962
+   \      0x2B6   0x.... 0x....      BL       __aeabi_i2d
+   \      0x2BA   0xEC53 0x2B18      VMOV     R2,R3,D8
+   \      0x2BE   0x.... 0x....      BL       __aeabi_dmul
+   \      0x2C2   0x.... 0x....      BL       __aeabi_d2iz
+   \      0x2C6   0xF8C7 0x06F4      STR      R0,[R7, #+1780]
+    179                EVB.Pitch     = -(Sbus_Pitch - 984)*0.29;
+   \      0x2CA   0xF8D5 0x018C      LDR      R0,[R5, #+396]
+   \      0x2CE   0xF5B0 0x7076      SUBS     R0,R0,#+984
+   \      0x2D2   0x4240             RSBS     R0,R0,#+0
+   \      0x2D4   0x.... 0x....      BL       __aeabi_i2d
+   \      0x2D8   0xEC53 0x2B18      VMOV     R2,R3,D8
+   \      0x2DC   0x.... 0x....      BL       __aeabi_dmul
+   \      0x2E0   0x.... 0x....      BL       __aeabi_d2iz
+   \      0x2E4   0xF8C7 0x06F8      STR      R0,[R7, #+1784]
+    180                EVB.ConstSpd  = Sbus_Throttle - 522;
+   \      0x2E8   0xF8D5 0x0180      LDR      R0,[R5, #+384]
+   \      0x2EC   0xF2A0 0x200A      SUBW     R0,R0,#+522
+   \      0x2F0   0xF8C7 0x06E8      STR      R0,[R7, #+1768]
+    181                EVB.LeftKnob  = Sbus_Leftknob;
+   \      0x2F4   0xF8D5 0x0190      LDR      R0,[R5, #+400]
+   \      0x2F8   0xF8C7 0x06FC      STR      R0,[R7, #+1788]
+    182               
+    183                return(0); 
+   \      0x2FC   0x2000             MOVS     R0,#+0
+   \      0x2FE   0xE000             B.N      ??sbus_convert_16
+    184                  
+    185                //last_m = m;
+    186              }
+    187              else
+    188              {
+    189                return(0xFF);
+   \                     ??sbus_convert_0: (+1)
+   \      0x300   0x20FF             MOVS     R0,#+255
+   \                     ??sbus_convert_16: (+1)
+   \      0x302   0xECBD 0x8B02      VPOP     {D8}
+   \      0x306   0xE8BD 0x81F0      POP      {R4-R8,PC}       ;; return
+    190              }
+    191           // }
+    192            
+    193          
+    194            
+    195            
+    196          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \        0x0   0x....'....        DC32     `SBus_Init()::static guard for SBus_static`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \        0x0   0x....'....        DC32     SBus
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_2:
+   \        0x0   0x6666'6666        DC32     0x66666666,0xC08B0466
+   \              0xC08B'0466  
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_3:
+   \        0x0   0x....'....        DC32     EVB
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_4:
+   \        0x0   0x1062'4DD3        DC32     0x10624dd3
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_5:
+   \        0x0   0x3FEC'3958        DC32     0x3fec3958
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_6:
+   \        0x0   0x....'....        DC32     `SBus_Init()::SBus_static`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_7:
+   \        0x0   0x4000'9000        DC32     0x40009000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_8:
+   \        0x0   0x28F5'C28F        DC32     0x28F5C28F,0x3FD28F5C
+   \              0x3FD2'8F5C  
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      32   CSBus::sbus_convert(unsigned int)
+        32   -> __aeabi_d2iz
+        32   -> __aeabi_dadd
+        32   -> __aeabi_dmul
+        32   -> __aeabi_i2d
+      48   CSBus::update()
+        48   -> CSBus::sbus_convert(unsigned int)
+        48   -> __aeabi_memset
+       0   SBus_Init()
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable2
+       4  ??DataTable2_1
+       8  ??DataTable2_2
+       4  ??DataTable2_3
+       4  ??DataTable2_4
+       4  ??DataTable2_5
+       4  ??DataTable2_6
+       4  ??DataTable2_7
+       8  ??DataTable2_8
+     778  CSBus::sbus_convert(unsigned int)
+     222  CSBus::update()
+       4  SBus
+      32  SBus_Init()
+     456  SBus_static
+       1  -- Other
+
+ 
+   461 bytes in section .bss
+ 1 076 bytes in section .text
+ 
+ 1 076 bytes of CODE memory
+   461 bytes of DATA memory
+
+Errors: none
+Warnings: 6

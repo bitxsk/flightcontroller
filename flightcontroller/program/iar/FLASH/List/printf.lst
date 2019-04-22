@@ -1,0 +1,1436 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM         31/Aug/2018  16:56:57
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\common\printf.c
+#    Command line =  
+#        -f C:\Users\XSK199~1\AppData\Local\Temp\EW7E10.tmp
+#        (C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\common\printf.c
+#        -D K60 -D USE_K60F15 -D ARM_MATH_CM4 -D __FPU_PRESENT=1 -D
+#        __FPU_USED=1 -lCN
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -lB
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -o
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
+#        D:\iar\arm\inc\c\DLib_Config_Full.h -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\Sensor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\CPU\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\option\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\driver\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\class\
+#        -On --c++ -I D:\iar\arm\CMSIS\Core\Include\ -I
+#        D:\iar\arm\CMSIS\DSP\Include\ -D ARM_MATH_CM4)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List\printf.lst
+#    Object file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj\printf.o
+#
+###############################################################################
+
+C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\common\printf.c
+      1          /**
+      2           * @file printf.c
+      3           * @version 3.0[By LPLD]
+      4           * @date 2013-06-18
+      5           * @brief C库标准printf()函数
+      6           *
+      7           * 更改建议:不建议修改
+      8           *
+      9           * 版权所有:北京拉普兰德电子技术有限公司
+     10           * http://www.lpld.cn
+     11           * mail:support@lpld.cn
+     12           *
+     13           * @par
+     14           * 本代码由拉普兰德[LPLD]开发并维护，并向所有使用者开放源代码。
+     15           * 开发者可以随意修使用或改源代码。但本段及以上注释应予以保留。
+     16           * 不得更改或删除原版权所有者姓名，二次开发者可以加注二次版权所有者。
+     17           * 但应在遵守此协议的基础上，开放源代码、不得出售代码本身。
+     18           * 拉普兰德不负责由于使用本代码所带来的任何事故、法律责任或相关不良影响。
+     19           * 拉普兰德无义务解释、说明本代码的具体原理、功能、实现方法。
+     20           * 除非拉普兰德[LPLD]授权，开发者不得将本代码用于商业产品。
+     21           */
+     22          
+     23          #include "common.h"
+     24          #include <stdarg.h>
+     25          #include <string.h>
+     26          
+     27          /********************************************************************/
+     28          
+     29          typedef struct
+     30          {
+     31              int32 dest;
+     32              void (*func)(char);
+     33              char *loc;
+     34          } PRINTK_INFO;
+     35          
+     36          int32 
+     37          printk (PRINTK_INFO *, const char *, va_list);
+     38          
+     39          /********************************************************************/
+     40          
+     41          #define DEST_CONSOLE    (1)
+     42          #define DEST_STRING     (2)
+     43          
+     44          #define FLAGS_MINUS     (0x01)
+     45          #define FLAGS_PLUS      (0x02)
+     46          #define FLAGS_SPACE     (0x04)
+     47          #define FLAGS_ZERO      (0x08)
+     48          #define FLAGS_POUND     (0x10)
+     49          
+     50          #define IS_FLAG_MINUS(a)    (a & FLAGS_MINUS)
+     51          #define IS_FLAG_PLUS(a)     (a & FLAGS_PLUS)
+     52          #define IS_FLAG_SPACE(a)    (a & FLAGS_SPACE)
+     53          #define IS_FLAG_ZERO(a)     (a & FLAGS_ZERO)
+     54          #define IS_FLAG_POUND(a)    (a & FLAGS_POUND)
+     55          
+     56          #define LENMOD_h        (0x01)
+     57          #define LENMOD_l        (0x02)
+     58          #define LENMOD_L        (0x04)
+     59          
+     60          #define IS_LENMOD_h(a)  (a & LENMOD_h)
+     61          #define IS_LENMOD_l(a)  (a & LENMOD_l)
+     62          #define IS_LENMOD_L(a)  (a & LENMOD_L)
+     63          
+     64          #define FMT_d   (0x0001)
+     65          #define FMT_o   (0x0002)
+     66          #define FMT_x   (0x0004)
+     67          #define FMT_X   (0x0008)
+     68          #define FMT_u   (0x0010)
+     69          #define FMT_c   (0x0020)
+     70          #define FMT_s   (0x0040)
+     71          #define FMT_p   (0x0080)
+     72          #define FMT_n   (0x0100)
+     73          
+     74          #define IS_FMT_d(a)     (a & FMT_d)
+     75          #define IS_FMT_o(a)     (a & FMT_o)
+     76          #define IS_FMT_x(a)     (a & FMT_x)
+     77          #define IS_FMT_X(a)     (a & FMT_X)
+     78          #define IS_FMT_u(a)     (a & FMT_u)
+     79          #define IS_FMT_c(a)     (a & FMT_c)
+     80          #define IS_FMT_s(a)     (a & FMT_s)
+     81          #define IS_FMT_p(a)     (a & FMT_p)
+     82          #define IS_FMT_n(a)     (a & FMT_n)
+     83          
+     84          /********************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+     85          static void printk_putc (int32 c, int32 *count, PRINTK_INFO *info)
+     86          {
+   \                     _ZN29_INTERNAL_8_printf_c_e69a582711printk_putcEiPiP11PRINTK_INFO: (+1)
+   \        0x0   0xB570             PUSH     {R4-R6,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x0016             MOVS     R6,R2
+     87              switch (info->dest)
+   \        0x8   0x6830             LDR      R0,[R6, #+0]
+   \        0xA   0x2801             CMP      R0,#+1
+   \        0xC   0xD002             BEQ.N    ??printk_putc_0
+   \        0xE   0x2802             CMP      R0,#+2
+   \       0x10   0xD005             BEQ.N    ??printk_putc_1
+   \       0x12   0xE00A             B.N      ??printk_putc_2
+     88              {
+     89                  case DEST_CONSOLE:
+     90                      info->func((char)c);
+   \                     ??printk_putc_0: (+1)
+   \       0x14   0x0020             MOVS     R0,R4
+   \       0x16   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x18   0x6871             LDR      R1,[R6, #+4]
+   \       0x1A   0x4788             BLX      R1
+     91                      break;
+   \       0x1C   0xE005             B.N      ??printk_putc_3
+     92                  case DEST_STRING:
+     93                      *(info->loc) = (uint8)c;
+   \                     ??printk_putc_1: (+1)
+   \       0x1E   0x68B0             LDR      R0,[R6, #+8]
+   \       0x20   0x7004             STRB     R4,[R0, #+0]
+     94                      ++(info->loc);
+   \       0x22   0x68B0             LDR      R0,[R6, #+8]
+   \       0x24   0x1C40             ADDS     R0,R0,#+1
+   \       0x26   0x60B0             STR      R0,[R6, #+8]
+     95                      break;
+   \       0x28   0xE7FF             B.N      ??printk_putc_3
+     96                  default:
+     97                      break;
+     98              }
+     99              *count += 1;
+   \                     ??printk_putc_2: (+1)
+   \                     ??printk_putc_3: (+1)
+   \       0x2A   0x6828             LDR      R0,[R5, #+0]
+   \       0x2C   0x1C40             ADDS     R0,R0,#+1
+   \       0x2E   0x6028             STR      R0,[R5, #+0]
+    100          }
+   \                     ??printk_putc_4: (+1)
+   \       0x30   0xBD70             POP      {R4-R6,PC}       ;; return
+    101          
+    102          /********************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    103          static int32 printk_mknumstr (char *numstr, void *nump, int32 neg, int32 radix)
+    104          {
+   \                     _ZN29_INTERNAL_8_printf_c_e69a582715printk_mknumstrEPcPvii: (+1)
+   \        0x0   0xE92D 0x47F0      PUSH     {R4-R10,LR}
+   \        0x4   0x0006             MOVS     R6,R0
+   \        0x6   0x000D             MOVS     R5,R1
+   \        0x8   0x0014             MOVS     R4,R2
+    105              int32 a,b,c;
+    106              uint32 ua,ub,uc;
+    107          
+    108              int32 nlen;
+    109              char *nstrp;
+    110          
+    111              nlen = 0;
+   \        0xA   0x2000             MOVS     R0,#+0
+    112              nstrp = numstr;
+   \        0xC   0x46B1             MOV      R9,R6
+    113              *nstrp++ = '\0';
+   \        0xE   0xF05F 0x0A00      MOVS     R10,#+0
+   \       0x12   0xF889 0xA000      STRB     R10,[R9, #+0]
+   \       0x16   0xF119 0x0901      ADDS     R9,R9,#+1
+    114          
+    115              if (neg)
+   \       0x1A   0x2C00             CMP      R4,#+0
+   \       0x1C   0xD024             BEQ.N    ??printk_mknumstr_0
+    116              {
+    117                  a = *(int32 *)nump;
+   \       0x1E   0xF8D5 0xA000      LDR      R10,[R5, #+0]
+   \       0x22   0x4651             MOV      R1,R10
+    118                  if (a == 0)
+   \       0x24   0x2900             CMP      R1,#+0
+   \       0x26   0xD105             BNE.N    ??printk_mknumstr_1
+    119                  {
+    120                      *nstrp = '0';
+   \       0x28   0xF05F 0x0A30      MOVS     R10,#+48
+   \       0x2C   0xF889 0xA000      STRB     R10,[R9, #+0]
+    121                      ++nlen;
+   \       0x30   0x1C40             ADDS     R0,R0,#+1
+    122                      goto done;
+   \       0x32   0xE03C             B.N      ??printk_mknumstr_2
+    123                  }
+    124                  while (a != 0)
+   \                     ??printk_mknumstr_1: (+1)
+   \       0x34   0x2900             CMP      R1,#+0
+   \       0x36   0xD03A             BEQ.N    ??printk_mknumstr_2
+    125                  {
+    126                      b = (int32)a / (int32)radix;
+   \       0x38   0xFB91 0xFAF3      SDIV     R10,R1,R3
+   \       0x3C   0x4657             MOV      R7,R10
+    127                      c = (int32)a - ((int32)b * (int32)radix);
+   \       0x3E   0xFB03 0x1A17      MLS      R10,R3,R7,R1
+    128                      if (c < 0)
+   \       0x42   0xF1BA 0x0F00      CMP      R10,#+0
+   \       0x46   0xD505             BPL.N    ??printk_mknumstr_3
+    129                      {
+    130                          c = ~c + 1 + '0';
+   \       0x48   0x46D0             MOV      R8,R10
+   \       0x4A   0xEA7F 0x0808      MVNS     R8,R8
+   \       0x4E   0xF118 0x0831      ADDS     R8,R8,#+49
+   \       0x52   0xE002             B.N      ??printk_mknumstr_4
+    131                      }
+    132                      else
+    133                      {
+    134                          c = c + '0';
+   \                     ??printk_mknumstr_3: (+1)
+   \       0x54   0x46D0             MOV      R8,R10
+   \       0x56   0xF118 0x0830      ADDS     R8,R8,#+48
+    135                      }
+    136                      a = b;
+   \                     ??printk_mknumstr_4: (+1)
+   \       0x5A   0x0039             MOVS     R1,R7
+    137                      *nstrp++ = (char)c;
+   \       0x5C   0xF889 0x8000      STRB     R8,[R9, #+0]
+   \       0x60   0xF119 0x0901      ADDS     R9,R9,#+1
+    138                      ++nlen;
+   \       0x64   0x1C40             ADDS     R0,R0,#+1
+   \       0x66   0xE7E5             B.N      ??printk_mknumstr_1
+    139                  }
+    140              }
+    141              else
+    142              {
+    143                  ua = *(uint32 *)nump;
+   \                     ??printk_mknumstr_0: (+1)
+   \       0x68   0xF8D5 0xA000      LDR      R10,[R5, #+0]
+   \       0x6C   0x4652             MOV      R2,R10
+    144                  if (ua == 0)
+   \       0x6E   0x2A00             CMP      R2,#+0
+   \       0x70   0xD105             BNE.N    ??printk_mknumstr_5
+    145                  {
+    146                      *nstrp = '0';
+   \       0x72   0xF05F 0x0A30      MOVS     R10,#+48
+   \       0x76   0xF889 0xA000      STRB     R10,[R9, #+0]
+    147                      ++nlen;
+   \       0x7A   0x1C40             ADDS     R0,R0,#+1
+    148                      goto done;
+   \       0x7C   0xE017             B.N      ??printk_mknumstr_2
+    149                  }
+    150                  while (ua != 0)
+   \                     ??printk_mknumstr_5: (+1)
+   \       0x7E   0x2A00             CMP      R2,#+0
+   \       0x80   0xD015             BEQ.N    ??printk_mknumstr_2
+    151                  {
+    152                      ub = (uint32)ua / (uint32)radix;
+   \       0x82   0xFBB2 0xFAF3      UDIV     R10,R2,R3
+   \       0x86   0x46D4             MOV      R12,R10
+    153                      uc = (uint32)ua - ((uint32)ub * (uint32)radix);
+   \       0x88   0xFB03 0x2A1C      MLS      R10,R3,R12,R2
+    154                      if (uc < 10)
+   \       0x8C   0xF1BA 0x0F0A      CMP      R10,#+10
+   \       0x90   0xD203             BCS.N    ??printk_mknumstr_6
+    155                      {
+    156                          uc = uc + '0';
+   \       0x92   0x46D6             MOV      LR,R10
+   \       0x94   0xF11E 0x0E30      ADDS     LR,LR,#+48
+   \       0x98   0xE002             B.N      ??printk_mknumstr_7
+    157                      }
+    158                      else
+    159                      {
+    160                          uc = uc - 10 + 'A';
+   \                     ??printk_mknumstr_6: (+1)
+   \       0x9A   0x46D6             MOV      LR,R10
+   \       0x9C   0xF11E 0x0E37      ADDS     LR,LR,#+55
+    161                      }
+    162                      ua = ub;
+   \                     ??printk_mknumstr_7: (+1)
+   \       0xA0   0x4662             MOV      R2,R12
+    163                      *nstrp++ = (char)uc;
+   \       0xA2   0xF889 0xE000      STRB     LR,[R9, #+0]
+   \       0xA6   0xF119 0x0901      ADDS     R9,R9,#+1
+    164                      ++nlen;
+   \       0xAA   0x1C40             ADDS     R0,R0,#+1
+   \       0xAC   0xE7E7             B.N      ??printk_mknumstr_5
+    165                  }
+    166              }
+    167              done:
+    168              return nlen;
+   \                     ??printk_mknumstr_2: (+1)
+   \       0xAE   0xE8BD 0x87F0      POP      {R4-R10,PC}      ;; return
+    169          }
+    170          
+    171          /********************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    172          static void printk_pad_zero (int32 curlen, int32 field_width, int32 *count, PRINTK_INFO *info)
+    173          {
+   \                     _ZN29_INTERNAL_8_printf_c_e69a582715printk_pad_zeroEiiPiP11PRINTK_INFO: (+1)
+   \        0x0   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+   \        0x4   0x0004             MOVS     R4,R0
+   \        0x6   0x000D             MOVS     R5,R1
+   \        0x8   0x0016             MOVS     R6,R2
+   \        0xA   0x001F             MOVS     R7,R3
+    174              int32 i;
+    175          
+    176              for (i = curlen; i < field_width; i++)
+   \        0xC   0x46A0             MOV      R8,R4
+   \                     ??printk_pad_zero_0: (+1)
+   \        0xE   0x45A8             CMP      R8,R5
+   \       0x10   0xDA07             BGE.N    ??printk_pad_zero_1
+    177              {
+    178                  printk_putc('0',count, info);
+   \       0x12   0x003A             MOVS     R2,R7
+   \       0x14   0x0031             MOVS     R1,R6
+   \       0x16   0x2030             MOVS     R0,#+48
+   \       0x18   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582711printk_putcEiPiP11PRINTK_INFO
+    179              }
+   \       0x1C   0xF118 0x0801      ADDS     R8,R8,#+1
+   \       0x20   0xE7F5             B.N      ??printk_pad_zero_0
+    180          }
+   \                     ??printk_pad_zero_1: (+1)
+   \                     ??printk_pad_zero_2: (+1)
+   \       0x22   0xE8BD 0x81F0      POP      {R4-R8,PC}       ;; return
+    181          
+    182          /********************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    183          static void
+    184          printk_pad_space (int32 curlen, int32 field_width, int32 *count, PRINTK_INFO *info)
+    185          {
+   \                     _ZN29_INTERNAL_8_printf_c_e69a582716printk_pad_spaceEiiPiP11PRINTK_INFO: (+1)
+   \        0x0   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+   \        0x4   0x0004             MOVS     R4,R0
+   \        0x6   0x000D             MOVS     R5,R1
+   \        0x8   0x0016             MOVS     R6,R2
+   \        0xA   0x001F             MOVS     R7,R3
+    186              int32 i;
+    187          
+    188              for (i = curlen; i < field_width; i++)
+   \        0xC   0x46A0             MOV      R8,R4
+   \                     ??printk_pad_space_0: (+1)
+   \        0xE   0x45A8             CMP      R8,R5
+   \       0x10   0xDA07             BGE.N    ??printk_pad_space_1
+    189              {
+    190                  printk_putc(' ',count, info);
+   \       0x12   0x003A             MOVS     R2,R7
+   \       0x14   0x0031             MOVS     R1,R6
+   \       0x16   0x2020             MOVS     R0,#+32
+   \       0x18   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582711printk_putcEiPiP11PRINTK_INFO
+    191              }
+   \       0x1C   0xF118 0x0801      ADDS     R8,R8,#+1
+   \       0x20   0xE7F5             B.N      ??printk_pad_space_0
+    192          }
+   \                     ??printk_pad_space_1: (+1)
+   \                     ??printk_pad_space_2: (+1)
+   \       0x22   0xE8BD 0x81F0      POP      {R4-R8,PC}       ;; return
+    193          
+    194          /********************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    195          int32 printk (PRINTK_INFO *info, const char *fmt, va_list ap)
+    196          {
+   \                     _Z6printkP11PRINTK_INFOPKc9__va_list: (+1)
+   \        0x0   0xE92D 0x4FF2      PUSH     {R1,R4-R11,LR}
+   \        0x4   0xB092             SUB      SP,SP,#+72
+   \        0x6   0x0005             MOVS     R5,R0
+   \        0x8   0x4693             MOV      R11,R2
+    197              /* va_list ap; */
+    198              char *p;
+    199              int32 c;
+    200          
+    201              char vstr[33];
+    202              char *vstrp;
+    203              int32 vlen;
+    204          
+    205              int32 done;
+    206              int32 count = 0;
+   \        0xA   0x2000             MOVS     R0,#+0
+   \        0xC   0x9000             STR      R0,[SP, #+0]
+    207          
+    208              int32 flags_used;
+    209              int32 field_width;
+    210          #if 0
+    211              int32 precision_used;
+    212              int32 precision_width;
+    213              int32 length_modifier;
+    214          #endif
+    215          
+    216              int32 ival;
+    217              int32 schar, dschar;
+    218              int32 *ivalp;
+    219              char *sval;
+    220              int32 cval;
+    221              uint32 uval;
+    222          
+    223              /*
+    224               * Start parsing apart the format string and display appropriate
+    225               * formats and data.
+    226               */
+    227              for (p = (char *)fmt; (c = *p) != 0; p++)
+   \        0xE   0xF8DD 0x8048      LDR      R8,[SP, #+72]
+   \                     ??printk_0: (+1)
+   \       0x12   0xF898 0x0000      LDRB     R0,[R8, #+0]
+   \       0x16   0x9001             STR      R0,[SP, #+4]
+   \       0x18   0x9801             LDR      R0,[SP, #+4]
+   \       0x1A   0x2800             CMP      R0,#+0
+   \       0x1C   0xF000 0x81F2      BEQ.W    ??printk_1
+    228              {
+    229                  /*
+    230                   * All formats begin with a '%' marker.  Special chars like
+    231                   * '\n' or '\t' are normally converted to the appropriate
+    232                   * character by the __compiler__.  Thus, no need for this
+    233                   * routine to account for the '\' character.
+    234                   */
+    235                  if (c != '%')
+   \       0x20   0x9801             LDR      R0,[SP, #+4]
+   \       0x22   0x2825             CMP      R0,#+37
+   \       0x24   0xD013             BEQ.N    ??printk_2
+    236                  {
+    237                      /*
+    238                       * This needs to be replaced with something like
+    239                       * 'out_char()' or call an OS routine.
+    240                       */
+    241          #ifndef UNIX_DEBUG
+    242                      if (c != '\n')
+   \       0x26   0x9801             LDR      R0,[SP, #+4]
+   \       0x28   0x280A             CMP      R0,#+10
+   \       0x2A   0xD005             BEQ.N    ??printk_3
+    243                      {
+    244                          printk_putc(c, &count, info);
+   \       0x2C   0x002A             MOVS     R2,R5
+   \       0x2E   0x4669             MOV      R1,SP
+   \       0x30   0x9801             LDR      R0,[SP, #+4]
+   \       0x32   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582711printk_putcEiPiP11PRINTK_INFO
+   \       0x36   0xE009             B.N      ??printk_4
+    245                      }
+    246                      else
+    247                      {
+    248                          printk_putc(0x0D /* CR */, &count, info);
+   \                     ??printk_3: (+1)
+   \       0x38   0x002A             MOVS     R2,R5
+   \       0x3A   0x4669             MOV      R1,SP
+   \       0x3C   0x200D             MOVS     R0,#+13
+   \       0x3E   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582711printk_putcEiPiP11PRINTK_INFO
+    249                          printk_putc(0x0A /* LF */, &count, info);
+   \       0x42   0x002A             MOVS     R2,R5
+   \       0x44   0x4669             MOV      R1,SP
+   \       0x46   0x200A             MOVS     R0,#+10
+   \       0x48   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582711printk_putcEiPiP11PRINTK_INFO
+    250                      }
+    251          #else
+    252                      printk_putc(c, &count, info);
+    253          #endif
+    254          
+    255                      /*
+    256                       * By using 'continue', the next iteration of the loop
+    257                       * is used, skipping the code that follows.
+    258                       */
+    259                      continue;
+   \                     ??printk_4: (+1)
+   \       0x4C   0xE1D7             B.N      ??printk_5
+    260                  }
+    261          
+    262                  /*
+    263                   * First check for specification modifier flags.
+    264                   */
+    265                  flags_used = 0;
+   \                     ??printk_2: (+1)
+   \       0x4E   0x2000             MOVS     R0,#+0
+   \       0x50   0x0006             MOVS     R6,R0
+    266                  done = FALSE;
+   \       0x52   0x2000             MOVS     R0,#+0
+    267                  while (!done)
+   \                     ??printk_6: (+1)
+   \       0x54   0x2800             CMP      R0,#+0
+   \       0x56   0xD122             BNE.N    ??printk_7
+    268                  {
+    269                      switch (/* c = */ *++p)
+   \       0x58   0xF118 0x0801      ADDS     R8,R8,#+1
+   \       0x5C   0xF898 0x1000      LDRB     R1,[R8, #+0]
+   \       0x60   0x2920             CMP      R1,#+32
+   \       0x62   0xD00E             BEQ.N    ??printk_8
+   \       0x64   0x2923             CMP      R1,#+35
+   \       0x66   0xD012             BEQ.N    ??printk_9
+   \       0x68   0x292B             CMP      R1,#+43
+   \       0x6A   0xD007             BEQ.N    ??printk_10
+   \       0x6C   0x292D             CMP      R1,#+45
+   \       0x6E   0xD002             BEQ.N    ??printk_11
+   \       0x70   0x2930             CMP      R1,#+48
+   \       0x72   0xD009             BEQ.N    ??printk_12
+   \       0x74   0xE00E             B.N      ??printk_13
+    270                      {
+    271                          case '-':
+    272                              flags_used |= FLAGS_MINUS;
+   \                     ??printk_11: (+1)
+   \       0x76   0xF056 0x0601      ORRS     R6,R6,#0x1
+    273                              break;
+   \       0x7A   0xE7EB             B.N      ??printk_6
+    274                          case '+':
+    275                              flags_used |= FLAGS_PLUS;
+   \                     ??printk_10: (+1)
+   \       0x7C   0xF056 0x0602      ORRS     R6,R6,#0x2
+    276                              break;
+   \       0x80   0xE7E8             B.N      ??printk_6
+    277                          case ' ':
+    278                              flags_used |= FLAGS_SPACE;
+   \                     ??printk_8: (+1)
+   \       0x82   0xF056 0x0604      ORRS     R6,R6,#0x4
+    279                              break;
+   \       0x86   0xE7E5             B.N      ??printk_6
+    280                          case '0':
+    281                              flags_used |= FLAGS_ZERO;
+   \                     ??printk_12: (+1)
+   \       0x88   0xF056 0x0608      ORRS     R6,R6,#0x8
+    282                              break;
+   \       0x8C   0xE7E2             B.N      ??printk_6
+    283                          case '#':
+    284                              flags_used |= FLAGS_POUND;
+   \                     ??printk_9: (+1)
+   \       0x8E   0xF056 0x0610      ORRS     R6,R6,#0x10
+    285                              break;
+   \       0x92   0xE7DF             B.N      ??printk_6
+    286                          default:
+    287                              /* we've gone one char too far */
+    288                              --p;
+   \                     ??printk_13: (+1)
+   \       0x94   0xF1B8 0x0801      SUBS     R8,R8,#+1
+    289                              done = TRUE;
+   \       0x98   0x2101             MOVS     R1,#+1
+   \       0x9A   0x0008             MOVS     R0,R1
+    290                              break;
+   \       0x9C   0xE7DA             B.N      ??printk_6
+    291                      }
+    292                  }
+    293          
+    294                  /*
+    295                   * Next check for minimum field width.
+    296                   */
+    297                  field_width = 0;
+   \                     ??printk_7: (+1)
+   \       0x9E   0x2100             MOVS     R1,#+0
+   \       0xA0   0x000F             MOVS     R7,R1
+    298                  done = FALSE;
+   \       0xA2   0x2100             MOVS     R1,#+0
+   \       0xA4   0x9105             STR      R1,[SP, #+20]
+    299                  while (!done)
+   \                     ??printk_14: (+1)
+   \       0xA6   0x9805             LDR      R0,[SP, #+20]
+   \       0xA8   0x2800             CMP      R0,#+0
+   \       0xAA   0xD113             BNE.N    ??printk_15
+    300                  {
+    301                      switch (c = *++p)
+   \       0xAC   0xF118 0x0801      ADDS     R8,R8,#+1
+   \       0xB0   0xF898 0x0000      LDRB     R0,[R8, #+0]
+   \       0xB4   0x9001             STR      R0,[SP, #+4]
+   \       0xB6   0x9801             LDR      R0,[SP, #+4]
+   \       0xB8   0x3830             SUBS     R0,R0,#+48
+   \       0xBA   0x2809             CMP      R0,#+9
+   \       0xBC   0xD805             BHI.N    ??printk_16
+    302                      {
+    303                          case '0':
+    304                          case '1':
+    305                          case '2':
+    306                          case '3':
+    307                          case '4':
+    308                          case '5':
+    309                          case '6':
+    310                          case '7':
+    311                          case '8':
+    312                          case '9':
+    313                              field_width = (field_width * 10) + (c - '0');
+   \                     ??printk_17: (+1)
+   \       0xBE   0x210A             MOVS     R1,#+10
+   \       0xC0   0x9801             LDR      R0,[SP, #+4]
+   \       0xC2   0xFB01 0x0707      MLA      R7,R1,R7,R0
+   \       0xC6   0x3F30             SUBS     R7,R7,#+48
+    314                              break;
+   \       0xC8   0xE7ED             B.N      ??printk_14
+    315                          default:
+    316                              /* we've gone one char too far */
+    317                              --p;
+   \                     ??printk_16: (+1)
+   \       0xCA   0xF1B8 0x0801      SUBS     R8,R8,#+1
+    318                              done = TRUE;
+   \       0xCE   0x2001             MOVS     R0,#+1
+   \       0xD0   0x9005             STR      R0,[SP, #+20]
+    319                              break;
+   \       0xD2   0xE7E8             B.N      ??printk_14
+    320                      }
+    321                  }
+    322          
+    323                  /*
+    324                   * Next check for the width and precision field separator.
+    325                   */
+    326                  if (/* (c = *++p) */ *++p == '.')
+   \                     ??printk_15: (+1)
+   \       0xD4   0xF118 0x0101      ADDS     R1,R8,#+1
+   \       0xD8   0x7808             LDRB     R0,[R1, #+0]
+   \       0xDA   0x282E             CMP      R0,#+46
+   \       0xDC   0xD10E             BNE.N    ??printk_18
+    327                  {
+    328                      /* precision_used = TRUE; */
+    329          
+    330                      /*
+    331                       * Must get precision field width, if present.
+    332                       */
+    333                      /* precision_width = 0; */
+    334                      done = FALSE;
+   \       0xDE   0x2000             MOVS     R0,#+0
+   \       0xE0   0x9005             STR      R0,[SP, #+20]
+    335                      while (!done)
+   \                     ??printk_19: (+1)
+   \       0xE2   0x9805             LDR      R0,[SP, #+20]
+   \       0xE4   0x2800             CMP      R0,#+0
+   \       0xE6   0xD10A             BNE.N    ??printk_20
+    336                      {
+    337                          switch (/* c = uncomment if used below */ *++p)
+   \       0xE8   0x1C49             ADDS     R1,R1,#+1
+   \       0xEA   0x7808             LDRB     R0,[R1, #+0]
+   \       0xEC   0x3830             SUBS     R0,R0,#+48
+   \       0xEE   0x2809             CMP      R0,#+9
+   \       0xF0   0xD800             BHI.N    ??printk_21
+    338                          {
+    339                              case '0':
+    340                              case '1':
+    341                              case '2':
+    342                              case '3':
+    343                              case '4':
+    344                              case '5':
+    345                              case '6':
+    346                              case '7':
+    347                              case '8':
+    348                              case '9':
+    349          #if 0
+    350                                  precision_width = (precision_width * 10) +
+    351                                      (c - '0');
+    352          #endif
+    353                                  break;
+   \                     ??printk_22: (+1)
+   \       0xF2   0xE7F6             B.N      ??printk_19
+    354                              default:
+    355                                  /* we've gone one char too far */
+    356                                  --p;
+   \                     ??printk_21: (+1)
+   \       0xF4   0x1E49             SUBS     R1,R1,#+1
+    357                                  done = TRUE;
+   \       0xF6   0x2001             MOVS     R0,#+1
+   \       0xF8   0x9005             STR      R0,[SP, #+20]
+    358                                  break;
+   \       0xFA   0xE7F2             B.N      ??printk_19
+    359                          }
+    360                      }
+    361                  }
+    362                  else
+    363                  {
+    364                      /* we've gone one char too far */
+    365                      --p;
+   \                     ??printk_18: (+1)
+   \       0xFC   0x1E49             SUBS     R1,R1,#+1
+    366          #if 0
+    367                      precision_used = FALSE;
+    368                      precision_width = 0;
+    369          #endif
+    370                  }
+    371          
+    372                  /*
+    373                   * Check for the length modifier.
+    374                   */
+    375                  /* length_modifier = 0; */
+    376                  switch (/* c = */ *++p)
+   \                     ??printk_20: (+1)
+   \       0xFE   0x1C48             ADDS     R0,R1,#+1
+   \      0x100   0x7801             LDRB     R1,[R0, #+0]
+   \      0x102   0x294C             CMP      R1,#+76
+   \      0x104   0xD006             BEQ.N    ??printk_23
+   \      0x106   0x2968             CMP      R1,#+104
+   \      0x108   0xD002             BEQ.N    ??printk_24
+   \      0x10A   0x296C             CMP      R1,#+108
+   \      0x10C   0xD001             BEQ.N    ??printk_25
+   \      0x10E   0xE002             B.N      ??printk_26
+    377                  {
+    378                      case 'h':
+    379                          /* length_modifier |= LENMOD_h; */
+    380                          break;
+   \                     ??printk_24: (+1)
+   \      0x110   0xE002             B.N      ??printk_27
+    381                      case 'l':
+    382                          /* length_modifier |= LENMOD_l; */
+    383                          break;
+   \                     ??printk_25: (+1)
+   \      0x112   0xE001             B.N      ??printk_27
+    384                      case 'L':
+    385                          /* length_modifier |= LENMOD_L; */
+    386                          break;
+   \                     ??printk_23: (+1)
+   \      0x114   0xE000             B.N      ??printk_27
+    387                      default:
+    388                          /* we've gone one char too far */
+    389                          --p;
+   \                     ??printk_26: (+1)
+   \      0x116   0x1E40             SUBS     R0,R0,#+1
+    390                          break;
+    391                  }
+    392          
+    393                  /*
+    394                   * Now we're ready to examine the format.
+    395                   */
+    396                  switch (c = *++p)
+   \                     ??printk_27: (+1)
+   \      0x118   0xF110 0x0801      ADDS     R8,R0,#+1
+   \      0x11C   0xF898 0x0000      LDRB     R0,[R8, #+0]
+   \      0x120   0x9001             STR      R0,[SP, #+4]
+   \      0x122   0x9801             LDR      R0,[SP, #+4]
+   \      0x124   0x2858             CMP      R0,#+88
+   \      0x126   0xD076             BEQ.N    ??printk_28
+   \      0x128   0x2862             CMP      R0,#+98
+   \      0x12A   0xF000 0x80D6      BEQ.W    ??printk_29
+   \      0x12E   0x2863             CMP      R0,#+99
+   \      0x130   0xF000 0x8124      BEQ.W    ??printk_30
+   \      0x134   0x2864             CMP      R0,#+100
+   \      0x136   0xD013             BEQ.N    ??printk_31
+   \      0x138   0x2869             CMP      R0,#+105
+   \      0x13A   0xD011             BEQ.N    ??printk_31
+   \      0x13C   0x286E             CMP      R0,#+110
+   \      0x13E   0xF000 0x8150      BEQ.W    ??printk_32
+   \      0x142   0x286F             CMP      R0,#+111
+   \      0x144   0xF000 0x80BC      BEQ.W    ??printk_33
+   \      0x148   0x2870             CMP      R0,#+112
+   \      0x14A   0xF000 0x80D3      BEQ.W    ??printk_34
+   \      0x14E   0x2873             CMP      R0,#+115
+   \      0x150   0xF000 0x8120      BEQ.W    ??printk_35
+   \      0x154   0x2875             CMP      R0,#+117
+   \      0x156   0xF000 0x80DA      BEQ.W    ??printk_36
+   \      0x15A   0x2878             CMP      R0,#+120
+   \      0x15C   0xD05B             BEQ.N    ??printk_28
+   \      0x15E   0xE149             B.N      ??printk_37
+    397                  {
+    398                      case 'd':
+    399                      case 'i':
+    400                          ival = (int32)va_arg(ap, int32);
+   \                     ??printk_31: (+1)
+   \      0x160   0xF8DB 0x0000      LDR      R0,[R11, #+0]
+   \      0x164   0xF11B 0x0B04      ADDS     R11,R11,#+4
+   \      0x168   0x9006             STR      R0,[SP, #+24]
+    401                          vlen = printk_mknumstr(vstr,&ival,TRUE,10);
+   \      0x16A   0x230A             MOVS     R3,#+10
+   \      0x16C   0x2201             MOVS     R2,#+1
+   \      0x16E   0xA906             ADD      R1,SP,#+24
+   \      0x170   0xA809             ADD      R0,SP,#+36
+   \      0x172   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582715printk_mknumstrEPcPvii
+   \      0x176   0x4681             MOV      R9,R0
+    402                          vstrp = &vstr[vlen];
+   \      0x178   0xA809             ADD      R0,SP,#+36
+   \      0x17A   0x4448             ADD      R0,R0,R9
+   \      0x17C   0x4682             MOV      R10,R0
+    403          
+    404                          if (ival < 0)
+   \      0x17E   0x9806             LDR      R0,[SP, #+24]
+   \      0x180   0x2800             CMP      R0,#+0
+   \      0x182   0xD504             BPL.N    ??printk_38
+    405                          {
+    406                              schar = '-';
+   \      0x184   0x202D             MOVS     R0,#+45
+   \      0x186   0x9003             STR      R0,[SP, #+12]
+    407                              ++vlen;
+   \      0x188   0xF119 0x0901      ADDS     R9,R9,#+1
+   \      0x18C   0xE00F             B.N      ??printk_39
+    408                          }
+    409                          else
+    410                          {
+    411                              if (IS_FLAG_PLUS(flags_used))
+   \                     ??printk_38: (+1)
+   \      0x18E   0x07B0             LSLS     R0,R6,#+30
+   \      0x190   0xD504             BPL.N    ??printk_40
+    412                              {
+    413                                  schar = '+';
+   \      0x192   0x202B             MOVS     R0,#+43
+   \      0x194   0x9003             STR      R0,[SP, #+12]
+    414                                  ++vlen;
+   \      0x196   0xF119 0x0901      ADDS     R9,R9,#+1
+   \      0x19A   0xE008             B.N      ??printk_39
+    415                              }
+    416                              else
+    417                              {
+    418                                  if (IS_FLAG_SPACE(flags_used))
+   \                     ??printk_40: (+1)
+   \      0x19C   0x0770             LSLS     R0,R6,#+29
+   \      0x19E   0xD504             BPL.N    ??printk_41
+    419                                  {
+    420                                      schar = ' ';
+   \      0x1A0   0x2020             MOVS     R0,#+32
+   \      0x1A2   0x9003             STR      R0,[SP, #+12]
+    421                                      ++vlen;
+   \      0x1A4   0xF119 0x0901      ADDS     R9,R9,#+1
+   \      0x1A8   0xE001             B.N      ??printk_39
+    422                                  }
+    423                                  else
+    424                                  {
+    425                                      schar = 0;
+   \                     ??printk_41: (+1)
+   \      0x1AA   0x2000             MOVS     R0,#+0
+   \      0x1AC   0x9003             STR      R0,[SP, #+12]
+    426                                  }
+    427                              }
+    428                          }
+    429                          dschar = FALSE;
+   \                     ??printk_39: (+1)
+   \      0x1AE   0x2000             MOVS     R0,#+0
+   \      0x1B0   0x9004             STR      R0,[SP, #+16]
+    430                      
+    431                          /*
+    432                           * do the ZERO pad.
+    433                           */
+    434                          if (IS_FLAG_ZERO(flags_used))
+   \      0x1B2   0x0730             LSLS     R0,R6,#+28
+   \      0x1B4   0xD511             BPL.N    ??printk_42
+    435                          {
+    436                              if (schar)
+   \      0x1B6   0x9803             LDR      R0,[SP, #+12]
+   \      0x1B8   0x2800             CMP      R0,#+0
+   \      0x1BA   0xD004             BEQ.N    ??printk_43
+    437                                  printk_putc(schar, &count, info);
+   \      0x1BC   0x002A             MOVS     R2,R5
+   \      0x1BE   0x4669             MOV      R1,SP
+   \      0x1C0   0x9803             LDR      R0,[SP, #+12]
+   \      0x1C2   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582711printk_putcEiPiP11PRINTK_INFO
+    438                              dschar = TRUE;
+   \                     ??printk_43: (+1)
+   \      0x1C6   0x2001             MOVS     R0,#+1
+   \      0x1C8   0x9004             STR      R0,[SP, #+16]
+    439                      
+    440                              printk_pad_zero (vlen, field_width, &count, info);
+   \      0x1CA   0x002B             MOVS     R3,R5
+   \      0x1CC   0x466A             MOV      R2,SP
+   \      0x1CE   0x0039             MOVS     R1,R7
+   \      0x1D0   0x4648             MOV      R0,R9
+   \      0x1D2   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582715printk_pad_zeroEiiPiP11PRINTK_INFO
+    441                              vlen = field_width;
+   \      0x1D6   0x46B9             MOV      R9,R7
+   \      0x1D8   0xE011             B.N      ??printk_44
+    442                          }
+    443                          else
+    444                          {
+    445                              if (!IS_FLAG_MINUS(flags_used))
+   \                     ??printk_42: (+1)
+   \      0x1DA   0x07F0             LSLS     R0,R6,#+31
+   \      0x1DC   0xD40F             BMI.N    ??printk_44
+    446                              {
+    447                                  printk_pad_space (vlen, field_width, &count, info);
+   \      0x1DE   0x002B             MOVS     R3,R5
+   \      0x1E0   0x466A             MOV      R2,SP
+   \      0x1E2   0x0039             MOVS     R1,R7
+   \      0x1E4   0x4648             MOV      R0,R9
+   \      0x1E6   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582716printk_pad_spaceEiiPiP11PRINTK_INFO
+    448                      
+    449                                  if (schar)
+   \      0x1EA   0x9803             LDR      R0,[SP, #+12]
+   \      0x1EC   0x2800             CMP      R0,#+0
+   \      0x1EE   0xD004             BEQ.N    ??printk_45
+    450                                      printk_putc(schar, &count, info);
+   \      0x1F0   0x002A             MOVS     R2,R5
+   \      0x1F2   0x4669             MOV      R1,SP
+   \      0x1F4   0x9803             LDR      R0,[SP, #+12]
+   \      0x1F6   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582711printk_putcEiPiP11PRINTK_INFO
+    451                                  dschar = TRUE;
+   \                     ??printk_45: (+1)
+   \      0x1FA   0x2001             MOVS     R0,#+1
+   \      0x1FC   0x9004             STR      R0,[SP, #+16]
+    452                              }
+    453                          }
+    454                      
+    455                          /* the string was built in reverse order, now display in */
+    456                          /* correct order */
+    457                          if (!dschar && schar)
+   \                     ??printk_44: (+1)
+   \      0x1FE   0x9804             LDR      R0,[SP, #+16]
+   \      0x200   0x2800             CMP      R0,#+0
+   \      0x202   0xD107             BNE.N    ??printk_46
+   \      0x204   0x9803             LDR      R0,[SP, #+12]
+   \      0x206   0x2800             CMP      R0,#+0
+   \      0x208   0xD004             BEQ.N    ??printk_46
+    458                          {
+    459                              printk_putc(schar, &count, info);
+   \      0x20A   0x002A             MOVS     R2,R5
+   \      0x20C   0x4669             MOV      R1,SP
+   \      0x20E   0x9803             LDR      R0,[SP, #+12]
+   \      0x210   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582711printk_putcEiPiP11PRINTK_INFO
+    460                          }
+    461                          goto cont_xd;
+   \                     ??printk_46: (+1)
+   \      0x214   0xE09C             B.N      ??printk_47
+    462          
+    463                      case 'x':
+    464                      case 'X':
+    465                          uval = (uint32)va_arg(ap, uint32);
+   \                     ??printk_28: (+1)
+   \      0x216   0xF8DB 0x0000      LDR      R0,[R11, #+0]
+   \      0x21A   0xF11B 0x0B04      ADDS     R11,R11,#+4
+   \      0x21E   0x9002             STR      R0,[SP, #+8]
+    466                          vlen = printk_mknumstr(vstr,&uval,FALSE,16);
+   \      0x220   0x2310             MOVS     R3,#+16
+   \      0x222   0x2200             MOVS     R2,#+0
+   \      0x224   0xA902             ADD      R1,SP,#+8
+   \      0x226   0xA809             ADD      R0,SP,#+36
+   \      0x228   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582715printk_mknumstrEPcPvii
+   \      0x22C   0x4681             MOV      R9,R0
+    467                          vstrp = &vstr[vlen];
+   \      0x22E   0xA809             ADD      R0,SP,#+36
+   \      0x230   0x4448             ADD      R0,R0,R9
+   \      0x232   0x4682             MOV      R10,R0
+    468          
+    469                          dschar = FALSE;
+   \      0x234   0x2000             MOVS     R0,#+0
+   \      0x236   0x9004             STR      R0,[SP, #+16]
+    470                          if (IS_FLAG_ZERO(flags_used))
+   \      0x238   0x0730             LSLS     R0,R6,#+28
+   \      0x23A   0xD515             BPL.N    ??printk_48
+    471                          {
+    472                              if (IS_FLAG_POUND(flags_used))
+   \      0x23C   0x06F0             LSLS     R0,R6,#+27
+   \      0x23E   0xD50B             BPL.N    ??printk_49
+    473                              {
+    474                                  printk_putc('0', &count, info);
+   \      0x240   0x002A             MOVS     R2,R5
+   \      0x242   0x4669             MOV      R1,SP
+   \      0x244   0x2030             MOVS     R0,#+48
+   \      0x246   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582711printk_putcEiPiP11PRINTK_INFO
+    475                                  printk_putc('x', &count, info);
+   \      0x24A   0x002A             MOVS     R2,R5
+   \      0x24C   0x4669             MOV      R1,SP
+   \      0x24E   0x2078             MOVS     R0,#+120
+   \      0x250   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582711printk_putcEiPiP11PRINTK_INFO
+    476                                  /*vlen += 2;*/
+    477                                  dschar = TRUE;
+   \      0x254   0x2001             MOVS     R0,#+1
+   \      0x256   0x9004             STR      R0,[SP, #+16]
+    478                              }
+    479                              printk_pad_zero (vlen, field_width, &count, info);
+   \                     ??printk_49: (+1)
+   \      0x258   0x002B             MOVS     R3,R5
+   \      0x25A   0x466A             MOV      R2,SP
+   \      0x25C   0x0039             MOVS     R1,R7
+   \      0x25E   0x4648             MOV      R0,R9
+   \      0x260   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582715printk_pad_zeroEiiPiP11PRINTK_INFO
+    480                              vlen = field_width;
+   \      0x264   0x46B9             MOV      R9,R7
+   \      0x266   0xE019             B.N      ??printk_50
+    481                          }
+    482                          else
+    483                          {
+    484                              if (!IS_FLAG_MINUS(flags_used))
+   \                     ??printk_48: (+1)
+   \      0x268   0x07F0             LSLS     R0,R6,#+31
+   \      0x26A   0xD417             BMI.N    ??printk_50
+    485                              {
+    486                                  if (IS_FLAG_POUND(flags_used))
+   \      0x26C   0x06F0             LSLS     R0,R6,#+27
+   \      0x26E   0xD501             BPL.N    ??printk_51
+    487                                  {
+    488                                      vlen += 2;
+   \      0x270   0xF119 0x0902      ADDS     R9,R9,#+2
+    489                                  }
+    490                                  printk_pad_space (vlen, field_width, &count, info);
+   \                     ??printk_51: (+1)
+   \      0x274   0x002B             MOVS     R3,R5
+   \      0x276   0x466A             MOV      R2,SP
+   \      0x278   0x0039             MOVS     R1,R7
+   \      0x27A   0x4648             MOV      R0,R9
+   \      0x27C   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582716printk_pad_spaceEiiPiP11PRINTK_INFO
+    491                                  if (IS_FLAG_POUND(flags_used))
+   \      0x280   0x06F0             LSLS     R0,R6,#+27
+   \      0x282   0xD50B             BPL.N    ??printk_50
+    492                                  {
+    493                                      printk_putc('0', &count, info);
+   \      0x284   0x002A             MOVS     R2,R5
+   \      0x286   0x4669             MOV      R1,SP
+   \      0x288   0x2030             MOVS     R0,#+48
+   \      0x28A   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582711printk_putcEiPiP11PRINTK_INFO
+    494                                      printk_putc('x', &count, info);
+   \      0x28E   0x002A             MOVS     R2,R5
+   \      0x290   0x4669             MOV      R1,SP
+   \      0x292   0x2078             MOVS     R0,#+120
+   \      0x294   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582711printk_putcEiPiP11PRINTK_INFO
+    495                                      dschar = TRUE;
+   \      0x298   0x2001             MOVS     R0,#+1
+   \      0x29A   0x9004             STR      R0,[SP, #+16]
+    496                                  }
+    497                              }
+    498                          }
+    499          
+    500                          if ((IS_FLAG_POUND(flags_used)) && !dschar)
+   \                     ??printk_50: (+1)
+   \      0x29C   0x06F0             LSLS     R0,R6,#+27
+   \      0x29E   0xD50E             BPL.N    ??printk_52
+   \      0x2A0   0x9804             LDR      R0,[SP, #+16]
+   \      0x2A2   0x2800             CMP      R0,#+0
+   \      0x2A4   0xD10B             BNE.N    ??printk_52
+    501                          {
+    502                              printk_putc('0', &count, info);
+   \      0x2A6   0x002A             MOVS     R2,R5
+   \      0x2A8   0x4669             MOV      R1,SP
+   \      0x2AA   0x2030             MOVS     R0,#+48
+   \      0x2AC   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582711printk_putcEiPiP11PRINTK_INFO
+    503                              printk_putc('x', &count, info);
+   \      0x2B0   0x002A             MOVS     R2,R5
+   \      0x2B2   0x4669             MOV      R1,SP
+   \      0x2B4   0x2078             MOVS     R0,#+120
+   \      0x2B6   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582711printk_putcEiPiP11PRINTK_INFO
+    504                              vlen += 2;
+   \      0x2BA   0xF119 0x0902      ADDS     R9,R9,#+2
+    505                          }
+    506                          goto cont_xd;
+   \                     ??printk_52: (+1)
+   \      0x2BE   0xE047             B.N      ??printk_47
+    507          
+    508                      case 'o':
+    509                          uval = (uint32)va_arg(ap, uint32);
+   \                     ??printk_33: (+1)
+   \      0x2C0   0xF8DB 0x0000      LDR      R0,[R11, #+0]
+   \      0x2C4   0xF11B 0x0B04      ADDS     R11,R11,#+4
+   \      0x2C8   0x9002             STR      R0,[SP, #+8]
+    510                          vlen = printk_mknumstr(vstr,&uval,FALSE,8);
+   \      0x2CA   0x2308             MOVS     R3,#+8
+   \      0x2CC   0x2200             MOVS     R2,#+0
+   \      0x2CE   0xA902             ADD      R1,SP,#+8
+   \      0x2D0   0xA809             ADD      R0,SP,#+36
+   \      0x2D2   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582715printk_mknumstrEPcPvii
+   \      0x2D6   0x4681             MOV      R9,R0
+    511                          goto cont_u;
+   \      0x2D8   0xE025             B.N      ??printk_53
+    512                      case 'b':
+    513                          uval = (uint32)va_arg(ap, uint32);
+   \                     ??printk_29: (+1)
+   \      0x2DA   0xF8DB 0x0000      LDR      R0,[R11, #+0]
+   \      0x2DE   0xF11B 0x0B04      ADDS     R11,R11,#+4
+   \      0x2E2   0x9002             STR      R0,[SP, #+8]
+    514                          vlen = printk_mknumstr(vstr,&uval,FALSE,2);
+   \      0x2E4   0x2302             MOVS     R3,#+2
+   \      0x2E6   0x2200             MOVS     R2,#+0
+   \      0x2E8   0xA902             ADD      R1,SP,#+8
+   \      0x2EA   0xA809             ADD      R0,SP,#+36
+   \      0x2EC   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582715printk_mknumstrEPcPvii
+   \      0x2F0   0x4681             MOV      R9,R0
+    515                          goto cont_u;
+   \      0x2F2   0xE018             B.N      ??printk_53
+    516                      case 'p':
+    517                          uval = (uint32)va_arg(ap, void *);
+   \                     ??printk_34: (+1)
+   \      0x2F4   0xF8DB 0x0000      LDR      R0,[R11, #+0]
+   \      0x2F8   0xF11B 0x0B04      ADDS     R11,R11,#+4
+   \      0x2FC   0x9002             STR      R0,[SP, #+8]
+    518                          vlen = printk_mknumstr(vstr,&uval,FALSE,16);
+   \      0x2FE   0x2310             MOVS     R3,#+16
+   \      0x300   0x2200             MOVS     R2,#+0
+   \      0x302   0xA902             ADD      R1,SP,#+8
+   \      0x304   0xA809             ADD      R0,SP,#+36
+   \      0x306   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582715printk_mknumstrEPcPvii
+   \      0x30A   0x4681             MOV      R9,R0
+    519                          goto cont_u;
+   \      0x30C   0xE00B             B.N      ??printk_53
+    520                      case 'u':
+    521                          uval = (uint32)va_arg(ap, uint32);
+   \                     ??printk_36: (+1)
+   \      0x30E   0xF8DB 0x0000      LDR      R0,[R11, #+0]
+   \      0x312   0xF11B 0x0B04      ADDS     R11,R11,#+4
+   \      0x316   0x9002             STR      R0,[SP, #+8]
+    522                          vlen = printk_mknumstr(vstr,&uval,FALSE,10);
+   \      0x318   0x230A             MOVS     R3,#+10
+   \      0x31A   0x2200             MOVS     R2,#+0
+   \      0x31C   0xA902             ADD      R1,SP,#+8
+   \      0x31E   0xA809             ADD      R0,SP,#+36
+   \      0x320   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582715printk_mknumstrEPcPvii
+   \      0x324   0x4681             MOV      R9,R0
+    523          
+    524                          cont_u:
+    525                              vstrp = &vstr[vlen];
+   \                     ??printk_53: (+1)
+   \      0x326   0xA809             ADD      R0,SP,#+36
+   \      0x328   0x4448             ADD      R0,R0,R9
+   \      0x32A   0x4682             MOV      R10,R0
+    526          
+    527                              if (IS_FLAG_ZERO(flags_used))
+   \      0x32C   0x0730             LSLS     R0,R6,#+28
+   \      0x32E   0xD507             BPL.N    ??printk_54
+    528                              {
+    529                                  printk_pad_zero (vlen, field_width, &count, info);
+   \      0x330   0x002B             MOVS     R3,R5
+   \      0x332   0x466A             MOV      R2,SP
+   \      0x334   0x0039             MOVS     R1,R7
+   \      0x336   0x4648             MOV      R0,R9
+   \      0x338   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582715printk_pad_zeroEiiPiP11PRINTK_INFO
+    530                                  vlen = field_width;
+   \      0x33C   0x46B9             MOV      R9,R7
+   \      0x33E   0xE007             B.N      ??printk_47
+    531                              }
+    532                              else
+    533                              {
+    534                                  if (!IS_FLAG_MINUS(flags_used))
+   \                     ??printk_54: (+1)
+   \      0x340   0x07F0             LSLS     R0,R6,#+31
+   \      0x342   0xD405             BMI.N    ??printk_47
+    535                                  {
+    536                                      printk_pad_space (vlen, field_width, &count, info);
+   \      0x344   0x002B             MOVS     R3,R5
+   \      0x346   0x466A             MOV      R2,SP
+   \      0x348   0x0039             MOVS     R1,R7
+   \      0x34A   0x4648             MOV      R0,R9
+   \      0x34C   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582716printk_pad_spaceEiiPiP11PRINTK_INFO
+    537                                  }
+    538                              }
+    539          
+    540                          cont_xd:
+    541                              while (*vstrp)
+   \                     ??printk_47: (+1)
+   \      0x350   0xF89A 0x0000      LDRB     R0,[R10, #+0]
+   \      0x354   0x2800             CMP      R0,#+0
+   \      0x356   0xD008             BEQ.N    ??printk_55
+    542                                  printk_putc(*vstrp--, &count, info);
+   \      0x358   0x4650             MOV      R0,R10
+   \      0x35A   0xF1B0 0x0A01      SUBS     R10,R0,#+1
+   \      0x35E   0x002A             MOVS     R2,R5
+   \      0x360   0x4669             MOV      R1,SP
+   \      0x362   0x7800             LDRB     R0,[R0, #+0]
+   \      0x364   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582711printk_putcEiPiP11PRINTK_INFO
+   \      0x368   0xE7F2             B.N      ??printk_47
+    543          
+    544                              if (IS_FLAG_MINUS(flags_used))
+   \                     ??printk_55: (+1)
+   \      0x36A   0x07F0             LSLS     R0,R6,#+31
+   \      0x36C   0xD505             BPL.N    ??printk_56
+    545                              {
+    546                                  printk_pad_space (vlen, field_width, &count, info);
+   \      0x36E   0x002B             MOVS     R3,R5
+   \      0x370   0x466A             MOV      R2,SP
+   \      0x372   0x0039             MOVS     R1,R7
+   \      0x374   0x4648             MOV      R0,R9
+   \      0x376   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582716printk_pad_spaceEiiPiP11PRINTK_INFO
+    547                              }
+    548                          break;
+   \                     ??printk_56: (+1)
+   \      0x37A   0xE040             B.N      ??printk_5
+    549          
+    550                      case 'c':
+    551                          cval = (char)va_arg(ap, uint32);
+   \                     ??printk_30: (+1)
+   \      0x37C   0xF8DB 0x0000      LDR      R0,[R11, #+0]
+   \      0x380   0xF11B 0x0B04      ADDS     R11,R11,#+4
+   \      0x384   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x386   0x9007             STR      R0,[SP, #+28]
+    552                          printk_putc(cval,&count, info);
+   \      0x388   0x002A             MOVS     R2,R5
+   \      0x38A   0x4669             MOV      R1,SP
+   \      0x38C   0x9807             LDR      R0,[SP, #+28]
+   \      0x38E   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582711printk_putcEiPiP11PRINTK_INFO
+    553                          break;
+   \      0x392   0xE034             B.N      ??printk_5
+    554                      case 's':
+    555                          sval = (char *)va_arg(ap, char *);
+   \                     ??printk_35: (+1)
+   \      0x394   0xF8DB 0x0000      LDR      R0,[R11, #+0]
+   \      0x398   0xF11B 0x0B04      ADDS     R11,R11,#+4
+   \      0x39C   0x0004             MOVS     R4,R0
+    556                          if (sval)
+   \      0x39E   0x2C00             CMP      R4,#+0
+   \      0x3A0   0xD01E             BEQ.N    ??printk_57
+    557                          {
+    558                              vlen = strlen(sval);
+   \      0x3A2   0x0020             MOVS     R0,R4
+   \      0x3A4   0x.... 0x....      BL       strlen
+   \      0x3A8   0x4681             MOV      R9,R0
+    559                              if (!IS_FLAG_MINUS(flags_used))
+   \      0x3AA   0x07F0             LSLS     R0,R6,#+31
+   \      0x3AC   0xD405             BMI.N    ??printk_58
+    560                              {
+    561                                  printk_pad_space (vlen, field_width, &count, info);
+   \      0x3AE   0x002B             MOVS     R3,R5
+   \      0x3B0   0x466A             MOV      R2,SP
+   \      0x3B2   0x0039             MOVS     R1,R7
+   \      0x3B4   0x4648             MOV      R0,R9
+   \      0x3B6   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582716printk_pad_spaceEiiPiP11PRINTK_INFO
+    562                              }
+    563                              while (*sval)
+   \                     ??printk_58: (+1)
+   \      0x3BA   0x7820             LDRB     R0,[R4, #+0]
+   \      0x3BC   0x2800             CMP      R0,#+0
+   \      0x3BE   0xD007             BEQ.N    ??printk_59
+    564                                  printk_putc(*sval++,&count, info);
+   \      0x3C0   0x0020             MOVS     R0,R4
+   \      0x3C2   0x1C44             ADDS     R4,R0,#+1
+   \      0x3C4   0x002A             MOVS     R2,R5
+   \      0x3C6   0x4669             MOV      R1,SP
+   \      0x3C8   0x7800             LDRB     R0,[R0, #+0]
+   \      0x3CA   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582711printk_putcEiPiP11PRINTK_INFO
+   \      0x3CE   0xE7F4             B.N      ??printk_58
+    565                              if (IS_FLAG_MINUS(flags_used))
+   \                     ??printk_59: (+1)
+   \      0x3D0   0x07F0             LSLS     R0,R6,#+31
+   \      0x3D2   0xD505             BPL.N    ??printk_57
+    566                              {
+    567                                  printk_pad_space (vlen, field_width, &count, info);
+   \      0x3D4   0x002B             MOVS     R3,R5
+   \      0x3D6   0x466A             MOV      R2,SP
+   \      0x3D8   0x0039             MOVS     R1,R7
+   \      0x3DA   0x4648             MOV      R0,R9
+   \      0x3DC   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582716printk_pad_spaceEiiPiP11PRINTK_INFO
+    568                              }
+    569                          }
+    570                          break;
+   \                     ??printk_57: (+1)
+   \      0x3E0   0xE00D             B.N      ??printk_5
+    571                      case 'n':
+    572                          ivalp = (int32 *)va_arg(ap, int32 *);
+   \                     ??printk_32: (+1)
+   \      0x3E2   0xF8DB 0x0000      LDR      R0,[R11, #+0]
+   \      0x3E6   0xF11B 0x0B04      ADDS     R11,R11,#+4
+   \      0x3EA   0x9008             STR      R0,[SP, #+32]
+    573                          *ivalp = count;
+   \      0x3EC   0x9800             LDR      R0,[SP, #+0]
+   \      0x3EE   0x9908             LDR      R1,[SP, #+32]
+   \      0x3F0   0x6008             STR      R0,[R1, #+0]
+    574                          break;
+   \      0x3F2   0xE004             B.N      ??printk_5
+    575                      default:
+    576                          printk_putc(c,&count, info);
+   \                     ??printk_37: (+1)
+   \      0x3F4   0x002A             MOVS     R2,R5
+   \      0x3F6   0x4669             MOV      R1,SP
+   \      0x3F8   0x9801             LDR      R0,[SP, #+4]
+   \      0x3FA   0x.... 0x....      BL       _ZN29_INTERNAL_8_printf_c_e69a582711printk_putcEiPiP11PRINTK_INFO
+    577                          break;
+    578                  }
+    579              }
+   \                     ??printk_5: (+1)
+   \      0x3FE   0xF118 0x0801      ADDS     R8,R8,#+1
+   \      0x402   0xE606             B.N      ??printk_0
+    580              return count;
+   \                     ??printk_1: (+1)
+   \      0x404   0x9800             LDR      R0,[SP, #+0]
+   \                     ??printk_60: (+1)
+   \      0x406   0xB013             ADD      SP,SP,#+76
+   \      0x408   0xE8BD 0x8FF0      POP      {R4-R11,PC}      ;; return
+    581          }
+    582          
+    583          /********************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    584          int32 printf (const char *fmt, ...)
+    585          {
+   \                     printf: (+1)
+   \        0x0   0xB40E             PUSH     {R1-R3}
+   \        0x2   0xB53F             PUSH     {R0-R5,LR}
+   \        0x4   0x0004             MOVS     R4,R0
+    586              va_list ap;
+    587              int32 rvalue;
+    588              PRINTK_INFO info;
+    589          
+    590          
+    591              info.dest = DEST_CONSOLE;
+   \        0x6   0x2001             MOVS     R0,#+1
+   \        0x8   0x9000             STR      R0,[SP, #+0]
+    592              info.func = &out_char;
+   \        0xA   0x....             LDR.N    R0,??DataTable1
+   \        0xC   0x9001             STR      R0,[SP, #+4]
+    593              /*
+    594               * Initialize the pointer to the variable length argument list.
+    595               */
+    596              va_start(ap, fmt);
+   \        0xE   0xAD07             ADD      R5,SP,#+28
+    597              rvalue = printk(&info, fmt, ap);
+   \       0x10   0x002A             MOVS     R2,R5
+   \       0x12   0x0021             MOVS     R1,R4
+   \       0x14   0x4668             MOV      R0,SP
+   \       0x16   0x.... 0x....      BL       _Z6printkP11PRINTK_INFOPKc9__va_list
+    598              /*
+    599               * Cleanup the variable length argument list.
+    600               */
+    601              va_end(ap);
+    602              return rvalue;
+   \                     ??printf_0: (+1)
+   \       0x1A   0xB004             ADD      SP,SP,#+16
+   \       0x1C   0xBC30             POP      {R4,R5}
+   \       0x1E   0xF85D 0xFB10      LDR      PC,[SP], #+16    ;; return
+    603          }
+    604          
+    605          /********************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    606          int32 sprintf (char *s, const char *fmt, ...)
+    607          {
+   \                     sprintf: (+1)
+   \        0x0   0xB40C             PUSH     {R2,R3}
+   \        0x2   0xB5FE             PUSH     {R1-R7,LR}
+   \        0x4   0x0004             MOVS     R4,R0
+   \        0x6   0x000D             MOVS     R5,R1
+    608              va_list ap;
+    609              int32 rvalue = 0;
+   \        0x8   0x2700             MOVS     R7,#+0
+    610              PRINTK_INFO info;
+    611          
+    612              /*
+    613               * Initialize the pointer to the variable length argument list.
+    614               */
+    615              if (s != 0)
+   \        0xA   0x2C00             CMP      R4,#+0
+   \        0xC   0xD00D             BEQ.N    ??sprintf_0
+    616              {
+    617                  info.dest = DEST_STRING;
+   \        0xE   0x2002             MOVS     R0,#+2
+   \       0x10   0x9000             STR      R0,[SP, #+0]
+    618                  info.loc = s;
+   \       0x12   0x9402             STR      R4,[SP, #+8]
+    619                  va_start(ap, fmt);
+   \       0x14   0xA808             ADD      R0,SP,#+32
+   \       0x16   0x0006             MOVS     R6,R0
+    620                  rvalue = printk(&info, fmt, ap);
+   \       0x18   0x0032             MOVS     R2,R6
+   \       0x1A   0x0029             MOVS     R1,R5
+   \       0x1C   0x4668             MOV      R0,SP
+   \       0x1E   0x.... 0x....      BL       _Z6printkP11PRINTK_INFOPKc9__va_list
+   \       0x22   0x0007             MOVS     R7,R0
+    621                  *info.loc = '\0';
+   \       0x24   0x2000             MOVS     R0,#+0
+   \       0x26   0x9902             LDR      R1,[SP, #+8]
+   \       0x28   0x7008             STRB     R0,[R1, #+0]
+    622                  va_end(ap);
+    623              }
+    624              return rvalue;
+   \                     ??sprintf_0: (+1)
+   \       0x2A   0x0038             MOVS     R0,R7
+   \                     ??sprintf_1: (+1)
+   \       0x2C   0xBCFE             POP      {R1-R7}
+   \       0x2E   0xF85D 0xFB0C      LDR      PC,[SP], #+12    ;; return
+    625          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1:
+   \        0x0   0x....'....        DC32     out_char
+    626          
+    627          /********************************************************************/
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      40   printf
+        40   -> printk(PRINTK_INFO *, char const *, __Va_list)
+     112   printk(PRINTK_INFO *, char const *, __Va_list)
+       112   -> printk_mknumstr(char *, void *, int, int)
+       112   -> printk_pad_space(int, int, int *, PRINTK_INFO *)
+       112   -> printk_pad_zero(int, int, int *, PRINTK_INFO *)
+       112   -> printk_putc(int, int *, PRINTK_INFO *)
+       112   -> strlen
+      32   printk_mknumstr(char *, void *, int, int)
+      24   printk_pad_space(int, int, int *, PRINTK_INFO *)
+        24   -> printk_putc(int, int *, PRINTK_INFO *)
+      24   printk_pad_zero(int, int, int *, PRINTK_INFO *)
+        24   -> printk_putc(int, int *, PRINTK_INFO *)
+      16   printk_putc(int, int *, PRINTK_INFO *)
+        16   -- Indirect call
+      40   sprintf
+        40   -> printk(PRINTK_INFO *, char const *, __Va_list)
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable1
+      34  printf
+    1036  printk(PRINTK_INFO *, char const *, __Va_list)
+     178  printk_mknumstr(char *, void *, int, int)
+      38  printk_pad_space(int, int, int *, PRINTK_INFO *)
+      38  printk_pad_zero(int, int, int *, PRINTK_INFO *)
+      50  printk_putc(int, int *, PRINTK_INFO *)
+      50  sprintf
+      48  -- Other
+
+ 
+    48 bytes in section .ARM.exidx
+ 1 428 bytes in section .text
+ 
+ 1 428 bytes of CODE  memory
+    48 bytes of CONST memory
+
+Errors: none
+Warnings: none

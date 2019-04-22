@@ -1,0 +1,2402 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM         31/Aug/2018  16:56:59
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\LPLD\HW\SPI.c
+#    Command line =  
+#        -f C:\Users\XSK199~1\AppData\Local\Temp\EW8828.tmp
+#        (C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\LPLD\HW\SPI.c
+#        -D K60 -D USE_K60F15 -D ARM_MATH_CM4 -D __FPU_PRESENT=1 -D
+#        __FPU_USED=1 -lCN
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -lB
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -o
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
+#        D:\iar\arm\inc\c\DLib_Config_Full.h -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\Sensor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\CPU\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\option\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\driver\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\class\
+#        -On --c++ -I D:\iar\arm\CMSIS\Core\Include\ -I
+#        D:\iar\arm\CMSIS\DSP\Include\ -D ARM_MATH_CM4)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List\SPI.lst
+#    Object file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj\SPI.o
+#
+###############################################################################
+
+C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\LPLD\HW\SPI.c
+      1          /**
+      2           * @file SPI.c
+      3           * @version 3.03[By LPLD]
+      4           * @date 2014-2-10
+      5           * @brief SPI底层模块相关函数
+      6           *
+      7           * 更改建议:不建议修改
+      8           *
+      9           * 版权所有:北京拉普兰德电子技术有限公司
+     10           * http://www.lpld.cn
+     11           * mail:support@lpld.cn
+     12           *
+     13           * @par
+     14           * 本代码由拉普兰德[LPLD]开发并维护，并向所有使用者开放源代码。
+     15           * 开发者可以随意修使用或改源代码。但本段及以上注释应予以保留。
+     16           * 不得更改或删除原版权所有者姓名，二次开发者可以加注二次版权所有者。
+     17           * 但应在遵守此协议的基础上，开放源代码、不得出售代码本身。
+     18           * 拉普兰德不负责由于使用本代码所带来的任何事故、法律责任或相关不良影响。
+     19           * 拉普兰德无义务解释、说明本代码的具体原理、功能、实现方法。
+     20           * 除非拉普兰德[LPLD]授权，开发者不得将本代码用于商业产品。
+     21           */
+     22          #include "common.h"
+
+   \                                 In section .text, align 2, keep-with-next
+   \   static __interwork __softfp void __NVIC_EnableIRQ(IRQn)
+   \                     _ZN26_INTERNAL_5_SPI_c_SPI_Init16__NVIC_EnableIRQE4IRQn: (+1)
+   \        0x0   0x0001             MOVS     R1,R0
+   \        0x2   0xB249             SXTB     R1,R1            ;; SignExt  R1,R1,#+24,#+24
+   \        0x4   0x2900             CMP      R1,#+0
+   \        0x6   0xD40A             BMI.N    ??__NVIC_EnableIRQ_0
+   \        0x8   0x2201             MOVS     R2,#+1
+   \        0xA   0xF010 0x011F      ANDS     R1,R0,#0x1F
+   \        0xE   0x408A             LSLS     R2,R2,R1
+   \       0x10   0x.... 0x....      LDR.W    R1,??DataTable8  ;; 0xe000e100
+   \       0x14   0x0003             MOVS     R3,R0
+   \       0x16   0xB25B             SXTB     R3,R3            ;; SignExt  R3,R3,#+24,#+24
+   \       0x18   0x095B             LSRS     R3,R3,#+5
+   \       0x1A   0xF841 0x2023      STR      R2,[R1, R3, LSL #+2]
+   \                     ??__NVIC_EnableIRQ_0: (+1)
+   \       0x1E   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+   \   static __interwork __softfp void __NVIC_DisableIRQ(IRQn)
+   \                     _ZN26_INTERNAL_5_SPI_c_SPI_Init17__NVIC_DisableIRQE4IRQn: (+1)
+   \        0x0   0x0001             MOVS     R1,R0
+   \        0x2   0xB249             SXTB     R1,R1            ;; SignExt  R1,R1,#+24,#+24
+   \        0x4   0x2900             CMP      R1,#+0
+   \        0x6   0xD40E             BMI.N    ??__NVIC_DisableIRQ_0
+   \        0x8   0x2201             MOVS     R2,#+1
+   \        0xA   0xF010 0x011F      ANDS     R1,R0,#0x1F
+   \        0xE   0x408A             LSLS     R2,R2,R1
+   \       0x10   0x.... 0x....      LDR.W    R1,??DataTable8_1  ;; 0xe000e180
+   \       0x14   0x0003             MOVS     R3,R0
+   \       0x16   0xB25B             SXTB     R3,R3            ;; SignExt  R3,R3,#+24,#+24
+   \       0x18   0x095B             LSRS     R3,R3,#+5
+   \       0x1A   0xF841 0x2023      STR      R2,[R1, R3, LSL #+2]
+   \       0x1E   0xF3BF 0x8F4F      DSB      SY
+   \       0x22   0xF3BF 0x8F6F      ISB      SY
+   \                     ??__NVIC_DisableIRQ_0: (+1)
+   \       0x26   0x4770             BX       LR               ;; return
+     23          #include "SPI.h"
+     24          
+
+   \                                 In section .bss, align 4
+     25          SPI_ISR_CALLBACK SPI0_ISR[6];
+   \                     SPI0_ISR:
+   \        0x0                      DS8 24
+
+   \                                 In section .bss, align 4
+     26          SPI_ISR_CALLBACK SPI1_ISR[6];
+   \                     SPI1_ISR:
+   \        0x0                      DS8 24
+
+   \                                 In section .bss, align 4
+     27          SPI_ISR_CALLBACK SPI2_ISR[6];
+   \                     SPI2_ISR:
+   \        0x0                      DS8 24
+     28          
+     29          /*
+     30           * SPI_Init
+     31           * SPI初始化函数,在该函数中选择SPI通道，初始化SPI SCK总线时钟
+     32           * 选择使能Tx，Rx FIFO，选择开启SPI外设的发送完成，发送队列结束，
+     33           * Tx FIFO队列为空，Rx FIFO队列溢出，选择FIFO的中断方式和DMA请求等
+     34           * 
+     35           * 参数:
+     36           *    spi_init_structure--SPI初始化结构体，
+     37           *                        具体定义见SPI_InitTypeDef
+     38           *
+     39           * 输出:
+     40           *    0--配置错误
+     41           *    1--配置成功
+     42           */
+
+   \                                 In section .text, align 2, keep-with-next
+     43          uint8 SPI_Init(SPI_InitTypeDef spi_init_structure)
+     44          {
+   \                     SPI_Init: (+1)
+   \        0x0   0xB40F             PUSH     {R0-R3}
+   \        0x2   0xE92D 0x4FF8      PUSH     {R3-R11,LR}
+   \        0x6   0xB08A             SUB      SP,SP,#+40
+     45            SPI_Type * spix = spi_init_structure.SPI_SPIx;
+   \        0x8   0x9C14             LDR      R4,[SP, #+80]
+     46            uint8 spi_mode = spi_init_structure.SPI_ModeSelect;
+   \        0xA   0xF89D 0x0054      LDRB     R0,[SP, #+84]
+   \        0xE   0xF88D 0x0009      STRB     R0,[SP, #+9]
+     47            uint8 sck_div = spi_init_structure.SPI_SckDivider; 
+   \       0x12   0xF89D 0x0055      LDRB     R0,[SP, #+85]
+   \       0x16   0xF88D 0x0008      STRB     R0,[SP, #+8]
+     48            boolean txFIFO_enable = spi_init_structure.SPI_EnableTxFIFO;
+   \       0x1A   0xF89D 0x0056      LDRB     R0,[SP, #+86]
+   \       0x1E   0xF88D 0x000D      STRB     R0,[SP, #+13]
+     49            boolean rxFIFO_enable = spi_init_structure.SPI_EnableRxFIFO;
+   \       0x22   0xF89D 0x0057      LDRB     R0,[SP, #+87]
+   \       0x26   0xF88D 0x000C      STRB     R0,[SP, #+12]
+     50            //定义SPI外设中断变量
+     51            boolean tx_complete_int = spi_init_structure.SPI_TxCompleteIntEnable;
+   \       0x2A   0xF89D 0x0058      LDRB     R0,[SP, #+88]
+   \       0x2E   0xF88D 0x0000      STRB     R0,[SP, #+0]
+     52            boolean QueueEnd_Request_int = spi_init_structure.SPI_QueueEndIntEnable; 
+   \       0x32   0xF89D 0x5059      LDRB     R5,[SP, #+89]
+     53            boolean txFIFO_underflow_int = spi_init_structure.SPI_TxFIFO_UnderflowIntEnable;
+   \       0x36   0xF89D 0x605A      LDRB     R6,[SP, #+90]
+     54            boolean rxFIFO_overflow_int = spi_init_structure.SPI_RxFIFO_OverflowIntEnable;
+   \       0x3A   0xF89D 0x705B      LDRB     R7,[SP, #+91]
+     55            boolean txFIFO_Fill_int = spi_init_structure.SPI_TxFIFO_FillIntEnable;
+   \       0x3E   0xF89D 0x805C      LDRB     R8,[SP, #+92]
+     56            boolean rxFIFO_Drain_int = spi_init_structure.SPI_RxFIFO_DrainIntEnable; 
+   \       0x42   0xF89D 0x905D      LDRB     R9,[SP, #+93]
+     57            boolean txFIFO_req = spi_init_structure.SPI_TxFIFO_RequestSelect;
+   \       0x46   0xF89D 0xA05E      LDRB     R10,[SP, #+94]
+     58            boolean rxFIFO_req = spi_init_structure.SPI_RxFIFO_RequestSelect;
+   \       0x4A   0xF89D 0xB05F      LDRB     R11,[SP, #+95]
+     59            //选择SPI引脚
+     60            PortPinsEnum_Type miso_pin = spi_init_structure.SPI_MisoPin;//MISO 
+   \       0x4E   0xF89D 0x0068      LDRB     R0,[SP, #+104]
+   \       0x52   0xF88D 0x0005      STRB     R0,[SP, #+5]
+     61            PortPinsEnum_Type mosi_pin = spi_init_structure.SPI_MosiPin;//MOSI
+   \       0x56   0xF89D 0x0067      LDRB     R0,[SP, #+103]
+   \       0x5A   0xF88D 0x0004      STRB     R0,[SP, #+4]
+     62            PortPinsEnum_Type sck_pin = spi_init_structure.SPI_SckPin;  //SCK
+   \       0x5E   0xF89D 0x0066      LDRB     R0,[SP, #+102]
+   \       0x62   0xF88D 0x0003      STRB     R0,[SP, #+3]
+     63            PortPinsEnum_Type pcs0_pin = spi_init_structure.SPI_Pcs0Pin;//PCS0
+   \       0x66   0xF89D 0x0060      LDRB     R0,[SP, #+96]
+   \       0x6A   0xF88D 0x0002      STRB     R0,[SP, #+2]
+     64            PortPinsEnum_Type pcs1_pin = spi_init_structure.SPI_Pcs1Pin;//PCS1
+   \       0x6E   0xF89D 0x0061      LDRB     R0,[SP, #+97]
+   \       0x72   0xF88D 0x0001      STRB     R0,[SP, #+1]
+     65            PortPinsEnum_Type pcs2_pin = spi_init_structure.SPI_Pcs2Pin;//PCS2
+   \       0x76   0xF89D 0x0062      LDRB     R0,[SP, #+98]
+   \       0x7A   0xF88D 0x0007      STRB     R0,[SP, #+7]
+     66            PortPinsEnum_Type pcs3_pin = spi_init_structure.SPI_Pcs3Pin;//PCS3
+   \       0x7E   0xF89D 0x0063      LDRB     R0,[SP, #+99]
+   \       0x82   0xF88D 0x0006      STRB     R0,[SP, #+6]
+     67            PortPinsEnum_Type pcs4_pin = spi_init_structure.SPI_Pcs4Pin;//PCS4
+   \       0x86   0xF89D 0x0064      LDRB     R0,[SP, #+100]
+   \       0x8A   0xF88D 0x000B      STRB     R0,[SP, #+11]
+     68            PortPinsEnum_Type pcs5_pin = spi_init_structure.SPI_Pcs5Pin;//PCS5
+   \       0x8E   0xF89D 0x0065      LDRB     R0,[SP, #+101]
+   \       0x92   0xF88D 0x000A      STRB     R0,[SP, #+10]
+     69            //定义中断回掉函数
+     70            SPI_ISR_CALLBACK TxComplete_isr = spi_init_structure.SPI_TxCompleteIntIsr;
+   \       0x96   0x981B             LDR      R0,[SP, #+108]
+   \       0x98   0x9009             STR      R0,[SP, #+36]
+     71            SPI_ISR_CALLBACK QueueEndReq_isr = spi_init_structure.SPI_QueueEndIntIsr;
+   \       0x9A   0x981C             LDR      R0,[SP, #+112]
+   \       0x9C   0x9008             STR      R0,[SP, #+32]
+     72            SPI_ISR_CALLBACK UnderflowInt_isr = spi_init_structure.SPI_TxFIFO_UnderflowIntIsr;
+   \       0x9E   0x981D             LDR      R0,[SP, #+116]
+   \       0xA0   0x9007             STR      R0,[SP, #+28]
+     73            SPI_ISR_CALLBACK OverflowInt_isr = spi_init_structure.SPI_RxFIFO_OverflowIntIsr;
+   \       0xA2   0x981E             LDR      R0,[SP, #+120]
+   \       0xA4   0x9006             STR      R0,[SP, #+24]
+     74            SPI_ISR_CALLBACK FillInt_isr = spi_init_structure.SPI_TxFIFO_FillIntIsr;
+   \       0xA6   0x981F             LDR      R0,[SP, #+124]
+   \       0xA8   0x9005             STR      R0,[SP, #+20]
+     75            SPI_ISR_CALLBACK DrainInt_isr = spi_init_structure.SPI_RxFIFO_DrainIntIsr;
+   \       0xAA   0x9820             LDR      R0,[SP, #+128]
+   \       0xAC   0x9004             STR      R0,[SP, #+16]
+     76            //检测参数
+     77            ASSERT(spi_mode <= SPI_MODE_MASTER);
+   \       0xAE   0xF89D 0x0009      LDRB     R0,[SP, #+9]
+   \       0xB2   0x2800             CMP      R0,#+0
+   \       0xB4   0xD004             BEQ.N    ??SPI_Init_0
+   \       0xB6   0x214D             MOVS     R1,#+77
+   \       0xB8   0x.... 0x....      LDR.W    R0,??DataTable8_2
+   \       0xBC   0x.... 0x....      BL       assert_failed
+     78            ASSERT(sck_div <= SPI_SCK_DIV_32768);
+   \                     ??SPI_Init_0: (+1)
+   \       0xC0   0xF89D 0x0008      LDRB     R0,[SP, #+8]
+   \       0xC4   0x2810             CMP      R0,#+16
+   \       0xC6   0xDB04             BLT.N    ??SPI_Init_1
+   \       0xC8   0x214E             MOVS     R1,#+78
+   \       0xCA   0x.... 0x....      LDR.W    R0,??DataTable8_2
+   \       0xCE   0x.... 0x....      BL       assert_failed
+     79          
+     80            if(spix == SPI0)
+   \                     ??SPI_Init_1: (+1)
+   \       0xD2   0x.... 0x....      LDR.W    R0,??DataTable8_3  ;; 0x4002c000
+   \       0xD6   0x4284             CMP      R4,R0
+   \       0xD8   0xF040 0x8082      BNE.W    ??SPI_Init_2
+     81            {
+     82          #if defined(CPU_MK60D10)  
+     83              SIM->SCGC6 |= SIM_SCGC6_SPI0_MASK; 
+     84          #elif defined(CPU_MK60DZ10) || defined(CPU_MK60F12) || defined(CPU_MK60F15)
+     85              SIM->SCGC6 |= SIM_SCGC6_DSPI0_MASK;  
+   \       0xDC   0x.... 0x....      LDR.W    R1,??DataTable8_4  ;; 0x4004803c
+   \       0xE0   0x680A             LDR      R2,[R1, #+0]
+   \       0xE2   0xF452 0x5280      ORRS     R2,R2,#0x1000
+   \       0xE6   0x600A             STR      R2,[R1, #+0]
+     86          #endif
+     87               
+     88              //选择PCS0
+     89              if(pcs0_pin == PTA14)
+   \       0xE8   0xF89D 0x1002      LDRB     R1,[SP, #+2]
+   \       0xEC   0x290E             CMP      R1,#+14
+   \       0xEE   0xD105             BNE.N    ??SPI_Init_3
+     90              {
+     91                PORTA->PCR[14] = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;
+   \       0xF0   0xF44F 0x7110      MOV      R1,#+576
+   \       0xF4   0x.... 0x....      LDR.W    R2,??DataTable8_5  ;; 0x40049038
+   \       0xF8   0x6011             STR      R1,[R2, #+0]
+   \       0xFA   0xE004             B.N      ??SPI_Init_4
+     92              }
+     93              else//pcs0_pin == PTC4
+     94              {
+     95                PORTC->PCR[4] = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;
+   \                     ??SPI_Init_3: (+1)
+   \       0xFC   0xF44F 0x7110      MOV      R1,#+576
+   \      0x100   0x.... 0x....      LDR.W    R2,??DataTable8_6  ;; 0x4004b010
+   \      0x104   0x6011             STR      R1,[R2, #+0]
+     96              }
+     97              //选择PCS1
+     98              if(pcs1_pin == PTC3)
+   \                     ??SPI_Init_4: (+1)
+   \      0x106   0xF89D 0x1001      LDRB     R1,[SP, #+1]
+   \      0x10A   0x293F             CMP      R1,#+63
+   \      0x10C   0xD105             BNE.N    ??SPI_Init_5
+     99              {
+    100                PORTC->PCR[3]  = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;
+   \      0x10E   0xF44F 0x7110      MOV      R1,#+576
+   \      0x112   0x.... 0x....      LDR.W    R2,??DataTable8_7  ;; 0x4004b00c
+   \      0x116   0x6011             STR      R1,[R2, #+0]
+   \      0x118   0xE004             B.N      ??SPI_Init_6
+    101              }
+    102              else //pcs1_pin == PTD4
+    103              {
+    104                PORTD->PCR[4] = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;
+   \                     ??SPI_Init_5: (+1)
+   \      0x11A   0xF44F 0x7110      MOV      R1,#+576
+   \      0x11E   0x.... 0x....      LDR.W    R2,??DataTable8_8  ;; 0x4004c010
+   \      0x122   0x6011             STR      R1,[R2, #+0]
+    105              }
+    106              //选择PCS2
+    107              if(pcs2_pin == PTC2)
+   \                     ??SPI_Init_6: (+1)
+   \      0x124   0xF89D 0x1007      LDRB     R1,[SP, #+7]
+   \      0x128   0x293E             CMP      R1,#+62
+   \      0x12A   0xD105             BNE.N    ??SPI_Init_7
+    108              {
+    109                PORTC->PCR[2]  = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;
+   \      0x12C   0xF44F 0x7110      MOV      R1,#+576
+   \      0x130   0x.... 0x....      LDR.W    R2,??DataTable8_9  ;; 0x4004b008
+   \      0x134   0x6011             STR      R1,[R2, #+0]
+   \      0x136   0xE004             B.N      ??SPI_Init_8
+    110              }
+    111              else //pcs2_pin == PTD5
+    112              {
+    113                PORTD->PCR[5]  = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;
+   \                     ??SPI_Init_7: (+1)
+   \      0x138   0xF44F 0x7110      MOV      R1,#+576
+   \      0x13C   0x.... 0x....      LDR.W    R2,??DataTable8_10  ;; 0x4004c014
+   \      0x140   0x6011             STR      R1,[R2, #+0]
+    114              }
+    115              //选择PCS3
+    116              if(pcs3_pin == PTC1)
+   \                     ??SPI_Init_8: (+1)
+   \      0x142   0xF89D 0x1006      LDRB     R1,[SP, #+6]
+   \      0x146   0x293D             CMP      R1,#+61
+   \      0x148   0xD105             BNE.N    ??SPI_Init_9
+    117              {
+    118                PORTC->PCR[1]  = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;
+   \      0x14A   0xF44F 0x7110      MOV      R1,#+576
+   \      0x14E   0x.... 0x....      LDR.W    R2,??DataTable8_11  ;; 0x4004b004
+   \      0x152   0x6011             STR      R1,[R2, #+0]
+   \      0x154   0xE004             B.N      ??SPI_Init_10
+    119              }
+    120              else //pcs3_pin == PTD6
+    121              {
+    122                PORTD->PCR[6]  = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;
+   \                     ??SPI_Init_9: (+1)
+   \      0x156   0xF44F 0x7110      MOV      R1,#+576
+   \      0x15A   0x.... 0x....      LDR.W    R2,??DataTable8_12  ;; 0x4004c018
+   \      0x15E   0x6011             STR      R1,[R2, #+0]
+    123              }
+    124              //选择PCS4
+    125              if(pcs4_pin == PTC0)
+   \                     ??SPI_Init_10: (+1)
+   \      0x160   0xF89D 0x100B      LDRB     R1,[SP, #+11]
+   \      0x164   0x293C             CMP      R1,#+60
+   \      0x166   0xD104             BNE.N    ??SPI_Init_11
+    126              {
+    127                PORTC->PCR[0]  = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;
+   \      0x168   0xF44F 0x7110      MOV      R1,#+576
+   \      0x16C   0x.... 0x....      LDR.W    R2,??DataTable8_13  ;; 0x4004b000
+   \      0x170   0x6011             STR      R1,[R2, #+0]
+    128              }
+    129              //选择PCS5
+    130              if(pcs5_pin == PTB23)
+   \                     ??SPI_Init_11: (+1)
+   \      0x172   0xF89D 0x100A      LDRB     R1,[SP, #+10]
+   \      0x176   0x2937             CMP      R1,#+55
+   \      0x178   0xD104             BNE.N    ??SPI_Init_12
+    131              {
+    132                PORTB->PCR[23] = 0 | PORT_PCR_MUX(3) | PORT_PCR_DSE_MASK;
+   \      0x17A   0xF44F 0x7150      MOV      R1,#+832
+   \      0x17E   0x.... 0x....      LDR.W    R2,??DataTable8_14  ;; 0x4004a05c
+   \      0x182   0x6011             STR      R1,[R2, #+0]
+    133              }
+    134          
+    135              //选择SCK
+    136              if(sck_pin == PTA15)
+   \                     ??SPI_Init_12: (+1)
+   \      0x184   0xF89D 0x1003      LDRB     R1,[SP, #+3]
+   \      0x188   0x290F             CMP      R1,#+15
+   \      0x18A   0xD105             BNE.N    ??SPI_Init_13
+    137              {
+    138                PORTA->PCR[15] = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;//SCK
+   \      0x18C   0xF44F 0x7110      MOV      R1,#+576
+   \      0x190   0x.... 0x....      LDR.W    R2,??DataTable8_15  ;; 0x4004903c
+   \      0x194   0x6011             STR      R1,[R2, #+0]
+   \      0x196   0xE004             B.N      ??SPI_Init_14
+    139              }
+    140              else //sck_pin == PTC5
+    141              {
+    142                PORTC->PCR[5] = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;//SCK
+   \                     ??SPI_Init_13: (+1)
+   \      0x198   0xF44F 0x7110      MOV      R1,#+576
+   \      0x19C   0x.... 0x....      LDR.W    R2,??DataTable8_16  ;; 0x4004b014
+   \      0x1A0   0x6011             STR      R1,[R2, #+0]
+    143              }
+    144              //选择MOSI
+    145              if(mosi_pin == PTA16)
+   \                     ??SPI_Init_14: (+1)
+   \      0x1A2   0xF89D 0x1004      LDRB     R1,[SP, #+4]
+   \      0x1A6   0x2910             CMP      R1,#+16
+   \      0x1A8   0xD105             BNE.N    ??SPI_Init_15
+    146              {
+    147                PORTA->PCR[16] = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;//SOUT
+   \      0x1AA   0xF44F 0x7110      MOV      R1,#+576
+   \      0x1AE   0x.... 0x....      LDR.W    R2,??DataTable8_17  ;; 0x40049040
+   \      0x1B2   0x6011             STR      R1,[R2, #+0]
+   \      0x1B4   0xE004             B.N      ??SPI_Init_16
+    148              }
+    149              else //mosi_pin == PTC6
+    150              {
+    151                PORTC->PCR[6] = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;//SOUT
+   \                     ??SPI_Init_15: (+1)
+   \      0x1B6   0xF44F 0x7110      MOV      R1,#+576
+   \      0x1BA   0x.... 0x....      LDR.W    R2,??DataTable8_18  ;; 0x4004b018
+   \      0x1BE   0x6011             STR      R1,[R2, #+0]
+    152              }
+    153              //选择MISO
+    154              if(miso_pin == PTA17)
+   \                     ??SPI_Init_16: (+1)
+   \      0x1C0   0xF89D 0x1005      LDRB     R1,[SP, #+5]
+   \      0x1C4   0x2911             CMP      R1,#+17
+   \      0x1C6   0xD105             BNE.N    ??SPI_Init_17
+    155              {
+    156                PORTA->PCR[17] = 0 | PORT_PCR_MUX(2); //SIN
+   \      0x1C8   0xF44F 0x7100      MOV      R1,#+512
+   \      0x1CC   0x.... 0x....      LDR.W    R2,??DataTable8_19  ;; 0x40049044
+   \      0x1D0   0x6011             STR      R1,[R2, #+0]
+   \      0x1D2   0xE0BF             B.N      ??SPI_Init_18
+    157              }
+    158              else //miso_pin == PTC7
+    159              {
+    160                PORTC->PCR[7] = 0 | PORT_PCR_MUX(2); //SIN
+   \                     ??SPI_Init_17: (+1)
+   \      0x1D4   0xF44F 0x7100      MOV      R1,#+512
+   \      0x1D8   0x.... 0x....      LDR.W    R2,??DataTable8_20  ;; 0x4004b01c
+   \      0x1DC   0x6011             STR      R1,[R2, #+0]
+   \      0x1DE   0xE0B9             B.N      ??SPI_Init_18
+    161              } 
+    162            
+    163            }
+    164            else if(spix == SPI1)
+   \                     ??SPI_Init_2: (+1)
+   \      0x1E0   0x.... 0x....      LDR.W    R1,??DataTable8_21  ;; 0x4002d000
+   \      0x1E4   0x428C             CMP      R4,R1
+   \      0x1E6   0xD163             BNE.N    ??SPI_Init_19
+    165            {
+    166          #if defined(CPU_MK60DZ10) || defined(CPU_MK60D10)  
+    167              SIM->SCGC6 |= SIM_SCGC6_SPI1_MASK; 
+    168          #elif defined(CPU_MK60F12) || defined(CPU_MK60F15)
+    169              SIM->SCGC6 |= SIM_SCGC6_DSPI1_MASK; 
+   \      0x1E8   0x.... 0x....      LDR.W    R1,??DataTable8_4  ;; 0x4004803c
+   \      0x1EC   0x680A             LDR      R2,[R1, #+0]
+   \      0x1EE   0xF452 0x5200      ORRS     R2,R2,#0x2000
+   \      0x1F2   0x600A             STR      R2,[R1, #+0]
+    170          #endif
+    171              //选择PCS0
+    172              if(pcs0_pin == PTB10)
+   \      0x1F4   0xF89D 0x1002      LDRB     R1,[SP, #+2]
+   \      0x1F8   0x292A             CMP      R1,#+42
+   \      0x1FA   0xD105             BNE.N    ??SPI_Init_20
+    173              {
+    174                PORTB->PCR[10] = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;
+   \      0x1FC   0xF44F 0x7110      MOV      R1,#+576
+   \      0x200   0x.... 0x....      LDR.W    R2,??DataTable8_22  ;; 0x4004a028
+   \      0x204   0x6011             STR      R1,[R2, #+0]
+   \      0x206   0xE004             B.N      ??SPI_Init_21
+    175              }
+    176              else//pcs0_pin == PTE4
+    177              {
+    178                PORTE->PCR[4] = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;
+   \                     ??SPI_Init_20: (+1)
+   \      0x208   0xF44F 0x7110      MOV      R1,#+576
+   \      0x20C   0x.... 0x....      LDR.W    R2,??DataTable8_23  ;; 0x4004d010
+   \      0x210   0x6011             STR      R1,[R2, #+0]
+    179              }
+    180              //选择PCS1
+    181              if(pcs1_pin == PTB9)
+   \                     ??SPI_Init_21: (+1)
+   \      0x212   0xF89D 0x1001      LDRB     R1,[SP, #+1]
+   \      0x216   0x2929             CMP      R1,#+41
+   \      0x218   0xD105             BNE.N    ??SPI_Init_22
+    182              {
+    183                PORTB->PCR[9]  = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;
+   \      0x21A   0xF44F 0x7110      MOV      R1,#+576
+   \      0x21E   0x.... 0x....      LDR.W    R2,??DataTable8_24  ;; 0x4004a024
+   \      0x222   0x6011             STR      R1,[R2, #+0]
+   \      0x224   0xE004             B.N      ??SPI_Init_23
+    184              }
+    185              else //pcs1_pin == PTE0
+    186              {
+    187                PORTE->PCR[0] = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;
+   \                     ??SPI_Init_22: (+1)
+   \      0x226   0xF44F 0x7110      MOV      R1,#+576
+   \      0x22A   0x.... 0x....      LDR.W    R2,??DataTable8_25  ;; 0x4004d000
+   \      0x22E   0x6011             STR      R1,[R2, #+0]
+    188              }
+    189              //选择PCS2
+    190              if(pcs2_pin == PTE5)
+   \                     ??SPI_Init_23: (+1)
+   \      0x230   0xF89D 0x1007      LDRB     R1,[SP, #+7]
+   \      0x234   0x2981             CMP      R1,#+129
+   \      0x236   0xD104             BNE.N    ??SPI_Init_24
+    191              {
+    192                PORTE->PCR[5]  = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;
+   \      0x238   0xF44F 0x7110      MOV      R1,#+576
+   \      0x23C   0x.... 0x....      LDR.W    R2,??DataTable8_26  ;; 0x4004d014
+   \      0x240   0x6011             STR      R1,[R2, #+0]
+    193              }
+    194          
+    195              //选择PCS3
+    196              if(pcs3_pin == PTE6)
+   \                     ??SPI_Init_24: (+1)
+   \      0x242   0xF89D 0x1006      LDRB     R1,[SP, #+6]
+   \      0x246   0x2982             CMP      R1,#+130
+   \      0x248   0xD104             BNE.N    ??SPI_Init_25
+    197              {
+    198                PORTE->PCR[6]  = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;
+   \      0x24A   0xF44F 0x7110      MOV      R1,#+576
+   \      0x24E   0x.... 0x....      LDR.W    R2,??DataTable8_27  ;; 0x4004d018
+   \      0x252   0x6011             STR      R1,[R2, #+0]
+    199              }
+    200          
+    201              //选择SCK
+    202              if(sck_pin == PTB11)
+   \                     ??SPI_Init_25: (+1)
+   \      0x254   0xF89D 0x1003      LDRB     R1,[SP, #+3]
+   \      0x258   0x292B             CMP      R1,#+43
+   \      0x25A   0xD105             BNE.N    ??SPI_Init_26
+    203              {
+    204                PORTB->PCR[11] = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;
+   \      0x25C   0xF44F 0x7110      MOV      R1,#+576
+   \      0x260   0x.... 0x....      LDR.W    R2,??DataTable8_28  ;; 0x4004a02c
+   \      0x264   0x6011             STR      R1,[R2, #+0]
+   \      0x266   0xE004             B.N      ??SPI_Init_27
+    205              }
+    206              else //sck_pin == PTE2
+    207              {
+    208                PORTE->PCR[2] = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;//SCK
+   \                     ??SPI_Init_26: (+1)
+   \      0x268   0xF44F 0x7110      MOV      R1,#+576
+   \      0x26C   0x.... 0x....      LDR.W    R2,??DataTable8_29  ;; 0x4004d008
+   \      0x270   0x6011             STR      R1,[R2, #+0]
+    209              }
+    210              //选择MOSI
+    211              if(mosi_pin == PTB16)
+   \                     ??SPI_Init_27: (+1)
+   \      0x272   0xF89D 0x1004      LDRB     R1,[SP, #+4]
+   \      0x276   0x2930             CMP      R1,#+48
+   \      0x278   0xD105             BNE.N    ??SPI_Init_28
+    212              {
+    213                PORTB->PCR[16] = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;//SOUT
+   \      0x27A   0xF44F 0x7110      MOV      R1,#+576
+   \      0x27E   0x.... 0x....      LDR.W    R2,??DataTable8_30  ;; 0x4004a040
+   \      0x282   0x6011             STR      R1,[R2, #+0]
+   \      0x284   0xE004             B.N      ??SPI_Init_29
+    214              }
+    215              else //mosi_pin == PTE1
+    216              {
+    217                PORTE->PCR[1] = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;//SOUT
+   \                     ??SPI_Init_28: (+1)
+   \      0x286   0xF44F 0x7110      MOV      R1,#+576
+   \      0x28A   0x.... 0x....      LDR.W    R2,??DataTable8_31  ;; 0x4004d004
+   \      0x28E   0x6011             STR      R1,[R2, #+0]
+    218              }
+    219              //选择MISO
+    220              if(miso_pin == PTB17)
+   \                     ??SPI_Init_29: (+1)
+   \      0x290   0xF89D 0x1005      LDRB     R1,[SP, #+5]
+   \      0x294   0x2931             CMP      R1,#+49
+   \      0x296   0xD105             BNE.N    ??SPI_Init_30
+    221              {
+    222                PORTB->PCR[17] = 0 | PORT_PCR_MUX(2); //SIN
+   \      0x298   0xF44F 0x7100      MOV      R1,#+512
+   \      0x29C   0x.... 0x....      LDR.W    R2,??DataTable8_32  ;; 0x4004a044
+   \      0x2A0   0x6011             STR      R1,[R2, #+0]
+   \      0x2A2   0xE057             B.N      ??SPI_Init_18
+    223              }
+    224              else //miso_pin == PTE3
+    225              {
+    226                PORTE->PCR[3] = 0 | PORT_PCR_MUX(2); //SIN
+   \                     ??SPI_Init_30: (+1)
+   \      0x2A4   0xF44F 0x7100      MOV      R1,#+512
+   \      0x2A8   0x.... 0x....      LDR.W    R2,??DataTable8_33  ;; 0x4004d00c
+   \      0x2AC   0x6011             STR      R1,[R2, #+0]
+   \      0x2AE   0xE051             B.N      ??SPI_Init_18
+    227              } 
+    228            }
+    229            else if(spix == SPI2)
+   \                     ??SPI_Init_19: (+1)
+   \      0x2B0   0x.... 0x....      LDR.W    R1,??DataTable8_34  ;; 0x400ac000
+   \      0x2B4   0x428C             CMP      R4,R1
+   \      0x2B6   0xD14B             BNE.N    ??SPI_Init_31
+    230            {
+    231          #if defined(CPU_MK60DZ10) || defined(CPU_MK60D10) 
+    232              SIM->SCGC3 |= SIM_SCGC3_SPI2_MASK; 
+    233          #elif defined(CPU_MK60F12) || defined(CPU_MK60F15)
+    234              SIM->SCGC3 |= SIM_SCGC3_DSPI2_MASK; 
+   \      0x2B8   0x.... 0x....      LDR.W    R1,??DataTable8_35  ;; 0x40048030
+   \      0x2BC   0x680A             LDR      R2,[R1, #+0]
+   \      0x2BE   0xF452 0x5280      ORRS     R2,R2,#0x1000
+   \      0x2C2   0x600A             STR      R2,[R1, #+0]
+    235          #endif
+    236              //选择PCS0
+    237              if(pcs0_pin == PTD11)
+   \      0x2C4   0xF89D 0x1002      LDRB     R1,[SP, #+2]
+   \      0x2C8   0x2967             CMP      R1,#+103
+   \      0x2CA   0xD105             BNE.N    ??SPI_Init_32
+    238              {
+    239                PORTD->PCR[11] = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;
+   \      0x2CC   0xF44F 0x7110      MOV      R1,#+576
+   \      0x2D0   0x.... 0x....      LDR.W    R2,??DataTable8_36  ;; 0x4004c02c
+   \      0x2D4   0x6011             STR      R1,[R2, #+0]
+   \      0x2D6   0xE004             B.N      ??SPI_Init_33
+    240              }
+    241              else//pcs0_pin == PTB20
+    242              {
+    243                PORTB->PCR[20] = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;
+   \                     ??SPI_Init_32: (+1)
+   \      0x2D8   0xF44F 0x7110      MOV      R1,#+576
+   \      0x2DC   0x.... 0x....      LDR.W    R2,??DataTable8_37  ;; 0x4004a050
+   \      0x2E0   0x6011             STR      R1,[R2, #+0]
+    244              }
+    245              //选择PCS1
+    246              if(pcs1_pin == PTD15)
+   \                     ??SPI_Init_33: (+1)
+   \      0x2E2   0xF89D 0x1001      LDRB     R1,[SP, #+1]
+   \      0x2E6   0x296B             CMP      R1,#+107
+   \      0x2E8   0xD104             BNE.N    ??SPI_Init_34
+    247              {
+    248                PORTD->PCR[15]  = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;
+   \      0x2EA   0xF44F 0x7110      MOV      R1,#+576
+   \      0x2EE   0x.... 0x....      LDR.W    R2,??DataTable8_38  ;; 0x4004c03c
+   \      0x2F2   0x6011             STR      R1,[R2, #+0]
+    249              }
+    250          
+    251              //选择SCK
+    252              if(sck_pin == PTD12)
+   \                     ??SPI_Init_34: (+1)
+   \      0x2F4   0xF89D 0x1003      LDRB     R1,[SP, #+3]
+   \      0x2F8   0x2968             CMP      R1,#+104
+   \      0x2FA   0xD105             BNE.N    ??SPI_Init_35
+    253              {
+    254                PORTD->PCR[12] = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;
+   \      0x2FC   0xF44F 0x7110      MOV      R1,#+576
+   \      0x300   0x.... 0x....      LDR.W    R2,??DataTable8_39  ;; 0x4004c030
+   \      0x304   0x6011             STR      R1,[R2, #+0]
+   \      0x306   0xE004             B.N      ??SPI_Init_36
+    255              }
+    256              else //sck_pin == PTB21
+    257              {
+    258                PORTB->PCR[21] = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;//SCK
+   \                     ??SPI_Init_35: (+1)
+   \      0x308   0xF44F 0x7110      MOV      R1,#+576
+   \      0x30C   0x.... 0x....      LDR.W    R2,??DataTable8_40  ;; 0x4004a054
+   \      0x310   0x6011             STR      R1,[R2, #+0]
+    259              }
+    260              //选择MOSI
+    261              if(mosi_pin == PTD13)
+   \                     ??SPI_Init_36: (+1)
+   \      0x312   0xF89D 0x1004      LDRB     R1,[SP, #+4]
+   \      0x316   0x2969             CMP      R1,#+105
+   \      0x318   0xD105             BNE.N    ??SPI_Init_37
+    262              {
+    263                PORTD->PCR[13] = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;//SOUT
+   \      0x31A   0xF44F 0x7110      MOV      R1,#+576
+   \      0x31E   0x.... 0x....      LDR.W    R2,??DataTable8_41  ;; 0x4004c034
+   \      0x322   0x6011             STR      R1,[R2, #+0]
+   \      0x324   0xE004             B.N      ??SPI_Init_38
+    264              }
+    265              else //mosi_pin == PTB22
+    266              {
+    267                PORTB->PCR[22] = 0 | PORT_PCR_MUX(2) | PORT_PCR_DSE_MASK;//SOUT
+   \                     ??SPI_Init_37: (+1)
+   \      0x326   0xF44F 0x7110      MOV      R1,#+576
+   \      0x32A   0x.... 0x....      LDR.W    R2,??DataTable8_42  ;; 0x4004a058
+   \      0x32E   0x6011             STR      R1,[R2, #+0]
+    268              }
+    269              //选择MISO
+    270              if(miso_pin == PTD14)
+   \                     ??SPI_Init_38: (+1)
+   \      0x330   0xF89D 0x1005      LDRB     R1,[SP, #+5]
+   \      0x334   0x296A             CMP      R1,#+106
+   \      0x336   0xD105             BNE.N    ??SPI_Init_39
+    271              {
+    272                PORTD->PCR[14] = 0 | PORT_PCR_MUX(2); //SIN
+   \      0x338   0xF44F 0x7100      MOV      R1,#+512
+   \      0x33C   0x.... 0x....      LDR.W    R2,??DataTable8_43  ;; 0x4004c038
+   \      0x340   0x6011             STR      R1,[R2, #+0]
+   \      0x342   0xE007             B.N      ??SPI_Init_18
+    273              }
+    274              else //miso_pin == PTB23
+    275              {
+    276                PORTB->PCR[23] = 0 | PORT_PCR_MUX(2); //SIN
+   \                     ??SPI_Init_39: (+1)
+   \      0x344   0xF44F 0x7100      MOV      R1,#+512
+   \      0x348   0x.... 0x....      LDR.W    R2,??DataTable8_14  ;; 0x4004a05c
+   \      0x34C   0x6011             STR      R1,[R2, #+0]
+   \      0x34E   0xE001             B.N      ??SPI_Init_18
+    277              } 
+    278            }
+    279            else
+    280              return 0;
+   \                     ??SPI_Init_31: (+1)
+   \      0x350   0x2000             MOVS     R0,#+0
+   \      0x352   0xE180             B.N      ??SPI_Init_40
+    281            //配置SPI MCR寄存器
+    282            spix->MCR = 0 & (~SPI_MCR_MDIS_MASK)        
+    283                          |SPI_MCR_HALT_MASK        
+    284                          |SPI_MCR_PCSIS_MASK       
+    285                          |SPI_MCR_CLR_TXF_MASK    
+    286                          |SPI_MCR_CLR_RXF_MASK;  
+   \                     ??SPI_Init_18: (+1)
+   \      0x354   0x.... 0x....      LDR.W    R1,??DataTable8_44  ;; 0x3f0c01
+   \      0x358   0x6021             STR      R1,[R4, #+0]
+    287            //选择SPI 工作模式
+    288            if(spi_mode == SPI_MODE_SLAVE)
+   \      0x35A   0xF89D 0x1009      LDRB     R1,[SP, #+9]
+   \      0x35E   0x2901             CMP      R1,#+1
+   \      0x360   0xD104             BNE.N    ??SPI_Init_41
+    289            {
+    290              spix->MCR &= ~SPI_MCR_MSTR_MASK;//从机模式  
+   \      0x362   0x6821             LDR      R1,[R4, #+0]
+   \      0x364   0xF021 0x4100      BIC      R1,R1,#0x80000000
+   \      0x368   0x6021             STR      R1,[R4, #+0]
+   \      0x36A   0xE003             B.N      ??SPI_Init_42
+    291            }
+    292            else
+    293            {
+    294              spix->MCR |= SPI_MCR_MSTR_MASK; //主机模式 
+   \                     ??SPI_Init_41: (+1)
+   \      0x36C   0x6821             LDR      R1,[R4, #+0]
+   \      0x36E   0xF051 0x4100      ORRS     R1,R1,#0x80000000
+   \      0x372   0x6021             STR      R1,[R4, #+0]
+    295            }
+    296            //选择使能tx FIFO
+    297            if(txFIFO_enable == TRUE)
+   \                     ??SPI_Init_42: (+1)
+   \      0x374   0xF89D 0x100D      LDRB     R1,[SP, #+13]
+   \      0x378   0x2901             CMP      R1,#+1
+   \      0x37A   0xD104             BNE.N    ??SPI_Init_43
+    298            {
+    299              spix->MCR &= ~SPI_MCR_DIS_TXF_MASK; 
+   \      0x37C   0x6821             LDR      R1,[R4, #+0]
+   \      0x37E   0xF431 0x5100      BICS     R1,R1,#0x2000
+   \      0x382   0x6021             STR      R1,[R4, #+0]
+   \      0x384   0xE003             B.N      ??SPI_Init_44
+    300            }
+    301            else
+    302            {
+    303              spix->MCR |= SPI_MCR_DIS_TXF_MASK;//选择传统方式
+   \                     ??SPI_Init_43: (+1)
+   \      0x386   0x6821             LDR      R1,[R4, #+0]
+   \      0x388   0xF451 0x5100      ORRS     R1,R1,#0x2000
+   \      0x38C   0x6021             STR      R1,[R4, #+0]
+    304            }
+    305            //选择使能Rx FIFO
+    306            if(rxFIFO_enable == TRUE)
+   \                     ??SPI_Init_44: (+1)
+   \      0x38E   0xF89D 0x100C      LDRB     R1,[SP, #+12]
+   \      0x392   0x2901             CMP      R1,#+1
+   \      0x394   0xD104             BNE.N    ??SPI_Init_45
+    307            {
+    308              spix->MCR &= ~SPI_MCR_DIS_RXF_MASK;
+   \      0x396   0x6821             LDR      R1,[R4, #+0]
+   \      0x398   0xF431 0x5180      BICS     R1,R1,#0x1000
+   \      0x39C   0x6021             STR      R1,[R4, #+0]
+   \      0x39E   0xE003             B.N      ??SPI_Init_46
+    309            }
+    310            else
+    311            {
+    312              spix->MCR |= SPI_MCR_DIS_RXF_MASK; //选择传统方式
+   \                     ??SPI_Init_45: (+1)
+   \      0x3A0   0x6821             LDR      R1,[R4, #+0]
+   \      0x3A2   0xF451 0x5180      ORRS     R1,R1,#0x1000
+   \      0x3A6   0x6021             STR      R1,[R4, #+0]
+    313            }
+    314            //选择使能发送完成中断
+    315            if(tx_complete_int == TRUE)
+   \                     ??SPI_Init_46: (+1)
+   \      0x3A8   0xF89D 0x1000      LDRB     R1,[SP, #+0]
+   \      0x3AC   0x2901             CMP      R1,#+1
+   \      0x3AE   0xD104             BNE.N    ??SPI_Init_47
+    316            {
+    317              spix->RSER |= SPI_RSER_TCF_RE_MASK; 
+   \      0x3B0   0x6B21             LDR      R1,[R4, #+48]
+   \      0x3B2   0xF051 0x4100      ORRS     R1,R1,#0x80000000
+   \      0x3B6   0x6321             STR      R1,[R4, #+48]
+   \      0x3B8   0xE003             B.N      ??SPI_Init_48
+    318            }
+    319            else
+    320            { 
+    321              spix->RSER &= ~SPI_RSER_TCF_RE_MASK;
+   \                     ??SPI_Init_47: (+1)
+   \      0x3BA   0x6B21             LDR      R1,[R4, #+48]
+   \      0x3BC   0xF021 0x4100      BIC      R1,R1,#0x80000000
+   \      0x3C0   0x6321             STR      R1,[R4, #+48]
+    322            }
+    323            //选择使能发送队列结束中断
+    324            if(QueueEnd_Request_int == TRUE)
+   \                     ??SPI_Init_48: (+1)
+   \      0x3C2   0x0029             MOVS     R1,R5
+   \      0x3C4   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \      0x3C6   0x2901             CMP      R1,#+1
+   \      0x3C8   0xD104             BNE.N    ??SPI_Init_49
+    325            {
+    326              spix->RSER |=SPI_RSER_EOQF_RE_MASK;
+   \      0x3CA   0x6B21             LDR      R1,[R4, #+48]
+   \      0x3CC   0xF051 0x5180      ORRS     R1,R1,#0x10000000
+   \      0x3D0   0x6321             STR      R1,[R4, #+48]
+   \      0x3D2   0xE003             B.N      ??SPI_Init_50
+    327            }
+    328            else
+    329              spix->RSER &= ~SPI_RSER_EOQF_RE_MASK;
+   \                     ??SPI_Init_49: (+1)
+   \      0x3D4   0x6B21             LDR      R1,[R4, #+48]
+   \      0x3D6   0xF031 0x5180      BICS     R1,R1,#0x10000000
+   \      0x3DA   0x6321             STR      R1,[R4, #+48]
+    330            //选择使能txFIFO为空中断
+    331            if(txFIFO_underflow_int== TRUE)
+   \                     ??SPI_Init_50: (+1)
+   \      0x3DC   0x0031             MOVS     R1,R6
+   \      0x3DE   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \      0x3E0   0x2901             CMP      R1,#+1
+   \      0x3E2   0xD104             BNE.N    ??SPI_Init_51
+    332            {
+    333              spix->RSER |=SPI_RSER_TFUF_RE_MASK;
+   \      0x3E4   0x6B21             LDR      R1,[R4, #+48]
+   \      0x3E6   0xF051 0x6100      ORRS     R1,R1,#0x8000000
+   \      0x3EA   0x6321             STR      R1,[R4, #+48]
+   \      0x3EC   0xE003             B.N      ??SPI_Init_52
+    334            }
+    335            else
+    336              spix->RSER &= ~SPI_RSER_TFUF_RE_MASK;
+   \                     ??SPI_Init_51: (+1)
+   \      0x3EE   0x6B21             LDR      R1,[R4, #+48]
+   \      0x3F0   0xF031 0x6100      BICS     R1,R1,#0x8000000
+   \      0x3F4   0x6321             STR      R1,[R4, #+48]
+    337            //选择使能rxFIFO溢出中断
+    338            if(rxFIFO_overflow_int== TRUE)
+   \                     ??SPI_Init_52: (+1)
+   \      0x3F6   0x0039             MOVS     R1,R7
+   \      0x3F8   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \      0x3FA   0x2901             CMP      R1,#+1
+   \      0x3FC   0xD104             BNE.N    ??SPI_Init_53
+    339            {
+    340              spix->RSER |=SPI_RSER_RFOF_RE_MASK;
+   \      0x3FE   0x6B21             LDR      R1,[R4, #+48]
+   \      0x400   0xF451 0x2100      ORRS     R1,R1,#0x80000
+   \      0x404   0x6321             STR      R1,[R4, #+48]
+   \      0x406   0xE003             B.N      ??SPI_Init_54
+    341            }
+    342            else
+    343            {
+    344              spix->RSER &= ~SPI_RSER_RFOF_RE_MASK;
+   \                     ??SPI_Init_53: (+1)
+   \      0x408   0x6B21             LDR      R1,[R4, #+48]
+   \      0x40A   0xF431 0x2100      BICS     R1,R1,#0x80000
+   \      0x40E   0x6321             STR      R1,[R4, #+48]
+    345            }
+    346            //选择使能txFIFO有数据进入队列中断或者DMA请求
+    347            if(txFIFO_Fill_int== TRUE)
+   \                     ??SPI_Init_54: (+1)
+   \      0x410   0x4641             MOV      R1,R8
+   \      0x412   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \      0x414   0x2901             CMP      R1,#+1
+   \      0x416   0xD104             BNE.N    ??SPI_Init_55
+    348            {
+    349              spix->RSER |=SPI_RSER_TFFF_RE_MASK;
+   \      0x418   0x6B21             LDR      R1,[R4, #+48]
+   \      0x41A   0xF051 0x7100      ORRS     R1,R1,#0x2000000
+   \      0x41E   0x6321             STR      R1,[R4, #+48]
+   \      0x420   0xE003             B.N      ??SPI_Init_56
+    350            }
+    351            else
+    352            {
+    353              spix->RSER &= ~SPI_RSER_TFFF_RE_MASK;
+   \                     ??SPI_Init_55: (+1)
+   \      0x422   0x6B21             LDR      R1,[R4, #+48]
+   \      0x424   0xF031 0x7100      BICS     R1,R1,#0x2000000
+   \      0x428   0x6321             STR      R1,[R4, #+48]
+    354            }
+    355            //选择使能rxFIFO非空中断或者DMA请求
+    356            if(rxFIFO_Drain_int== TRUE)
+   \                     ??SPI_Init_56: (+1)
+   \      0x42A   0x4649             MOV      R1,R9
+   \      0x42C   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \      0x42E   0x2901             CMP      R1,#+1
+   \      0x430   0xD104             BNE.N    ??SPI_Init_57
+    357            {
+    358              spix->RSER |=SPI_RSER_RFDF_RE_MASK;
+   \      0x432   0x6B21             LDR      R1,[R4, #+48]
+   \      0x434   0xF451 0x3100      ORRS     R1,R1,#0x20000
+   \      0x438   0x6321             STR      R1,[R4, #+48]
+   \      0x43A   0xE003             B.N      ??SPI_Init_58
+    359            }
+    360            else
+    361            {
+    362              spix->RSER &= ~SPI_RSER_RFDF_RE_MASK;
+   \                     ??SPI_Init_57: (+1)
+   \      0x43C   0x6B21             LDR      R1,[R4, #+48]
+   \      0x43E   0xF431 0x3100      BICS     R1,R1,#0x20000
+   \      0x442   0x6321             STR      R1,[R4, #+48]
+    363            }
+    364            //选择使能txFIFO中断或者DMA请求
+    365            if(txFIFO_req == SPI_FIFO_DMAREQUEST)
+   \                     ??SPI_Init_58: (+1)
+   \      0x444   0x4651             MOV      R1,R10
+   \      0x446   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \      0x448   0x2901             CMP      R1,#+1
+   \      0x44A   0xD104             BNE.N    ??SPI_Init_59
+    366            {
+    367              spix->RSER |=SPI_RSER_TFFF_DIRS_MASK;
+   \      0x44C   0x6B21             LDR      R1,[R4, #+48]
+   \      0x44E   0xF051 0x7180      ORRS     R1,R1,#0x1000000
+   \      0x452   0x6321             STR      R1,[R4, #+48]
+   \      0x454   0xE003             B.N      ??SPI_Init_60
+    368            }
+    369            else
+    370            {
+    371              spix->RSER &= ~SPI_RSER_TFFF_DIRS_MASK;
+   \                     ??SPI_Init_59: (+1)
+   \      0x456   0x6B21             LDR      R1,[R4, #+48]
+   \      0x458   0xF031 0x7180      BICS     R1,R1,#0x1000000
+   \      0x45C   0x6321             STR      R1,[R4, #+48]
+    372            }
+    373            //选择使能rxFIFO中断或者DMA请求
+    374            if(rxFIFO_req == SPI_FIFO_DMAREQUEST)
+   \                     ??SPI_Init_60: (+1)
+   \      0x45E   0x4659             MOV      R1,R11
+   \      0x460   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \      0x462   0x2901             CMP      R1,#+1
+   \      0x464   0xD104             BNE.N    ??SPI_Init_61
+    375            {
+    376              spix->RSER |= SPI_RSER_RFDF_DIRS_MASK;
+   \      0x466   0x6B21             LDR      R1,[R4, #+48]
+   \      0x468   0xF451 0x3180      ORRS     R1,R1,#0x10000
+   \      0x46C   0x6321             STR      R1,[R4, #+48]
+   \      0x46E   0xE003             B.N      ??SPI_Init_62
+    377            }
+    378            else 
+    379            {
+    380              spix->RSER &= ~SPI_RSER_RFDF_DIRS_MASK;
+   \                     ??SPI_Init_61: (+1)
+   \      0x470   0x6B21             LDR      R1,[R4, #+48]
+   \      0x472   0xF431 0x3180      BICS     R1,R1,#0x10000
+   \      0x476   0x6321             STR      R1,[R4, #+48]
+    381            }
+    382            //添加中断回调函数
+    383          
+    384            if(spix == SPI0)
+   \                     ??SPI_Init_62: (+1)
+   \      0x478   0x4284             CMP      R4,R0
+   \      0x47A   0xD139             BNE.N    ??SPI_Init_63
+    385            {
+    386              if(tx_complete_int == TRUE)
+   \      0x47C   0xF89D 0x0000      LDRB     R0,[SP, #+0]
+   \      0x480   0x2801             CMP      R0,#+1
+   \      0x482   0xD103             BNE.N    ??SPI_Init_64
+    387              { SPI0_ISR[SPI_TxComplete_Int] = TxComplete_isr; }
+   \      0x484   0x9809             LDR      R0,[SP, #+36]
+   \      0x486   0x.... 0x....      LDR.W    R1,??DataTable8_45
+   \      0x48A   0x6008             STR      R0,[R1, #+0]
+    388              if(QueueEnd_Request_int == TRUE)
+   \                     ??SPI_Init_64: (+1)
+   \      0x48C   0x0028             MOVS     R0,R5
+   \      0x48E   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x490   0x2801             CMP      R0,#+1
+   \      0x492   0xD103             BNE.N    ??SPI_Init_65
+    389              { SPI0_ISR[SPI_QueueEndReq_Int] = QueueEndReq_isr; }
+   \      0x494   0x9808             LDR      R0,[SP, #+32]
+   \      0x496   0x.... 0x....      LDR.W    R1,??DataTable8_45
+   \      0x49A   0x6048             STR      R0,[R1, #+4]
+    390              if(txFIFO_underflow_int == TRUE)
+   \                     ??SPI_Init_65: (+1)
+   \      0x49C   0x0030             MOVS     R0,R6
+   \      0x49E   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x4A0   0x2801             CMP      R0,#+1
+   \      0x4A2   0xD103             BNE.N    ??SPI_Init_66
+    391              { SPI0_ISR[SPI_TxFIFO_UnderflowInt] = UnderflowInt_isr; }
+   \      0x4A4   0x9807             LDR      R0,[SP, #+28]
+   \      0x4A6   0x.... 0x....      LDR.W    R1,??DataTable8_45
+   \      0x4AA   0x6088             STR      R0,[R1, #+8]
+    392              if(rxFIFO_overflow_int == TRUE)
+   \                     ??SPI_Init_66: (+1)
+   \      0x4AC   0x0038             MOVS     R0,R7
+   \      0x4AE   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x4B0   0x2801             CMP      R0,#+1
+   \      0x4B2   0xD103             BNE.N    ??SPI_Init_67
+    393              { SPI0_ISR[SPI_RxFIFO_OverflowInt] = OverflowInt_isr; }
+   \      0x4B4   0x9806             LDR      R0,[SP, #+24]
+   \      0x4B6   0x.... 0x....      LDR.W    R1,??DataTable8_45
+   \      0x4BA   0x60C8             STR      R0,[R1, #+12]
+    394              if(txFIFO_Fill_int == TRUE && txFIFO_req == SPI_FIFO_INTREQUEST)
+   \                     ??SPI_Init_67: (+1)
+   \      0x4BC   0x4640             MOV      R0,R8
+   \      0x4BE   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x4C0   0x2801             CMP      R0,#+1
+   \      0x4C2   0xD107             BNE.N    ??SPI_Init_68
+   \      0x4C4   0x4650             MOV      R0,R10
+   \      0x4C6   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x4C8   0x2800             CMP      R0,#+0
+   \      0x4CA   0xD103             BNE.N    ??SPI_Init_68
+    395              { SPI0_ISR[SPI_TxFIFO_FillInt] = FillInt_isr; }
+   \      0x4CC   0x9805             LDR      R0,[SP, #+20]
+   \      0x4CE   0x.... 0x....      LDR.W    R1,??DataTable8_45
+   \      0x4D2   0x6108             STR      R0,[R1, #+16]
+    396              if(rxFIFO_Drain_int == TRUE && rxFIFO_req == SPI_FIFO_INTREQUEST)
+   \                     ??SPI_Init_68: (+1)
+   \      0x4D4   0x4648             MOV      R0,R9
+   \      0x4D6   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x4D8   0x2801             CMP      R0,#+1
+   \      0x4DA   0xF040 0x8082      BNE.W    ??SPI_Init_69
+   \      0x4DE   0x4658             MOV      R0,R11
+   \      0x4E0   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x4E2   0x2800             CMP      R0,#+0
+   \      0x4E4   0xD17D             BNE.N    ??SPI_Init_69
+    397              { SPI0_ISR[SPI_RxFIFO_DrainInt] = DrainInt_isr; }
+   \      0x4E6   0x9804             LDR      R0,[SP, #+16]
+   \      0x4E8   0x.... 0x....      LDR.W    R1,??DataTable8_45
+   \      0x4EC   0x6148             STR      R0,[R1, #+20]
+   \      0x4EE   0xE078             B.N      ??SPI_Init_69
+    398            }
+    399            else if (spix == SPI1)
+   \                     ??SPI_Init_63: (+1)
+   \      0x4F0   0x.... 0x....      LDR.W    R0,??DataTable8_21  ;; 0x4002d000
+   \      0x4F4   0x4284             CMP      R4,R0
+   \      0x4F6   0xD138             BNE.N    ??SPI_Init_70
+    400            {
+    401              if(tx_complete_int == TRUE)
+   \      0x4F8   0xF89D 0x0000      LDRB     R0,[SP, #+0]
+   \      0x4FC   0x2801             CMP      R0,#+1
+   \      0x4FE   0xD103             BNE.N    ??SPI_Init_71
+    402              { SPI1_ISR[SPI_TxComplete_Int] = TxComplete_isr; }
+   \      0x500   0x9809             LDR      R0,[SP, #+36]
+   \      0x502   0x.... 0x....      LDR.W    R1,??DataTable8_46
+   \      0x506   0x6008             STR      R0,[R1, #+0]
+    403              if(QueueEnd_Request_int == TRUE)
+   \                     ??SPI_Init_71: (+1)
+   \      0x508   0x0028             MOVS     R0,R5
+   \      0x50A   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x50C   0x2801             CMP      R0,#+1
+   \      0x50E   0xD103             BNE.N    ??SPI_Init_72
+    404              { SPI1_ISR[SPI_QueueEndReq_Int] = QueueEndReq_isr; }
+   \      0x510   0x9808             LDR      R0,[SP, #+32]
+   \      0x512   0x.... 0x....      LDR.W    R1,??DataTable8_46
+   \      0x516   0x6048             STR      R0,[R1, #+4]
+    405              if(txFIFO_underflow_int == TRUE)
+   \                     ??SPI_Init_72: (+1)
+   \      0x518   0x0030             MOVS     R0,R6
+   \      0x51A   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x51C   0x2801             CMP      R0,#+1
+   \      0x51E   0xD103             BNE.N    ??SPI_Init_73
+    406              { SPI1_ISR[SPI_TxFIFO_UnderflowInt] = UnderflowInt_isr; }
+   \      0x520   0x9807             LDR      R0,[SP, #+28]
+   \      0x522   0x.... 0x....      LDR.W    R1,??DataTable8_46
+   \      0x526   0x6088             STR      R0,[R1, #+8]
+    407              if(rxFIFO_overflow_int == TRUE)
+   \                     ??SPI_Init_73: (+1)
+   \      0x528   0x0038             MOVS     R0,R7
+   \      0x52A   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x52C   0x2801             CMP      R0,#+1
+   \      0x52E   0xD103             BNE.N    ??SPI_Init_74
+    408              { SPI1_ISR[SPI_RxFIFO_OverflowInt] = OverflowInt_isr; }
+   \      0x530   0x9806             LDR      R0,[SP, #+24]
+   \      0x532   0x.... 0x....      LDR.W    R1,??DataTable8_46
+   \      0x536   0x60C8             STR      R0,[R1, #+12]
+    409              if(txFIFO_Fill_int == TRUE && txFIFO_req == SPI_FIFO_INTREQUEST)
+   \                     ??SPI_Init_74: (+1)
+   \      0x538   0x4640             MOV      R0,R8
+   \      0x53A   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x53C   0x2801             CMP      R0,#+1
+   \      0x53E   0xD107             BNE.N    ??SPI_Init_75
+   \      0x540   0x4650             MOV      R0,R10
+   \      0x542   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x544   0x2800             CMP      R0,#+0
+   \      0x546   0xD103             BNE.N    ??SPI_Init_75
+    410              { SPI1_ISR[SPI_TxFIFO_FillInt] = FillInt_isr; }
+   \      0x548   0x9805             LDR      R0,[SP, #+20]
+   \      0x54A   0x.... 0x....      LDR.W    R1,??DataTable8_46
+   \      0x54E   0x6108             STR      R0,[R1, #+16]
+    411              if(rxFIFO_Drain_int == TRUE && rxFIFO_req == SPI_FIFO_INTREQUEST)
+   \                     ??SPI_Init_75: (+1)
+   \      0x550   0x4648             MOV      R0,R9
+   \      0x552   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x554   0x2801             CMP      R0,#+1
+   \      0x556   0xD144             BNE.N    ??SPI_Init_69
+   \      0x558   0x4658             MOV      R0,R11
+   \      0x55A   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x55C   0x2800             CMP      R0,#+0
+   \      0x55E   0xD140             BNE.N    ??SPI_Init_69
+    412              { SPI1_ISR[SPI_RxFIFO_DrainInt] = DrainInt_isr; }
+   \      0x560   0x9804             LDR      R0,[SP, #+16]
+   \      0x562   0x.... 0x....      LDR.W    R1,??DataTable8_46
+   \      0x566   0x6148             STR      R0,[R1, #+20]
+   \      0x568   0xE03B             B.N      ??SPI_Init_69
+    413            }
+    414            else if (spix == SPI2)
+   \                     ??SPI_Init_70: (+1)
+   \      0x56A   0x.... 0x....      LDR.W    R0,??DataTable8_34  ;; 0x400ac000
+   \      0x56E   0x4284             CMP      R4,R0
+   \      0x570   0xD137             BNE.N    ??SPI_Init_69
+    415            {
+    416              if(tx_complete_int == TRUE)
+   \      0x572   0xF89D 0x0000      LDRB     R0,[SP, #+0]
+   \      0x576   0x2801             CMP      R0,#+1
+   \      0x578   0xD103             BNE.N    ??SPI_Init_76
+    417              { SPI2_ISR[SPI_TxComplete_Int] = TxComplete_isr; }
+   \      0x57A   0x9809             LDR      R0,[SP, #+36]
+   \      0x57C   0x.... 0x....      LDR.W    R1,??DataTable8_47
+   \      0x580   0x6008             STR      R0,[R1, #+0]
+    418              if(QueueEnd_Request_int == TRUE)
+   \                     ??SPI_Init_76: (+1)
+   \      0x582   0x0028             MOVS     R0,R5
+   \      0x584   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x586   0x2801             CMP      R0,#+1
+   \      0x588   0xD103             BNE.N    ??SPI_Init_77
+    419              { SPI2_ISR[SPI_QueueEndReq_Int] = QueueEndReq_isr; }
+   \      0x58A   0x9808             LDR      R0,[SP, #+32]
+   \      0x58C   0x.... 0x....      LDR.W    R1,??DataTable8_47
+   \      0x590   0x6048             STR      R0,[R1, #+4]
+    420              if(txFIFO_underflow_int == TRUE)
+   \                     ??SPI_Init_77: (+1)
+   \      0x592   0x0030             MOVS     R0,R6
+   \      0x594   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x596   0x2801             CMP      R0,#+1
+   \      0x598   0xD103             BNE.N    ??SPI_Init_78
+    421              { SPI2_ISR[SPI_TxFIFO_UnderflowInt] = UnderflowInt_isr; }
+   \      0x59A   0x9807             LDR      R0,[SP, #+28]
+   \      0x59C   0x.... 0x....      LDR.W    R1,??DataTable8_47
+   \      0x5A0   0x6088             STR      R0,[R1, #+8]
+    422              if(rxFIFO_overflow_int == TRUE)
+   \                     ??SPI_Init_78: (+1)
+   \      0x5A2   0x0038             MOVS     R0,R7
+   \      0x5A4   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x5A6   0x2801             CMP      R0,#+1
+   \      0x5A8   0xD103             BNE.N    ??SPI_Init_79
+    423              { SPI2_ISR[SPI_RxFIFO_OverflowInt] = OverflowInt_isr; }
+   \      0x5AA   0x9806             LDR      R0,[SP, #+24]
+   \      0x5AC   0x.... 0x....      LDR.W    R1,??DataTable8_47
+   \      0x5B0   0x60C8             STR      R0,[R1, #+12]
+    424              if(txFIFO_Fill_int == TRUE && txFIFO_req == SPI_FIFO_INTREQUEST)
+   \                     ??SPI_Init_79: (+1)
+   \      0x5B2   0x4640             MOV      R0,R8
+   \      0x5B4   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x5B6   0x2801             CMP      R0,#+1
+   \      0x5B8   0xD107             BNE.N    ??SPI_Init_80
+   \      0x5BA   0x4650             MOV      R0,R10
+   \      0x5BC   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x5BE   0x2800             CMP      R0,#+0
+   \      0x5C0   0xD103             BNE.N    ??SPI_Init_80
+    425              { SPI2_ISR[SPI_TxFIFO_FillInt] = FillInt_isr; }
+   \      0x5C2   0x9805             LDR      R0,[SP, #+20]
+   \      0x5C4   0x.... 0x....      LDR.W    R1,??DataTable8_47
+   \      0x5C8   0x6108             STR      R0,[R1, #+16]
+    426              if(rxFIFO_Drain_int == TRUE && rxFIFO_req == SPI_FIFO_INTREQUEST)
+   \                     ??SPI_Init_80: (+1)
+   \      0x5CA   0x4648             MOV      R0,R9
+   \      0x5CC   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x5CE   0x2801             CMP      R0,#+1
+   \      0x5D0   0xD107             BNE.N    ??SPI_Init_69
+   \      0x5D2   0x4658             MOV      R0,R11
+   \      0x5D4   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x5D6   0x2800             CMP      R0,#+0
+   \      0x5D8   0xD103             BNE.N    ??SPI_Init_69
+    427              { SPI2_ISR[SPI_RxFIFO_DrainInt] = DrainInt_isr; }
+   \      0x5DA   0x9804             LDR      R0,[SP, #+16]
+   \      0x5DC   0x.... 0x....      LDR.W    R1,??DataTable8_47
+   \      0x5E0   0x6148             STR      R0,[R1, #+20]
+    428            }
+    429            //配置SPI CTAR寄存器，设置SPI的总线时序
+    430            spix->CTAR[0] = 0 & (~SPI_CTAR_LSBFE_MASK)
+    431                                |SPI_CTAR_DBR_MASK  
+    432                                |SPI_CTAR_PBR(0)           
+    433                                |SPI_CTAR_FMSZ(7);        
+   \                     ??SPI_Init_69: (+1)
+   \      0x5E2   0xF05F 0x4038      MOVS     R0,#-1207959552
+   \      0x5E6   0x60E0             STR      R0,[R4, #+12]
+    434                                 
+    435            //设置SPI总线频率
+    436            //SCK总线频率 = g_bus_clock/ SCK_DIV_x                                             
+    437            spix->CTAR[0] |=SPI_CTAR_BR(sck_div);
+   \      0x5E8   0x68E0             LDR      R0,[R4, #+12]
+   \      0x5EA   0xF89D 0x1008      LDRB     R1,[SP, #+8]
+   \      0x5EE   0xF011 0x010F      ANDS     R1,R1,#0xF
+   \      0x5F2   0x4308             ORRS     R0,R1,R0
+   \      0x5F4   0x60E0             STR      R0,[R4, #+12]
+    438          
+    439            //tCSC = (1/g_bus_clock) x PCSSCK x CSSCK
+    440            //tCSC = 1/50,000,000 x PCSSCK x CSSCK
+    441            spix->CTAR[0] |=SPI_CTAR_PCSSCK(1); 
+   \      0x5F6   0x68E0             LDR      R0,[R4, #+12]
+   \      0x5F8   0xF450 0x0080      ORRS     R0,R0,#0x400000
+   \      0x5FC   0x60E0             STR      R0,[R4, #+12]
+    442            spix->CTAR[0] |=SPI_CTAR_CSSCK(1);  
+   \      0x5FE   0x68E0             LDR      R0,[R4, #+12]
+   \      0x600   0xF450 0x5080      ORRS     R0,R0,#0x1000
+   \      0x604   0x60E0             STR      R0,[R4, #+12]
+    443            
+    444            //tDT = (1/g_bus_clock) x PDT x DT
+    445            spix->CTAR[0] |=SPI_CTAR_DT(1);
+   \      0x606   0x68E0             LDR      R0,[R4, #+12]
+   \      0x608   0xF050 0x0010      ORRS     R0,R0,#0x10
+   \      0x60C   0x60E0             STR      R0,[R4, #+12]
+    446            spix->CTAR[0] |=SPI_CTAR_PDT(1);
+   \      0x60E   0x68E0             LDR      R0,[R4, #+12]
+   \      0x610   0xF450 0x2080      ORRS     R0,R0,#0x40000
+   \      0x614   0x60E0             STR      R0,[R4, #+12]
+    447            
+    448            
+    449            spix->CTAR[0] |= 1<<26;       //极性
+   \      0x616   0x68E0             LDR      R0,[R4, #+12]
+   \      0x618   0xF050 0x6080      ORRS     R0,R0,#0x4000000
+   \      0x61C   0x60E0             STR      R0,[R4, #+12]
+    450            spix->CTAR[0] |= 1<<25;       //相位
+   \      0x61E   0x68E0             LDR      R0,[R4, #+12]
+   \      0x620   0xF050 0x7000      ORRS     R0,R0,#0x2000000
+   \      0x624   0x60E0             STR      R0,[R4, #+12]
+    451            
+    452            spix->CTAR[0] |= 3<<22;
+   \      0x626   0x68E0             LDR      R0,[R4, #+12]
+   \      0x628   0xF450 0x0040      ORRS     R0,R0,#0xC00000
+   \      0x62C   0x60E0             STR      R0,[R4, #+12]
+    453            spix->CTAR[0] |= 3<<20;
+   \      0x62E   0x68E0             LDR      R0,[R4, #+12]
+   \      0x630   0xF450 0x1040      ORRS     R0,R0,#0x300000
+   \      0x634   0x60E0             STR      R0,[R4, #+12]
+    454            //Config the Delay of the last edge of SCK and the negation of PCS
+    455            //tASC = (1/g_bus_clock) x PASC x ASC
+    456            spix->CTAR[0] |=SPI_CTAR_PASC(1);
+   \      0x636   0x68E0             LDR      R0,[R4, #+12]
+   \      0x638   0xF450 0x1080      ORRS     R0,R0,#0x100000
+   \      0x63C   0x60E0             STR      R0,[R4, #+12]
+    457            spix->CTAR[0] |=SPI_CTAR_ASC(1);
+   \      0x63E   0x68E0             LDR      R0,[R4, #+12]
+   \      0x640   0xF450 0x7080      ORRS     R0,R0,#0x100
+   \      0x644   0x60E0             STR      R0,[R4, #+12]
+    458            //清除标志位
+    459            spix->SR =  SPI_SR_RFDF_MASK   
+    460                        |SPI_SR_RFOF_MASK
+    461                        |SPI_SR_TFFF_MASK
+    462                        |SPI_SR_TFUF_MASK
+    463                        |SPI_SR_TCF_MASK
+    464                        |SPI_SR_EOQF_MASK;
+   \      0x646   0x.... 0x....      LDR.W    R0,??DataTable8_48  ;; 0x9a0a0000
+   \      0x64A   0x62E0             STR      R0,[R4, #+44]
+    465            //使能SPIx
+    466            spix->MCR &=~SPI_MCR_HALT_MASK; 
+   \      0x64C   0x6820             LDR      R0,[R4, #+0]
+   \      0x64E   0x0840             LSRS     R0,R0,#+1
+   \      0x650   0x0040             LSLS     R0,R0,#+1
+   \      0x652   0x6020             STR      R0,[R4, #+0]
+    467            
+    468            return 1;
+   \      0x654   0x2001             MOVS     R0,#+1
+   \                     ??SPI_Init_40: (+1)
+   \      0x656   0xB00B             ADD      SP,SP,#+44
+   \      0x658   0xE8BD 0x0FF0      POP      {R4-R11}
+   \      0x65C   0xF85D 0xFB14      LDR      PC,[SP], #+20    ;; return
+    469          }
+    470          
+    471          /*
+    472           * SPI_Deinit
+    473           * SPI反初始化函数,在该函数中将SPI设置成为暂停模式，关闭SPI总线时钟，
+    474           * 关闭SPI外设中断
+    475           * 
+    476           * 参数:
+    477           *    spi_init_structure--SPI初始化结构体，
+    478           *                        具体定义见SPI_InitTypeDef
+    479           *
+    480           * 输出:
+    481           *    0--配置错误
+    482           *    1--配置成功
+    483           */
+
+   \                                 In section .text, align 2, keep-with-next
+    484          uint8 SPI_Deinit(SPI_InitTypeDef spi_init_structure)
+    485          {
+   \                     SPI_Deinit: (+1)
+   \        0x0   0xB40F             PUSH     {R0-R3}
+   \        0x2   0xB510             PUSH     {R4,LR}
+    486            SPI_Type * spix = spi_init_structure.SPI_SPIx;
+   \        0x4   0x9C02             LDR      R4,[SP, #+8]
+    487            spix->MCR |= SPI_MCR_HALT_MASK; //
+   \        0x6   0x6820             LDR      R0,[R4, #+0]
+   \        0x8   0xF050 0x0001      ORRS     R0,R0,#0x1
+   \        0xC   0x6020             STR      R0,[R4, #+0]
+    488            if(spix == SPI0)
+   \        0xE   0x.... 0x....      LDR.W    R0,??DataTable8_3  ;; 0x4002c000
+   \       0x12   0x4284             CMP      R4,R0
+   \       0x14   0xD108             BNE.N    ??SPI_Deinit_0
+    489            {
+    490              disable_irq(SPI0_IRQn);
+   \       0x16   0x201A             MOVS     R0,#+26
+   \       0x18   0x.... 0x....      BL       _ZN26_INTERNAL_5_SPI_c_SPI_Init17__NVIC_DisableIRQE4IRQn
+    491          #if defined(CPU_MK60D10)
+    492              SIM->SCGC6 &= ~SIM_SCGC6_SPI0_MASK;
+    493          #elif defined(CPU_MK60DZ10) || defined(CPU_MK60F12) || defined(CPU_MK60F15)
+    494              SIM->SCGC6 &= ~SIM_SCGC6_DSPI0_MASK;
+   \       0x1C   0x....             LDR.N    R0,??DataTable8_4  ;; 0x4004803c
+   \       0x1E   0x6801             LDR      R1,[R0, #+0]
+   \       0x20   0xF431 0x5180      BICS     R1,R1,#0x1000
+   \       0x24   0x6001             STR      R1,[R0, #+0]
+   \       0x26   0xE01C             B.N      ??SPI_Deinit_1
+    495          #endif 
+    496            }
+    497            else if(spix == SPI1)
+   \                     ??SPI_Deinit_0: (+1)
+   \       0x28   0x.... 0x....      LDR.W    R0,??DataTable8_21  ;; 0x4002d000
+   \       0x2C   0x4284             CMP      R4,R0
+   \       0x2E   0xD108             BNE.N    ??SPI_Deinit_2
+    498            {
+    499              disable_irq(SPI1_IRQn);
+   \       0x30   0x201B             MOVS     R0,#+27
+   \       0x32   0x.... 0x....      BL       _ZN26_INTERNAL_5_SPI_c_SPI_Init17__NVIC_DisableIRQE4IRQn
+    500          #if defined(CPU_MK60DZ10) || defined(CPU_MK60D10) 
+    501              SIM->SCGC6 &= ~SIM_SCGC6_SPI1_MASK; 
+    502          #elif defined(CPU_MK60F12) || defined(CPU_MK60F15)
+    503              SIM->SCGC6 &= ~SIM_SCGC6_DSPI1_MASK; 
+   \       0x36   0x....             LDR.N    R0,??DataTable8_4  ;; 0x4004803c
+   \       0x38   0x6801             LDR      R1,[R0, #+0]
+   \       0x3A   0xF431 0x5100      BICS     R1,R1,#0x2000
+   \       0x3E   0x6001             STR      R1,[R0, #+0]
+   \       0x40   0xE00F             B.N      ??SPI_Deinit_1
+    504          #endif
+    505            }
+    506            else if(spix == SPI2)
+   \                     ??SPI_Deinit_2: (+1)
+   \       0x42   0x.... 0x....      LDR.W    R0,??DataTable8_34  ;; 0x400ac000
+   \       0x46   0x4284             CMP      R4,R0
+   \       0x48   0xD109             BNE.N    ??SPI_Deinit_3
+    507            {
+    508              disable_irq(SPI2_IRQn);
+   \       0x4A   0x201C             MOVS     R0,#+28
+   \       0x4C   0x.... 0x....      BL       _ZN26_INTERNAL_5_SPI_c_SPI_Init17__NVIC_DisableIRQE4IRQn
+    509          #if defined(CPU_MK60DZ10) || defined(CPU_MK60D10)  
+    510              SIM->SCGC3 &= ~SIM_SCGC3_SPI2_MASK; 
+    511          #elif defined(CPU_MK60F12) || defined(CPU_MK60F15)
+    512              SIM->SCGC3 &= ~SIM_SCGC3_DSPI2_MASK; 
+   \       0x50   0x.... 0x....      LDR.W    R0,??DataTable8_35  ;; 0x40048030
+   \       0x54   0x6801             LDR      R1,[R0, #+0]
+   \       0x56   0xF431 0x5180      BICS     R1,R1,#0x1000
+   \       0x5A   0x6001             STR      R1,[R0, #+0]
+   \       0x5C   0xE001             B.N      ??SPI_Deinit_1
+    513          #endif
+    514            }
+    515            else
+    516              return 0;
+   \                     ??SPI_Deinit_3: (+1)
+   \       0x5E   0x2000             MOVS     R0,#+0
+   \       0x60   0xE000             B.N      ??SPI_Deinit_4
+    517            return 1;
+   \                     ??SPI_Deinit_1: (+1)
+   \       0x62   0x2001             MOVS     R0,#+1
+   \                     ??SPI_Deinit_4: (+1)
+   \       0x64   0xBC10             POP      {R4}
+   \       0x66   0xF85D 0xFB14      LDR      PC,[SP], #+20    ;; return
+    518          }
+    519          
+    520          /*
+    521           * SPI_EnableIrq
+    522           * 使能SPI外设中断
+    523           * 
+    524           * 参数:
+    525           *    spi_init_structure--SPI初始化结构体，
+    526           *                        具体定义见SPI_InitTypeDef
+    527           *
+    528           * 输出:
+    529           *    0--配置错误
+    530           *    1--配置成功
+    531           */
+
+   \                                 In section .text, align 2, keep-with-next
+    532          uint8 SPI_EnableIrq(SPI_InitTypeDef spi_init_structure)
+    533          {
+   \                     SPI_EnableIrq: (+1)
+   \        0x0   0xB40F             PUSH     {R0-R3}
+   \        0x2   0xB510             PUSH     {R4,LR}
+    534            SPI_Type * spix = spi_init_structure.SPI_SPIx;
+   \        0x4   0x9C02             LDR      R4,[SP, #+8]
+    535            if(spix == SPI0)
+   \        0x6   0x....             LDR.N    R0,??DataTable8_3  ;; 0x4002c000
+   \        0x8   0x4284             CMP      R4,R0
+   \        0xA   0xD103             BNE.N    ??SPI_EnableIrq_0
+    536            {
+    537              enable_irq(SPI0_IRQn);
+   \        0xC   0x201A             MOVS     R0,#+26
+   \        0xE   0x.... 0x....      BL       _ZN26_INTERNAL_5_SPI_c_SPI_Init16__NVIC_EnableIRQE4IRQn
+   \       0x12   0xE00F             B.N      ??SPI_EnableIrq_1
+    538            }
+    539            else if(spix == SPI1)
+   \                     ??SPI_EnableIrq_0: (+1)
+   \       0x14   0x....             LDR.N    R0,??DataTable8_21  ;; 0x4002d000
+   \       0x16   0x4284             CMP      R4,R0
+   \       0x18   0xD103             BNE.N    ??SPI_EnableIrq_2
+    540            {
+    541              enable_irq(SPI1_IRQn);
+   \       0x1A   0x201B             MOVS     R0,#+27
+   \       0x1C   0x.... 0x....      BL       _ZN26_INTERNAL_5_SPI_c_SPI_Init16__NVIC_EnableIRQE4IRQn
+   \       0x20   0xE008             B.N      ??SPI_EnableIrq_1
+    542            }
+    543            else if(spix == SPI2)
+   \                     ??SPI_EnableIrq_2: (+1)
+   \       0x22   0x....             LDR.N    R0,??DataTable8_34  ;; 0x400ac000
+   \       0x24   0x4284             CMP      R4,R0
+   \       0x26   0xD103             BNE.N    ??SPI_EnableIrq_3
+    544            {
+    545              enable_irq(SPI2_IRQn);
+   \       0x28   0x201C             MOVS     R0,#+28
+   \       0x2A   0x.... 0x....      BL       _ZN26_INTERNAL_5_SPI_c_SPI_Init16__NVIC_EnableIRQE4IRQn
+   \       0x2E   0xE001             B.N      ??SPI_EnableIrq_1
+    546            }
+    547            else
+    548              return 0;
+   \                     ??SPI_EnableIrq_3: (+1)
+   \       0x30   0x2000             MOVS     R0,#+0
+   \       0x32   0xE000             B.N      ??SPI_EnableIrq_4
+    549          
+    550            return 1;
+   \                     ??SPI_EnableIrq_1: (+1)
+   \       0x34   0x2001             MOVS     R0,#+1
+   \                     ??SPI_EnableIrq_4: (+1)
+   \       0x36   0xBC10             POP      {R4}
+   \       0x38   0xF85D 0xFB14      LDR      PC,[SP], #+20    ;; return
+    551          }
+    552          
+    553          /*
+    554           * SPI_EnableIrq
+    555           * 禁止SPI外设中断
+    556           * 
+    557           * 参数:
+    558           *    spi_init_structure--SPI初始化结构体，
+    559           *                        具体定义见SPI_InitTypeDef
+    560           *
+    561           * 输出:
+    562           *    0--配置错误
+    563           *    1--配置成功
+    564           */
+
+   \                                 In section .text, align 2, keep-with-next
+    565          uint8 SPI_DisableIrq(SPI_InitTypeDef spi_init_structure)
+    566          {
+   \                     SPI_DisableIrq: (+1)
+   \        0x0   0xB40F             PUSH     {R0-R3}
+   \        0x2   0xB510             PUSH     {R4,LR}
+    567            SPI_Type * spix = spi_init_structure.SPI_SPIx;
+   \        0x4   0x9C02             LDR      R4,[SP, #+8]
+    568            if(spix == SPI0)
+   \        0x6   0x....             LDR.N    R0,??DataTable8_3  ;; 0x4002c000
+   \        0x8   0x4284             CMP      R4,R0
+   \        0xA   0xD103             BNE.N    ??SPI_DisableIrq_0
+    569            {
+    570              disable_irq(SPI0_IRQn);
+   \        0xC   0x201A             MOVS     R0,#+26
+   \        0xE   0x.... 0x....      BL       _ZN26_INTERNAL_5_SPI_c_SPI_Init17__NVIC_DisableIRQE4IRQn
+   \       0x12   0xE00F             B.N      ??SPI_DisableIrq_1
+    571            }
+    572            else if(spix == SPI1)
+   \                     ??SPI_DisableIrq_0: (+1)
+   \       0x14   0x....             LDR.N    R0,??DataTable8_21  ;; 0x4002d000
+   \       0x16   0x4284             CMP      R4,R0
+   \       0x18   0xD103             BNE.N    ??SPI_DisableIrq_2
+    573            {
+    574              disable_irq(SPI1_IRQn);
+   \       0x1A   0x201B             MOVS     R0,#+27
+   \       0x1C   0x.... 0x....      BL       _ZN26_INTERNAL_5_SPI_c_SPI_Init17__NVIC_DisableIRQE4IRQn
+   \       0x20   0xE008             B.N      ??SPI_DisableIrq_1
+    575            }
+    576            else if(spix == SPI2)
+   \                     ??SPI_DisableIrq_2: (+1)
+   \       0x22   0x....             LDR.N    R0,??DataTable8_34  ;; 0x400ac000
+   \       0x24   0x4284             CMP      R4,R0
+   \       0x26   0xD103             BNE.N    ??SPI_DisableIrq_3
+    577            {
+    578              disable_irq(SPI2_IRQn);
+   \       0x28   0x201C             MOVS     R0,#+28
+   \       0x2A   0x.... 0x....      BL       _ZN26_INTERNAL_5_SPI_c_SPI_Init17__NVIC_DisableIRQE4IRQn
+   \       0x2E   0xE001             B.N      ??SPI_DisableIrq_1
+    579            }
+    580            else
+    581              return 0;
+   \                     ??SPI_DisableIrq_3: (+1)
+   \       0x30   0x2000             MOVS     R0,#+0
+   \       0x32   0xE000             B.N      ??SPI_DisableIrq_4
+    582            return 1;
+   \                     ??SPI_DisableIrq_1: (+1)
+   \       0x34   0x2001             MOVS     R0,#+1
+   \                     ??SPI_DisableIrq_4: (+1)
+   \       0x36   0xBC10             POP      {R4}
+   \       0x38   0xF85D 0xFB14      LDR      PC,[SP], #+20    ;; return
+    583          }
+    584          
+    585          /*
+    586           * SPI_Master_WriteRead
+    587           * K60主机SPI向从机写数据，并读取从机数据
+    588           * 
+    589           * 参数:
+    590           *    spix--SPI选择
+    591           *      |__SPI0 -选择SPI0模块
+    592           *      |__SPI1 -选择SPI1模块
+    593           *      |__SPI2 -选择SPI2模块
+    594           *    data--要发送数据
+    595           *      |__单位为一个字节，8位
+    596           *    pcsx--CS片选端口号
+    597           *      |__SPI_PCS0 -0号片选(SPI0、SPI1、SPI2含有)
+    598           *      |__SPI_PCS1 -1号片选(SPI0、SPI1、SPI2含有)
+    599           *      |__SPI_PCS2 -2号片选(SPI0、SPI1含有)
+    600           *      |__SPI_PCS3 -3号片选(SPI0、SPI1含有)
+    601           *      |__SPI_PCS4 -4号片选(SPI0含有)
+    602           *      |__SPI_PCS5 -5号片选(SPI0含有)
+    603           *    pcs_state--一帧数据传输完成后CS的状态
+    604           *      |__SPI_PCS_ASSERTED -保持片选有效,PCS信号保持为低电平
+    605           *      |__SPI_PCS_INACTIVE -片选无效,PCS信号变为高电平
+    606           * 输出:
+    607           *    读取从机8位的数据
+    608           */
+
+   \                                 In section .text, align 2, keep-with-next
+    609          uint8 SPI_Master_WriteRead(SPI_Type *spix,uint8 data,uint8 pcsx,uint8 pcs_state)
+    610          {
+   \                     SPI_Master_WriteRead: (+1)
+   \        0x0   0xB430             PUSH     {R4,R5}
+   \        0x2   0x0004             MOVS     R4,R0
+    611            uint8 temp;
+    612            
+    613            spix->PUSHR  = (((uint32_t)(((uint32_t)(pcs_state))<<SPI_PUSHR_CONT_SHIFT))&SPI_PUSHR_CONT_MASK)
+    614                         |SPI_PUSHR_CTAS(0)
+    615                         |SPI_PUSHR_PCS(pcsx)
+    616                         |data;                 
+   \        0x4   0x0018             MOVS     R0,R3
+   \        0x6   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \        0x8   0x0015             MOVS     R5,R2
+   \        0xA   0xB2ED             UXTB     R5,R5            ;; ZeroExt  R5,R5,#+24,#+24
+   \        0xC   0x042D             LSLS     R5,R5,#+16
+   \        0xE   0xF415 0x157C      ANDS     R5,R5,#0x3F0000
+   \       0x12   0xEA55 0x75C0      ORRS     R5,R5,R0, LSL #+31
+   \       0x16   0x0008             MOVS     R0,R1
+   \       0x18   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x1A   0x4305             ORRS     R5,R0,R5
+   \       0x1C   0x6365             STR      R5,[R4, #+52]
+    617            
+    618            while(!(spix->SR & SPI_SR_TCF_MASK));
+   \                     ??SPI_Master_WriteRead_0: (+1)
+   \       0x1E   0x6AE0             LDR      R0,[R4, #+44]
+   \       0x20   0x2800             CMP      R0,#+0
+   \       0x22   0xD5FC             BPL.N    ??SPI_Master_WriteRead_0
+    619            spix->SR |= SPI_SR_TCF_MASK ;               
+   \       0x24   0x6AE0             LDR      R0,[R4, #+44]
+   \       0x26   0xF050 0x4000      ORRS     R0,R0,#0x80000000
+   \       0x2A   0x62E0             STR      R0,[R4, #+44]
+    620            
+    621            while(!(spix->SR & SPI_SR_RFDF_MASK)); 
+   \                     ??SPI_Master_WriteRead_1: (+1)
+   \       0x2C   0x6AE0             LDR      R0,[R4, #+44]
+   \       0x2E   0x0380             LSLS     R0,R0,#+14
+   \       0x30   0xD5FC             BPL.N    ??SPI_Master_WriteRead_1
+    622            temp = (uint8)(spix->POPR & 0xff);           
+   \       0x32   0x6BA0             LDR      R0,[R4, #+56]
+    623            spix->SR |= SPI_SR_RFDF_MASK;                
+   \       0x34   0x6AE5             LDR      R5,[R4, #+44]
+   \       0x36   0xF455 0x3500      ORRS     R5,R5,#0x20000
+   \       0x3A   0x62E5             STR      R5,[R4, #+44]
+    624            return temp;
+   \       0x3C   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x3E   0xBC30             POP      {R4,R5}
+   \       0x40   0x4770             BX       LR               ;; return
+    625          }
+    626          
+    627          
+    628          
+    629          
+    630          /*
+    631           * SPI_Master_Read
+    632           * K60主机读取从机数据
+    633           * 
+    634           * 参数:
+    635           *    spix--SPI选择
+    636           *      |__SPI0 -选择SPI0模块
+    637           *      |__SPI1 -选择SPI1模块
+    638           *      |__SPI2 -选择SPI2模块
+    639           * 输出:
+    640           *    读取从机8位的数据
+    641           */
+
+   \                                 In section .text, align 2, keep-with-next
+    642          uint8 SPI_Master_Read(SPI_Type *spix)
+    643          {
+   \                     SPI_Master_Read: (+1)
+   \        0x0   0x0001             MOVS     R1,R0
+    644            uint8 temp;
+    645          
+    646            while(!(spix->SR & SPI_SR_RFDF_MASK)); //=1 RIFO is not empty
+   \                     ??SPI_Master_Read_0: (+1)
+   \        0x2   0x6AC8             LDR      R0,[R1, #+44]
+   \        0x4   0x0380             LSLS     R0,R0,#+14
+   \        0x6   0xD5FC             BPL.N    ??SPI_Master_Read_0
+    647            temp=(uint8)spix->POPR;
+   \        0x8   0x6B88             LDR      R0,[R1, #+56]
+    648            spix->SR |=SPI_SR_RFDF_MASK;
+   \        0xA   0x6ACA             LDR      R2,[R1, #+44]
+   \        0xC   0xF452 0x3200      ORRS     R2,R2,#0x20000
+   \       0x10   0x62CA             STR      R2,[R1, #+44]
+    649          
+    650            return temp;
+   \       0x12   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x14   0x4770             BX       LR               ;; return
+    651          }
+    652          
+    653          
+    654          
+    655          /*
+    656           * SPI_Master_Write
+    657           * K60主机SPI向从机写数据
+    658           * 
+    659           * 参数:
+    660           *    spix--SPI选择
+    661           *      |__SPI0 -选择SPI0模块
+    662           *      |__SPI1 -选择SPI1模块
+    663           *      |__SPI2 -选择SPI2模块
+    664           *    data--要发送数据
+    665           *      |__单位为一个字节，8位
+    666           *    pcsx--CS片选端口号
+    667           *      |__SPI_PCS0  -0号片选(SPI0、SPI1、SPI2含有)
+    668           *      |__SPI_PCS1  -1号片选(SPI0、SPI1、SPI2含有)
+    669           *      |__SPI_PCS2  -2号片选(SPI0、SPI1含有)
+    670           *      |__SPI_PCS3  -3号片选(SPI0、SPI1含有)
+    671           *      |__SPI_PCS4  -4号片选(SPI0含有)
+    672           *      |__SPI_PCS5  -5号片选(SPI0含有)
+    673           *    pcs_state--一帧数据传输完成后CS的状态
+    674           *      |__SPI_PCS_ASSERTED -保持片选有效,PCS信号保持为低电平
+    675           *      |__SPI_PCS_INACTIVE -片选无效,PCS信号变为高电平
+    676           */
+
+   \                                 In section .text, align 2, keep-with-next
+    677          void SPI_Master_Write(SPI_Type *spix,uint8 data,uint8 pcsx,uint8 pcs_state)
+    678          {  
+   \                     SPI_Master_Write: (+1)
+   \        0x0   0xB430             PUSH     {R4,R5}
+    679            
+    680            spix->PUSHR = (((uint32_t)(((uint32_t)(pcs_state))<<SPI_PUSHR_CONT_SHIFT)) & SPI_PUSHR_CONT_MASK)
+    681                         |SPI_PUSHR_CTAS(0)
+    682                         |SPI_PUSHR_PCS(pcsx)
+    683                         |data; 
+   \        0x2   0x001C             MOVS     R4,R3
+   \        0x4   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
+   \        0x6   0x0015             MOVS     R5,R2
+   \        0x8   0xB2ED             UXTB     R5,R5            ;; ZeroExt  R5,R5,#+24,#+24
+   \        0xA   0x042D             LSLS     R5,R5,#+16
+   \        0xC   0xF415 0x157C      ANDS     R5,R5,#0x3F0000
+   \       0x10   0xEA55 0x75C4      ORRS     R5,R5,R4, LSL #+31
+   \       0x14   0x000C             MOVS     R4,R1
+   \       0x16   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
+   \       0x18   0x4325             ORRS     R5,R4,R5
+   \       0x1A   0x6345             STR      R5,[R0, #+52]
+    684          
+    685            while(!(spix->SR & SPI_SR_TCF_MASK));
+   \                     ??SPI_Master_Write_0: (+1)
+   \       0x1C   0x6AC4             LDR      R4,[R0, #+44]
+   \       0x1E   0x2C00             CMP      R4,#+0
+   \       0x20   0xD5FC             BPL.N    ??SPI_Master_Write_0
+    686            spix->SR |= SPI_SR_TCF_MASK ;            
+   \       0x22   0x6AC4             LDR      R4,[R0, #+44]
+   \       0x24   0xF054 0x4400      ORRS     R4,R4,#0x80000000
+   \       0x28   0x62C4             STR      R4,[R0, #+44]
+    687          }
+   \       0x2A   0xBC30             POP      {R4,R5}
+   \       0x2C   0x4770             BX       LR               ;; return
+    688          
+    689          
+
+   \                                 In section .text, align 2, keep-with-next
+    690          void SPI0_IRQHandler(void)
+    691          {
+   \                     _Z15SPI0_IRQHandlerv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+    692          #if (UCOS_II > 0u)
+    693            OS_CPU_SR  cpu_sr = 0u;
+    694            OS_ENTER_CRITICAL(); 
+    695            OSIntEnter();
+    696            OS_EXIT_CRITICAL();
+    697          #endif
+    698            if( SPI0->SR & SPI_SR_TCF_MASK)
+   \        0x2   0x....             LDR.N    R4,??DataTable8_49  ;; 0x4002c02c
+   \        0x4   0x6820             LDR      R0,[R4, #+0]
+   \        0x6   0x2800             CMP      R0,#+0
+   \        0x8   0xD507             BPL.N    ??SPI0_IRQHandler_0
+    699            {
+    700              SPI0_ISR[SPI_TxComplete_Int]();
+   \        0xA   0x....             LDR.N    R0,??DataTable8_45
+   \        0xC   0x6800             LDR      R0,[R0, #+0]
+   \        0xE   0x4780             BLX      R0
+    701              SPI0->SR |= SPI_SR_TCF_MASK;
+   \       0x10   0x6820             LDR      R0,[R4, #+0]
+   \       0x12   0xF050 0x4000      ORRS     R0,R0,#0x80000000
+   \       0x16   0x6020             STR      R0,[R4, #+0]
+   \       0x18   0xE035             B.N      ??SPI0_IRQHandler_1
+    702            }
+    703            else if( SPI0->SR & SPI_SR_EOQF_MASK)
+   \                     ??SPI0_IRQHandler_0: (+1)
+   \       0x1A   0x6820             LDR      R0,[R4, #+0]
+   \       0x1C   0x00C0             LSLS     R0,R0,#+3
+   \       0x1E   0xD507             BPL.N    ??SPI0_IRQHandler_2
+    704            {
+    705              SPI0_ISR[SPI_QueueEndReq_Int]();
+   \       0x20   0x....             LDR.N    R0,??DataTable8_45
+   \       0x22   0x6840             LDR      R0,[R0, #+4]
+   \       0x24   0x4780             BLX      R0
+    706              SPI0->SR |= SPI_SR_EOQF_MASK;
+   \       0x26   0x6820             LDR      R0,[R4, #+0]
+   \       0x28   0xF050 0x5080      ORRS     R0,R0,#0x10000000
+   \       0x2C   0x6020             STR      R0,[R4, #+0]
+   \       0x2E   0xE02A             B.N      ??SPI0_IRQHandler_1
+    707            }
+    708            else if( SPI0->SR & SPI_SR_TFUF_MASK)
+   \                     ??SPI0_IRQHandler_2: (+1)
+   \       0x30   0x6820             LDR      R0,[R4, #+0]
+   \       0x32   0x0100             LSLS     R0,R0,#+4
+   \       0x34   0xD507             BPL.N    ??SPI0_IRQHandler_3
+    709            {
+    710              SPI0_ISR[SPI_TxFIFO_UnderflowInt]();
+   \       0x36   0x....             LDR.N    R0,??DataTable8_45
+   \       0x38   0x6880             LDR      R0,[R0, #+8]
+   \       0x3A   0x4780             BLX      R0
+    711              SPI0->SR |= SPI_SR_TFUF_MASK;
+   \       0x3C   0x6820             LDR      R0,[R4, #+0]
+   \       0x3E   0xF050 0x6000      ORRS     R0,R0,#0x8000000
+   \       0x42   0x6020             STR      R0,[R4, #+0]
+   \       0x44   0xE01F             B.N      ??SPI0_IRQHandler_1
+    712            }
+    713            else if( SPI0->SR & SPI_SR_TFFF_MASK)
+   \                     ??SPI0_IRQHandler_3: (+1)
+   \       0x46   0x6820             LDR      R0,[R4, #+0]
+   \       0x48   0x0180             LSLS     R0,R0,#+6
+   \       0x4A   0xD507             BPL.N    ??SPI0_IRQHandler_4
+    714            {  
+    715              SPI0_ISR[SPI_TxFIFO_FillInt]();    
+   \       0x4C   0x....             LDR.N    R0,??DataTable8_45
+   \       0x4E   0x6900             LDR      R0,[R0, #+16]
+   \       0x50   0x4780             BLX      R0
+    716              SPI0->SR |= SPI_SR_TFFF_MASK;
+   \       0x52   0x6820             LDR      R0,[R4, #+0]
+   \       0x54   0xF050 0x7000      ORRS     R0,R0,#0x2000000
+   \       0x58   0x6020             STR      R0,[R4, #+0]
+   \       0x5A   0xE014             B.N      ??SPI0_IRQHandler_1
+    717            }
+    718            else if( SPI0->SR & SPI_SR_RFOF_MASK)
+   \                     ??SPI0_IRQHandler_4: (+1)
+   \       0x5C   0x6820             LDR      R0,[R4, #+0]
+   \       0x5E   0x0300             LSLS     R0,R0,#+12
+   \       0x60   0xD507             BPL.N    ??SPI0_IRQHandler_5
+    719            {   
+    720              SPI0_ISR[SPI_RxFIFO_OverflowInt]();
+   \       0x62   0x....             LDR.N    R0,??DataTable8_45
+   \       0x64   0x68C0             LDR      R0,[R0, #+12]
+   \       0x66   0x4780             BLX      R0
+    721              SPI0->SR |= SPI_SR_RFOF_MASK;
+   \       0x68   0x6820             LDR      R0,[R4, #+0]
+   \       0x6A   0xF450 0x2000      ORRS     R0,R0,#0x80000
+   \       0x6E   0x6020             STR      R0,[R4, #+0]
+   \       0x70   0xE009             B.N      ??SPI0_IRQHandler_1
+    722            }
+    723            else if( SPI0->SR & SPI_SR_RFDF_MASK)
+   \                     ??SPI0_IRQHandler_5: (+1)
+   \       0x72   0x6820             LDR      R0,[R4, #+0]
+   \       0x74   0x0380             LSLS     R0,R0,#+14
+   \       0x76   0xD506             BPL.N    ??SPI0_IRQHandler_1
+    724            {
+    725              SPI0_ISR[SPI_RxFIFO_DrainInt]();
+   \       0x78   0x....             LDR.N    R0,??DataTable8_45
+   \       0x7A   0x6940             LDR      R0,[R0, #+20]
+   \       0x7C   0x4780             BLX      R0
+    726              SPI0->SR |= SPI_SR_RFDF_MASK;
+   \       0x7E   0x6820             LDR      R0,[R4, #+0]
+   \       0x80   0xF450 0x3000      ORRS     R0,R0,#0x20000
+   \       0x84   0x6020             STR      R0,[R4, #+0]
+    727            }
+    728          #if (UCOS_II > 0u)
+    729            OSIntExit();          
+    730          #endif
+    731          }
+   \                     ??SPI0_IRQHandler_1: (+1)
+   \                     ??SPI0_IRQHandler_6: (+1)
+   \       0x86   0xBD10             POP      {R4,PC}          ;; return
+    732          
+    733          
+
+   \                                 In section .text, align 2, keep-with-next
+    734          void SPI1_IRQHandler(void)
+    735          {
+   \                     _Z15SPI1_IRQHandlerv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+    736          #if (UCOS_II > 0u)
+    737            OS_CPU_SR  cpu_sr = 0u;
+    738            OS_ENTER_CRITICAL(); 
+    739            OSIntEnter();
+    740            OS_EXIT_CRITICAL();
+    741          #endif
+    742            if( SPI1->SR & SPI_SR_TCF_MASK)
+   \        0x2   0x....             LDR.N    R4,??DataTable8_50  ;; 0x4002d02c
+   \        0x4   0x6820             LDR      R0,[R4, #+0]
+   \        0x6   0x2800             CMP      R0,#+0
+   \        0x8   0xD507             BPL.N    ??SPI1_IRQHandler_0
+    743            {
+    744              SPI1_ISR[SPI_TxComplete_Int]();
+   \        0xA   0x....             LDR.N    R0,??DataTable8_46
+   \        0xC   0x6800             LDR      R0,[R0, #+0]
+   \        0xE   0x4780             BLX      R0
+    745              SPI1->SR |= SPI_SR_TCF_MASK;
+   \       0x10   0x6820             LDR      R0,[R4, #+0]
+   \       0x12   0xF050 0x4000      ORRS     R0,R0,#0x80000000
+   \       0x16   0x6020             STR      R0,[R4, #+0]
+   \       0x18   0xE035             B.N      ??SPI1_IRQHandler_1
+    746            }
+    747            else if( SPI1->SR & SPI_SR_EOQF_MASK)
+   \                     ??SPI1_IRQHandler_0: (+1)
+   \       0x1A   0x6820             LDR      R0,[R4, #+0]
+   \       0x1C   0x00C0             LSLS     R0,R0,#+3
+   \       0x1E   0xD507             BPL.N    ??SPI1_IRQHandler_2
+    748            {
+    749              SPI1_ISR[SPI_QueueEndReq_Int]();
+   \       0x20   0x....             LDR.N    R0,??DataTable8_46
+   \       0x22   0x6840             LDR      R0,[R0, #+4]
+   \       0x24   0x4780             BLX      R0
+    750              SPI1->SR |= SPI_SR_EOQF_MASK;
+   \       0x26   0x6820             LDR      R0,[R4, #+0]
+   \       0x28   0xF050 0x5080      ORRS     R0,R0,#0x10000000
+   \       0x2C   0x6020             STR      R0,[R4, #+0]
+   \       0x2E   0xE02A             B.N      ??SPI1_IRQHandler_1
+    751            }
+    752            else if( SPI1->SR & SPI_SR_TFUF_MASK)
+   \                     ??SPI1_IRQHandler_2: (+1)
+   \       0x30   0x6820             LDR      R0,[R4, #+0]
+   \       0x32   0x0100             LSLS     R0,R0,#+4
+   \       0x34   0xD507             BPL.N    ??SPI1_IRQHandler_3
+    753            {
+    754              SPI1_ISR[SPI_TxFIFO_UnderflowInt]();
+   \       0x36   0x....             LDR.N    R0,??DataTable8_46
+   \       0x38   0x6880             LDR      R0,[R0, #+8]
+   \       0x3A   0x4780             BLX      R0
+    755              SPI1->SR |= SPI_SR_TFUF_MASK;
+   \       0x3C   0x6820             LDR      R0,[R4, #+0]
+   \       0x3E   0xF050 0x6000      ORRS     R0,R0,#0x8000000
+   \       0x42   0x6020             STR      R0,[R4, #+0]
+   \       0x44   0xE01F             B.N      ??SPI1_IRQHandler_1
+    756            }
+    757            else if( SPI1->SR & SPI_SR_TFFF_MASK)
+   \                     ??SPI1_IRQHandler_3: (+1)
+   \       0x46   0x6820             LDR      R0,[R4, #+0]
+   \       0x48   0x0180             LSLS     R0,R0,#+6
+   \       0x4A   0xD507             BPL.N    ??SPI1_IRQHandler_4
+    758            {  
+    759              SPI1_ISR[SPI_TxFIFO_FillInt]();    
+   \       0x4C   0x....             LDR.N    R0,??DataTable8_46
+   \       0x4E   0x6900             LDR      R0,[R0, #+16]
+   \       0x50   0x4780             BLX      R0
+    760              SPI1->SR |= SPI_SR_TFFF_MASK;
+   \       0x52   0x6820             LDR      R0,[R4, #+0]
+   \       0x54   0xF050 0x7000      ORRS     R0,R0,#0x2000000
+   \       0x58   0x6020             STR      R0,[R4, #+0]
+   \       0x5A   0xE014             B.N      ??SPI1_IRQHandler_1
+    761            }
+    762            else if( SPI1->SR & SPI_SR_RFOF_MASK)
+   \                     ??SPI1_IRQHandler_4: (+1)
+   \       0x5C   0x6820             LDR      R0,[R4, #+0]
+   \       0x5E   0x0300             LSLS     R0,R0,#+12
+   \       0x60   0xD507             BPL.N    ??SPI1_IRQHandler_5
+    763            {   
+    764              SPI1_ISR[SPI_RxFIFO_OverflowInt]();
+   \       0x62   0x....             LDR.N    R0,??DataTable8_46
+   \       0x64   0x68C0             LDR      R0,[R0, #+12]
+   \       0x66   0x4780             BLX      R0
+    765              SPI1->SR |= SPI_SR_RFOF_MASK;
+   \       0x68   0x6820             LDR      R0,[R4, #+0]
+   \       0x6A   0xF450 0x2000      ORRS     R0,R0,#0x80000
+   \       0x6E   0x6020             STR      R0,[R4, #+0]
+   \       0x70   0xE009             B.N      ??SPI1_IRQHandler_1
+    766            }
+    767            else if( SPI1->SR & SPI_SR_RFDF_MASK)
+   \                     ??SPI1_IRQHandler_5: (+1)
+   \       0x72   0x6820             LDR      R0,[R4, #+0]
+   \       0x74   0x0380             LSLS     R0,R0,#+14
+   \       0x76   0xD506             BPL.N    ??SPI1_IRQHandler_1
+    768            {
+    769              SPI1_ISR[SPI_RxFIFO_DrainInt]();
+   \       0x78   0x....             LDR.N    R0,??DataTable8_46
+   \       0x7A   0x6940             LDR      R0,[R0, #+20]
+   \       0x7C   0x4780             BLX      R0
+    770              SPI1->SR |= SPI_SR_RFDF_MASK;
+   \       0x7E   0x6820             LDR      R0,[R4, #+0]
+   \       0x80   0xF450 0x3000      ORRS     R0,R0,#0x20000
+   \       0x84   0x6020             STR      R0,[R4, #+0]
+    771            }
+    772          #if (UCOS_II > 0u)
+    773            OSIntExit();         
+    774          #endif
+    775          }
+   \                     ??SPI1_IRQHandler_1: (+1)
+   \                     ??SPI1_IRQHandler_6: (+1)
+   \       0x86   0xBD10             POP      {R4,PC}          ;; return
+    776          
+    777          
+
+   \                                 In section .text, align 2, keep-with-next
+    778          void SPI2_IRQHandler(void)
+    779          {
+   \                     _Z15SPI2_IRQHandlerv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+    780          #if (UCOS_II > 0u)
+    781            OS_CPU_SR  cpu_sr = 0u;
+    782            OS_ENTER_CRITICAL(); 
+    783            OSIntEnter();
+    784            OS_EXIT_CRITICAL();
+    785          #endif
+    786            if( SPI2->SR & SPI_SR_TCF_MASK)
+   \        0x2   0x....             LDR.N    R4,??DataTable8_51  ;; 0x400ac02c
+   \        0x4   0x6820             LDR      R0,[R4, #+0]
+   \        0x6   0x2800             CMP      R0,#+0
+   \        0x8   0xD507             BPL.N    ??SPI2_IRQHandler_0
+    787            {
+    788              SPI2_ISR[SPI_TxComplete_Int]();
+   \        0xA   0x....             LDR.N    R0,??DataTable8_47
+   \        0xC   0x6800             LDR      R0,[R0, #+0]
+   \        0xE   0x4780             BLX      R0
+    789              SPI2->SR |= SPI_SR_TCF_MASK;
+   \       0x10   0x6820             LDR      R0,[R4, #+0]
+   \       0x12   0xF050 0x4000      ORRS     R0,R0,#0x80000000
+   \       0x16   0x6020             STR      R0,[R4, #+0]
+   \       0x18   0xE035             B.N      ??SPI2_IRQHandler_1
+    790            }
+    791            else if( SPI2->SR & SPI_SR_EOQF_MASK)
+   \                     ??SPI2_IRQHandler_0: (+1)
+   \       0x1A   0x6820             LDR      R0,[R4, #+0]
+   \       0x1C   0x00C0             LSLS     R0,R0,#+3
+   \       0x1E   0xD507             BPL.N    ??SPI2_IRQHandler_2
+    792            {
+    793              SPI2_ISR[SPI_QueueEndReq_Int]();
+   \       0x20   0x....             LDR.N    R0,??DataTable8_47
+   \       0x22   0x6840             LDR      R0,[R0, #+4]
+   \       0x24   0x4780             BLX      R0
+    794              SPI2->SR |= SPI_SR_EOQF_MASK;
+   \       0x26   0x6820             LDR      R0,[R4, #+0]
+   \       0x28   0xF050 0x5080      ORRS     R0,R0,#0x10000000
+   \       0x2C   0x6020             STR      R0,[R4, #+0]
+   \       0x2E   0xE02A             B.N      ??SPI2_IRQHandler_1
+    795            }
+    796            else if( SPI2->SR & SPI_SR_TFUF_MASK)
+   \                     ??SPI2_IRQHandler_2: (+1)
+   \       0x30   0x6820             LDR      R0,[R4, #+0]
+   \       0x32   0x0100             LSLS     R0,R0,#+4
+   \       0x34   0xD507             BPL.N    ??SPI2_IRQHandler_3
+    797            {
+    798              SPI2_ISR[SPI_TxFIFO_UnderflowInt]();
+   \       0x36   0x....             LDR.N    R0,??DataTable8_47
+   \       0x38   0x6880             LDR      R0,[R0, #+8]
+   \       0x3A   0x4780             BLX      R0
+    799              SPI2->SR |= SPI_SR_TFUF_MASK;
+   \       0x3C   0x6820             LDR      R0,[R4, #+0]
+   \       0x3E   0xF050 0x6000      ORRS     R0,R0,#0x8000000
+   \       0x42   0x6020             STR      R0,[R4, #+0]
+   \       0x44   0xE01F             B.N      ??SPI2_IRQHandler_1
+    800            }
+    801            else if( SPI2->SR & SPI_SR_TFFF_MASK)
+   \                     ??SPI2_IRQHandler_3: (+1)
+   \       0x46   0x6820             LDR      R0,[R4, #+0]
+   \       0x48   0x0180             LSLS     R0,R0,#+6
+   \       0x4A   0xD507             BPL.N    ??SPI2_IRQHandler_4
+    802            {  
+    803              SPI2_ISR[SPI_TxFIFO_FillInt]();    
+   \       0x4C   0x....             LDR.N    R0,??DataTable8_47
+   \       0x4E   0x6900             LDR      R0,[R0, #+16]
+   \       0x50   0x4780             BLX      R0
+    804              SPI2->SR |= SPI_SR_TFFF_MASK;
+   \       0x52   0x6820             LDR      R0,[R4, #+0]
+   \       0x54   0xF050 0x7000      ORRS     R0,R0,#0x2000000
+   \       0x58   0x6020             STR      R0,[R4, #+0]
+   \       0x5A   0xE014             B.N      ??SPI2_IRQHandler_1
+    805            }
+    806            else if( SPI2->SR & SPI_SR_RFOF_MASK)
+   \                     ??SPI2_IRQHandler_4: (+1)
+   \       0x5C   0x6820             LDR      R0,[R4, #+0]
+   \       0x5E   0x0300             LSLS     R0,R0,#+12
+   \       0x60   0xD507             BPL.N    ??SPI2_IRQHandler_5
+    807            {   
+    808              SPI2_ISR[SPI_RxFIFO_OverflowInt]();
+   \       0x62   0x....             LDR.N    R0,??DataTable8_47
+   \       0x64   0x68C0             LDR      R0,[R0, #+12]
+   \       0x66   0x4780             BLX      R0
+    809              SPI2->SR |= SPI_SR_RFOF_MASK;
+   \       0x68   0x6820             LDR      R0,[R4, #+0]
+   \       0x6A   0xF450 0x2000      ORRS     R0,R0,#0x80000
+   \       0x6E   0x6020             STR      R0,[R4, #+0]
+   \       0x70   0xE009             B.N      ??SPI2_IRQHandler_1
+    810            }
+    811            else if( SPI2->SR & SPI_SR_RFDF_MASK)
+   \                     ??SPI2_IRQHandler_5: (+1)
+   \       0x72   0x6820             LDR      R0,[R4, #+0]
+   \       0x74   0x0380             LSLS     R0,R0,#+14
+   \       0x76   0xD506             BPL.N    ??SPI2_IRQHandler_1
+    812            {
+    813              SPI2_ISR[SPI_RxFIFO_DrainInt]();
+   \       0x78   0x....             LDR.N    R0,??DataTable8_47
+   \       0x7A   0x6940             LDR      R0,[R0, #+20]
+   \       0x7C   0x4780             BLX      R0
+    814              SPI2->SR |= SPI_SR_RFDF_MASK;
+   \       0x7E   0x6820             LDR      R0,[R4, #+0]
+   \       0x80   0xF450 0x3000      ORRS     R0,R0,#0x20000
+   \       0x84   0x6020             STR      R0,[R4, #+0]
+    815            }
+    816          #if (UCOS_II > 0u)
+    817            OSIntExit();          
+    818          #endif
+    819          }
+   \                     ??SPI2_IRQHandler_1: (+1)
+   \                     ??SPI2_IRQHandler_6: (+1)
+   \       0x86   0xBD10             POP      {R4,PC}          ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8:
+   \        0x0   0xE000'E100        DC32     0xe000e100
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_1:
+   \        0x0   0xE000'E180        DC32     0xe000e180
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_2:
+   \        0x0   0x....'....        DC32     ?_0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_3:
+   \        0x0   0x4002'C000        DC32     0x4002c000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_4:
+   \        0x0   0x4004'803C        DC32     0x4004803c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_5:
+   \        0x0   0x4004'9038        DC32     0x40049038
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_6:
+   \        0x0   0x4004'B010        DC32     0x4004b010
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_7:
+   \        0x0   0x4004'B00C        DC32     0x4004b00c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_8:
+   \        0x0   0x4004'C010        DC32     0x4004c010
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_9:
+   \        0x0   0x4004'B008        DC32     0x4004b008
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_10:
+   \        0x0   0x4004'C014        DC32     0x4004c014
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_11:
+   \        0x0   0x4004'B004        DC32     0x4004b004
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_12:
+   \        0x0   0x4004'C018        DC32     0x4004c018
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_13:
+   \        0x0   0x4004'B000        DC32     0x4004b000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_14:
+   \        0x0   0x4004'A05C        DC32     0x4004a05c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_15:
+   \        0x0   0x4004'903C        DC32     0x4004903c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_16:
+   \        0x0   0x4004'B014        DC32     0x4004b014
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_17:
+   \        0x0   0x4004'9040        DC32     0x40049040
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_18:
+   \        0x0   0x4004'B018        DC32     0x4004b018
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_19:
+   \        0x0   0x4004'9044        DC32     0x40049044
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_20:
+   \        0x0   0x4004'B01C        DC32     0x4004b01c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_21:
+   \        0x0   0x4002'D000        DC32     0x4002d000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_22:
+   \        0x0   0x4004'A028        DC32     0x4004a028
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_23:
+   \        0x0   0x4004'D010        DC32     0x4004d010
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_24:
+   \        0x0   0x4004'A024        DC32     0x4004a024
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_25:
+   \        0x0   0x4004'D000        DC32     0x4004d000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_26:
+   \        0x0   0x4004'D014        DC32     0x4004d014
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_27:
+   \        0x0   0x4004'D018        DC32     0x4004d018
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_28:
+   \        0x0   0x4004'A02C        DC32     0x4004a02c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_29:
+   \        0x0   0x4004'D008        DC32     0x4004d008
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_30:
+   \        0x0   0x4004'A040        DC32     0x4004a040
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_31:
+   \        0x0   0x4004'D004        DC32     0x4004d004
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_32:
+   \        0x0   0x4004'A044        DC32     0x4004a044
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_33:
+   \        0x0   0x4004'D00C        DC32     0x4004d00c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_34:
+   \        0x0   0x400A'C000        DC32     0x400ac000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_35:
+   \        0x0   0x4004'8030        DC32     0x40048030
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_36:
+   \        0x0   0x4004'C02C        DC32     0x4004c02c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_37:
+   \        0x0   0x4004'A050        DC32     0x4004a050
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_38:
+   \        0x0   0x4004'C03C        DC32     0x4004c03c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_39:
+   \        0x0   0x4004'C030        DC32     0x4004c030
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_40:
+   \        0x0   0x4004'A054        DC32     0x4004a054
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_41:
+   \        0x0   0x4004'C034        DC32     0x4004c034
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_42:
+   \        0x0   0x4004'A058        DC32     0x4004a058
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_43:
+   \        0x0   0x4004'C038        DC32     0x4004c038
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_44:
+   \        0x0   0x003F'0C01        DC32     0x3f0c01
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_45:
+   \        0x0   0x....'....        DC32     SPI0_ISR
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_46:
+   \        0x0   0x....'....        DC32     SPI1_ISR
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_47:
+   \        0x0   0x....'....        DC32     SPI2_ISR
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_48:
+   \        0x0   0x9A0A'0000        DC32     0x9a0a0000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_49:
+   \        0x0   0x4002'C02C        DC32     0x4002c02c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_50:
+   \        0x0   0x4002'D02C        DC32     0x4002d02c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable8_51:
+   \        0x0   0x400A'C02C        DC32     0x400ac02c
+
+   \                                 In section .rodata, align 4
+   \                     ?_0:
+   \        0x0   0x43 0x3A          DC8 43H, 3AH, 5CH, 55H, 73H, 65H, 72H, 73H
+   \              0x5C 0x55    
+   \              0x73 0x65    
+   \              0x72 0x73    
+   \        0x8   0x5C 0x78          DC8 5CH, 78H, 73H, 6BH, 31H, 39H, 39H, 34H
+   \              0x73 0x6B    
+   \              0x31 0x39    
+   \              0x39 0x34    
+   \       0x10   0x30 0x39          DC8 30H, 39H, 31H, 30H, 5CH, 44H, 65H, 73H
+   \              0x31 0x30    
+   \              0x5C 0x44    
+   \              0x65 0x73    
+   \       0x18   0x6B 0x74          DC8 6BH, 74H, 6FH, 70H, 5CH, 66H, 6CH, 69H
+   \              0x6F 0x70    
+   \              0x5C 0x66    
+   \              0x6C 0x69    
+   \       0x20   0x67 0x68          DC8 67H, 68H, 74H, 43H, 6FH, 6EH, 74H, 72H
+   \              0x74 0x43    
+   \              0x6F 0x6E    
+   \              0x74 0x72    
+   \       0x28   0x6F 0x6C          DC8 6FH, 6CH, 6CH, 65H, 72H, 2DH, 31H, 5CH
+   \              0x6C 0x65    
+   \              0x72 0x2D    
+   \              0x31 0x5C    
+   \       0x30   0x66 0x6C          DC8 66H, 6CH, 69H, 67H, 68H, 74H, 43H, 6FH
+   \              0x69 0x67    
+   \              0x68 0x74    
+   \              0x43 0x6F    
+   \       0x38   0x6E 0x74          DC8 6EH, 74H, 72H, 6FH, 6CH, 6CH, 65H, 72H
+   \              0x72 0x6F    
+   \              0x6C 0x6C    
+   \              0x65 0x72    
+   \       0x40   0x2D 0x31          DC8 2DH, 31H, 5CH, 70H, 72H, 6FH, 67H, 72H
+   \              0x5C 0x70    
+   \              0x72 0x6F    
+   \              0x67 0x72    
+   \       0x48   0x61 0x6D          DC8 61H, 6DH, 5CH, 6CH, 69H, 62H, 5CH, 4CH
+   \              0x5C 0x6C    
+   \              0x69 0x62    
+   \              0x5C 0x4C    
+   \       0x50   0x50 0x4C          DC8 50H, 4CH, 44H, 5CH, 48H, 57H, 5CH, 53H
+   \              0x44 0x5C    
+   \              0x48 0x57    
+   \              0x5C 0x53    
+   \       0x58   0x50 0x49          DC8 50H, 49H, 2EH, 63H, 0
+   \              0x2E 0x63    
+   \              0x00         
+   \       0x5D   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+    820          
+    821          
+    822          
+    823          
+    824          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   SPI0_IRQHandler()
+         8   -- Indirect call
+       8   SPI1_IRQHandler()
+         8   -- Indirect call
+       8   SPI2_IRQHandler()
+         8   -- Indirect call
+      24   SPI_Deinit
+        24   -> __NVIC_DisableIRQ(IRQn)
+      24   SPI_DisableIrq
+        24   -> __NVIC_DisableIRQ(IRQn)
+      24   SPI_EnableIrq
+        24   -> __NVIC_EnableIRQ(IRQn)
+      96   SPI_Init
+        96   -> assert_failed
+       0   SPI_Master_Read
+       8   SPI_Master_Write
+       8   SPI_Master_WriteRead
+       0   __NVIC_DisableIRQ(IRQn)
+       0   __NVIC_EnableIRQ(IRQn)
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable8
+       4  ??DataTable8_1
+       4  ??DataTable8_10
+       4  ??DataTable8_11
+       4  ??DataTable8_12
+       4  ??DataTable8_13
+       4  ??DataTable8_14
+       4  ??DataTable8_15
+       4  ??DataTable8_16
+       4  ??DataTable8_17
+       4  ??DataTable8_18
+       4  ??DataTable8_19
+       4  ??DataTable8_2
+       4  ??DataTable8_20
+       4  ??DataTable8_21
+       4  ??DataTable8_22
+       4  ??DataTable8_23
+       4  ??DataTable8_24
+       4  ??DataTable8_25
+       4  ??DataTable8_26
+       4  ??DataTable8_27
+       4  ??DataTable8_28
+       4  ??DataTable8_29
+       4  ??DataTable8_3
+       4  ??DataTable8_30
+       4  ??DataTable8_31
+       4  ??DataTable8_32
+       4  ??DataTable8_33
+       4  ??DataTable8_34
+       4  ??DataTable8_35
+       4  ??DataTable8_36
+       4  ??DataTable8_37
+       4  ??DataTable8_38
+       4  ??DataTable8_39
+       4  ??DataTable8_4
+       4  ??DataTable8_40
+       4  ??DataTable8_41
+       4  ??DataTable8_42
+       4  ??DataTable8_43
+       4  ??DataTable8_44
+       4  ??DataTable8_45
+       4  ??DataTable8_46
+       4  ??DataTable8_47
+       4  ??DataTable8_48
+       4  ??DataTable8_49
+       4  ??DataTable8_5
+       4  ??DataTable8_50
+       4  ??DataTable8_51
+       4  ??DataTable8_6
+       4  ??DataTable8_7
+       4  ??DataTable8_8
+       4  ??DataTable8_9
+      96  ?_0
+     136  SPI0_IRQHandler()
+      24  SPI0_ISR
+     136  SPI1_IRQHandler()
+      24  SPI1_ISR
+     136  SPI2_IRQHandler()
+      24  SPI2_ISR
+     106  SPI_Deinit
+      60  SPI_DisableIrq
+      60  SPI_EnableIrq
+    1632  SPI_Init
+      22  SPI_Master_Read
+      46  SPI_Master_Write
+      66  SPI_Master_WriteRead
+      40  __NVIC_DisableIRQ(IRQn)
+      32  __NVIC_EnableIRQ(IRQn)
+      32  -- Other
+
+ 
+    32 bytes in section .ARM.exidx
+    72 bytes in section .bss
+    96 bytes in section .rodata
+ 2 680 bytes in section .text
+ 
+ 2 680 bytes of CODE  memory
+   128 bytes of CONST memory
+    72 bytes of DATA  memory
+
+Errors: none
+Warnings: none

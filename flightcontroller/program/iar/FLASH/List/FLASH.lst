@@ -1,0 +1,689 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM         31/Aug/2018  16:56:48
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\LPLD\HW\FLASH.c
+#    Command line =  
+#        -f C:\Users\XSK199~1\AppData\Local\Temp\EW5A19.tmp
+#        (C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\LPLD\HW\FLASH.c
+#        -D K60 -D USE_K60F15 -D ARM_MATH_CM4 -D __FPU_PRESENT=1 -D
+#        __FPU_USED=1 -lCN
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -lB
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -o
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
+#        D:\iar\arm\inc\c\DLib_Config_Full.h -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\Sensor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\CPU\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\option\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\driver\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\class\
+#        -On --c++ -I D:\iar\arm\CMSIS\Core\Include\ -I
+#        D:\iar\arm\CMSIS\DSP\Include\ -D ARM_MATH_CM4)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List\FLASH.lst
+#    Object file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj\FLASH.o
+#
+###############################################################################
+
+C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\LPLD\HW\FLASH.c
+      1          /**
+      2           * @file HW_FLASH.c
+      3           * @version 3.0[By LPLD]
+      4           * @date 2013-06-18
+      5           * @brief FTFL底层模块相关函数
+      6           *
+      7           * 更改建议:不建议修改
+      8           *
+      9           * 版权所有:北京拉普兰德电子技术有限公司
+     10           * http://www.lpld.cn
+     11           * mail:support@lpld.cn
+     12           *
+     13           * @par
+     14           * 本代码由拉普兰德[LPLD]开发并维护，并向所有使用者开放源代码。
+     15           * 开发者可以随意修使用或改源代码。但本段及以上注释应予以保留。
+     16           * 不得更改或删除原版权所有者姓名，二次开发者可以加注二次版权所有者。
+     17           * 但应在遵守此协议的基础上，开放源代码、不得出售代码本身。
+     18           * 拉普兰德不负责由于使用本代码所带来的任何事故、法律责任或相关不良影响。
+     19           * 拉普兰德无义务解释、说明本代码的具体原理、功能、实现方法。
+     20           * 除非拉普兰德[LPLD]授权，开发者不得将本代码用于商业产品。
+     21           */
+     22          #include "common.h"
+     23          #include "FLASH.h"
+     24          
+     25          /*
+     26           * Flash_Init
+     27           * Flash模块初始化
+     28           * 
+     29           * 参数:
+     30           *    无
+     31           *
+     32           * 输出:
+     33           *    无
+     34           */
+
+   \                                 In section .text, align 2, keep-with-next
+     35          void Flash_Init(void)
+     36          {
+     37          #if defined(CPU_MK60DZ10) || defined(CPU_MK60D10) 
+     38            //检查Flash访问错误
+     39            if (FTFL->FSTAT & FTFL_FSTAT_ACCERR_MASK)
+     40            {
+     41              FTFL->FSTAT |= FTFL_FSTAT_ACCERR_MASK;       //清除错误标志
+     42            }
+     43            //检查保护错误
+     44            else if (FTFL->FSTAT & FTFL_FSTAT_FPVIOL_MASK)
+     45            {
+     46              FTFL->FSTAT |= FTFL_FSTAT_FPVIOL_MASK;
+     47            }
+     48            //检查读冲突错误
+     49            else if (FTFL->FSTAT & FTFL_FSTAT_RDCOLERR_MASK)
+     50            {
+     51              FTFL->FSTAT |= FTFL_FSTAT_RDCOLERR_MASK;
+     52            }
+     53            
+     54            //禁用Flash模块的数据缓存
+     55            FMC->PFB0CR &= ~FMC_PFB0CR_B0DCE_MASK;
+     56            FMC->PFB1CR &= ~FMC_PFB1CR_B1DCE_MASK;
+     57          #elif defined(CPU_MK60F12) || defined(CPU_MK60F15)  
+     58            //检查Flash访问错误
+     59            if (FTFE->FSTAT & FTFE_FSTAT_ACCERR_MASK)
+   \                     Flash_Init: (+1)
+   \        0x0   0x....             LDR.N    R0,??DataTable2  ;; 0x40020000
+   \        0x2   0x7801             LDRB     R1,[R0, #+0]
+   \        0x4   0x0689             LSLS     R1,R1,#+26
+   \        0x6   0xD504             BPL.N    ??Flash_Init_0
+     60            {
+     61              FTFE->FSTAT |= FTFE_FSTAT_ACCERR_MASK;//清除错误标志
+   \        0x8   0x7801             LDRB     R1,[R0, #+0]
+   \        0xA   0xF051 0x0120      ORRS     R1,R1,#0x20
+   \        0xE   0x7001             STRB     R1,[R0, #+0]
+   \       0x10   0xE00E             B.N      ??Flash_Init_1
+     62            }
+     63            //检查保护错误
+     64            else if (FTFE->FSTAT & FTFE_FSTAT_FPVIOL_MASK)
+   \                     ??Flash_Init_0: (+1)
+   \       0x12   0x7801             LDRB     R1,[R0, #+0]
+   \       0x14   0x06C9             LSLS     R1,R1,#+27
+   \       0x16   0xD504             BPL.N    ??Flash_Init_2
+     65            {
+     66              FTFE->FSTAT |= FTFE_FSTAT_FPVIOL_MASK;
+   \       0x18   0x7801             LDRB     R1,[R0, #+0]
+   \       0x1A   0xF051 0x0110      ORRS     R1,R1,#0x10
+   \       0x1E   0x7001             STRB     R1,[R0, #+0]
+   \       0x20   0xE006             B.N      ??Flash_Init_1
+     67            }
+     68            else if (FTFE->FSTAT & FTFE_FSTAT_RDCOLERR_MASK)
+   \                     ??Flash_Init_2: (+1)
+   \       0x22   0x7801             LDRB     R1,[R0, #+0]
+   \       0x24   0x0649             LSLS     R1,R1,#+25
+   \       0x26   0xD503             BPL.N    ??Flash_Init_1
+     69            {
+     70            //检查读冲突错误
+     71              FTFE->FSTAT |= FTFE_FSTAT_RDCOLERR_MASK;
+   \       0x28   0x7801             LDRB     R1,[R0, #+0]
+   \       0x2A   0xF051 0x0140      ORRS     R1,R1,#0x40
+   \       0x2E   0x7001             STRB     R1,[R0, #+0]
+     72            } /* EndIf */
+     73            //禁用Flash模块的数据缓存
+     74            FMC->PFB01CR &= ~FMC_PFB01CR_B01DCE_MASK;
+   \                     ??Flash_Init_1: (+1)
+   \       0x30   0x....             LDR.N    R0,??DataTable2_1  ;; 0x4001f004
+   \       0x32   0x6801             LDR      R1,[R0, #+0]
+   \       0x34   0xF031 0x0110      BICS     R1,R1,#0x10
+   \       0x38   0x6001             STR      R1,[R0, #+0]
+     75            FMC->PFB23CR &= ~FMC_PFB23CR_B23DCE_MASK;
+   \       0x3A   0x....             LDR.N    R0,??DataTable2_2  ;; 0x4001f008
+   \       0x3C   0x6801             LDR      R1,[R0, #+0]
+   \       0x3E   0xF031 0x0110      BICS     R1,R1,#0x10
+   \       0x42   0x6001             STR      R1,[R0, #+0]
+     76          #endif
+     77          } 
+   \       0x44   0x4770             BX       LR               ;; return
+     78          
+     79          
+     80          /*
+     81           * Flash_SectorErase
+     82           * 擦除Flash扇区
+     83           * 
+     84           * 参数:
+     85           *    FlashPtr--扇区地址指针，即扇区号乘以2048
+     86           *
+     87           * 输出:
+     88           *    错误代码
+     89           */
+
+   \                                 In section .text, align 2, keep-with-next
+     90          uint8 Flash_SectorErase(uint32 FlashPtr)
+     91          {
+   \                     Flash_SectorErase: (+1)
+   \        0x0   0xB410             PUSH     {R4}
+   \        0x2   0x0001             MOVS     R1,R0
+     92            uint8 Return = FLASH_OK;
+   \        0x4   0x2000             MOVS     R0,#+0
+     93          #if defined(CPU_MK60DZ10) || defined(CPU_MK60D10)   
+     94            //等待CCIF置1
+     95            while (!(FTFL->FSTAT & FTFL_FSTAT_CCIF_MASK)){};
+     96            //写入命令道FCCOB寄存器
+     97            FTFL->FCCOB0 = FLASH_CMD_ERSSCR;
+     98            FTFL->FCCOB1 = (uint8) (FlashPtr >> 16);
+     99            FTFL->FCCOB2 = (uint8)((FlashPtr >> 8 ) & 0xFF);
+    100            FTFL->FCCOB3 = (uint8)( FlashPtr & 0xFF);
+    101            
+    102            //执行命令
+    103            FTFL->FSTAT |= FTFL_FSTAT_CCIF_MASK;    
+    104            //等待命令完成
+    105            while (!(FTFL->FSTAT & FTFL_FSTAT_CCIF_MASK)) {};
+    106            
+    107            //检查Flash访问错误
+    108            if (FTFL->FSTAT & FTFL_FSTAT_ACCERR_MASK)
+    109            {
+    110              FTFL->FSTAT |= FTFL_FSTAT_ACCERR_MASK;       //清除错误标志
+    111              Return |= FLASH_FACCERR;                    //更新返回值
+    112            }
+    113            //检查Flash保护标志
+    114            else if (FTFL->FSTAT & FTFL_FSTAT_FPVIOL_MASK)
+    115            {
+    116              FTFL->FSTAT |= FTFL_FSTAT_FPVIOL_MASK;
+    117              Return |= FLASH_FPVIOL;
+    118            }
+    119            //检查Flash读冲突错误
+    120            else if (FTFL->FSTAT & FTFL_FSTAT_RDCOLERR_MASK)
+    121            {
+    122              FTFL->FSTAT |= FTFL_FSTAT_RDCOLERR_MASK;
+    123              Return |= FLASH_RDCOLERR;
+    124            }
+    125            //检查MGSTAT0非可纠正错误
+    126            else if (FTFL->FSTAT & FTFL_FSTAT_MGSTAT0_MASK)
+    127            {
+    128              Return |= FLASH_MGSTAT0;
+    129            } 
+    130          #elif defined(CPU_MK60F12) || defined(CPU_MK60F15)
+    131            //等待CCIF置1
+    132            while (!(FTFE->FSTAT & FTFE_FSTAT_CCIF_MASK)){};
+   \                     ??Flash_SectorErase_0: (+1)
+   \        0x6   0x....             LDR.N    R2,??DataTable2  ;; 0x40020000
+   \        0x8   0x7813             LDRB     R3,[R2, #+0]
+   \        0xA   0x061B             LSLS     R3,R3,#+24
+   \        0xC   0xD5FB             BPL.N    ??Flash_SectorErase_0
+    133            //写入命令道FCCOB寄存器
+    134            FTFE->FCCOB0 = FlashCmd_SectorErase;
+   \        0xE   0x2309             MOVS     R3,#+9
+   \       0x10   0x....             LDR.N    R4,??DataTable2_3  ;; 0x40020007
+   \       0x12   0x7023             STRB     R3,[R4, #+0]
+    135            FTFE->FCCOB1 = (uint8_t) (FlashPtr >> 16);
+   \       0x14   0x000B             MOVS     R3,R1
+   \       0x16   0x0C1B             LSRS     R3,R3,#+16
+   \       0x18   0x....             LDR.N    R4,??DataTable2_4  ;; 0x40020006
+   \       0x1A   0x7023             STRB     R3,[R4, #+0]
+    136            FTFE->FCCOB2 = (uint8_t)((FlashPtr >> 8 ) & 0xFF);
+   \       0x1C   0x000B             MOVS     R3,R1
+   \       0x1E   0x0A1B             LSRS     R3,R3,#+8
+   \       0x20   0x....             LDR.N    R4,??DataTable2_5  ;; 0x40020005
+   \       0x22   0x7023             STRB     R3,[R4, #+0]
+    137            FTFE->FCCOB3 = (uint8_t)( FlashPtr & 0xFF);
+   \       0x24   0x....             LDR.N    R3,??DataTable2_6  ;; 0x40020004
+   \       0x26   0x7019             STRB     R1,[R3, #+0]
+    138          
+    139            //执行命令
+    140            FTFE->FSTAT |= FTFE_FSTAT_CCIF_MASK;    
+   \       0x28   0x7813             LDRB     R3,[R2, #+0]
+   \       0x2A   0xF053 0x0380      ORRS     R3,R3,#0x80
+   \       0x2E   0x7013             STRB     R3,[R2, #+0]
+    141            //等待命令完成
+    142            while (!(FTFE->FSTAT & FTFE_FSTAT_CCIF_MASK)) {};
+   \                     ??Flash_SectorErase_1: (+1)
+   \       0x30   0x7813             LDRB     R3,[R2, #+0]
+   \       0x32   0x061B             LSLS     R3,R3,#+24
+   \       0x34   0xD5FC             BPL.N    ??Flash_SectorErase_1
+    143            //检查Flash访问错误
+    144            if (FTFE->FSTAT & FTFE_FSTAT_ACCERR_MASK)
+   \       0x36   0x7813             LDRB     R3,[R2, #+0]
+   \       0x38   0x069B             LSLS     R3,R3,#+26
+   \       0x3A   0xD506             BPL.N    ??Flash_SectorErase_2
+    145            {
+    146              FTFE->FSTAT |= FTFE_FSTAT_ACCERR_MASK; //清除错误标志
+   \       0x3C   0x7813             LDRB     R3,[R2, #+0]
+   \       0x3E   0xF053 0x0320      ORRS     R3,R3,#0x20
+   \       0x42   0x7013             STRB     R3,[R2, #+0]
+    147              Return |= FLASH_FACCERR;              //更新返回值
+   \       0x44   0xF050 0x0001      ORRS     R0,R0,#0x1
+   \       0x48   0xE018             B.N      ??Flash_SectorErase_3
+    148            }
+    149            //检查Flash保护标志
+    150            else if (FTFE->FSTAT & FTFE_FSTAT_FPVIOL_MASK)
+   \                     ??Flash_SectorErase_2: (+1)
+   \       0x4A   0x7813             LDRB     R3,[R2, #+0]
+   \       0x4C   0x06DB             LSLS     R3,R3,#+27
+   \       0x4E   0xD506             BPL.N    ??Flash_SectorErase_4
+    151            {
+    152              FTFE->FSTAT |= FTFE_FSTAT_FPVIOL_MASK;
+   \       0x50   0x7813             LDRB     R3,[R2, #+0]
+   \       0x52   0xF053 0x0310      ORRS     R3,R3,#0x10
+   \       0x56   0x7013             STRB     R3,[R2, #+0]
+    153              Return |= FLASH_FPVIOL;
+   \       0x58   0xF050 0x0002      ORRS     R0,R0,#0x2
+   \       0x5C   0xE00E             B.N      ??Flash_SectorErase_3
+    154            }
+    155            else if (FTFE->FSTAT & FTFE_FSTAT_RDCOLERR_MASK)
+   \                     ??Flash_SectorErase_4: (+1)
+   \       0x5E   0x7813             LDRB     R3,[R2, #+0]
+   \       0x60   0x065B             LSLS     R3,R3,#+25
+   \       0x62   0xD506             BPL.N    ??Flash_SectorErase_5
+    156            {
+    157              FTFE->FSTAT |= FTFE_FSTAT_RDCOLERR_MASK;
+   \       0x64   0x7813             LDRB     R3,[R2, #+0]
+   \       0x66   0xF053 0x0340      ORRS     R3,R3,#0x40
+   \       0x6A   0x7013             STRB     R3,[R2, #+0]
+    158              Return |= FLASH_RDCOLERR;
+   \       0x6C   0xF050 0x0008      ORRS     R0,R0,#0x8
+   \       0x70   0xE004             B.N      ??Flash_SectorErase_3
+    159            }
+    160            //检查Flash读冲突错误
+    161            else if (FTFE->FSTAT & FTFE_FSTAT_MGSTAT0_MASK)
+   \                     ??Flash_SectorErase_5: (+1)
+   \       0x72   0x7812             LDRB     R2,[R2, #+0]
+   \       0x74   0x07D2             LSLS     R2,R2,#+31
+   \       0x76   0xD501             BPL.N    ??Flash_SectorErase_3
+    162            {
+    163              Return |= FLASH_MGSTAT0;
+   \       0x78   0xF050 0x0004      ORRS     R0,R0,#0x4
+    164            } 
+    165          #endif
+    166            return  Return;
+   \                     ??Flash_SectorErase_3: (+1)
+   \       0x7C   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x7E   0xBC10             POP      {R4}
+   \       0x80   0x4770             BX       LR               ;; return
+    167          }
+    168          
+    169          /*
+    170           * Flash_ByteProgram
+    171           * 编程Flash
+    172           * 
+    173           * 参数:
+    174           *    FlashStartAdd--Flash编程起始地址
+    175           *    *DataSrcPtr--数据源指针
+    176           *    NumberOfBytes--数据字节长度
+    177           *
+    178           * 输出:
+    179           *    错误代码
+    180           */
+
+   \                                 In section .text, align 2, keep-with-next
+    181          uint8 Flash_ByteProgram(uint32 FlashStartAdd, uint32 *DataSrcPtr, uint32 NumberOfBytes)
+    182          {
+   \                     Flash_ByteProgram: (+1)
+   \        0x0   0xB4F0             PUSH     {R4-R7}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000B             MOVS     R3,R1
+    183            uint8 Return = FLASH_OK;
+   \        0x6   0x2500             MOVS     R5,#+0
+    184            
+    185            uint32 size_buffer;
+    186            
+    187            if (NumberOfBytes == 0)
+   \        0x8   0x2A00             CMP      R2,#+0
+   \        0xA   0xD101             BNE.N    ??Flash_ByteProgram_0
+    188            {
+    189              return FLASH_CONTENTERR;
+   \        0xC   0x2011             MOVS     R0,#+17
+   \        0xE   0xE061             B.N      ??Flash_ByteProgram_1
+    190            }
+    191            else
+    192            {
+    193              size_buffer = (NumberOfBytes - 1)/BYTE_DIV + 1;
+   \                     ??Flash_ByteProgram_0: (+1)
+   \       0x10   0x1E51             SUBS     R1,R2,#+1
+   \       0x12   0x08C9             LSRS     R1,R1,#+3
+   \       0x14   0x1C49             ADDS     R1,R1,#+1
+    194            }
+    195          #if defined(CPU_MK60DZ10) || defined(CPU_MK60D10)
+    196            //等待直到CCIF设置
+    197            while (!(FTFL->FSTAT & FTFL_FSTAT_CCIF_MASK)){};
+    198          
+    199            while ((size_buffer) && (Return == FLASH_OK))
+    200            {
+    201              //写FLASH命令到FCCOB
+    202              FTFL->FCCOB0 = FLASH_CMD_PGM4;
+    203              FTFL->FCCOB1 = (uint8)(FlashStartAdd >> 16);
+    204              FTFL->FCCOB2 = (uint8)((FlashStartAdd >> 8) & 0xFF);
+    205              FTFL->FCCOB3 = (uint8)(FlashStartAdd & 0xFF);
+    206              //如果K60设置成为小端格式，进行如下操作
+    207              FTFL->FCCOB4 = (uint8)(*((uint8*)DataSrcPtr+3));
+    208              FTFL->FCCOB5 = (uint8)(*((uint8*)DataSrcPtr+2));
+    209              FTFL->FCCOB6 = (uint8)(*((uint8*)DataSrcPtr+1));
+    210              FTFL->FCCOB7 = (uint8)(*((uint8*)DataSrcPtr+0));
+    211              //如果K60设置成为大端格式，进行如下操作
+    212              //FTFL_FCCOB4 = (uint8)(*((uint_8*)DataSrcPtr+0));
+    213              //FTFL_FCCOB5 = (uint8)(*((uint_8*)DataSrcPtr+1));
+    214              //FTFL_FCCOB6 = (uint8)(*((uint_8*)DataSrcPtr+2));
+    215              //FTFL_FCCOB7 = (uint8)(*((uint_8*)DataSrcPtr+3));
+    216              //设置FLASH加载命令
+    217              FTFL->FSTAT |= FTFL_FSTAT_CCIF_MASK;    
+    218              //等待命令完成
+    219              while (!(FTFL->FSTAT & FTFL_FSTAT_CCIF_MASK)) {};
+    220              
+    221              //检测FLASH访问错误
+    222              if (FTFL->FSTAT & FTFL_FSTAT_ACCERR_MASK)
+    223              {
+    224                  
+    225                  FTFL->FSTAT |= FTFL_FSTAT_ACCERR_MASK;
+    226              
+    227                  Return |= FLASH_FACCERR;
+    228              }
+    229              //检测FLASH保护错误
+    230              else if (FTFL->FSTAT & FTFL_FSTAT_FPVIOL_MASK)
+    231              {
+    232                  FTFL->FSTAT |= FTFL_FSTAT_FPVIOL_MASK;
+    233              
+    234                  Return |= FLASH_FPVIOL;
+    235              }
+    236              
+    237              else if (FTFL->FSTAT & FTFL_FSTAT_RDCOLERR_MASK)
+    238              {
+    239                  FTFL->FSTAT |= FTFL_FSTAT_RDCOLERR_MASK;
+    240              
+    241                  Return |= FLASH_RDCOLERR;
+    242              }
+    243              else if (FTFL->FSTAT & FTFL_FSTAT_MGSTAT0_MASK)
+    244              {
+    245                  Return |= FLASH_MGSTAT0;
+    246              } 
+    247              size_buffer --;
+    248              (uint32*)DataSrcPtr++;
+    249              FlashStartAdd +=4;
+    250            }
+    251          #elif defined(CPU_MK60F12) || defined(CPU_MK60F15) 
+    252            //等待直到CCIF设置
+    253            while (!(FTFE->FSTAT & FTFE_FSTAT_CCIF_MASK)){};
+   \                     ??Flash_ByteProgram_2: (+1)
+   \       0x16   0x....             LDR.N    R0,??DataTable2  ;; 0x40020000
+   \       0x18   0x7806             LDRB     R6,[R0, #+0]
+   \       0x1A   0x0636             LSLS     R6,R6,#+24
+   \       0x1C   0xD5FB             BPL.N    ??Flash_ByteProgram_2
+    254          
+    255            while ((size_buffer) && (Return == FLASH_OK))
+   \                     ??Flash_ByteProgram_3: (+1)
+   \       0x1E   0x2900             CMP      R1,#+0
+   \       0x20   0xD056             BEQ.N    ??Flash_ByteProgram_4
+   \       0x22   0x002E             MOVS     R6,R5
+   \       0x24   0xB2F6             UXTB     R6,R6            ;; ZeroExt  R6,R6,#+24,#+24
+   \       0x26   0x2E00             CMP      R6,#+0
+   \       0x28   0xD152             BNE.N    ??Flash_ByteProgram_4
+    256            {
+    257              //写FLASH命令到FCCOB
+    258              FTFE->FCCOB0 = FlashCmd_ProgramPhrase;
+   \       0x2A   0x2607             MOVS     R6,#+7
+   \       0x2C   0x....             LDR.N    R7,??DataTable2_3  ;; 0x40020007
+   \       0x2E   0x703E             STRB     R6,[R7, #+0]
+    259              FTFE->FCCOB1 = (uint8_t)( FlashStartAdd >> 16);
+   \       0x30   0x0026             MOVS     R6,R4
+   \       0x32   0x0C36             LSRS     R6,R6,#+16
+   \       0x34   0x....             LDR.N    R7,??DataTable2_4  ;; 0x40020006
+   \       0x36   0x703E             STRB     R6,[R7, #+0]
+    260              FTFE->FCCOB2 = (uint8_t)((FlashStartAdd >>  8) & 0xFF);
+   \       0x38   0x0026             MOVS     R6,R4
+   \       0x3A   0x0A36             LSRS     R6,R6,#+8
+   \       0x3C   0x....             LDR.N    R7,??DataTable2_5  ;; 0x40020005
+   \       0x3E   0x703E             STRB     R6,[R7, #+0]
+    261              FTFE->FCCOB3 = (uint8_t)( FlashStartAdd & 0xFF);
+   \       0x40   0x....             LDR.N    R6,??DataTable2_6  ;; 0x40020004
+   \       0x42   0x7034             STRB     R4,[R6, #+0]
+    262              //如果K60设置成为小端格式，进行如下操作
+    263              FTFE->FCCOB4 = (uint8_t)(*((uint8_t*)DataSrcPtr+3));
+   \       0x44   0x78DE             LDRB     R6,[R3, #+3]
+   \       0x46   0x....             LDR.N    R7,??DataTable2_7  ;; 0x4002000b
+   \       0x48   0x703E             STRB     R6,[R7, #+0]
+    264              FTFE->FCCOB5 = (uint8_t)(*((uint8_t*)DataSrcPtr+2));
+   \       0x4A   0x789E             LDRB     R6,[R3, #+2]
+   \       0x4C   0x....             LDR.N    R7,??DataTable2_8  ;; 0x4002000a
+   \       0x4E   0x703E             STRB     R6,[R7, #+0]
+    265              FTFE->FCCOB6 = (uint8_t)(*((uint8_t*)DataSrcPtr+1));
+   \       0x50   0x785E             LDRB     R6,[R3, #+1]
+   \       0x52   0x....             LDR.N    R7,??DataTable2_9  ;; 0x40020009
+   \       0x54   0x703E             STRB     R6,[R7, #+0]
+    266              FTFE->FCCOB7 = (uint8_t)(*((uint8_t*)DataSrcPtr+0));
+   \       0x56   0x781E             LDRB     R6,[R3, #+0]
+   \       0x58   0x....             LDR.N    R7,??DataTable2_10  ;; 0x40020008
+   \       0x5A   0x703E             STRB     R6,[R7, #+0]
+    267              FTFE->FCCOB8 = (uint8_t)(*((uint8_t*)DataSrcPtr+7));
+   \       0x5C   0x79DE             LDRB     R6,[R3, #+7]
+   \       0x5E   0x....             LDR.N    R7,??DataTable2_11  ;; 0x4002000f
+   \       0x60   0x703E             STRB     R6,[R7, #+0]
+    268              FTFE->FCCOB9 = (uint8_t)(*((uint8_t*)DataSrcPtr+6));
+   \       0x62   0x799E             LDRB     R6,[R3, #+6]
+   \       0x64   0x....             LDR.N    R7,??DataTable2_12  ;; 0x4002000e
+   \       0x66   0x703E             STRB     R6,[R7, #+0]
+    269              FTFE->FCCOBA = (uint8_t)(*((uint8_t*)DataSrcPtr+5));
+   \       0x68   0x795E             LDRB     R6,[R3, #+5]
+   \       0x6A   0x....             LDR.N    R7,??DataTable2_13  ;; 0x4002000d
+   \       0x6C   0x703E             STRB     R6,[R7, #+0]
+    270              FTFE->FCCOBB = (uint8_t)(*((uint8_t*)DataSrcPtr+4));
+   \       0x6E   0x791E             LDRB     R6,[R3, #+4]
+   \       0x70   0x....             LDR.N    R7,??DataTable2_14  ;; 0x4002000c
+   \       0x72   0x703E             STRB     R6,[R7, #+0]
+    271              //如果K60设置成为大端格式，进行如下操作
+    272              //FTFE_FCCOB4 = (uint8_t)(*((uint_8*)DataSrcPtr+0));
+    273              //FTFE_FCCOB5 = (uint8_t)(*((uint_8*)DataSrcPtr+1));
+    274              //FTFE_FCCOB6 = (uint8_t)(*((uint_8*)DataSrcPtr+2));
+    275              //FTFE_FCCOB7 = (uint8_t)(*((uint_8*)DataSrcPtr+3));
+    276              //设置FLASH加载命令
+    277              FTFE->FSTAT |= FTFE_FSTAT_CCIF_MASK;    
+   \       0x74   0x7806             LDRB     R6,[R0, #+0]
+   \       0x76   0xF056 0x0680      ORRS     R6,R6,#0x80
+   \       0x7A   0x7006             STRB     R6,[R0, #+0]
+    278              //等待命令完成
+    279              while (!(FTFE->FSTAT & FTFE_FSTAT_CCIF_MASK)) {};
+   \                     ??Flash_ByteProgram_5: (+1)
+   \       0x7C   0x7806             LDRB     R6,[R0, #+0]
+   \       0x7E   0x0636             LSLS     R6,R6,#+24
+   \       0x80   0xD5FC             BPL.N    ??Flash_ByteProgram_5
+    280          
+    281              //检测FLASH访问错误
+    282              if (FTFE->FSTAT & FTFE_FSTAT_ACCERR_MASK)
+   \       0x82   0x7806             LDRB     R6,[R0, #+0]
+   \       0x84   0x06B6             LSLS     R6,R6,#+26
+   \       0x86   0xD506             BPL.N    ??Flash_ByteProgram_6
+    283              {
+    284                FTFE->FSTAT |= FTFE_FSTAT_ACCERR_MASK;
+   \       0x88   0x7806             LDRB     R6,[R0, #+0]
+   \       0x8A   0xF056 0x0620      ORRS     R6,R6,#0x20
+   \       0x8E   0x7006             STRB     R6,[R0, #+0]
+    285                Return |= FLASH_FACCERR;
+   \       0x90   0xF055 0x0501      ORRS     R5,R5,#0x1
+   \       0x94   0xE018             B.N      ??Flash_ByteProgram_7
+    286              }
+    287              //检测FLASH保护错误
+    288              else if (FTFE->FSTAT & FTFE_FSTAT_FPVIOL_MASK)
+   \                     ??Flash_ByteProgram_6: (+1)
+   \       0x96   0x7806             LDRB     R6,[R0, #+0]
+   \       0x98   0x06F6             LSLS     R6,R6,#+27
+   \       0x9A   0xD506             BPL.N    ??Flash_ByteProgram_8
+    289              {
+    290                FTFE->FSTAT |= FTFE_FSTAT_FPVIOL_MASK;
+   \       0x9C   0x7806             LDRB     R6,[R0, #+0]
+   \       0x9E   0xF056 0x0610      ORRS     R6,R6,#0x10
+   \       0xA2   0x7006             STRB     R6,[R0, #+0]
+    291                Return |= FLASH_FPVIOL;
+   \       0xA4   0xF055 0x0502      ORRS     R5,R5,#0x2
+   \       0xA8   0xE00E             B.N      ??Flash_ByteProgram_7
+    292              }
+    293              else if (FTFE->FSTAT & FTFE_FSTAT_RDCOLERR_MASK)
+   \                     ??Flash_ByteProgram_8: (+1)
+   \       0xAA   0x7806             LDRB     R6,[R0, #+0]
+   \       0xAC   0x0676             LSLS     R6,R6,#+25
+   \       0xAE   0xD506             BPL.N    ??Flash_ByteProgram_9
+    294              {
+    295                FTFE->FSTAT |= FTFE_FSTAT_RDCOLERR_MASK;
+   \       0xB0   0x7806             LDRB     R6,[R0, #+0]
+   \       0xB2   0xF056 0x0640      ORRS     R6,R6,#0x40
+   \       0xB6   0x7006             STRB     R6,[R0, #+0]
+    296                Return |= FLASH_RDCOLERR;
+   \       0xB8   0xF055 0x0508      ORRS     R5,R5,#0x8
+   \       0xBC   0xE004             B.N      ??Flash_ByteProgram_7
+    297              }
+    298              else if (FTFE->FSTAT & FTFE_FSTAT_MGSTAT0_MASK)
+   \                     ??Flash_ByteProgram_9: (+1)
+   \       0xBE   0x7806             LDRB     R6,[R0, #+0]
+   \       0xC0   0x07F6             LSLS     R6,R6,#+31
+   \       0xC2   0xD501             BPL.N    ??Flash_ByteProgram_7
+    299              {
+    300                  Return |= FLASH_MGSTAT0;
+   \       0xC4   0xF055 0x0504      ORRS     R5,R5,#0x4
+    301              } 
+    302              //计算偏移量
+    303              size_buffer --;
+   \                     ??Flash_ByteProgram_7: (+1)
+   \       0xC8   0x1E49             SUBS     R1,R1,#+1
+    304              DataSrcPtr += 2;     
+   \       0xCA   0x3308             ADDS     R3,R3,#+8
+    305              FlashStartAdd +=BYTE_DIV;
+   \       0xCC   0x3408             ADDS     R4,R4,#+8
+   \       0xCE   0xE7A6             B.N      ??Flash_ByteProgram_3
+    306            }
+    307          #endif
+    308            return  Return;
+   \                     ??Flash_ByteProgram_4: (+1)
+   \       0xD0   0x0028             MOVS     R0,R5
+   \       0xD2   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \                     ??Flash_ByteProgram_1: (+1)
+   \       0xD4   0xBCF0             POP      {R4-R7}
+   \       0xD6   0x4770             BX       LR               ;; return
+    309          } 
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \        0x0   0x4002'0000        DC32     0x40020000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \        0x0   0x4001'F004        DC32     0x4001f004
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_2:
+   \        0x0   0x4001'F008        DC32     0x4001f008
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_3:
+   \        0x0   0x4002'0007        DC32     0x40020007
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_4:
+   \        0x0   0x4002'0006        DC32     0x40020006
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_5:
+   \        0x0   0x4002'0005        DC32     0x40020005
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_6:
+   \        0x0   0x4002'0004        DC32     0x40020004
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_7:
+   \        0x0   0x4002'000B        DC32     0x4002000b
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_8:
+   \        0x0   0x4002'000A        DC32     0x4002000a
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_9:
+   \        0x0   0x4002'0009        DC32     0x40020009
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_10:
+   \        0x0   0x4002'0008        DC32     0x40020008
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_11:
+   \        0x0   0x4002'000F        DC32     0x4002000f
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_12:
+   \        0x0   0x4002'000E        DC32     0x4002000e
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_13:
+   \        0x0   0x4002'000D        DC32     0x4002000d
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_14:
+   \        0x0   0x4002'000C        DC32     0x4002000c
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      16   Flash_ByteProgram
+       0   Flash_Init
+       4   Flash_SectorErase
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable2
+       4  ??DataTable2_1
+       4  ??DataTable2_10
+       4  ??DataTable2_11
+       4  ??DataTable2_12
+       4  ??DataTable2_13
+       4  ??DataTable2_14
+       4  ??DataTable2_2
+       4  ??DataTable2_3
+       4  ??DataTable2_4
+       4  ??DataTable2_5
+       4  ??DataTable2_6
+       4  ??DataTable2_7
+       4  ??DataTable2_8
+       4  ??DataTable2_9
+     216  Flash_ByteProgram
+      70  Flash_Init
+     130  Flash_SectorErase
+
+ 
+ 476 bytes in section .text
+ 
+ 476 bytes of CODE memory
+
+Errors: none
+Warnings: none

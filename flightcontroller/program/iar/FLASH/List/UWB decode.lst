@@ -1,0 +1,938 @@
+﻿###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM         30/Jul/2018  16:04:07
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\Sensor\UWB
+#        decode.cpp
+#    Command line =  
+#        -f C:\Users\XSK199~1\AppData\Local\Temp\EW5182.tmp
+#        ("C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\Sensor\UWB
+#        decode.cpp" -D K60 -D USE_K60F15 -D ARM_MATH_CM4 -D __FPU_PRESENT=1 -D
+#        __FPU_USED=1 -lCN
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -lB
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -o
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
+#        D:\iar\arm\inc\c\DLib_Config_Full.h -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\Sensor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\CPU\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\option\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\driver\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\class\
+#        -On --c++ -I D:\iar\arm\CMSIS\Core\Include\ -I
+#        D:\iar\arm\CMSIS\DSP\Include\ -D ARM_MATH_CM4 --text_out utf8
+#        --utf8_text_in)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List\UWB
+#        decode.lst
+#    Object file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj\UWB
+#        decode.o
+#
+###############################################################################
+
+C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\app\Sensor\UWB decode.cpp
+      1          #include "UWB decode.h"
+
+   \                                 In section .text, align 4
+   \   __code __interwork __softfp CJumpFilter::CJumpFilter()
+   \                     _ZN11CJumpFilterC1Ev: (+1)
+   \        0x0   0x4903             LDR.N    R1,??CJumpFilter_0  ;; 0x42c80000
+   \        0x2   0x6081             STR      R1,[R0, #+8]
+   \        0x4   0x2132             MOVS     R1,#+50
+   \        0x6   0x6281             STR      R1,[R0, #+40]
+   \        0x8   0xF05F 0x517E      MOVS     R1,#+1065353216
+   \        0xC   0x62C1             STR      R1,[R0, #+44]
+   \        0xE   0x4770             BX       LR               ;; return
+   \                     ??CJumpFilter_0:
+   \       0x10   0x42C8'0000        DC32     0x42c80000
+
+   \                                 In section .text, align 4
+   \   __code __interwork __softfp CoordinateElement::CoordinateElement()
+   \                     _ZN17CoordinateElementC1Ev: (+1)
+   \        0x0   0x4903             LDR.N    R1,??CoordinateElement_0  ;; 0x3f4ccccd
+   \        0x2   0x6101             STR      R1,[R0, #+16]
+   \        0x4   0x4903             LDR.N    R1,??CoordinateElement_0+0x4  ;; 0x461c4000
+   \        0x6   0x6141             STR      R1,[R0, #+20]
+   \        0x8   0x4903             LDR.N    R1,??CoordinateElement_0+0x8  ;; 0xc61c4000
+   \        0xA   0x6181             STR      R1,[R0, #+24]
+   \        0xC   0x4770             BX       LR               ;; return
+   \        0xE   0xBF00             Nop      
+   \                     ??CoordinateElement_0:
+   \       0x10   0x3F4C'CCCD        DC32     0x3f4ccccd
+   \       0x14   0x461C'4000        DC32     0x461c4000
+   \       0x18   0xC61C'4000        DC32     0xc61c4000
+
+   \                                 In section .text, align 2
+   \   __code __interwork __softfp Coordinate::Coordinate()
+   \                     _ZN10CoordinateC1Ev: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x0020             MOVS     R0,R4
+   \        0x6   0x.... 0x....      BL       _ZN17CoordinateElementC1Ev
+   \        0xA   0xF114 0x001C      ADDS     R0,R4,#+28
+   \        0xE   0x.... 0x....      BL       _ZN17CoordinateElementC1Ev
+   \       0x12   0xF114 0x0038      ADDS     R0,R4,#+56
+   \       0x16   0x.... 0x....      BL       _ZN17CoordinateElementC1Ev
+   \       0x1A   0x0020             MOVS     R0,R4
+   \       0x1C   0xBD10             POP      {R4,PC}          ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \   static __interwork __vfp arm_status arm_sqrt_f32(float, float *)
+   \                     _ZN36_INTERNAL_14_UWB_decode_cpp_a64c46b612arm_sqrt_f32EfPf: (+1)
+   \        0x0   0x0001             MOVS     R1,R0
+   \        0x2   0xEEB5 0x0A40      VCMP.F32 S0,#0.0
+   \        0x6   0xEEF1 0xFA10      FMSTAT   
+   \        0xA   0xDB05             BLT.N    ??arm_sqrt_f32_0
+   \        0xC   0xEEF1 0x0AC0      VSQRT.F32 S1,S0
+   \       0x10   0xEDC1 0x0A00      VSTR     S1,[R1, #0]
+   \       0x14   0x2000             MOVS     R0,#+0
+   \       0x16   0xE003             B.N      ??arm_sqrt_f32_1
+   \                     ??arm_sqrt_f32_0: (+1)
+   \       0x18   0x2000             MOVS     R0,#+0
+   \       0x1A   0x6008             STR      R0,[R1, #+0]
+   \       0x1C   0xF05F 0x30FF      MOVS     R0,#-1
+   \                     ??arm_sqrt_f32_1: (+1)
+   \       0x20   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 2
+   \   __code __interwork __softfp CUWB::CUWB()
+   \                     _ZN4CUWBC1Ev: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0xF514 0x704B      ADDS     R0,R4,#+812
+   \        0x8   0x.... 0x....      BL       _ZN11CJumpFilterC1Ev
+   \        0xC   0xF514 0x7059      ADDS     R0,R4,#+868
+   \       0x10   0x.... 0x....      BL       _ZN11CJumpFilterC1Ev
+   \       0x14   0xF514 0x7067      ADDS     R0,R4,#+924
+   \       0x18   0x.... 0x....      BL       _ZN11CJumpFilterC1Ev
+   \       0x1C   0xF514 0x7075      ADDS     R0,R4,#+980
+   \       0x20   0x.... 0x....      BL       _ZN11CJumpFilterC1Ev
+   \       0x24   0x2080             MOVS     R0,#+128
+   \       0x26   0xF8C4 0x040C      STR      R0,[R4, #+1036]
+   \       0x2A   0xF514 0x6082      ADDS     R0,R4,#+1040
+   \       0x2E   0x.... 0x....      BL       _ZN10CoordinateC1Ev
+   \       0x32   0xF204 0x4064      ADDW     R0,R4,#+1124
+   \       0x36   0x.... 0x....      BL       _ZN10CoordinateC1Ev
+   \       0x3A   0xF514 0x6097      ADDS     R0,R4,#+1208
+   \       0x3E   0x.... 0x....      BL       _ZN10CoordinateC1Ev
+   \       0x42   0xF204 0x500C      ADDW     R0,R4,#+1292
+   \       0x46   0x.... 0x....      BL       _ZN10CoordinateC1Ev
+   \       0x4A   0xF514 0x60AC      ADDS     R0,R4,#+1376
+   \       0x4E   0x.... 0x....      BL       _ZN10CoordinateC1Ev
+   \       0x52   0xF204 0x50B4      ADDW     R0,R4,#+1460
+   \       0x56   0x.... 0x....      BL       _ZN10CoordinateC1Ev
+   \       0x5A   0xF514 0x60C1      ADDS     R0,R4,#+1544
+   \       0x5E   0x.... 0x....      BL       _ZN10CoordinateC1Ev
+   \       0x62   0xF204 0x605C      ADDW     R0,R4,#+1628
+   \       0x66   0x.... 0x....      BL       _ZN10CoordinateC1Ev
+   \       0x6A   0xF514 0x60D6      ADDS     R0,R4,#+1712
+   \       0x6E   0x.... 0x....      BL       _ZN10CoordinateC1Ev
+   \       0x72   0x0020             MOVS     R0,R4
+   \       0x74   0xBD10             POP      {R4,PC}          ;; return
+      2          
+
+   \                                 In section .bss, align 4
+      3          CUWB *UWB;
+   \                     UWB:
+   \        0x0                      DS8 4
+      4          
+
+   \                                 In section .text, align 4, keep-with-next
+      5          void UWB_Init()
+      6          {
+   \                     _Z8UWB_Initv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0xED2D 0x8B02      VPUSH    {D8}
+   \        0x6   0x.... 0x....      LDR.W    R4,??DataTable4
+   \        0xA   0x7820             LDRB     R0,[R4, #+0]
+   \        0xC   0x2800             CMP      R0,#+0
+   \        0xE   0xD105             BNE.N    ??UWB_Init_0
+      7            static CUWB UWB_0;
+   \       0x10   0x.... 0x....      LDR.W    R0,??DataTable4_2
+   \       0x14   0x.... 0x....      BL       _ZN4CUWBC1Ev
+   \       0x18   0x2001             MOVS     R0,#+1
+   \       0x1A   0x7020             STRB     R0,[R4, #+0]
+      8            UWB = &UWB_0;
+   \                     ??UWB_Init_0: (+1)
+   \       0x1C   0x.... 0x....      LDR.W    R4,??DataTable4_1
+   \       0x20   0x.... 0x....      LDR.W    R0,??DataTable4_2
+   \       0x24   0x6020             STR      R0,[R4, #+0]
+      9            UWB->velFilter_x.setParameter(0.15, 100, 20);
+   \       0x26   0xED9F 0x....      VLDR.W   S16,??DataTable2  ;; 0x3e19999a
+   \       0x2A   0xEEF3 0x8A04      VMOV.F32 S17,#20.0
+   \       0x2E   0xEEF0 0x0A68      VMOV.F32 S1,S17
+   \       0x32   0x2164             MOVS     R1,#+100
+   \       0x34   0xEEB0 0x0A48      VMOV.F32 S0,S16
+   \       0x38   0x6820             LDR      R0,[R4, #+0]
+   \       0x3A   0xF510 0x704B      ADDS     R0,R0,#+812
+   \       0x3E   0x.... 0x....      BL       _ZN11CJumpFilter12setParameterEfif
+     10            UWB->velFilter_y.setParameter(0.15, 100, 20);
+   \       0x42   0xEEF0 0x0A68      VMOV.F32 S1,S17
+   \       0x46   0x2164             MOVS     R1,#+100
+   \       0x48   0xEEB0 0x0A48      VMOV.F32 S0,S16
+   \       0x4C   0x6820             LDR      R0,[R4, #+0]
+   \       0x4E   0xF510 0x7059      ADDS     R0,R0,#+868
+   \       0x52   0x.... 0x....      BL       _ZN11CJumpFilter12setParameterEfif
+     11            
+     12            UWB->positionFilter_x.setParameter(0.25, 80);
+   \       0x56   0x2150             MOVS     R1,#+80
+   \       0x58   0xEEB5 0x0A00      VMOV.F32 S0,#0.25
+   \       0x5C   0x6820             LDR      R0,[R4, #+0]
+   \       0x5E   0xF510 0x7067      ADDS     R0,R0,#+924
+   \       0x62   0x.... 0x....      BL       _ZN11CJumpFilter12setParameterEfi
+     13            UWB->positionFilter_y.setParameter(0.25, 80);
+   \       0x66   0x2150             MOVS     R1,#+80
+   \       0x68   0xEEB5 0x0A00      VMOV.F32 S0,#0.25
+   \       0x6C   0x6820             LDR      R0,[R4, #+0]
+   \       0x6E   0xF510 0x7075      ADDS     R0,R0,#+980
+   \       0x72   0x.... 0x....      BL       _ZN11CJumpFilter12setParameterEfi
+     14              
+     15          }
+   \                     ??UWB_Init_1: (+1)
+   \       0x76   0xECBD 0x8B02      VPOP     {D8}
+   \       0x7A   0xBD10             POP      {R4,PC}          ;; return
+
+   \                                 In section .bss, align 4
+   \                     `UWB_Init()::UWB_0`:
+   \        0x0                      DS8 1928
+     16          
+     17          
+
+   \                                 In section .text, align 2, keep-with-next
+     18          void CUWB::update()
+     19          {
+   \                     _ZN4CUWB6updateEv: (+1)
+   \        0x0   0xE92D 0x4FF8      PUSH     {R3-R11,LR}
+   \        0x4   0x0004             MOVS     R4,R0
+     20            velFilter_x.checkIsNewData(t);
+   \        0x6   0x.... 0x....      LDR.W    R10,??DataTable4_3
+   \        0xA   0xF8DA 0x1000      LDR      R1,[R10, #+0]
+   \        0xE   0xF514 0x704B      ADDS     R0,R4,#+812
+   \       0x12   0x.... 0x....      BL       _ZN11CJumpFilter14checkIsNewDataEi
+     21            velFilter_y.checkIsNewData(t);
+   \       0x16   0xF8DA 0x1000      LDR      R1,[R10, #+0]
+   \       0x1A   0xF514 0x7059      ADDS     R0,R4,#+868
+   \       0x1E   0x.... 0x....      BL       _ZN11CJumpFilter14checkIsNewDataEi
+     22          //  velFilter_x.accumulate(IMU_acc_E.x * 0.002);
+     23          //  velFilter_y.accumulate(IMU_acc_E.y * 0.002);
+     24            positionFilter_x.checkIsNewData(t);
+   \       0x22   0xF8DA 0x1000      LDR      R1,[R10, #+0]
+   \       0x26   0xF514 0x7067      ADDS     R0,R4,#+924
+   \       0x2A   0x.... 0x....      BL       _ZN11CJumpFilter14checkIsNewDataEi
+     25            positionFilter_y.checkIsNewData(t);
+   \       0x2E   0xF8DA 0x1000      LDR      R1,[R10, #+0]
+   \       0x32   0xF514 0x7075      ADDS     R0,R4,#+980
+   \       0x36   0x.... 0x....      BL       _ZN11CJumpFilter14checkIsNewDataEi
+     26            
+     27            bool newPackage = false;
+   \       0x3A   0x2500             MOVS     R5,#+0
+     28            bool loopFlag = false;
+   \       0x3C   0x2600             MOVS     R6,#+0
+     29            int i = 0;
+   \       0x3E   0xF05F 0x0900      MOVS     R9,#+0
+     30            int address0 = (DMA0->TCD[DMA_CH4].DADDR) - (uint32)(&Data[0]);
+   \       0x42   0x.... 0x....      LDR.W    R7,??DataTable4_11  ;; 0x40009090
+   \       0x46   0xF8D7 0x8000      LDR      R8,[R7, #+0]
+   \       0x4A   0xEBB8 0x0804      SUBS     R8,R8,R4
+     31            int moveLength = 0;
+   \       0x4E   0x2000             MOVS     R0,#+0
+   \       0x50   0x9000             STR      R0,[SP, #+0]
+     32          
+     33            
+     34          
+     35            byteInterval = t - byte_lastTime;
+   \       0x52   0xF8DA 0x1000      LDR      R1,[R10, #+0]
+   \       0x56   0xF8D4 0x0324      LDR      R0,[R4, #+804]
+   \       0x5A   0x1A09             SUBS     R1,R1,R0
+   \       0x5C   0xF8C4 0x1320      STR      R1,[R4, #+800]
+     36            if(byte_lastAddress != address0)
+   \       0x60   0xF8D4 0x0328      LDR      R0,[R4, #+808]
+   \       0x64   0x4540             CMP      R0,R8
+   \       0x66   0xD005             BEQ.N    ??update_0
+     37            {
+     38              byte_lastTime = t;
+   \       0x68   0xF8DA 0x0000      LDR      R0,[R10, #+0]
+   \       0x6C   0xF8C4 0x0324      STR      R0,[R4, #+804]
+     39              byte_lastAddress = address0;
+   \       0x70   0xF8C4 0x8328      STR      R8,[R4, #+808]
+     40            }
+     41            for(; i + packageLength <= address0; i++)
+   \                     ??update_0: (+1)
+   \       0x74   0xF8D4 0x040C      LDR      R0,[R4, #+1036]
+   \       0x78   0xEB10 0x0009      ADDS     R0,R0,R9
+   \       0x7C   0x4580             CMP      R8,R0
+   \       0x7E   0xDB46             BLT.N    ??update_1
+     42            {
+     43              for(; (Data[i] != 0x55 || Data[i+1] != 0x01); i++)
+   \                     ??update_2: (+1)
+   \       0x80   0xF814 0x0009      LDRB     R0,[R4, R9]
+   \       0x84   0x2855             CMP      R0,#+85
+   \       0x86   0xD104             BNE.N    ??update_3
+   \       0x88   0xEB04 0x0009      ADD      R0,R4,R9
+   \       0x8C   0x7840             LDRB     R0,[R0, #+1]
+   \       0x8E   0x2801             CMP      R0,#+1
+   \       0x90   0xD00B             BEQ.N    ??update_4
+     44              {
+     45                if(i + packageLength >= address0)
+   \                     ??update_3: (+1)
+   \       0x92   0xF8D4 0x040C      LDR      R0,[R4, #+1036]
+   \       0x96   0xEB10 0x0009      ADDS     R0,R0,R9
+   \       0x9A   0x4540             CMP      R0,R8
+   \       0x9C   0xDB02             BLT.N    ??update_5
+     46                {
+     47                  loopFlag = true;
+   \       0x9E   0x2001             MOVS     R0,#+1
+   \       0xA0   0x0006             MOVS     R6,R0
+     48                  break;
+   \       0xA2   0xE002             B.N      ??update_4
+     49                }
+     50              }
+   \                     ??update_5: (+1)
+   \       0xA4   0xF119 0x0901      ADDS     R9,R9,#+1
+   \       0xA8   0xE7EA             B.N      ??update_2
+     51              if(loopFlag)
+   \                     ??update_4: (+1)
+   \       0xAA   0x0030             MOVS     R0,R6
+   \       0xAC   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0xAE   0x2800             CMP      R0,#+0
+   \       0xB0   0xD12D             BNE.N    ??update_1
+     52              {
+     53                break;
+     54              }
+     55              char checkSum = 0; //×¢ÒâÃ¿¸ö°üµÄcheckSum¶¼ÒªÇåÁã
+   \                     ??update_6: (+1)
+   \       0xB2   0xF05F 0x0B00      MOVS     R11,#+0
+     56              for(int k = i; k < i + packageLength - 1; k++)
+   \       0xB6   0x4649             MOV      R1,R9
+   \                     ??update_7: (+1)
+   \       0xB8   0xF8D4 0x040C      LDR      R0,[R4, #+1036]
+   \       0xBC   0xEB10 0x0009      ADDS     R0,R0,R9
+   \       0xC0   0x1E40             SUBS     R0,R0,#+1
+   \       0xC2   0x4281             CMP      R1,R0
+   \       0xC4   0xDA04             BGE.N    ??update_8
+     57              {
+     58                checkSum += Data[k];
+   \       0xC6   0x5C60             LDRB     R0,[R4, R1]
+   \       0xC8   0xEB10 0x0B0B      ADDS     R11,R0,R11
+     59              }
+   \       0xCC   0x1C49             ADDS     R1,R1,#+1
+   \       0xCE   0xE7F3             B.N      ??update_7
+     60              if(checkSum != Data[i+packageLength-1])
+   \                     ??update_8: (+1)
+   \       0xD0   0x4658             MOV      R0,R11
+   \       0xD2   0xF8D4 0x140C      LDR      R1,[R4, #+1036]
+   \       0xD6   0xEB11 0x0109      ADDS     R1,R1,R9
+   \       0xDA   0x4421             ADD      R1,R4,R1
+   \       0xDC   0xF811 0x1C01      LDRB     R1,[R1, #-1]
+   \       0xE0   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0xE2   0x4288             CMP      R0,R1
+   \       0xE4   0xD110             BNE.N    ??update_9
+     61              {
+     62                continue;
+     63              }
+     64              byte_lastTime = t;
+   \                     ??update_10: (+1)
+   \       0xE6   0xF8DA 0x0000      LDR      R0,[R10, #+0]
+   \       0xEA   0xF8C4 0x0324      STR      R0,[R4, #+804]
+     65              byte_lastAddress = address0;   
+   \       0xEE   0xF8C4 0x8328      STR      R8,[R4, #+808]
+     66              
+     67              decode(i);
+   \       0xF2   0x4649             MOV      R1,R9
+   \       0xF4   0x0020             MOVS     R0,R4
+   \       0xF6   0x.... 0x....      BL       _ZN4CUWB6decodeEi
+     68              i += packageLength - 1; //-1ÒòÎªÑ­»·µÄi++
+   \       0xFA   0xF8D4 0x040C      LDR      R0,[R4, #+1036]
+   \       0xFE   0x1E40             SUBS     R0,R0,#+1
+   \      0x100   0xEB10 0x0909      ADDS     R9,R0,R9
+     69              newPackage = true;
+   \      0x104   0x2001             MOVS     R0,#+1
+   \      0x106   0x0005             MOVS     R5,R0
+     70            }
+   \                     ??update_9: (+1)
+   \      0x108   0xF119 0x0901      ADDS     R9,R9,#+1
+   \      0x10C   0xE7B2             B.N      ??update_0
+     71            
+     72            if(newPackage)
+     73            {
+     74          //    velFilter_x.setNewDataTime(t);    
+     75          //    velFilter_y.setNewDataTime(t);   
+     76          //    position.x.calculateD(t);
+     77          //    position.y.calculateD(t);
+     78          //    positionFilter_x.setNewDataTime(t); 
+     79          //    positionFilter_y.setNewDataTime(t); 
+     80          //      
+     81          //    positionFilter_x.setValid(true);
+     82          //    positionFilter_y.setValid(true);
+     83            }
+     84            newPackage = false;
+   \                     ??update_1: (+1)
+   \      0x10E   0x2000             MOVS     R0,#+0
+     85            
+     86            moveLength = (DMA0->TCD[DMA_CH4].DADDR - (uint32)&Data[0]) - i;
+   \      0x110   0x6839             LDR      R1,[R7, #+0]
+   \      0x112   0x1B09             SUBS     R1,R1,R4
+   \      0x114   0xEBB1 0x0109      SUBS     R1,R1,R9
+     87            if(moveLength < 0) moveLength = 0;
+   \      0x118   0x2900             CMP      R1,#+0
+   \      0x11A   0xD501             BPL.N    ??update_11
+   \      0x11C   0x2200             MOVS     R2,#+0
+   \      0x11E   0x0011             MOVS     R1,R2
+     88             
+     89            DMA_LoadDstAddr(DMA_CH4, (uint32)&Data[0] + moveLength);
+   \                     ??update_11: (+1)
+   \      0x120   0x190A             ADDS     R2,R1,R4
+   \      0x122   0x603A             STR      R2,[R7, #+0]
+     90            for(int k = 0; k < moveLength; k++)
+   \      0x124   0x2200             MOVS     R2,#+0
+   \                     ??update_12: (+1)
+   \      0x126   0x428A             CMP      R2,R1
+   \      0x128   0xDA05             BGE.N    ??update_13
+     91            {
+     92              Data[k] = Data[i + k];
+   \      0x12A   0xEB12 0x0309      ADDS     R3,R2,R9
+   \      0x12E   0x5CE3             LDRB     R3,[R4, R3]
+   \      0x130   0x54A3             STRB     R3,[R4, R2]
+     93            }
+   \      0x132   0x1C52             ADDS     R2,R2,#+1
+   \      0x134   0xE7F7             B.N      ??update_12
+     94          //  memset(Data + moveLength, 0, 150 * sizeof(char));
+     95            if(address0 > 500)
+   \                     ??update_13: (+1)
+   \      0x136   0xF240 0x12F5      MOVW     R2,#+501
+   \      0x13A   0x4590             CMP      R8,R2
+   \      0x13C   0xDB00             BLT.N    ??update_14
+     96            {
+     97              DMA_LoadDstAddr(DMA_CH4, (uint32)&Data[0]);
+   \      0x13E   0x603C             STR      R4,[R7, #+0]
+     98            }
+     99          }
+   \                     ??update_14: (+1)
+   \                     ??update_15: (+1)
+   \      0x140   0xE8BD 0x8FF1      POP      {R0,R4-R11,PC}   ;; return
+    100          
+
+   \                                 In section .text, align 4, keep-with-next
+    101          void CUWB::decode(int i)
+    102          {
+   \                     _ZN4CUWB6decodeEi: (+1)
+   \        0x0   0xE92D 0x43F8      PUSH     {R3-R9,LR}
+   \        0x4   0xED2D 0x8B06      VPUSH    {D8-D10}
+   \        0x8   0xB082             SUB      SP,SP,#+8
+   \        0xA   0x0004             MOVS     R4,R0
+   \        0xC   0x000D             MOVS     R5,R1
+    103            i += 4;
+   \        0xE   0x1D2D             ADDS     R5,R5,#+4
+    104            positionRaw.x = (int)(Data[i+2] << 24 | Data[i + 1] << 16 | Data[i] << 8) / 1000.0f / 256.0f;
+   \       0x10   0xEB04 0x0005      ADD      R0,R4,R5
+   \       0x14   0x7880             LDRB     R0,[R0, #+2]
+   \       0x16   0xEB04 0x0105      ADD      R1,R4,R5
+   \       0x1A   0x7849             LDRB     R1,[R1, #+1]
+   \       0x1C   0x0409             LSLS     R1,R1,#+16
+   \       0x1E   0xEA51 0x6100      ORRS     R1,R1,R0, LSL #+24
+   \       0x22   0x5D60             LDRB     R0,[R4, R5]
+   \       0x24   0xEA51 0x2100      ORRS     R1,R1,R0, LSL #+8
+   \       0x28   0xEE00 0x1A10      VMOV     S0,R1
+   \       0x2C   0xEEB8 0x0AC0      VCVT.F32.S32 S0,S0
+   \       0x30   0xEDDF 0x....      VLDR.W   S1,??DataTable3  ;; 0x447a0000
+   \       0x34   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \       0x38   0xEDDF 0x....      VLDR.W   S1,??DataTable3_1  ;; 0x43800000
+   \       0x3C   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \       0x40   0xF204 0x500C      ADDW     R0,R4,#+1292
+   \       0x44   0x.... 0x....      BL       _ZN17CoordinateElementaSEf
+    105            i += 3;
+   \       0x48   0x1CED             ADDS     R5,R5,#+3
+    106            positionRaw.y = (int)(Data[i+2] << 24 | Data[i + 1] << 16 | Data[i] << 8) / 1000.0f / 256.0f;
+   \       0x4A   0xEB04 0x0005      ADD      R0,R4,R5
+   \       0x4E   0x7880             LDRB     R0,[R0, #+2]
+   \       0x50   0xEB04 0x0105      ADD      R1,R4,R5
+   \       0x54   0x7849             LDRB     R1,[R1, #+1]
+   \       0x56   0x0409             LSLS     R1,R1,#+16
+   \       0x58   0xEA51 0x6100      ORRS     R1,R1,R0, LSL #+24
+   \       0x5C   0x5D60             LDRB     R0,[R4, R5]
+   \       0x5E   0xEA51 0x2100      ORRS     R1,R1,R0, LSL #+8
+   \       0x62   0xEE00 0x1A10      VMOV     S0,R1
+   \       0x66   0xEEB8 0x0AC0      VCVT.F32.S32 S0,S0
+   \       0x6A   0xEDDF 0x....      VLDR.W   S1,??DataTable3  ;; 0x447a0000
+   \       0x6E   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \       0x72   0xEDDF 0x....      VLDR.W   S1,??DataTable3_1  ;; 0x43800000
+   \       0x76   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \       0x7A   0xF514 0x60A5      ADDS     R0,R4,#+1320
+   \       0x7E   0x.... 0x....      BL       _ZN17CoordinateElementaSEf
+    107            i += 3;
+   \       0x82   0x1CED             ADDS     R5,R5,#+3
+    108            positionRaw.z = (int)(Data[i+2] << 24 | Data[i + 1] << 16 | Data[i] << 8) / 1000.0f / 256.0f;
+   \       0x84   0xEB04 0x0005      ADD      R0,R4,R5
+   \       0x88   0x7880             LDRB     R0,[R0, #+2]
+   \       0x8A   0xEB04 0x0105      ADD      R1,R4,R5
+   \       0x8E   0x7849             LDRB     R1,[R1, #+1]
+   \       0x90   0x0409             LSLS     R1,R1,#+16
+   \       0x92   0xEA51 0x6100      ORRS     R1,R1,R0, LSL #+24
+   \       0x96   0x5D60             LDRB     R0,[R4, R5]
+   \       0x98   0xEA51 0x2100      ORRS     R1,R1,R0, LSL #+8
+   \       0x9C   0xEE00 0x1A10      VMOV     S0,R1
+   \       0xA0   0xEEB8 0x0AC0      VCVT.F32.S32 S0,S0
+   \       0xA4   0xEDDF 0x....      VLDR.W   S1,??DataTable3  ;; 0x447a0000
+   \       0xA8   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \       0xAC   0xEDDF 0x....      VLDR.W   S1,??DataTable3_1  ;; 0x43800000
+   \       0xB0   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \       0xB4   0xF204 0x5044      ADDW     R0,R4,#+1348
+   \       0xB8   0x.... 0x....      BL       _ZN17CoordinateElementaSEf
+    109            i += 3;
+   \       0xBC   0x1CED             ADDS     R5,R5,#+3
+    110            velRaw.x = (int)(Data[i+2] << 24 | Data[i + 1] << 16 | Data[i] << 8) / 1000.0f / 256.0f;
+   \       0xBE   0xEB04 0x0005      ADD      R0,R4,R5
+   \       0xC2   0x7880             LDRB     R0,[R0, #+2]
+   \       0xC4   0xEB04 0x0105      ADD      R1,R4,R5
+   \       0xC8   0x7849             LDRB     R1,[R1, #+1]
+   \       0xCA   0x0409             LSLS     R1,R1,#+16
+   \       0xCC   0xEA51 0x6100      ORRS     R1,R1,R0, LSL #+24
+   \       0xD0   0x5D60             LDRB     R0,[R4, R5]
+   \       0xD2   0xEA51 0x2100      ORRS     R1,R1,R0, LSL #+8
+   \       0xD6   0xEE00 0x1A10      VMOV     S0,R1
+   \       0xDA   0xEEB8 0x0AC0      VCVT.F32.S32 S0,S0
+   \       0xDE   0xEDDF 0x....      VLDR.W   S1,??DataTable3  ;; 0x447a0000
+   \       0xE2   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \       0xE6   0xEDDF 0x....      VLDR.W   S1,??DataTable3_1  ;; 0x43800000
+   \       0xEA   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \       0xEE   0xF514 0x60AC      ADDS     R0,R4,#+1376
+   \       0xF2   0x.... 0x....      BL       _ZN17CoordinateElementaSEf
+    111            i += 3;
+   \       0xF6   0x1CED             ADDS     R5,R5,#+3
+    112            velRaw.y = (int)(Data[i+2] << 24 | Data[i + 1] << 16 | Data[i] << 8) / 1000.0f / 256.0f;
+   \       0xF8   0xEB04 0x0005      ADD      R0,R4,R5
+   \       0xFC   0x7880             LDRB     R0,[R0, #+2]
+   \       0xFE   0xEB04 0x0105      ADD      R1,R4,R5
+   \      0x102   0x7849             LDRB     R1,[R1, #+1]
+   \      0x104   0x0409             LSLS     R1,R1,#+16
+   \      0x106   0xEA51 0x6100      ORRS     R1,R1,R0, LSL #+24
+   \      0x10A   0x5D60             LDRB     R0,[R4, R5]
+   \      0x10C   0xEA51 0x2100      ORRS     R1,R1,R0, LSL #+8
+   \      0x110   0xEE00 0x1A10      VMOV     S0,R1
+   \      0x114   0xEEB8 0x0AC0      VCVT.F32.S32 S0,S0
+   \      0x118   0xEDDF 0x....      VLDR.W   S1,??DataTable3  ;; 0x447a0000
+   \      0x11C   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \      0x120   0xEDDF 0x....      VLDR.W   S1,??DataTable3_1  ;; 0x43800000
+   \      0x124   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \      0x128   0xF204 0x507C      ADDW     R0,R4,#+1404
+   \      0x12C   0x.... 0x....      BL       _ZN17CoordinateElementaSEf
+    113            i += 3;
+   \      0x130   0x1CED             ADDS     R5,R5,#+3
+    114            velRaw.z = (int)(Data[i+2] << 24 | Data[i + 1] << 16 | Data[i] << 8) / 1000.0f / 256.0f;
+   \      0x132   0xEB04 0x0005      ADD      R0,R4,R5
+   \      0x136   0x7880             LDRB     R0,[R0, #+2]
+   \      0x138   0xEB04 0x0105      ADD      R1,R4,R5
+   \      0x13C   0x7849             LDRB     R1,[R1, #+1]
+   \      0x13E   0x0409             LSLS     R1,R1,#+16
+   \      0x140   0xEA51 0x6100      ORRS     R1,R1,R0, LSL #+24
+   \      0x144   0x5D60             LDRB     R0,[R4, R5]
+   \      0x146   0xEA51 0x2100      ORRS     R1,R1,R0, LSL #+8
+   \      0x14A   0xEE00 0x1A10      VMOV     S0,R1
+   \      0x14E   0xEEB8 0x0AC0      VCVT.F32.S32 S0,S0
+   \      0x152   0xEDDF 0x....      VLDR.W   S1,??DataTable3  ;; 0x447a0000
+   \      0x156   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \      0x15A   0xEDDF 0x....      VLDR.W   S1,??DataTable3_1  ;; 0x43800000
+   \      0x15E   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \      0x162   0xF514 0x60B3      ADDS     R0,R4,#+1432
+   \      0x166   0x.... 0x....      BL       _ZN17CoordinateElementaSEf
+    115            i += 3;
+   \      0x16A   0x1CED             ADDS     R5,R5,#+3
+    116            dis[0] =  (int)(Data[i+2] << 24 | Data[i + 1] << 16 | Data[i] << 8) / 1000.0f / 256.0f;
+   \      0x16C   0xEB04 0x0005      ADD      R0,R4,R5
+   \      0x170   0x7880             LDRB     R0,[R0, #+2]
+   \      0x172   0xEB04 0x0105      ADD      R1,R4,R5
+   \      0x176   0x7849             LDRB     R1,[R1, #+1]
+   \      0x178   0x0409             LSLS     R1,R1,#+16
+   \      0x17A   0xEA51 0x6100      ORRS     R1,R1,R0, LSL #+24
+   \      0x17E   0x5D60             LDRB     R0,[R4, R5]
+   \      0x180   0xEA51 0x2100      ORRS     R1,R1,R0, LSL #+8
+   \      0x184   0xEE00 0x1A10      VMOV     S0,R1
+   \      0x188   0xEEB8 0x0AC0      VCVT.F32.S32 S0,S0
+   \      0x18C   0xEDDF 0x....      VLDR.W   S1,??DataTable3  ;; 0x447a0000
+   \      0x190   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \      0x194   0xEDDF 0x....      VLDR.W   S1,??DataTable3_1  ;; 0x43800000
+   \      0x198   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \      0x19C   0xF204 0x700C      ADDW     R0,R4,#+1804
+   \      0x1A0   0xED80 0x0A00      VSTR     S0,[R0, #0]
+    117            i += 3;
+   \      0x1A4   0x1CED             ADDS     R5,R5,#+3
+    118            dis[1] =  (int)(Data[i+2] << 24 | Data[i + 1] << 16 | Data[i] << 8) / 1000.0f / 256.0f;
+   \      0x1A6   0xEB04 0x0005      ADD      R0,R4,R5
+   \      0x1AA   0x7880             LDRB     R0,[R0, #+2]
+   \      0x1AC   0xEB04 0x0105      ADD      R1,R4,R5
+   \      0x1B0   0x7849             LDRB     R1,[R1, #+1]
+   \      0x1B2   0x0409             LSLS     R1,R1,#+16
+   \      0x1B4   0xEA51 0x6100      ORRS     R1,R1,R0, LSL #+24
+   \      0x1B8   0x5D60             LDRB     R0,[R4, R5]
+   \      0x1BA   0xEA51 0x2100      ORRS     R1,R1,R0, LSL #+8
+   \      0x1BE   0xEE00 0x1A10      VMOV     S0,R1
+   \      0x1C2   0xEEB8 0x0AC0      VCVT.F32.S32 S0,S0
+   \      0x1C6   0xEDDF 0x....      VLDR.W   S1,??DataTable3  ;; 0x447a0000
+   \      0x1CA   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \      0x1CE   0xEDDF 0x....      VLDR.W   S1,??DataTable3_1  ;; 0x43800000
+   \      0x1D2   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \      0x1D6   0xF204 0x7010      ADDW     R0,R4,#+1808
+   \      0x1DA   0xED80 0x0A00      VSTR     S0,[R0, #0]
+    119            i += 3;
+   \      0x1DE   0x1CED             ADDS     R5,R5,#+3
+    120            dis[2] =  (int)(Data[i+2] << 24 | Data[i + 1] << 16 | Data[i] << 8) / 1000.0f / 256.0f;
+   \      0x1E0   0xEB04 0x0005      ADD      R0,R4,R5
+   \      0x1E4   0x7880             LDRB     R0,[R0, #+2]
+   \      0x1E6   0xEB04 0x0105      ADD      R1,R4,R5
+   \      0x1EA   0x7849             LDRB     R1,[R1, #+1]
+   \      0x1EC   0x0409             LSLS     R1,R1,#+16
+   \      0x1EE   0xEA51 0x6100      ORRS     R1,R1,R0, LSL #+24
+   \      0x1F2   0x5D60             LDRB     R0,[R4, R5]
+   \      0x1F4   0xEA51 0x2100      ORRS     R1,R1,R0, LSL #+8
+   \      0x1F8   0xEE00 0x1A10      VMOV     S0,R1
+   \      0x1FC   0xEEB8 0x0AC0      VCVT.F32.S32 S0,S0
+   \      0x200   0xEDDF 0x....      VLDR.W   S1,??DataTable3  ;; 0x447a0000
+   \      0x204   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \      0x208   0xEDDF 0x....      VLDR.W   S1,??DataTable3_1  ;; 0x43800000
+   \      0x20C   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \      0x210   0xF204 0x7014      ADDW     R0,R4,#+1812
+   \      0x214   0xED80 0x0A00      VSTR     S0,[R0, #0]
+    121            i += 3;
+   \      0x218   0x1CED             ADDS     R5,R5,#+3
+    122            dis[3] =  (int)(Data[i+2] << 24 | Data[i + 1] << 16 | Data[i] << 8) / 1000.0f / 256.0f;
+   \      0x21A   0xEB04 0x0005      ADD      R0,R4,R5
+   \      0x21E   0x7880             LDRB     R0,[R0, #+2]
+   \      0x220   0xEB04 0x0105      ADD      R1,R4,R5
+   \      0x224   0x7849             LDRB     R1,[R1, #+1]
+   \      0x226   0x0409             LSLS     R1,R1,#+16
+   \      0x228   0xEA51 0x6100      ORRS     R1,R1,R0, LSL #+24
+   \      0x22C   0x5D60             LDRB     R0,[R4, R5]
+   \      0x22E   0xEA51 0x2100      ORRS     R1,R1,R0, LSL #+8
+   \      0x232   0xEE00 0x1A10      VMOV     S0,R1
+   \      0x236   0xEEB8 0x0AC0      VCVT.F32.S32 S0,S0
+   \      0x23A   0xEDDF 0x....      VLDR.W   S1,??DataTable3  ;; 0x447a0000
+   \      0x23E   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \      0x242   0xEDDF 0x....      VLDR.W   S1,??DataTable3_1  ;; 0x43800000
+   \      0x246   0xEE80 0x0A20      VDIV.F32 S0,S0,S1
+   \      0x24A   0xF204 0x7018      ADDW     R0,R4,#+1816
+   \      0x24E   0xED80 0x0A00      VSTR     S0,[R0, #0]
+    123            
+    124            float norm;
+    125            float Py = positionFilter_y.newData(dis[0], t); 
+   \      0x252   0x....             LDR.N    R6,??DataTable4_3
+   \      0x254   0x6831             LDR      R1,[R6, #+0]
+   \      0x256   0xF8D4 0x070C      LDR      R0,[R4, #+1804]
+   \      0x25A   0xEE00 0x0A10      VMOV     S0,R0
+   \      0x25E   0xF514 0x7075      ADDS     R0,R4,#+980
+   \      0x262   0x.... 0x....      BL       _ZN11CJumpFilter7newDataEfi
+   \      0x266   0xEEB0 0x8A40      VMOV.F32 S16,S0
+    126            double distanceZsqr = (1.4 - EKF_AHRS->fusion.position.z) * (1.4 - EKF_AHRS->fusion.position.z);
+   \      0x26A   0x....             LDR.N    R7,??DataTable4_4
+   \      0x26C   0x6838             LDR      R0,[R7, #+0]
+   \      0x26E   0x30DC             ADDS     R0,R0,#+220
+   \      0x270   0x.... 0x....      BL       _ZN17CoordinateElementcvfEv
+   \      0x274   0xEEF0 0x8A40      VMOV.F32 S17,S0
+   \      0x278   0x6838             LDR      R0,[R7, #+0]
+   \      0x27A   0x30DC             ADDS     R0,R0,#+220
+   \      0x27C   0x.... 0x....      BL       _ZN17CoordinateElementcvfEv
+   \      0x280   0xEEB0 0x9A40      VMOV.F32 S18,S0
+   \      0x284   0xED9F 0x....      VLDR.W   D10,??DataTable4_5
+   \      0x288   0xEE18 0x0A90      VMOV     R0,S17
+   \      0x28C   0x.... 0x....      BL       __aeabi_f2d
+   \      0x290   0x0002             MOVS     R2,R0
+   \      0x292   0x000B             MOVS     R3,R1
+   \      0x294   0xEC51 0x0B1A      VMOV     R0,R1,D10
+   \      0x298   0x.... 0x....      BL       __aeabi_dsub
+   \      0x29C   0x4680             MOV      R8,R0
+   \      0x29E   0x4689             MOV      R9,R1
+   \      0x2A0   0xEE19 0x0A10      VMOV     R0,S18
+   \      0x2A4   0x.... 0x....      BL       __aeabi_f2d
+   \      0x2A8   0x0002             MOVS     R2,R0
+   \      0x2AA   0x000B             MOVS     R3,R1
+   \      0x2AC   0xEC51 0x0B1A      VMOV     R0,R1,D10
+   \      0x2B0   0x.... 0x....      BL       __aeabi_dsub
+   \      0x2B4   0x4642             MOV      R2,R8
+   \      0x2B6   0x464B             MOV      R3,R9
+   \      0x2B8   0x.... 0x....      BL       __aeabi_dmul
+   \      0x2BC   0xEC41 0x0B19      VMOV     D9,R0,R1
+    127            double distanceXsqr = (EKF_AHRS->fusion.position.x - Navigation->DesiredDistanceToScreen / 2.0f)  * //¾à³¬¿í´øX·½Ïò¾àÀë
+    128                                    (EKF_AHRS->fusion.position.x - Navigation->DesiredDistanceToScreen / 2.0f); 
+   \      0x2C0   0x6838             LDR      R0,[R7, #+0]
+   \      0x2C2   0x30A4             ADDS     R0,R0,#+164
+   \      0x2C4   0x.... 0x....      BL       _ZN17CoordinateElementcvfEv
+   \      0x2C8   0xEEF0 0x8A40      VMOV.F32 S17,S0
+   \      0x2CC   0x6838             LDR      R0,[R7, #+0]
+   \      0x2CE   0x30A4             ADDS     R0,R0,#+164
+   \      0x2D0   0x.... 0x....      BL       _ZN17CoordinateElementcvfEv
+   \      0x2D4   0x....             LDR.N    R0,??DataTable4_6
+   \      0x2D6   0x6801             LDR      R1,[R0, #+0]
+   \      0x2D8   0xEDD1 0x0A2A      VLDR     S1,[R1, #+168]
+   \      0x2DC   0xEEB0 0x1A00      VMOV.F32 S2,#2.0
+   \      0x2E0   0xEEC0 0x0A81      VDIV.F32 S1,S1,S2
+   \      0x2E4   0xEE78 0x0AE0      VSUB.F32 S1,S17,S1
+   \      0x2E8   0x6800             LDR      R0,[R0, #+0]
+   \      0x2EA   0xED90 0x1A2A      VLDR     S2,[R0, #+168]
+   \      0x2EE   0xEEF0 0x1A00      VMOV.F32 S3,#2.0
+   \      0x2F2   0xEE81 0x1A21      VDIV.F32 S2,S2,S3
+   \      0x2F6   0xEE30 0x0A41      VSUB.F32 S0,S0,S2
+   \      0x2FA   0xEE20 0x0A80      VMUL.F32 S0,S1,S0
+   \      0x2FE   0xEE10 0x0A10      VMOV     R0,S0
+   \      0x302   0x.... 0x....      BL       __aeabi_f2d
+   \      0x306   0xEC41 0x0B1A      VMOV     D10,R0,R1
+    129            arm_sqrt_f32(Py * Py - distanceZsqr - distanceXsqr, &norm); //¼ÆËãË®Æ½¾àÀë
+   \      0x30A   0x4668             MOV      R0,SP
+   \      0x30C   0x0007             MOVS     R7,R0
+   \      0x30E   0xEE28 0x0A08      VMUL.F32 S0,S16,S16
+   \      0x312   0xEE10 0x0A10      VMOV     R0,S0
+   \      0x316   0x.... 0x....      BL       __aeabi_f2d
+   \      0x31A   0xEC53 0x2B19      VMOV     R2,R3,D9
+   \      0x31E   0x.... 0x....      BL       __aeabi_dsub
+   \      0x322   0xEC53 0x2B1A      VMOV     R2,R3,D10
+   \      0x326   0x.... 0x....      BL       __aeabi_dsub
+   \      0x32A   0x.... 0x....      BL       __aeabi_d2f
+   \      0x32E   0xEE00 0x0A10      VMOV     S0,R0
+   \      0x332   0x0038             MOVS     R0,R7
+   \      0x334   0x.... 0x....      BL       _ZN36_INTERNAL_14_UWB_decode_cpp_a64c46b612arm_sqrt_f32EfPf
+    130            positionF.y = 7.4 - norm; //7.4ÊÇ×Ô¶¨ÒåµÄÔ­µãÎ»ÖÃ
+   \      0x338   0x9800             LDR      R0,[SP, #+0]
+   \      0x33A   0x.... 0x....      BL       __aeabi_f2d
+   \      0x33E   0x0002             MOVS     R2,R0
+   \      0x340   0x000B             MOVS     R3,R1
+   \      0x342   0x....             LDR.N    R0,??DataTable4_7  ;; 0x9999999a
+   \      0x344   0x....             LDR.N    R1,??DataTable4_12  ;; 0x401d9999
+   \      0x346   0x.... 0x....      BL       __aeabi_dsub
+   \      0x34A   0x.... 0x....      BL       __aeabi_d2f
+   \      0x34E   0xEE00 0x0A10      VMOV     S0,R0
+   \      0x352   0xF514 0x60CF      ADDS     R0,R4,#+1656
+   \      0x356   0x.... 0x....      BL       _ZN17CoordinateElementaSEf
+    131            positionF.x = positionFilter_x.newData(positionRaw.y, t); //x yÖá»»Ò»ÏÂ
+   \      0x35A   0xF514 0x60A5      ADDS     R0,R4,#+1320
+   \      0x35E   0x.... 0x....      BL       _ZN17CoordinateElementcvfEv
+   \      0x362   0x6831             LDR      R1,[R6, #+0]
+   \      0x364   0xF514 0x7067      ADDS     R0,R4,#+924
+   \      0x368   0x.... 0x....      BL       _ZN11CJumpFilter7newDataEfi
+   \      0x36C   0xF204 0x605C      ADDW     R0,R4,#+1628
+   \      0x370   0x.... 0x....      BL       _ZN17CoordinateElementaSEf
+    132          }
+   \                     ??decode_0: (+1)
+   \      0x374   0xB002             ADD      SP,SP,#+8
+   \      0x376   0xECBD 0x8B06      VPOP     {D8-D10}
+   \      0x37A   0xE8BD 0x83F1      POP      {R0,R4-R9,PC}    ;; return
+    133          
+    134          
+
+   \                                 In section .text, align 2, keep-with-next
+    135          void CUWB::TX_::startDMA_Transmit()
+    136          { 
+    137            //µ÷ÕûÔ´µØÖ·
+    138            DMA0->TCD[DMA_CH5].SADDR = DMA_SADDR_SADDR(UWB->TX.data);
+   \                     _ZN4CUWB3TX_17startDMA_TransmitEv: (+1)
+   \        0x0   0x....             LDR.N    R1,??DataTable4_1
+   \        0x2   0x680A             LDR      R2,[R1, #+0]
+   \        0x4   0xF202 0x721C      ADDW     R2,R2,#+1820
+   \        0x8   0x....             LDR.N    R3,??DataTable4_8  ;; 0x400090a0
+   \        0xA   0x601A             STR      R2,[R3, #+0]
+    139            
+    140            //ÉèÖÃÖ÷Ñ­»·¼ÆÊýÆ÷ current major loop count
+    141            DMA0->TCD[DMA_CH5].CITER_ELINKNO = DMA_CITER_ELINKNO_CITER(UWB->TX.index);
+   \        0xC   0x680A             LDR      R2,[R1, #+0]
+   \        0xE   0xF8D2 0x2780      LDR      R2,[R2, #+1920]
+   \       0x12   0x0452             LSLS     R2,R2,#+17       ;; ZeroExtS R2,R2,#+17,#+17
+   \       0x14   0x0C52             LSRS     R2,R2,#+17
+   \       0x16   0x....             LDR.N    R3,??DataTable4_9  ;; 0x400090b6
+   \       0x18   0x801A             STRH     R2,[R3, #+0]
+    142            
+    143            //ÆðÊ¼Ñ­»·¼ÆÊýÆ÷£¬µ±Ö÷Ñ­»·¼ÆÊýÆ÷ÎªÁãµÄÊ±ºò£¬½«×°ÔØÆðÊ¼Ñ­»·¼ÆÊýÆ÷µÄÖµ
+    144            DMA0->TCD[DMA_CH5].BITER_ELINKNO = DMA_CITER_ELINKNO_CITER(UWB->TX.index);
+   \       0x1A   0x6809             LDR      R1,[R1, #+0]
+   \       0x1C   0xF8D1 0x1780      LDR      R1,[R1, #+1920]
+   \       0x20   0x0449             LSLS     R1,R1,#+17       ;; ZeroExtS R1,R1,#+17,#+17
+   \       0x22   0x0C49             LSRS     R1,R1,#+17
+   \       0x24   0x....             LDR.N    R2,??DataTable4_10  ;; 0x400090be
+   \       0x26   0x8011             STRH     R1,[R2, #+0]
+    145              
+    146            DMA_EnableReq(DMA_CH5);
+   \       0x28   0x....             LDR.N    R1,??DataTable4_13  ;; 0x4000800c
+   \       0x2A   0x680A             LDR      R2,[R1, #+0]
+   \       0x2C   0xF052 0x0220      ORRS     R2,R2,#0x20
+   \       0x30   0x600A             STR      R2,[R1, #+0]
+    147          }
+   \       0x32   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \        0x0   0x3E19'999A        DC32     0x3e19999a
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3:
+   \        0x0   0x447A'0000        DC32     0x447a0000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_1:
+   \        0x0   0x4380'0000        DC32     0x43800000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4:
+   \        0x0   0x....'....        DC32     `UWB_Init()::static guard for UWB_0`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_1:
+   \        0x0   0x....'....        DC32     UWB
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_2:
+   \        0x0   0x....'....        DC32     `UWB_Init()::UWB_0`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_3:
+   \        0x0   0x....'....        DC32     t
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_4:
+   \        0x0   0x....'....        DC32     EKF_AHRS
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_5:
+   \        0x0   0x6666'6666        DC32     0x66666666,0x3FF66666
+   \              0x3FF6'6666  
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_6:
+   \        0x0   0x....'....        DC32     Navigation
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_7:
+   \        0x0   0x9999'999A        DC32     0x9999999a
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_8:
+   \        0x0   0x4000'90A0        DC32     0x400090a0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_9:
+   \        0x0   0x4000'90B6        DC32     0x400090b6
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_10:
+   \        0x0   0x4000'90BE        DC32     0x400090be
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_11:
+   \        0x0   0x4000'9090        DC32     0x40009090
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_12:
+   \        0x0   0x401D'9999        DC32     0x401d9999
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_13:
+   \        0x0   0x4000'800C        DC32     0x4000800c
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   CJumpFilter::CJumpFilter()
+       8   CUWB::CUWB()
+         8   -> CJumpFilter::CJumpFilter()
+         8   -> Coordinate::Coordinate()
+       0   CUWB::TX_::startDMA_Transmit()
+      64   CUWB::decode(int)
+        64   -> CJumpFilter::newData(float, int)
+        64   -> CoordinateElement::operator float()
+        64   -> CoordinateElement::operator=(float)
+        64   -> __aeabi_d2f
+        64   -> __aeabi_dmul
+        64   -> __aeabi_dsub
+        64   -> __aeabi_f2d
+        64   -> arm_sqrt_f32(float, float *)
+      40   CUWB::update()
+        40   -> CJumpFilter::checkIsNewData(int)
+        40   -> CUWB::decode(int)
+       8   Coordinate::Coordinate()
+         8   -> CoordinateElement::CoordinateElement()
+       0   CoordinateElement::CoordinateElement()
+      16   UWB_Init()
+        16   -> CJumpFilter::setParameter(float, int)
+        16   -> CJumpFilter::setParameter(float, int, float)
+        16   -> CUWB::CUWB()
+       0   arm_sqrt_f32(float, float *)
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable2
+       4  ??DataTable3
+       4  ??DataTable3_1
+       4  ??DataTable4
+       4  ??DataTable4_1
+       4  ??DataTable4_10
+       4  ??DataTable4_11
+       4  ??DataTable4_12
+       4  ??DataTable4_13
+       4  ??DataTable4_2
+       4  ??DataTable4_3
+       4  ??DataTable4_4
+       8  ??DataTable4_5
+       4  ??DataTable4_6
+       4  ??DataTable4_7
+       4  ??DataTable4_8
+       4  ??DataTable4_9
+      20  CJumpFilter::CJumpFilter()
+     118  CUWB::CUWB()
+      52  CUWB::TX_::startDMA_Transmit()
+     894  CUWB::decode(int)
+     324  CUWB::update()
+      30  Coordinate::Coordinate()
+      28  CoordinateElement::CoordinateElement()
+       4  UWB
+    1928  UWB_0
+     124  UWB_Init()
+      34  arm_sqrt_f32(float, float *)
+      37  -- Other
+
+ 
+    24 bytes in section .ARM.exidx
+    12 bytes in section .ARM.extab
+ 1 933 bytes in section .bss
+ 1 696 bytes in section .text
+ 
+ 1 500 bytes of CODE  memory (+ 196 bytes shared)
+    36 bytes of CONST memory
+ 1 933 bytes of DATA  memory
+
+Errors: none
+Warnings: none

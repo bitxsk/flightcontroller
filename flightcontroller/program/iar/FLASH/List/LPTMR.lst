@@ -1,0 +1,703 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM         31/Aug/2018  16:56:53
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\LPLD\HW\LPTMR.c
+#    Command line =  
+#        -f C:\Users\XSK199~1\AppData\Local\Temp\EW6FB0.tmp
+#        (C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\LPLD\HW\LPTMR.c
+#        -D K60 -D USE_K60F15 -D ARM_MATH_CM4 -D __FPU_PRESENT=1 -D
+#        __FPU_USED=1 -lCN
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -lB
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -o
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
+#        D:\iar\arm\inc\c\DLib_Config_Full.h -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\Sensor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\CPU\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\option\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\driver\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\class\
+#        -On --c++ -I D:\iar\arm\CMSIS\Core\Include\ -I
+#        D:\iar\arm\CMSIS\DSP\Include\ -D ARM_MATH_CM4)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List\LPTMR.lst
+#    Object file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj\LPTMR.o
+#
+###############################################################################
+
+C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\LPLD\HW\LPTMR.c
+      1          /**
+      2           * @file LPTMR.c
+      3           * @version 3.0[By LPLD]
+      4           * @date 2013-06-18
+      5           * @brief LPTMR底层模块相关函数
+      6           *
+      7           * 更改建议:不建议修改
+      8           *
+      9           * 版权所有:北京拉普兰德电子技术有限公司
+     10           * http://www.lpld.cn
+     11           * mail:support@lpld.cn
+     12           *
+     13           * @par
+     14           * 本代码由拉普兰德[LPLD]开发并维护，并向所有使用者开放源代码。
+     15           * 开发者可以随意修使用或改源代码。但本段及以上注释应予以保留。
+     16           * 不得更改或删除原版权所有者姓名，二次开发者可以加注二次版权所有者。
+     17           * 但应在遵守此协议的基础上，开放源代码、不得出售代码本身。
+     18           * 拉普兰德不负责由于使用本代码所带来的任何事故、法律责任或相关不良影响。
+     19           * 拉普兰德无义务解释、说明本代码的具体原理、功能、实现方法。
+     20           * 除非拉普兰德[LPLD]授权，开发者不得将本代码用于商业产品。
+     21           */
+     22          
+     23          #include "common.h"
+
+   \                                 In section .text, align 2, keep-with-next
+   \   static __interwork __softfp void __NVIC_EnableIRQ(IRQn)
+   \                     _ZN28_INTERNAL_7_LPTMR_c_5de9421b16__NVIC_EnableIRQE4IRQn: (+1)
+   \        0x0   0x0001             MOVS     R1,R0
+   \        0x2   0xB249             SXTB     R1,R1            ;; SignExt  R1,R1,#+24,#+24
+   \        0x4   0x2900             CMP      R1,#+0
+   \        0x6   0xD409             BMI.N    ??__NVIC_EnableIRQ_0
+   \        0x8   0x2201             MOVS     R2,#+1
+   \        0xA   0xF010 0x011F      ANDS     R1,R0,#0x1F
+   \        0xE   0x408A             LSLS     R2,R2,R1
+   \       0x10   0x....             LDR.N    R1,??DataTable7  ;; 0xe000e100
+   \       0x12   0x0003             MOVS     R3,R0
+   \       0x14   0xB25B             SXTB     R3,R3            ;; SignExt  R3,R3,#+24,#+24
+   \       0x16   0x095B             LSRS     R3,R3,#+5
+   \       0x18   0xF841 0x2023      STR      R2,[R1, R3, LSL #+2]
+   \                     ??__NVIC_EnableIRQ_0: (+1)
+   \       0x1C   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+   \   static __interwork __softfp void __NVIC_DisableIRQ(IRQn)
+   \                     _ZN28_INTERNAL_7_LPTMR_c_5de9421b17__NVIC_DisableIRQE4IRQn: (+1)
+   \        0x0   0x0001             MOVS     R1,R0
+   \        0x2   0xB249             SXTB     R1,R1            ;; SignExt  R1,R1,#+24,#+24
+   \        0x4   0x2900             CMP      R1,#+0
+   \        0x6   0xD40D             BMI.N    ??__NVIC_DisableIRQ_0
+   \        0x8   0x2201             MOVS     R2,#+1
+   \        0xA   0xF010 0x011F      ANDS     R1,R0,#0x1F
+   \        0xE   0x408A             LSLS     R2,R2,R1
+   \       0x10   0x....             LDR.N    R1,??DataTable7_1  ;; 0xe000e180
+   \       0x12   0x0003             MOVS     R3,R0
+   \       0x14   0xB25B             SXTB     R3,R3            ;; SignExt  R3,R3,#+24,#+24
+   \       0x16   0x095B             LSRS     R3,R3,#+5
+   \       0x18   0xF841 0x2023      STR      R2,[R1, R3, LSL #+2]
+   \       0x1C   0xF3BF 0x8F4F      DSB      SY
+   \       0x20   0xF3BF 0x8F6F      ISB      SY
+   \                     ??__NVIC_DisableIRQ_0: (+1)
+   \       0x24   0x4770             BX       LR               ;; return
+     24          #include "LPTMR.h"
+     25          
+
+   \                                 In section .bss, align 4
+     26          LPTMR_ISR_CALLBACK LPTMR_ISR[1];
+   \                     LPTMR_ISR:
+   \        0x0                      DS8 4
+     27          
+     28          /*
+     29           * LPTMR_Init
+     30           * LPTMR初始化函数
+     31           * 
+     32           * 参数:
+     33           *    lptmr_init_structure--LPTMR初始化结构体，
+     34           *                         具体定义见LPTMR_InitTypeDef 
+     35           * 输出:
+     36           *    0--配置错误
+     37           *    1--配置成功
+     38           */
+
+   \                                 In section .text, align 2, keep-with-next
+     39          uint8 LPTMR_Init(LPTMR_InitTypeDef lptmr_init_structure)
+     40          {
+   \                     LPTMR_Init: (+1)
+   \        0x0   0xB5F7             PUSH     {R0-R2,R4-R7,LR}
+     41            uint8  mode = lptmr_init_structure.LPTMR_Mode; 
+   \        0x2   0xF89D 0x7000      LDRB     R7,[SP, #+0]
+     42            uint16 period_ms = lptmr_init_structure.LPTMR_PeriodMs;
+   \        0x6   0xF8BD 0x4002      LDRH     R4,[SP, #+2]
+     43            uint8  pluseacc_input = lptmr_init_structure.LPTMR_PluseAccInput;
+   \        0xA   0xF89D 0x5004      LDRB     R5,[SP, #+4]
+     44            LPTMR_ISR_CALLBACK isr_func = lptmr_init_structure.LPTMR_Isr;
+   \        0xE   0x9E02             LDR      R6,[SP, #+8]
+     45          
+     46            ASSERT(mode <= LPTMR_MODE_PLACC );
+   \       0x10   0x0038             MOVS     R0,R7
+   \       0x12   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x14   0x2802             CMP      R0,#+2
+   \       0x16   0xDB03             BLT.N    ??LPTMR_Init_0
+   \       0x18   0x212E             MOVS     R1,#+46
+   \       0x1A   0x....             LDR.N    R0,??DataTable7_2
+   \       0x1C   0x.... 0x....      BL       assert_failed
+     47            ASSERT(pluseacc_input <= LPTMR_ALT2 );
+   \                     ??LPTMR_Init_0: (+1)
+   \       0x20   0x0028             MOVS     R0,R5
+   \       0x22   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x24   0x2803             CMP      R0,#+3
+   \       0x26   0xDB03             BLT.N    ??LPTMR_Init_1
+   \       0x28   0x212F             MOVS     R1,#+47
+   \       0x2A   0x....             LDR.N    R0,??DataTable7_2
+   \       0x2C   0x.... 0x....      BL       assert_failed
+     48          
+     49            //初始化LPTMR时钟
+     50            SIM->SCGC5|=SIM_SCGC5_LPTIMER_MASK;  
+   \                     ??LPTMR_Init_1: (+1)
+   \       0x30   0x....             LDR.N    R0,??DataTable7_3  ;; 0x40048038
+   \       0x32   0x6801             LDR      R1,[R0, #+0]
+   \       0x34   0xF051 0x0101      ORRS     R1,R1,#0x1
+   \       0x38   0x6001             STR      R1,[R0, #+0]
+     51             
+     52            //清空寄存器
+     53            LPTMR0->CSR = 0x00;                   
+   \       0x3A   0x....             LDR.N    R0,??DataTable7_4  ;; 0x40040000
+   \       0x3C   0x2100             MOVS     R1,#+0
+   \       0x3E   0x6001             STR      R1,[R0, #+0]
+     54            LPTMR0->PSR = 0x00;
+   \       0x40   0x....             LDR.N    R1,??DataTable7_5  ;; 0x40040004
+   \       0x42   0x2200             MOVS     R2,#+0
+   \       0x44   0x600A             STR      R2,[R1, #+0]
+     55            LPTMR0->CMR = 0x00;
+   \       0x46   0x....             LDR.N    R2,??DataTable7_6  ;; 0x40040008
+   \       0x48   0x2300             MOVS     R3,#+0
+   \       0x4A   0x6013             STR      R3,[R2, #+0]
+     56             
+     57            if(mode == LPTMR_MODE_TIMER)          // 配置成低功耗定时器功能
+   \       0x4C   0x003B             MOVS     R3,R7
+   \       0x4E   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
+   \       0x50   0x2B00             CMP      R3,#+0
+   \       0x52   0xD105             BNE.N    ??LPTMR_Init_2
+     58            {    
+     59              /* 配置LPTMR */
+     60              // LPO 1Khz
+     61              //设置比较的值
+     62              //使用内部时钟 分频系数Prescale为 2^(X+1)
+     63              //定时器的一个计数周期=时钟源(Clk_Src)/ 预分频值(Prescale)
+     64              //定时器的定时值=设置的比较值(compare_value)/定时器的一个计数周期
+     65              LPTMR0->CMR = LPTMR_CMR_COMPARE(period_ms);                 //设置比较值
+   \       0x54   0x0023             MOVS     R3,R4
+   \       0x56   0xB29B             UXTH     R3,R3            ;; ZeroExt  R3,R3,#+16,#+16
+   \       0x58   0x6013             STR      R3,[R2, #+0]
+     66              LPTMR0->PSR = LPTMR_PSR_PCS(0x1)|LPTMR_PSR_PBYP_MASK;       //采用LPO时钟旁路使能
+   \       0x5A   0x2205             MOVS     R2,#+5
+   \       0x5C   0x600A             STR      R2,[R1, #+0]
+   \       0x5E   0xE024             B.N      ??LPTMR_Init_3
+     67                  
+     68            }
+     69            else if(mode == LPTMR_MODE_PLACC)             //配置成脉冲捕获模式
+   \                     ??LPTMR_Init_2: (+1)
+   \       0x60   0x003A             MOVS     R2,R7
+   \       0x62   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x64   0x2A01             CMP      R2,#+1
+   \       0x66   0xD120             BNE.N    ??LPTMR_Init_3
+     70            {
+     71              
+     72              if(pluseacc_input == LPTMR_ALT1)            //PTA19引脚
+   \       0x68   0x002A             MOVS     R2,R5
+   \       0x6A   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x6C   0x2A01             CMP      R2,#+1
+   \       0x6E   0xD104             BNE.N    ??LPTMR_Init_4
+     73              {
+     74                PORTA->PCR[19] = PORT_PCR_MUX(0x6);       //设置PTA19为脉冲累加
+   \       0x70   0xF44F 0x62C0      MOV      R2,#+1536
+   \       0x74   0x....             LDR.N    R3,??DataTable7_7  ;; 0x4004904c
+   \       0x76   0x601A             STR      R2,[R3, #+0]
+   \       0x78   0xE007             B.N      ??LPTMR_Init_5
+     75              }
+     76              else if(pluseacc_input == LPTMR_ALT2)       //PTC5引脚
+   \                     ??LPTMR_Init_4: (+1)
+   \       0x7A   0x002A             MOVS     R2,R5
+   \       0x7C   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x7E   0x2A02             CMP      R2,#+2
+   \       0x80   0xD103             BNE.N    ??LPTMR_Init_5
+     77              {
+     78                PORTC->PCR[5] = PORT_PCR_MUX(0x4);        //设置PTC5为脉冲累加  
+   \       0x82   0xF44F 0x6280      MOV      R2,#+1024
+   \       0x86   0x....             LDR.N    R3,??DataTable7_8  ;; 0x4004b014
+   \       0x88   0x601A             STR      R2,[R3, #+0]
+     79              }
+     80          
+     81              //与所用的内部时钟无关
+     82              //外部输入的信号作为计数时钟
+     83              LPTMR0->PSR = LPTMR_PSR_PCS(0x1)|LPTMR_PSR_PBYP_MASK; 
+   \                     ??LPTMR_Init_5: (+1)
+   \       0x8A   0x2205             MOVS     R2,#+5
+   \       0x8C   0x600A             STR      R2,[R1, #+0]
+     84              LPTMR0->CSR = LPTMR_CSR_TPS(pluseacc_input);
+   \       0x8E   0x0029             MOVS     R1,R5
+   \       0x90   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x92   0x0109             LSLS     R1,R1,#+4
+   \       0x94   0xF011 0x0130      ANDS     R1,R1,#0x30
+   \       0x98   0x6001             STR      R1,[R0, #+0]
+     85              LPTMR0->CSR |= LPTMR_CSR_TMS_MASK; //捕获模式
+   \       0x9A   0x6801             LDR      R1,[R0, #+0]
+   \       0x9C   0xF051 0x0102      ORRS     R1,R1,#0x2
+   \       0xA0   0x6001             STR      R1,[R0, #+0]
+     86              LPTMR0->CSR |= LPTMR_CSR_TFC_MASK; //自由计数模式
+   \       0xA2   0x6801             LDR      R1,[R0, #+0]
+   \       0xA4   0xF051 0x0104      ORRS     R1,R1,#0x4
+   \       0xA8   0x6001             STR      R1,[R0, #+0]
+     87            }
+     88            
+     89            if(lptmr_init_structure.LPTMR_IntEnable == TRUE && isr_func != NULL)
+   \                     ??LPTMR_Init_3: (+1)
+   \       0xAA   0xF89D 0x1005      LDRB     R1,[SP, #+5]
+   \       0xAE   0x2901             CMP      R1,#+1
+   \       0xB0   0xD108             BNE.N    ??LPTMR_Init_6
+   \       0xB2   0x0031             MOVS     R1,R6
+   \       0xB4   0x2900             CMP      R1,#+0
+   \       0xB6   0xD005             BEQ.N    ??LPTMR_Init_6
+     90            {
+     91              LPTMR_ISR[0] = isr_func;
+   \       0xB8   0x....             LDR.N    R1,??DataTable7_9
+   \       0xBA   0x600E             STR      R6,[R1, #+0]
+     92              LPTMR0->CSR |= LPTMR_CSR_TIE_MASK;
+   \       0xBC   0x6801             LDR      R1,[R0, #+0]
+   \       0xBE   0xF051 0x0140      ORRS     R1,R1,#0x40
+   \       0xC2   0x6001             STR      R1,[R0, #+0]
+     93            }
+     94          
+     95            LPTMR0->CSR |= LPTMR_CSR_TEN_MASK; //开启LPTMR
+   \                     ??LPTMR_Init_6: (+1)
+   \       0xC4   0x6801             LDR      R1,[R0, #+0]
+   \       0xC6   0xF051 0x0101      ORRS     R1,R1,#0x1
+   \       0xCA   0x6001             STR      R1,[R0, #+0]
+     96            return 1;
+   \       0xCC   0x2001             MOVS     R0,#+1
+   \                     ??LPTMR_Init_7: (+1)
+   \       0xCE   0xBDFE             POP      {R1-R7,PC}       ;; return
+     97          }
+     98          
+     99          /*
+    100           * LPTMR_DeInit
+    101           * LPTMR反初始化函数，关闭lptmrx
+    102           * 
+    103           * 参数:
+    104           *    无
+    105           *
+    106           * 输出:
+    107           *    0--配置错误
+    108           *    1--配置成功
+    109           */
+
+   \                                 In section .text, align 2, keep-with-next
+    110          uint8 LPTMR_Deinit(void)
+    111          {
+   \                     LPTMR_Deinit: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+    112            //清空CSR寄存器
+    113            LPTMR0->CSR=0x00;  
+   \        0x2   0x2000             MOVS     R0,#+0
+   \        0x4   0x....             LDR.N    R1,??DataTable7_4  ;; 0x40040000
+   \        0x6   0x6008             STR      R0,[R1, #+0]
+    114            //清空PSR寄存器
+    115            LPTMR0->PSR=0x00;
+   \        0x8   0x2000             MOVS     R0,#+0
+   \        0xA   0x....             LDR.N    R1,??DataTable7_5  ;; 0x40040004
+   \        0xC   0x6008             STR      R0,[R1, #+0]
+    116            //清空CMR寄存器
+    117            LPTMR0->CMR=0x00;
+   \        0xE   0x2000             MOVS     R0,#+0
+   \       0x10   0x....             LDR.N    R1,??DataTable7_6  ;; 0x40040008
+   \       0x12   0x6008             STR      R0,[R1, #+0]
+    118            //禁止LPTimer中断
+    119            disable_irq(LPTimer_IRQn);
+   \       0x14   0x2055             MOVS     R0,#+85
+   \       0x16   0x.... 0x....      BL       _ZN28_INTERNAL_7_LPTMR_c_5de9421b17__NVIC_DisableIRQE4IRQn
+    120            
+    121             //关闭LPTMR时钟
+    122            SIM->SCGC5 &= ~(SIM_SCGC5_LPTIMER_MASK);  
+   \       0x1A   0x....             LDR.N    R0,??DataTable7_3  ;; 0x40048038
+   \       0x1C   0x6801             LDR      R1,[R0, #+0]
+   \       0x1E   0x0849             LSRS     R1,R1,#+1
+   \       0x20   0x0049             LSLS     R1,R1,#+1
+   \       0x22   0x6001             STR      R1,[R0, #+0]
+    123            
+    124            return 1;
+   \       0x24   0x2001             MOVS     R0,#+1
+   \       0x26   0xBD02             POP      {R1,PC}          ;; return
+    125          }
+    126          
+    127          /*
+    128           *  LPTMR_Reset
+    129           *  低功耗定时器复位，复位以后清空低功耗定时器Counter
+    130           * 
+    131           *  参数:
+    132           *      无
+    133           *  输出:
+    134           *      无
+    135           */
+
+   \                                 In section .text, align 2, keep-with-next
+    136          void LPTMR_ResetCounter(void)
+    137          {
+    138            LPTMR0->CSR&=(~LPTMR_CSR_TEN_MASK);       //Reset LPTMR0 Counter
+   \                     LPTMR_ResetCounter: (+1)
+   \        0x0   0x....             LDR.N    R0,??DataTable7_4  ;; 0x40040000
+   \        0x2   0x6801             LDR      R1,[R0, #+0]
+   \        0x4   0x0849             LSRS     R1,R1,#+1
+   \        0x6   0x0049             LSLS     R1,R1,#+1
+   \        0x8   0x6001             STR      R1,[R0, #+0]
+    139          }
+   \        0xA   0x4770             BX       LR               ;; return
+    140          /*
+    141           * LPTMR_EnableIrq
+    142           * 使能LPTMR中断功能，在该函数中使能TIE位和LPTMR模块中断
+    143           * 
+    144           * 参数:
+    145           *    无
+    146           *
+    147           * 输出:
+    148           *    0--配置错误
+    149           *    1--配置成功
+    150           *
+    151           */
+
+   \                                 In section .text, align 2, keep-with-next
+    152          uint8 LPTMR_EnableIrq(void)
+    153          {
+   \                     LPTMR_EnableIrq: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+    154            enable_irq(LPTimer_IRQn);
+   \        0x2   0x2055             MOVS     R0,#+85
+   \        0x4   0x.... 0x....      BL       _ZN28_INTERNAL_7_LPTMR_c_5de9421b16__NVIC_EnableIRQE4IRQn
+    155            return 1;
+   \        0x8   0x2001             MOVS     R0,#+1
+   \        0xA   0xBD02             POP      {R1,PC}          ;; return
+    156          }
+    157          
+    158          /*
+    159           * LPTMR_DisableIrq
+    160           * 禁止LPTMR中断
+    161           * 
+    162           * 参数:
+    163           *    无
+    164           *
+    165           * 输出:
+    166           *    0--配置错误
+    167           *    1--配置成功
+    168           *
+    169           */
+
+   \                                 In section .text, align 2, keep-with-next
+    170          uint8 LPTMR_DisableIrq(void)
+    171          {
+   \                     LPTMR_DisableIrq: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+    172            disable_irq(LPTimer_IRQn); 
+   \        0x2   0x2055             MOVS     R0,#+85
+   \        0x4   0x.... 0x....      BL       _ZN28_INTERNAL_7_LPTMR_c_5de9421b17__NVIC_DisableIRQE4IRQn
+    173            return 1;
+   \        0x8   0x2001             MOVS     R0,#+1
+   \        0xA   0xBD02             POP      {R1,PC}          ;; return
+    174          }
+    175          
+    176          /*
+    177           *  LPTMR_GetPulseAcc
+    178           *  得到脉冲累加的值
+    179           * 
+    180           *  参数:
+    181           *      无
+    182           *  输出:
+    183           *      脉冲累加值
+    184           */
+
+   \                                 In section .text, align 2, keep-with-next
+    185          uint16 LPTMR_GetPulseAcc(void)
+    186          {
+    187             return (uint16)LPTMR0->CNR;
+   \                     LPTMR_GetPulseAcc: (+1)
+   \        0x0   0x....             LDR.N    R0,??DataTable7_10  ;; 0x4004000c
+   \        0x2   0x6800             LDR      R0,[R0, #+0]
+   \        0x4   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
+   \        0x6   0x4770             BX       LR               ;; return
+    188          }
+    189          
+    190          /*
+    191           *  LPTMR_DelayMs
+    192           *  低功耗定时器延时n个ms
+    193           * 
+    194           * 参数:
+    195           *    period_ms--设定定时器的定时值 单位ms
+    196           *    最大65535ms
+    197           *
+    198           *  输出:
+    199           *      无
+    200           */
+
+   \                                 In section .text, align 2, keep-with-next
+    201          void LPTMR_DelayMs(uint16 period_ms)
+    202          {
+    203            if(!period_ms)
+   \                     LPTMR_DelayMs: (+1)
+   \        0x0   0x0001             MOVS     R1,R0
+   \        0x2   0xB289             UXTH     R1,R1            ;; ZeroExt  R1,R1,#+16,#+16
+   \        0x4   0x2900             CMP      R1,#+0
+   \        0x6   0xD017             BEQ.N    ??LPTMR_DelayMs_0
+    204              return;
+    205            
+    206            /* 开启LPTMR时钟 */
+    207            SIM->SCGC5|=SIM_SCGC5_LPTIMER_MASK; 
+   \                     ??LPTMR_DelayMs_1: (+1)
+   \        0x8   0x....             LDR.N    R1,??DataTable7_3  ;; 0x40048038
+   \        0xA   0x680A             LDR      R2,[R1, #+0]
+   \        0xC   0xF052 0x0201      ORRS     R2,R2,#0x1
+   \       0x10   0x600A             STR      R2,[R1, #+0]
+    208            
+    209            /* 设置毫秒延时计数 */
+    210            LPTMR0->CMR = period_ms; 
+   \       0x12   0x0001             MOVS     R1,R0
+   \       0x14   0xB289             UXTH     R1,R1            ;; ZeroExt  R1,R1,#+16,#+16
+   \       0x16   0x....             LDR.N    R2,??DataTable7_6  ;; 0x40040008
+   \       0x18   0x6011             STR      R1,[R2, #+0]
+    211            
+    212            /* 设置LPTMR不分频采用1kHz LPO为时钟源 */
+    213            LPTMR0->PSR = 0|LPTMR_PSR_PCS(1)|LPTMR_PSR_PBYP_MASK; 
+   \       0x1A   0x2105             MOVS     R1,#+5
+   \       0x1C   0x....             LDR.N    R2,??DataTable7_5  ;; 0x40040004
+   \       0x1E   0x6011             STR      R1,[R2, #+0]
+    214            
+    215            /* 开启定时器 */
+    216            LPTMR0->CSR |= LPTMR_CSR_TEN_MASK; 
+   \       0x20   0x....             LDR.N    R1,??DataTable7_4  ;; 0x40040000
+   \       0x22   0x680A             LDR      R2,[R1, #+0]
+   \       0x24   0xF052 0x0201      ORRS     R2,R2,#0x1
+   \       0x28   0x600A             STR      R2,[R1, #+0]
+    217          
+    218            /* 等待计数达到设定值 */
+    219            while (!(LPTMR0->CSR & LPTMR_CSR_TCF_MASK));
+   \                     ??LPTMR_DelayMs_2: (+1)
+   \       0x2A   0x680A             LDR      R2,[R1, #+0]
+   \       0x2C   0x0612             LSLS     R2,R2,#+24
+   \       0x2E   0xD5FC             BPL.N    ??LPTMR_DelayMs_2
+    220            
+    221            /*清除定时比较标志 */
+    222            LPTMR0->CSR &= ~LPTMR_CSR_TEN_MASK;
+   \       0x30   0x680A             LDR      R2,[R1, #+0]
+   \       0x32   0x0852             LSRS     R2,R2,#+1
+   \       0x34   0x0052             LSLS     R2,R2,#+1
+   \       0x36   0x600A             STR      R2,[R1, #+0]
+    223            
+    224          }
+   \                     ??LPTMR_DelayMs_0: (+1)
+   \       0x38   0x4770             BX       LR               ;; return
+    225          
+    226          
+    227          /*
+    228           * LPTMR中断处理函数
+    229           * 与启动文件startup_K60.s中的中断向量表关联
+    230           * 用户无需修改，程序自动进入对应通道中断函数
+    231           */
+
+   \                                 In section .text, align 2, keep-with-next
+    232          void LPT_IRQHandler(void)
+    233          {
+   \                     _Z14LPT_IRQHandlerv: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+    234            LPTMR0->CSR|=LPTMR_CSR_TCF_MASK;  //清除LPT比较标志
+   \        0x2   0x....             LDR.N    R0,??DataTable7_4  ;; 0x40040000
+   \        0x4   0x6801             LDR      R1,[R0, #+0]
+   \        0x6   0xF051 0x0180      ORRS     R1,R1,#0x80
+   \        0xA   0x6001             STR      R1,[R0, #+0]
+    235            LPTMR_ISR[0]();
+   \        0xC   0x....             LDR.N    R0,??DataTable7_9
+   \        0xE   0x6800             LDR      R0,[R0, #+0]
+   \       0x10   0x4780             BLX      R0
+    236          }
+   \                     ??LPT_IRQHandler_0: (+1)
+   \       0x12   0xBD01             POP      {R0,PC}          ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7:
+   \        0x0   0xE000'E100        DC32     0xe000e100
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_1:
+   \        0x0   0xE000'E180        DC32     0xe000e180
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_2:
+   \        0x0   0x....'....        DC32     ?_0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_3:
+   \        0x0   0x4004'8038        DC32     0x40048038
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_4:
+   \        0x0   0x4004'0000        DC32     0x40040000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_5:
+   \        0x0   0x4004'0004        DC32     0x40040004
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_6:
+   \        0x0   0x4004'0008        DC32     0x40040008
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_7:
+   \        0x0   0x4004'904C        DC32     0x4004904c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_8:
+   \        0x0   0x4004'B014        DC32     0x4004b014
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_9:
+   \        0x0   0x....'....        DC32     LPTMR_ISR
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_10:
+   \        0x0   0x4004'000C        DC32     0x4004000c
+
+   \                                 In section .rodata, align 4
+   \                     ?_0:
+   \        0x0   0x43 0x3A          DC8 43H, 3AH, 5CH, 55H, 73H, 65H, 72H, 73H
+   \              0x5C 0x55    
+   \              0x73 0x65    
+   \              0x72 0x73    
+   \        0x8   0x5C 0x78          DC8 5CH, 78H, 73H, 6BH, 31H, 39H, 39H, 34H
+   \              0x73 0x6B    
+   \              0x31 0x39    
+   \              0x39 0x34    
+   \       0x10   0x30 0x39          DC8 30H, 39H, 31H, 30H, 5CH, 44H, 65H, 73H
+   \              0x31 0x30    
+   \              0x5C 0x44    
+   \              0x65 0x73    
+   \       0x18   0x6B 0x74          DC8 6BH, 74H, 6FH, 70H, 5CH, 66H, 6CH, 69H
+   \              0x6F 0x70    
+   \              0x5C 0x66    
+   \              0x6C 0x69    
+   \       0x20   0x67 0x68          DC8 67H, 68H, 74H, 43H, 6FH, 6EH, 74H, 72H
+   \              0x74 0x43    
+   \              0x6F 0x6E    
+   \              0x74 0x72    
+   \       0x28   0x6F 0x6C          DC8 6FH, 6CH, 6CH, 65H, 72H, 2DH, 31H, 5CH
+   \              0x6C 0x65    
+   \              0x72 0x2D    
+   \              0x31 0x5C    
+   \       0x30   0x66 0x6C          DC8 66H, 6CH, 69H, 67H, 68H, 74H, 43H, 6FH
+   \              0x69 0x67    
+   \              0x68 0x74    
+   \              0x43 0x6F    
+   \       0x38   0x6E 0x74          DC8 6EH, 74H, 72H, 6FH, 6CH, 6CH, 65H, 72H
+   \              0x72 0x6F    
+   \              0x6C 0x6C    
+   \              0x65 0x72    
+   \       0x40   0x2D 0x31          DC8 2DH, 31H, 5CH, 70H, 72H, 6FH, 67H, 72H
+   \              0x5C 0x70    
+   \              0x72 0x6F    
+   \              0x67 0x72    
+   \       0x48   0x61 0x6D          DC8 61H, 6DH, 5CH, 6CH, 69H, 62H, 5CH, 4CH
+   \              0x5C 0x6C    
+   \              0x69 0x62    
+   \              0x5C 0x4C    
+   \       0x50   0x50 0x4C          DC8 50H, 4CH, 44H, 5CH, 48H, 57H, 5CH, 4CH
+   \              0x44 0x5C    
+   \              0x48 0x57    
+   \              0x5C 0x4C    
+   \       0x58   0x50 0x54          DC8 50H, 54H, 4DH, 52H, 2EH, 63H, 0
+   \              0x4D 0x52    
+   \              0x2E 0x63    
+   \              0x00         
+   \       0x5F   0x00               DC8 0
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   LPTMR_Deinit
+         8   -> __NVIC_DisableIRQ(IRQn)
+       0   LPTMR_DelayMs
+       8   LPTMR_DisableIrq
+         8   -> __NVIC_DisableIRQ(IRQn)
+       8   LPTMR_EnableIrq
+         8   -> __NVIC_EnableIRQ(IRQn)
+       0   LPTMR_GetPulseAcc
+      32   LPTMR_Init
+        32   -> assert_failed
+       0   LPTMR_ResetCounter
+       8   LPT_IRQHandler()
+         8   -- Indirect call
+       0   __NVIC_DisableIRQ(IRQn)
+       0   __NVIC_EnableIRQ(IRQn)
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable7
+       4  ??DataTable7_1
+       4  ??DataTable7_10
+       4  ??DataTable7_2
+       4  ??DataTable7_3
+       4  ??DataTable7_4
+       4  ??DataTable7_5
+       4  ??DataTable7_6
+       4  ??DataTable7_7
+       4  ??DataTable7_8
+       4  ??DataTable7_9
+      96  ?_0
+      40  LPTMR_Deinit
+      58  LPTMR_DelayMs
+      12  LPTMR_DisableIrq
+      12  LPTMR_EnableIrq
+       8  LPTMR_GetPulseAcc
+       4  LPTMR_ISR
+     208  LPTMR_Init
+      12  LPTMR_ResetCounter
+      20  LPT_IRQHandler()
+      38  __NVIC_DisableIRQ(IRQn)
+      30  __NVIC_EnableIRQ(IRQn)
+      16  -- Other
+
+ 
+  16 bytes in section .ARM.exidx
+   4 bytes in section .bss
+  96 bytes in section .rodata
+ 482 bytes in section .text
+ 
+ 482 bytes of CODE  memory
+ 112 bytes of CONST memory
+   4 bytes of DATA  memory
+
+Errors: none
+Warnings: none

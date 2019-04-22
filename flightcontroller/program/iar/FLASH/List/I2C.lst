@@ -1,0 +1,1253 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM         31/Aug/2018  16:56:51
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\LPLD\HW\I2C.c
+#    Command line =  
+#        -f C:\Users\XSK199~1\AppData\Local\Temp\EW680B.tmp
+#        (C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\LPLD\HW\I2C.c
+#        -D K60 -D USE_K60F15 -D ARM_MATH_CM4 -D __FPU_PRESENT=1 -D
+#        __FPU_USED=1 -lCN
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -lB
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -o
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
+#        D:\iar\arm\inc\c\DLib_Config_Full.h -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\Sensor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\CPU\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\option\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\driver\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\class\
+#        -On --c++ -I D:\iar\arm\CMSIS\Core\Include\ -I
+#        D:\iar\arm\CMSIS\DSP\Include\ -D ARM_MATH_CM4)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List\I2C.lst
+#    Object file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj\I2C.o
+#
+###############################################################################
+
+C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\LPLD\HW\I2C.c
+      1          /*
+      2           * @file I2C.c
+      3           * @version 3.02[By LPLD]
+      4           * @date 2013-11-22
+      5           * @brief I2C底层模块相关函数
+      6           *
+      7           * 更改建议:不建议修改
+      8           *
+      9           * 版权所有:北京拉普兰德电子技术有限公司
+     10           * http://www.lpld.cn
+     11           * mail:support@lpld.cn
+     12           *
+     13           * @par
+     14           * 本代码由拉普兰德[LPLD]开发并维护，并向所有使用者开放源代码。
+     15           * 开发者可以随意修使用或改源代码。但本段及以上注释应予以保留。
+     16           * 不得更改或删除原版权所有者姓名，二次开发者可以加注二次版权所有者。
+     17           * 但应在遵守此协议的基础上，开放源代码、不得出售代码本身。
+     18           * 拉普兰德不负责由于使用本代码所带来的任何事故、法律责任或相关不良影响。
+     19           * 拉普兰德无义务解释、说明本代码的具体原理、功能、实现方法。
+     20           * 除非拉普兰德[LPLD]授权，开发者不得将本代码用于商业产品。
+     21           */
+     22          
+     23          #include "common.h"
+
+   \                                 In section .text, align 2, keep-with-next
+   \   static __interwork __softfp void __NVIC_EnableIRQ(IRQn)
+   \                     _ZN26_INTERNAL_5_I2C_c_I2C_Init16__NVIC_EnableIRQE4IRQn: (+1)
+   \        0x0   0x0001             MOVS     R1,R0
+   \        0x2   0xB249             SXTB     R1,R1            ;; SignExt  R1,R1,#+24,#+24
+   \        0x4   0x2900             CMP      R1,#+0
+   \        0x6   0xD40A             BMI.N    ??__NVIC_EnableIRQ_0
+   \        0x8   0x2201             MOVS     R2,#+1
+   \        0xA   0xF010 0x011F      ANDS     R1,R0,#0x1F
+   \        0xE   0x408A             LSLS     R2,R2,R1
+   \       0x10   0x.... 0x....      LDR.W    R1,??DataTable7  ;; 0xe000e100
+   \       0x14   0x0003             MOVS     R3,R0
+   \       0x16   0xB25B             SXTB     R3,R3            ;; SignExt  R3,R3,#+24,#+24
+   \       0x18   0x095B             LSRS     R3,R3,#+5
+   \       0x1A   0xF841 0x2023      STR      R2,[R1, R3, LSL #+2]
+   \                     ??__NVIC_EnableIRQ_0: (+1)
+   \       0x1E   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+   \   static __interwork __softfp void __NVIC_DisableIRQ(IRQn)
+   \                     _ZN26_INTERNAL_5_I2C_c_I2C_Init17__NVIC_DisableIRQE4IRQn: (+1)
+   \        0x0   0x0001             MOVS     R1,R0
+   \        0x2   0xB249             SXTB     R1,R1            ;; SignExt  R1,R1,#+24,#+24
+   \        0x4   0x2900             CMP      R1,#+0
+   \        0x6   0xD40E             BMI.N    ??__NVIC_DisableIRQ_0
+   \        0x8   0x2201             MOVS     R2,#+1
+   \        0xA   0xF010 0x011F      ANDS     R1,R0,#0x1F
+   \        0xE   0x408A             LSLS     R2,R2,R1
+   \       0x10   0x.... 0x....      LDR.W    R1,??DataTable7_1  ;; 0xe000e180
+   \       0x14   0x0003             MOVS     R3,R0
+   \       0x16   0xB25B             SXTB     R3,R3            ;; SignExt  R3,R3,#+24,#+24
+   \       0x18   0x095B             LSRS     R3,R3,#+5
+   \       0x1A   0xF841 0x2023      STR      R2,[R1, R3, LSL #+2]
+   \       0x1E   0xF3BF 0x8F4F      DSB      SY
+   \       0x22   0xF3BF 0x8F6F      ISB      SY
+   \                     ??__NVIC_DisableIRQ_0: (+1)
+   \       0x26   0x4770             BX       LR               ;; return
+     24          #include "I2C.h"
+     25          
+     26          //用户自定义中断服务函数数组
+
+   \                                 In section .bss, align 4
+     27          I2C_ISR_CALLBACK I2C_ISR[2];
+   \                     I2C_ISR:
+   \        0x0                      DS8 8
+     28          
+     29          /*
+     30           * I2C_Init
+     31           * I2C通用初始化函数，在该函数中选择I2C通道，选择I2C SCK总线频率，
+     32           * 选择I2C SDA 和 I2C SCL的引脚，配置I2C的中断回调函数
+     33           * 
+     34           * 参数:
+     35           *    I2C_InitTypeDef--i2c_init_structure
+     36           *                     具体定义见I2C_InitTypeDef
+     37           * 输出:
+     38           *    0--配置错误
+     39           *    1--配置成功
+     40           */
+
+   \                                 In section .text, align 2, keep-with-next
+     41          uint8 I2C_Init(I2C_InitTypeDef i2c_init_structure)
+     42          {
+   \                     I2C_Init: (+1)
+   \        0x0   0xE92D 0x47FF      PUSH     {R0-R10,LR}
+     43            I2C_Type *i2cx = i2c_init_structure.I2C_I2Cx;
+   \        0x4   0x9C00             LDR      R4,[SP, #+0]
+     44            uint8 bus_speed = i2c_init_structure.I2C_ICR;
+   \        0x6   0xF89D 0x5004      LDRB     R5,[SP, #+4]
+     45            PortPinsEnum_Type scl_pin = i2c_init_structure.I2C_SclPin;
+   \        0xA   0xF89D 0x6006      LDRB     R6,[SP, #+6]
+     46            PortPinsEnum_Type sda_pin = i2c_init_structure.I2C_SdaPin;
+   \        0xE   0xF89D 0x7007      LDRB     R7,[SP, #+7]
+     47            I2C_ISR_CALLBACK isr_func = i2c_init_structure.I2C_Isr;
+   \       0x12   0xF8DD 0x800C      LDR      R8,[SP, #+12]
+     48            boolean ode = i2c_init_structure.I2C_OpenDrainEnable;
+   \       0x16   0xF89D 0x9008      LDRB     R9,[SP, #+8]
+     49            uint8 ode_mask = 0;
+   \       0x1A   0xF05F 0x0A00      MOVS     R10,#+0
+     50          
+     51            //参数检查，判断SCL频率
+     52            ASSERT( bus_speed <= 0x3F);
+   \       0x1E   0x0028             MOVS     R0,R5
+   \       0x20   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x22   0x2840             CMP      R0,#+64
+   \       0x24   0xDB04             BLT.N    ??I2C_Init_0
+   \       0x26   0x2134             MOVS     R1,#+52
+   \       0x28   0x.... 0x....      LDR.W    R0,??DataTable7_2
+   \       0x2C   0x.... 0x....      BL       assert_failed
+     53            
+     54            if(ode == TRUE)
+   \                     ??I2C_Init_0: (+1)
+   \       0x30   0x4648             MOV      R0,R9
+   \       0x32   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x34   0x2801             CMP      R0,#+1
+   \       0x36   0xD101             BNE.N    ??I2C_Init_1
+     55            {
+     56              ode_mask = PORT_PCR_ODE_MASK;
+   \       0x38   0x2020             MOVS     R0,#+32
+   \       0x3A   0x4682             MOV      R10,R0
+     57            }
+     58          
+     59            if(i2cx == I2C0)
+   \                     ??I2C_Init_1: (+1)
+   \       0x3C   0x....             LDR.N    R0,??DataTable7_3  ;; 0x40066000
+   \       0x3E   0x4284             CMP      R4,R0
+   \       0x40   0xD13D             BNE.N    ??I2C_Init_2
+     60            {
+     61          #if defined(CPU_MK60DZ10) || defined(CPU_MK60D10) 
+     62              SIM->SCGC4 |= SIM_SCGC4_I2C0_MASK; //开启I2C0时钟
+     63          #elif defined(CPU_MK60F12) || defined(CPU_MK60F15)
+     64              SIM->SCGC4 |= SIM_SCGC4_IIC0_MASK; //开启I2C0时钟
+   \       0x42   0x....             LDR.N    R1,??DataTable7_4  ;; 0x40048034
+   \       0x44   0x680A             LDR      R2,[R1, #+0]
+   \       0x46   0xF052 0x0240      ORRS     R2,R2,#0x40
+   \       0x4A   0x600A             STR      R2,[R1, #+0]
+     65          #endif 
+     66              if(scl_pin == PTD8)
+   \       0x4C   0x0031             MOVS     R1,R6
+   \       0x4E   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x50   0x2964             CMP      R1,#+100
+   \       0x52   0xD106             BNE.N    ??I2C_Init_3
+     67              {
+     68                PORTD->PCR[8] = PORT_PCR_MUX(2) | ode_mask;         
+   \       0x54   0x4651             MOV      R1,R10
+   \       0x56   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x58   0xF451 0x7100      ORRS     R1,R1,#0x200
+   \       0x5C   0x....             LDR.N    R2,??DataTable7_5  ;; 0x4004c020
+   \       0x5E   0x6011             STR      R1,[R2, #+0]
+   \       0x60   0xE010             B.N      ??I2C_Init_4
+     69              }
+     70              else if(scl_pin == PTB0) 
+   \                     ??I2C_Init_3: (+1)
+   \       0x62   0x0031             MOVS     R1,R6
+   \       0x64   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x66   0x2920             CMP      R1,#+32
+   \       0x68   0xD106             BNE.N    ??I2C_Init_5
+     71              {
+     72                PORTB->PCR[0] = PORT_PCR_MUX(2) | ode_mask;
+   \       0x6A   0x4651             MOV      R1,R10
+   \       0x6C   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x6E   0xF451 0x7100      ORRS     R1,R1,#0x200
+   \       0x72   0x....             LDR.N    R2,??DataTable7_6  ;; 0x4004a000
+   \       0x74   0x6011             STR      R1,[R2, #+0]
+   \       0x76   0xE005             B.N      ??I2C_Init_4
+     73              }
+     74              else //scl_pin = PTB2
+     75              {
+     76                PORTB->PCR[2] = PORT_PCR_MUX(2) | ode_mask;
+   \                     ??I2C_Init_5: (+1)
+   \       0x78   0x4651             MOV      R1,R10
+   \       0x7A   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x7C   0xF451 0x7100      ORRS     R1,R1,#0x200
+   \       0x80   0x....             LDR.N    R2,??DataTable7_7  ;; 0x4004a008
+   \       0x82   0x6011             STR      R1,[R2, #+0]
+     77              }
+     78          
+     79              if(sda_pin == PTD9)
+   \                     ??I2C_Init_4: (+1)
+   \       0x84   0x0039             MOVS     R1,R7
+   \       0x86   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x88   0x2965             CMP      R1,#+101
+   \       0x8A   0xD106             BNE.N    ??I2C_Init_6
+     80              {
+     81                PORTD->PCR[9] = PORT_PCR_MUX(2) | ode_mask;
+   \       0x8C   0x4651             MOV      R1,R10
+   \       0x8E   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x90   0xF451 0x7100      ORRS     R1,R1,#0x200
+   \       0x94   0x....             LDR.N    R2,??DataTable7_8  ;; 0x4004c024
+   \       0x96   0x6011             STR      R1,[R2, #+0]
+   \       0x98   0xE03E             B.N      ??I2C_Init_7
+     82              }
+     83              else if(sda_pin == PTB1) 
+   \                     ??I2C_Init_6: (+1)
+   \       0x9A   0x0039             MOVS     R1,R7
+   \       0x9C   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x9E   0x2921             CMP      R1,#+33
+   \       0xA0   0xD106             BNE.N    ??I2C_Init_8
+     84              {
+     85                PORTB->PCR[1] = PORT_PCR_MUX(2) | ode_mask;
+   \       0xA2   0x4651             MOV      R1,R10
+   \       0xA4   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0xA6   0xF451 0x7100      ORRS     R1,R1,#0x200
+   \       0xAA   0x....             LDR.N    R2,??DataTable7_9  ;; 0x4004a004
+   \       0xAC   0x6011             STR      R1,[R2, #+0]
+   \       0xAE   0xE033             B.N      ??I2C_Init_7
+     86              }
+     87              else //sda_pin = PTB3
+     88              {
+     89                PORTB->PCR[3] = PORT_PCR_MUX(2) | ode_mask; 
+   \                     ??I2C_Init_8: (+1)
+   \       0xB0   0x4651             MOV      R1,R10
+   \       0xB2   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0xB4   0xF451 0x7100      ORRS     R1,R1,#0x200
+   \       0xB8   0x....             LDR.N    R2,??DataTable7_10  ;; 0x4004a00c
+   \       0xBA   0x6011             STR      R1,[R2, #+0]
+   \       0xBC   0xE02C             B.N      ??I2C_Init_7
+     90              }
+     91            }
+     92            else if(i2cx == I2C1)
+   \                     ??I2C_Init_2: (+1)
+   \       0xBE   0x....             LDR.N    R1,??DataTable7_11  ;; 0x40067000
+   \       0xC0   0x428C             CMP      R4,R1
+   \       0xC2   0xD127             BNE.N    ??I2C_Init_9
+     93            { 
+     94          #if defined(CPU_MK60DZ10) || defined(CPU_MK60D10)  
+     95              SIM->SCGC4 |= SIM_SCGC4_I2C1_MASK; //开启I2C0时钟
+     96          #elif defined(CPU_MK60F12) || defined(CPU_MK60F15)
+     97              SIM->SCGC4 |= SIM_SCGC4_IIC1_MASK; //开启I2C0时钟
+   \       0xC4   0x....             LDR.N    R1,??DataTable7_4  ;; 0x40048034
+   \       0xC6   0x680A             LDR      R2,[R1, #+0]
+   \       0xC8   0xF052 0x0280      ORRS     R2,R2,#0x80
+   \       0xCC   0x600A             STR      R2,[R1, #+0]
+     98          #endif
+     99          
+    100              if(scl_pin == PTE1)
+   \       0xCE   0x0031             MOVS     R1,R6
+   \       0xD0   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0xD2   0x297D             CMP      R1,#+125
+   \       0xD4   0xD106             BNE.N    ??I2C_Init_10
+    101              {
+    102                PORTE->PCR[1] = PORT_PCR_MUX(6) | ode_mask;         
+   \       0xD6   0x4651             MOV      R1,R10
+   \       0xD8   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0xDA   0xF451 0x61C0      ORRS     R1,R1,#0x600
+   \       0xDE   0x....             LDR.N    R2,??DataTable7_12  ;; 0x4004d004
+   \       0xE0   0x6011             STR      R1,[R2, #+0]
+   \       0xE2   0xE005             B.N      ??I2C_Init_11
+    103              }
+    104              else //scl_pin = PTC10
+    105              {
+    106                PORTC->PCR[10] = PORT_PCR_MUX(2) | ode_mask;  
+   \                     ??I2C_Init_10: (+1)
+   \       0xE4   0x4651             MOV      R1,R10
+   \       0xE6   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0xE8   0xF451 0x7100      ORRS     R1,R1,#0x200
+   \       0xEC   0x....             LDR.N    R2,??DataTable7_13  ;; 0x4004b028
+   \       0xEE   0x6011             STR      R1,[R2, #+0]
+    107              }
+    108          
+    109              if(sda_pin == PTE0)
+   \                     ??I2C_Init_11: (+1)
+   \       0xF0   0x0039             MOVS     R1,R7
+   \       0xF2   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0xF4   0x297C             CMP      R1,#+124
+   \       0xF6   0xD106             BNE.N    ??I2C_Init_12
+    110              {
+    111                PORTE->PCR[0] = PORT_PCR_MUX(6) | ode_mask;
+   \       0xF8   0x4651             MOV      R1,R10
+   \       0xFA   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0xFC   0xF451 0x61C0      ORRS     R1,R1,#0x600
+   \      0x100   0x....             LDR.N    R2,??DataTable7_14  ;; 0x4004d000
+   \      0x102   0x6011             STR      R1,[R2, #+0]
+   \      0x104   0xE008             B.N      ??I2C_Init_7
+    112              }
+    113              else //sda_pin = PTC11
+    114              {
+    115                PORTC->PCR[11] = PORT_PCR_MUX(2) | ode_mask; 
+   \                     ??I2C_Init_12: (+1)
+   \      0x106   0x4651             MOV      R1,R10
+   \      0x108   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \      0x10A   0xF451 0x7100      ORRS     R1,R1,#0x200
+   \      0x10E   0x....             LDR.N    R2,??DataTable7_15  ;; 0x4004b02c
+   \      0x110   0x6011             STR      R1,[R2, #+0]
+   \      0x112   0xE001             B.N      ??I2C_Init_7
+    116              }
+    117            }
+    118            else
+    119              return 0;
+   \                     ??I2C_Init_9: (+1)
+   \      0x114   0x2000             MOVS     R0,#+0
+   \      0x116   0xE020             B.N      ??I2C_Init_13
+    120            
+    121            if(i2c_init_structure.I2C_IntEnable == TRUE && isr_func != NULL)
+   \                     ??I2C_Init_7: (+1)
+   \      0x118   0xF89D 0x1005      LDRB     R1,[SP, #+5]
+   \      0x11C   0x2901             CMP      R1,#+1
+   \      0x11E   0xD114             BNE.N    ??I2C_Init_14
+   \      0x120   0x4641             MOV      R1,R8
+   \      0x122   0x2900             CMP      R1,#+0
+   \      0x124   0xD011             BEQ.N    ??I2C_Init_14
+    122            {
+    123              //产生I2C中断的中断源：
+    124              //1,完成1个字节传输时，IICIF置位产生中断;
+    125              //2,当Calling Address匹配成功时产生中断，参考K60文档1456页I2Cx_S寄存器IAAS位;
+    126              //3,从机模式下当总线仲裁丢失时，IICIF置位产生中断;
+    127              //  需要同时写1清除II2Cx_S的ARBL标志位和 I2Cx_S的 IICIF的标志位;
+    128              //4,如果SMB寄存器的SHTF2 interrupt使能，当SHTF2 timeout时IICIF置位产生中断;
+    129              //  需要同时写1清除I2Cx_SMB的SLTF标志位和 I2Cx_S的 IICIF的标志位;
+    130              //5,当SLT寄存器不为0时，SMBus的SCL low timer计数等于SLT的值时IICIF置位产生中断;
+    131              //  需要同时写1清除I2Cx_SMB的SHTF2标志位和 I2Cx_S的 IICIF的标志位;
+    132              //6,当Wakeup 使能，I2C在停止模式下接收到Wakeup信号，将产生中断.
+    133          
+    134              i2cx->C1 |= I2C_C1_IICIE_MASK;
+   \      0x126   0x78A1             LDRB     R1,[R4, #+2]
+   \      0x128   0xF051 0x0140      ORRS     R1,R1,#0x40
+   \      0x12C   0x70A1             STRB     R1,[R4, #+2]
+    135          
+    136              if(i2cx == I2C0)
+   \      0x12E   0x4284             CMP      R4,R0
+   \      0x130   0xD103             BNE.N    ??I2C_Init_15
+    137              {
+    138                I2C_ISR[0] = isr_func;
+   \      0x132   0x....             LDR.N    R0,??DataTable7_16
+   \      0x134   0xF8C0 0x8000      STR      R8,[R0, #+0]
+   \      0x138   0xE007             B.N      ??I2C_Init_14
+    139              }
+    140              else if(i2cx == I2C0)
+   \                     ??I2C_Init_15: (+1)
+   \      0x13A   0x4284             CMP      R4,R0
+   \      0x13C   0xD103             BNE.N    ??I2C_Init_16
+    141              {
+    142                I2C_ISR[1] = isr_func;
+   \      0x13E   0x....             LDR.N    R0,??DataTable7_16
+   \      0x140   0xF8C0 0x8004      STR      R8,[R0, #+4]
+   \      0x144   0xE001             B.N      ??I2C_Init_14
+    143              }
+    144              else 
+    145                return 0;
+   \                     ??I2C_Init_16: (+1)
+   \      0x146   0x2000             MOVS     R0,#+0
+   \      0x148   0xE007             B.N      ??I2C_Init_13
+    146            }
+    147          
+    148            //i2cx->C2 |= I2C_C2_HDRS_MASK;      //提高I2C驱动能力
+    149            i2cx->F  = I2C_F_ICR(bus_speed)|I2C_F_MULT(0);   //配置I2Cx SCL BusSpeed
+   \                     ??I2C_Init_14: (+1)
+   \      0x14A   0xF015 0x003F      ANDS     R0,R5,#0x3F
+   \      0x14E   0x7060             STRB     R0,[R4, #+1]
+    150            i2cx->C1 |= I2C_C1_IICEN_MASK;      //使能I2Cx
+   \      0x150   0x78A0             LDRB     R0,[R4, #+2]
+   \      0x152   0xF050 0x0080      ORRS     R0,R0,#0x80
+   \      0x156   0x70A0             STRB     R0,[R4, #+2]
+    151            
+    152            return 1;
+   \      0x158   0x2001             MOVS     R0,#+1
+   \                     ??I2C_Init_13: (+1)
+   \      0x15A   0xB004             ADD      SP,SP,#+16
+   \      0x15C   0xE8BD 0x87F0      POP      {R4-R10,PC}      ;; return
+    153          }
+    154          
+    155          /*
+    156           * I2C_Deinit
+    157           * I2C模块反初始化函数，在该函数中关闭I2Cx的外设总线时钟，关闭I2C模块的
+    158           * 时钟，禁止外设中断。
+    159           *
+    160           * 参数:
+    161           *    I2C_InitTypeDef--i2c_init_structure
+    162           *                     具体定义见I2C_InitTypeDef
+    163           *
+    164           * 输出:
+    165           *    无
+    166           *
+    167           */  
+
+   \                                 In section .text, align 2, keep-with-next
+    168          uint8 I2C_Deinit(I2C_InitTypeDef i2c_init_structure)
+    169          {
+   \                     I2C_Deinit: (+1)
+   \        0x0   0xB51F             PUSH     {R0-R4,LR}
+    170            I2C_Type *i2cx = i2c_init_structure.I2C_I2Cx;
+   \        0x2   0x9C00             LDR      R4,[SP, #+0]
+    171          
+    172            i2cx->C1 &= ~I2C_C1_IICEN_MASK;      //I2Cx
+   \        0x4   0x78A0             LDRB     R0,[R4, #+2]
+   \        0x6   0xF010 0x007F      ANDS     R0,R0,#0x7F
+   \        0xA   0x70A0             STRB     R0,[R4, #+2]
+    173            if(i2cx == I2C0)
+   \        0xC   0x....             LDR.N    R0,??DataTable7_3  ;; 0x40066000
+   \        0xE   0x4284             CMP      R4,R0
+   \       0x10   0xD108             BNE.N    ??I2C_Deinit_0
+    174            {
+    175          #if defined(CPU_MK60DZ10) || defined(CPU_MK60D10)  
+    176              SIM->SCGC4 |= SIM_SCGC4_I2C0_MASK; //开启I2C0时钟
+    177          #elif defined(CPU_MK60F12) || defined(CPU_MK60F15)
+    178              SIM->SCGC4 |= SIM_SCGC4_IIC0_MASK; //开启I2C0时钟
+   \       0x12   0x....             LDR.N    R0,??DataTable7_4  ;; 0x40048034
+   \       0x14   0x6801             LDR      R1,[R0, #+0]
+   \       0x16   0xF051 0x0140      ORRS     R1,R1,#0x40
+   \       0x1A   0x6001             STR      R1,[R0, #+0]
+    179          #endif
+    180              disable_irq((IRQn_Type)I2C0_IRQn);
+   \       0x1C   0x2018             MOVS     R0,#+24
+   \       0x1E   0x.... 0x....      BL       _ZN26_INTERNAL_5_I2C_c_I2C_Init17__NVIC_DisableIRQE4IRQn
+   \       0x22   0xE00D             B.N      ??I2C_Deinit_1
+    181            }
+    182            else if (i2cx == I2C1)
+   \                     ??I2C_Deinit_0: (+1)
+   \       0x24   0x....             LDR.N    R0,??DataTable7_11  ;; 0x40067000
+   \       0x26   0x4284             CMP      R4,R0
+   \       0x28   0xD108             BNE.N    ??I2C_Deinit_2
+    183            {
+    184          #if defined(CPU_MK60DZ10) || defined(CPU_MK60D10)  
+    185              SIM->SCGC4 |= SIM_SCGC4_I2C1_MASK; //开启I2C0时钟
+    186          #elif defined(CPU_MK60F12) || defined(CPU_MK60F15)
+    187              SIM->SCGC4 |= SIM_SCGC4_IIC1_MASK; //开启I2C0时钟
+   \       0x2A   0x....             LDR.N    R0,??DataTable7_4  ;; 0x40048034
+   \       0x2C   0x6801             LDR      R1,[R0, #+0]
+   \       0x2E   0xF051 0x0180      ORRS     R1,R1,#0x80
+   \       0x32   0x6001             STR      R1,[R0, #+0]
+    188          #endif
+    189              disable_irq((IRQn_Type)I2C1_IRQn);
+   \       0x34   0x2019             MOVS     R0,#+25
+   \       0x36   0x.... 0x....      BL       _ZN26_INTERNAL_5_I2C_c_I2C_Init17__NVIC_DisableIRQE4IRQn
+   \       0x3A   0xE001             B.N      ??I2C_Deinit_1
+    190            }
+    191            else
+    192            {
+    193              return 0;
+   \                     ??I2C_Deinit_2: (+1)
+   \       0x3C   0x2000             MOVS     R0,#+0
+   \       0x3E   0xE000             B.N      ??I2C_Deinit_3
+    194            }
+    195            return 1;
+   \                     ??I2C_Deinit_1: (+1)
+   \       0x40   0x2001             MOVS     R0,#+1
+   \                     ??I2C_Deinit_3: (+1)
+   \       0x42   0xB004             ADD      SP,SP,#+16
+   \       0x44   0xBD10             POP      {R4,PC}          ;; return
+    196          }
+    197          
+    198          /*
+    199           * I2C_EnableIrq
+    200           * I2C外设中断使能
+    201           *
+    202           * 参数:
+    203           *    I2C_InitTypeDef--i2c_init_structure
+    204           *                     具体定义见I2C_InitTypeDef
+    205           *
+    206           * 输出:
+    207           *    无
+    208           *
+    209           */  
+
+   \                                 In section .text, align 2, keep-with-next
+    210          void I2C_EnableIrq(I2C_InitTypeDef i2c_init_structure)
+    211          {
+   \                     I2C_EnableIrq: (+1)
+   \        0x0   0xB51F             PUSH     {R0-R4,LR}
+    212            I2C_Type *i2cx = i2c_init_structure.I2C_I2Cx; 
+   \        0x2   0x9C00             LDR      R4,[SP, #+0]
+    213          
+    214            if(i2cx == I2C0)
+   \        0x4   0x....             LDR.N    R0,??DataTable7_3  ;; 0x40066000
+   \        0x6   0x4284             CMP      R4,R0
+   \        0x8   0xD103             BNE.N    ??I2C_EnableIrq_0
+    215            {
+    216              enable_irq((IRQn_Type)I2C0_IRQn);
+   \        0xA   0x2018             MOVS     R0,#+24
+   \        0xC   0x.... 0x....      BL       _ZN26_INTERNAL_5_I2C_c_I2C_Init16__NVIC_EnableIRQE4IRQn
+   \       0x10   0xE007             B.N      ??I2C_EnableIrq_1
+    217            }
+    218            else if (i2cx == I2C1)
+   \                     ??I2C_EnableIrq_0: (+1)
+   \       0x12   0x....             LDR.N    R0,??DataTable7_11  ;; 0x40067000
+   \       0x14   0x4284             CMP      R4,R0
+   \       0x16   0xD103             BNE.N    ??I2C_EnableIrq_2
+    219            {
+    220              enable_irq((IRQn_Type)I2C1_IRQn);
+   \       0x18   0x2019             MOVS     R0,#+25
+   \       0x1A   0x.... 0x....      BL       _ZN26_INTERNAL_5_I2C_c_I2C_Init16__NVIC_EnableIRQE4IRQn
+   \       0x1E   0xE000             B.N      ??I2C_EnableIrq_1
+    221            }
+    222            else
+    223            {
+    224              return;
+   \                     ??I2C_EnableIrq_2: (+1)
+   \       0x20   0xE7FF             B.N      ??I2C_EnableIrq_3
+    225            }
+    226          }
+   \                     ??I2C_EnableIrq_1: (+1)
+   \                     ??I2C_EnableIrq_3: (+1)
+   \       0x22   0xBD1F             POP      {R0-R4,PC}       ;; return
+    227          
+    228          /*
+    229           * I2C_DisableIrq
+    230           * 禁止I2C外设中断
+    231           *
+    232           * 参数:
+    233           *    I2C_InitTypeDef--i2c_init_structure
+    234           *                     具体定义见I2C_InitTypeDef
+    235           *
+    236           * 输出:
+    237           *    无
+    238           *
+    239           */  
+
+   \                                 In section .text, align 2, keep-with-next
+    240          void I2C_DisableIrq(I2C_InitTypeDef i2c_init_structure)
+    241          {
+   \                     I2C_DisableIrq: (+1)
+   \        0x0   0xB51F             PUSH     {R0-R4,LR}
+    242            I2C_Type *i2cx = i2c_init_structure.I2C_I2Cx;
+   \        0x2   0x9C00             LDR      R4,[SP, #+0]
+    243            i2cx->C1 &= ~I2C_C1_IICIE_MASK;
+   \        0x4   0x78A0             LDRB     R0,[R4, #+2]
+   \        0x6   0xF010 0x00BF      ANDS     R0,R0,#0xBF
+   \        0xA   0x70A0             STRB     R0,[R4, #+2]
+    244          
+    245            if(i2cx == I2C0)
+   \        0xC   0x....             LDR.N    R0,??DataTable7_3  ;; 0x40066000
+   \        0xE   0x4284             CMP      R4,R0
+   \       0x10   0xD103             BNE.N    ??I2C_DisableIrq_0
+    246            {
+    247              disable_irq((IRQn_Type)I2C0_IRQn);
+   \       0x12   0x2018             MOVS     R0,#+24
+   \       0x14   0x.... 0x....      BL       _ZN26_INTERNAL_5_I2C_c_I2C_Init17__NVIC_DisableIRQE4IRQn
+   \       0x18   0xE007             B.N      ??I2C_DisableIrq_1
+    248            }
+    249            else if (i2cx == I2C1)
+   \                     ??I2C_DisableIrq_0: (+1)
+   \       0x1A   0x....             LDR.N    R0,??DataTable7_11  ;; 0x40067000
+   \       0x1C   0x4284             CMP      R4,R0
+   \       0x1E   0xD103             BNE.N    ??I2C_DisableIrq_2
+    250            {
+    251              disable_irq((IRQn_Type)I2C1_IRQn);
+   \       0x20   0x2019             MOVS     R0,#+25
+   \       0x22   0x.... 0x....      BL       _ZN26_INTERNAL_5_I2C_c_I2C_Init17__NVIC_DisableIRQE4IRQn
+   \       0x26   0xE000             B.N      ??I2C_DisableIrq_1
+    252            }
+    253            else
+    254            {
+    255              return;
+   \                     ??I2C_DisableIrq_2: (+1)
+   \       0x28   0xE7FF             B.N      ??I2C_DisableIrq_3
+    256            }
+    257          }
+   \                     ??I2C_DisableIrq_1: (+1)
+   \                     ??I2C_DisableIrq_3: (+1)
+   \       0x2A   0xBD1F             POP      {R0-R4,PC}       ;; return
+    258          
+    259          /*
+    260           * I2C_Start
+    261           * 产生I2C开始信号
+    262           * 
+    263           * 参数:
+    264           *    i2cx--选择I2C模块的通道
+    265           *      |__I2C0           --I2C通道0
+    266           *      |__I2C1           --I2C通道1
+    267           * 输出:
+    268           *    无
+    269           */
+
+   \                                 In section .text, align 2, keep-with-next
+    270          void I2C_Start(I2C_Type *i2cx)
+    271          {
+    272            i2cx->C1 |= I2C_C1_TX_MASK ;
+   \                     I2C_Start: (+1)
+   \        0x0   0x7881             LDRB     R1,[R0, #+2]
+   \        0x2   0xF051 0x0110      ORRS     R1,R1,#0x10
+   \        0x6   0x7081             STRB     R1,[R0, #+2]
+    273            i2cx->C1 |= I2C_C1_MST_MASK ;
+   \        0x8   0x7881             LDRB     R1,[R0, #+2]
+   \        0xA   0xF051 0x0120      ORRS     R1,R1,#0x20
+   \        0xE   0x7081             STRB     R1,[R0, #+2]
+    274          }
+   \       0x10   0x4770             BX       LR               ;; return
+    275          
+    276          /*
+    277           * ReStart
+    278           * I2C再次产生开始信号
+    279           * 
+    280           * 参数:
+    281           *    i2cx--选择I2C模块的通道
+    282           *      |__I2C0           --I2C通道0
+    283           *      |__I2C1           --I2C通道1
+    284           * 输出:
+    285           *    无
+    286          */
+
+   \                                 In section .text, align 2, keep-with-next
+    287          void I2C_ReStart(I2C_Type *i2cx)
+    288          {
+    289            i2cx->C1 |= I2C_C1_RSTA_MASK ;
+   \                     I2C_ReStart: (+1)
+   \        0x0   0x7881             LDRB     R1,[R0, #+2]
+   \        0x2   0xF051 0x0104      ORRS     R1,R1,#0x4
+   \        0x6   0x7081             STRB     R1,[R0, #+2]
+    290          }
+   \        0x8   0x4770             BX       LR               ;; return
+    291          
+    292          /*
+    293           * I2C_Stop
+    294           * 产生I2C停止信号
+    295           * 
+    296           * 参数:
+    297           *    i2cx--选择I2C模块的通道
+    298           *      |__I2C0           --I2C通道0
+    299           *      |__I2C1           --I2C通道1
+    300           * 输出:
+    301           *    无
+    302           */
+
+   \                                 In section .text, align 2, keep-with-next
+    303          void I2C_Stop(I2C_Type *i2cx)
+    304          {
+    305            i2cx->C1 &=(~I2C_C1_MST_MASK);
+   \                     I2C_Stop: (+1)
+   \        0x0   0x7881             LDRB     R1,[R0, #+2]
+   \        0x2   0xF011 0x01DF      ANDS     R1,R1,#0xDF
+   \        0x6   0x7081             STRB     R1,[R0, #+2]
+    306            i2cx->C1 &=(~I2C_C1_TX_MASK); 
+   \        0x8   0x7881             LDRB     R1,[R0, #+2]
+   \        0xA   0xF011 0x01EF      ANDS     R1,R1,#0xEF
+   \        0xE   0x7081             STRB     R1,[R0, #+2]
+    307          }
+   \       0x10   0x4770             BX       LR               ;; return
+    308          
+    309          /*
+    310           * I2C_WaitAck
+    311           * I2C设置等待应答信号，开启则等待，关闭则不等待
+    312           * 
+    313           * 参数:
+    314           *    i2cx--选择I2C模块的通道
+    315           *      |__I2C0           --I2C通道0
+    316           *      |__I2C1           --I2C通道1
+    317           *    is_wait--选择是否等待应答
+    318           *      |__I2C_ACK_OFF    --关闭等待Ack
+    319           *      |__I2C_ACK_ON     --开启等待Ack，并等待ACK信号
+    320           * 输出:
+    321           *    无
+    322           */
+
+   \                                 In section .text, align 2, keep-with-next
+    323          void I2C_WaitAck(I2C_Type *i2cx, uint8 is_wait)
+    324          {
+   \                     I2C_WaitAck: (+1)
+   \        0x0   0xB410             PUSH     {R4}
+    325            uint16 time_out;
+    326            if(is_wait == I2C_ACK_ON)
+   \        0x2   0x000B             MOVS     R3,R1
+   \        0x4   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
+   \        0x6   0x2B01             CMP      R3,#+1
+   \        0x8   0xD10F             BNE.N    ??I2C_WaitAck_0
+    327            {
+    328              while(!(i2cx->S & I2C_S_IICIF_MASK))
+   \                     ??I2C_WaitAck_1: (+1)
+   \        0xA   0x78C3             LDRB     R3,[R0, #+3]
+   \        0xC   0x079B             LSLS     R3,R3,#+30
+   \        0xE   0xD407             BMI.N    ??I2C_WaitAck_2
+    329              {
+    330                if(time_out>60000) //如果等待超时，强行退出
+   \       0x10   0x0013             MOVS     R3,R2
+   \       0x12   0xB29B             UXTH     R3,R3            ;; ZeroExt  R3,R3,#+16,#+16
+   \       0x14   0xF64E 0x2461      MOVW     R4,#+60001
+   \       0x18   0x42A3             CMP      R3,R4
+   \       0x1A   0xDA01             BGE.N    ??I2C_WaitAck_2
+    331                  break;
+    332                else time_out++;
+   \                     ??I2C_WaitAck_3: (+1)
+   \       0x1C   0x1C52             ADDS     R2,R2,#+1
+   \       0x1E   0xE7F4             B.N      ??I2C_WaitAck_1
+    333              }
+    334              i2cx->S |= I2C_S_IICIF_MASK;
+   \                     ??I2C_WaitAck_2: (+1)
+   \       0x20   0x78C3             LDRB     R3,[R0, #+3]
+   \       0x22   0xF053 0x0302      ORRS     R3,R3,#0x2
+   \       0x26   0x70C3             STRB     R3,[R0, #+3]
+   \       0x28   0xE003             B.N      ??I2C_WaitAck_4
+    335            }
+    336            else
+    337            {
+    338              //关闭I2C的ACK
+    339              i2cx->C1 |= I2C_C1_TXAK_MASK; 
+   \                     ??I2C_WaitAck_0: (+1)
+   \       0x2A   0x7883             LDRB     R3,[R0, #+2]
+   \       0x2C   0xF053 0x0308      ORRS     R3,R3,#0x8
+   \       0x30   0x7083             STRB     R3,[R0, #+2]
+    340            }
+    341          }
+   \                     ??I2C_WaitAck_4: (+1)
+   \       0x32   0xBC10             POP      {R4}
+   \       0x34   0x4770             BX       LR               ;; return
+    342          
+    343          /*
+    344           * I2C_Write
+    345           * I2C发送一个字节给目的地址设备
+    346           * 
+    347           * 参数:
+    348           *    i2cx--选择I2C模块的通道
+    349           *      |__I2C0           --I2C通道0
+    350           *      |__I2C1           --I2C通道1
+    351           *    data8--要发送的字节数据
+    352           * 输出:
+    353           *    无
+    354           *
+    355           */
+
+   \                                 In section .text, align 2, keep-with-next
+    356          void I2C_WriteByte(I2C_Type *i2cx, uint8 data8)
+    357          {
+    358            i2cx->D = data8; 
+   \                     I2C_WriteByte: (+1)
+   \        0x0   0x7101             STRB     R1,[R0, #+4]
+    359          }
+   \        0x2   0x4770             BX       LR               ;; return
+    360          
+    361          /*
+    362           * I2C_Read
+    363           * I2C从外部设备读一个字节
+    364           * 
+    365           * 参数:
+    366           *    i2cx--选择I2C模块的通道
+    367           *      |__I2C0           --I2C通道0
+    368           *      |__I2C1           --I2C通道1
+    369           * 输出:
+    370           *    I2C读取的字节 
+    371           */
+    372          
+
+   \                                 In section .text, align 2, keep-with-next
+    373          uint8 I2C_ReadByte(I2C_Type *i2cx)
+    374          {
+   \                     I2C_ReadByte: (+1)
+   \        0x0   0x0001             MOVS     R1,R0
+    375            uint8 temp;
+    376            temp = i2cx->D; 
+   \        0x2   0x7908             LDRB     R0,[R1, #+4]
+    377            return temp;
+   \        0x4   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \        0x6   0x4770             BX       LR               ;; return
+    378          }
+    379          
+    380          /*
+    381           * I2C_SetMasterWR
+    382           * I2C主机读写模式配置
+    383           * 
+    384           * 参数:
+    385           *    IICx--选择I2C模块的通道
+    386           *      |__I2C0           --I2C通道0
+    387           *      |__I2C1           --I2C通道1
+    388           *    mode--读写模式选择
+    389           *      |__I2C_MWSR         --主机写
+    390           *      |__I2C_MRSW         --主机读
+    391           * 输出:
+    392           *    无
+    393           */
+
+   \                                 In section .text, align 2, keep-with-next
+    394          void I2C_SetMasterWR(I2C_Type *i2cx, uint8 mode)
+    395          {
+    396            if(mode==I2C_MRSW) 
+   \                     I2C_SetMasterWR: (+1)
+   \        0x0   0x000A             MOVS     R2,R1
+   \        0x2   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \        0x4   0x2A01             CMP      R2,#+1
+   \        0x6   0xD104             BNE.N    ??I2C_SetMasterWR_0
+    397              i2cx->C1 &= (~I2C_C1_TX_MASK);
+   \        0x8   0x7882             LDRB     R2,[R0, #+2]
+   \        0xA   0xF012 0x02EF      ANDS     R2,R2,#0xEF
+   \        0xE   0x7082             STRB     R2,[R0, #+2]
+   \       0x10   0xE003             B.N      ??I2C_SetMasterWR_1
+    398            else
+    399              i2cx->C1 |= ( I2C_C1_TX_MASK);
+   \                     ??I2C_SetMasterWR_0: (+1)
+   \       0x12   0x7882             LDRB     R2,[R0, #+2]
+   \       0x14   0xF052 0x0210      ORRS     R2,R2,#0x10
+   \       0x18   0x7082             STRB     R2,[R0, #+2]
+    400          }
+   \                     ??I2C_SetMasterWR_1: (+1)
+   \       0x1A   0x4770             BX       LR               ;; return
+    401          
+    402          /*
+    403           * I2C_StartTrans
+    404           * I2C开始传输函数，需要设置外围设备地址和读写模式
+    405           * 
+    406           * 参数:
+    407           *    IICx--选择I2C模块的通道
+    408           *      |__I2C0           --I2C通道0
+    409           *      |__I2C1           --I2C通道1
+    410           *    addr--外围设备地址     
+    411           *    mode--读写模式选择
+    412           *      |__I2C_MWSR         --主机写
+    413           *      |__I2C_MRSW         --主机读
+    414           * 输出:
+    415           *    无
+    416           */
+
+   \                                 In section .text, align 2, keep-with-next
+    417          void I2C_StartTrans(I2C_Type *i2cx, uint8 addr, uint8 mode)
+    418          {
+   \                     I2C_StartTrans: (+1)
+   \        0x0   0xB570             PUSH     {R4-R6,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+   \        0x4   0x000D             MOVS     R5,R1
+   \        0x6   0x0016             MOVS     R6,R2
+    419            //I2C产生start信号
+    420            I2C_Start(i2cx);
+   \        0x8   0x0020             MOVS     R0,R4
+   \        0xA   0x.... 0x....      BL       I2C_Start
+    421            //将从机地址和主机读写位合成一个字节写入
+    422            I2C_WriteByte(i2cx, (addr<<1)|mode );
+   \        0xE   0xEA56 0x0145      ORRS     R1,R6,R5, LSL #+1
+   \       0x12   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x14   0x0020             MOVS     R0,R4
+   \       0x16   0x.... 0x....      BL       I2C_WriteByte
+    423          }
+   \       0x1A   0xBD70             POP      {R4-R6,PC}       ;; return
+    424          
+    425          //HW层中断函数，用户无需调用
+
+   \                                 In section .text, align 2, keep-with-next
+    426          void I2C0_IRQHandler(void)
+    427          {
+   \                     _Z15I2C0_IRQHandlerv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+    428          #if (UCOS_II > 0u)
+    429            OS_CPU_SR  cpu_sr = 0u;
+    430            OS_ENTER_CRITICAL(); //告知系统此时已经进入了中断服务子函数
+    431            OSIntEnter();
+    432            OS_EXIT_CRITICAL();
+    433          #endif
+    434            if(I2C0->S & I2C_S_IICIF_MASK)
+   \        0x2   0x....             LDR.N    R4,??DataTable7_17  ;; 0x40066003
+   \        0x4   0x7820             LDRB     R0,[R4, #+0]
+   \        0x6   0x0780             LSLS     R0,R0,#+30
+   \        0x8   0xD51C             BPL.N    ??I2C0_IRQHandler_0
+    435            {
+    436              I2C_ISR[0]();
+   \        0xA   0x....             LDR.N    R0,??DataTable7_16
+   \        0xC   0x6800             LDR      R0,[R0, #+0]
+   \        0xE   0x4780             BLX      R0
+    437              if(I2C0->SMB & I2C_SMB_SLTF_MASK)
+   \       0x10   0x....             LDR.N    R0,??DataTable7_18  ;; 0x40066008
+   \       0x12   0x7801             LDRB     R1,[R0, #+0]
+   \       0x14   0x0709             LSLS     R1,R1,#+28
+   \       0x16   0xD503             BPL.N    ??I2C0_IRQHandler_1
+    438              {
+    439                I2C0->SMB |= I2C_SMB_SLTF_MASK;
+   \       0x18   0x7801             LDRB     R1,[R0, #+0]
+   \       0x1A   0xF051 0x0108      ORRS     R1,R1,#0x8
+   \       0x1E   0x7001             STRB     R1,[R0, #+0]
+    440              }
+    441              if(I2C0->SMB & I2C_SMB_SHTF2_MASK)
+   \                     ??I2C0_IRQHandler_1: (+1)
+   \       0x20   0x7801             LDRB     R1,[R0, #+0]
+   \       0x22   0x0789             LSLS     R1,R1,#+30
+   \       0x24   0xD503             BPL.N    ??I2C0_IRQHandler_2
+    442              {
+    443                I2C0->SMB |= I2C_SMB_SHTF2_MASK;
+   \       0x26   0x7801             LDRB     R1,[R0, #+0]
+   \       0x28   0xF051 0x0102      ORRS     R1,R1,#0x2
+   \       0x2C   0x7001             STRB     R1,[R0, #+0]
+    444              }
+    445              if(I2C0->S & I2C_S_ARBL_MASK)
+   \                     ??I2C0_IRQHandler_2: (+1)
+   \       0x2E   0x7820             LDRB     R0,[R4, #+0]
+   \       0x30   0x06C0             LSLS     R0,R0,#+27
+   \       0x32   0xD503             BPL.N    ??I2C0_IRQHandler_3
+    446              {
+    447                I2C0->S |= I2C_S_ARBL_MASK;
+   \       0x34   0x7820             LDRB     R0,[R4, #+0]
+   \       0x36   0xF050 0x0010      ORRS     R0,R0,#0x10
+   \       0x3A   0x7020             STRB     R0,[R4, #+0]
+    448              }
+    449              I2C0->S |= I2C_S_IICIF_MASK;
+   \                     ??I2C0_IRQHandler_3: (+1)
+   \       0x3C   0x7820             LDRB     R0,[R4, #+0]
+   \       0x3E   0xF050 0x0002      ORRS     R0,R0,#0x2
+   \       0x42   0x7020             STRB     R0,[R4, #+0]
+    450            }
+    451          #if (UCOS_II > 0u)
+    452            OSIntExit();          //告知系统此时即将离开中断服务子函数
+    453          #endif
+    454          }
+   \                     ??I2C0_IRQHandler_0: (+1)
+   \                     ??I2C0_IRQHandler_4: (+1)
+   \       0x44   0xBD10             POP      {R4,PC}          ;; return
+    455          //HW层中断函数，用户无需调用
+
+   \                                 In section .text, align 2, keep-with-next
+    456          void I2C1_IRQHandler(void)
+    457          {
+   \                     _Z15I2C1_IRQHandlerv: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+    458          
+    459          #if (UCOS_II > 0u)
+    460            OS_CPU_SR  cpu_sr = 0u;
+    461            OS_ENTER_CRITICAL(); //告知系统此时已经进入了中断服务子函数
+    462            OSIntEnter();
+    463            OS_EXIT_CRITICAL();
+    464          #endif
+    465          
+    466            if(I2C1->S & I2C_S_IICIF_MASK)
+   \        0x2   0x....             LDR.N    R4,??DataTable7_19  ;; 0x40067003
+   \        0x4   0x7820             LDRB     R0,[R4, #+0]
+   \        0x6   0x0780             LSLS     R0,R0,#+30
+   \        0x8   0xD51C             BPL.N    ??I2C1_IRQHandler_0
+    467            {
+    468              I2C_ISR[1]();
+   \        0xA   0x....             LDR.N    R0,??DataTable7_16
+   \        0xC   0x6840             LDR      R0,[R0, #+4]
+   \        0xE   0x4780             BLX      R0
+    469              if(I2C1->SMB & I2C_SMB_SLTF_MASK)
+   \       0x10   0x....             LDR.N    R0,??DataTable7_20  ;; 0x40067008
+   \       0x12   0x7801             LDRB     R1,[R0, #+0]
+   \       0x14   0x0709             LSLS     R1,R1,#+28
+   \       0x16   0xD503             BPL.N    ??I2C1_IRQHandler_1
+    470              {
+    471                I2C1->SMB |= I2C_SMB_SLTF_MASK;
+   \       0x18   0x7801             LDRB     R1,[R0, #+0]
+   \       0x1A   0xF051 0x0108      ORRS     R1,R1,#0x8
+   \       0x1E   0x7001             STRB     R1,[R0, #+0]
+    472              }
+    473              if(I2C1->SMB & I2C_SMB_SHTF2_MASK)
+   \                     ??I2C1_IRQHandler_1: (+1)
+   \       0x20   0x7801             LDRB     R1,[R0, #+0]
+   \       0x22   0x0789             LSLS     R1,R1,#+30
+   \       0x24   0xD503             BPL.N    ??I2C1_IRQHandler_2
+    474              {
+    475                I2C1->SMB |= I2C_SMB_SHTF2_MASK;
+   \       0x26   0x7801             LDRB     R1,[R0, #+0]
+   \       0x28   0xF051 0x0102      ORRS     R1,R1,#0x2
+   \       0x2C   0x7001             STRB     R1,[R0, #+0]
+    476              }
+    477              if(I2C1->S & I2C_S_ARBL_MASK)
+   \                     ??I2C1_IRQHandler_2: (+1)
+   \       0x2E   0x7820             LDRB     R0,[R4, #+0]
+   \       0x30   0x06C0             LSLS     R0,R0,#+27
+   \       0x32   0xD503             BPL.N    ??I2C1_IRQHandler_3
+    478              {
+    479                I2C1->S |= I2C_S_ARBL_MASK;
+   \       0x34   0x7820             LDRB     R0,[R4, #+0]
+   \       0x36   0xF050 0x0010      ORRS     R0,R0,#0x10
+   \       0x3A   0x7020             STRB     R0,[R4, #+0]
+    480              }
+    481              I2C1->S |= I2C_S_IICIF_MASK;
+   \                     ??I2C1_IRQHandler_3: (+1)
+   \       0x3C   0x7820             LDRB     R0,[R4, #+0]
+   \       0x3E   0xF050 0x0002      ORRS     R0,R0,#0x2
+   \       0x42   0x7020             STRB     R0,[R4, #+0]
+    482            }
+    483            
+    484          #if (UCOS_II > 0u)
+    485            OSIntExit();          //告知系统此时即将离开中断服务子函数
+    486          #endif
+    487          }
+   \                     ??I2C1_IRQHandler_0: (+1)
+   \                     ??I2C1_IRQHandler_4: (+1)
+   \       0x44   0xBD10             POP      {R4,PC}          ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7:
+   \        0x0   0xE000'E100        DC32     0xe000e100
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_1:
+   \        0x0   0xE000'E180        DC32     0xe000e180
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_2:
+   \        0x0   0x....'....        DC32     ?_0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_3:
+   \        0x0   0x4006'6000        DC32     0x40066000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_4:
+   \        0x0   0x4004'8034        DC32     0x40048034
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_5:
+   \        0x0   0x4004'C020        DC32     0x4004c020
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_6:
+   \        0x0   0x4004'A000        DC32     0x4004a000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_7:
+   \        0x0   0x4004'A008        DC32     0x4004a008
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_8:
+   \        0x0   0x4004'C024        DC32     0x4004c024
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_9:
+   \        0x0   0x4004'A004        DC32     0x4004a004
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_10:
+   \        0x0   0x4004'A00C        DC32     0x4004a00c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_11:
+   \        0x0   0x4006'7000        DC32     0x40067000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_12:
+   \        0x0   0x4004'D004        DC32     0x4004d004
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_13:
+   \        0x0   0x4004'B028        DC32     0x4004b028
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_14:
+   \        0x0   0x4004'D000        DC32     0x4004d000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_15:
+   \        0x0   0x4004'B02C        DC32     0x4004b02c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_16:
+   \        0x0   0x....'....        DC32     I2C_ISR
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_17:
+   \        0x0   0x4006'6003        DC32     0x40066003
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_18:
+   \        0x0   0x4006'6008        DC32     0x40066008
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_19:
+   \        0x0   0x4006'7003        DC32     0x40067003
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_20:
+   \        0x0   0x4006'7008        DC32     0x40067008
+
+   \                                 In section .rodata, align 4
+   \                     ?_0:
+   \        0x0   0x43 0x3A          DC8 43H, 3AH, 5CH, 55H, 73H, 65H, 72H, 73H
+   \              0x5C 0x55    
+   \              0x73 0x65    
+   \              0x72 0x73    
+   \        0x8   0x5C 0x78          DC8 5CH, 78H, 73H, 6BH, 31H, 39H, 39H, 34H
+   \              0x73 0x6B    
+   \              0x31 0x39    
+   \              0x39 0x34    
+   \       0x10   0x30 0x39          DC8 30H, 39H, 31H, 30H, 5CH, 44H, 65H, 73H
+   \              0x31 0x30    
+   \              0x5C 0x44    
+   \              0x65 0x73    
+   \       0x18   0x6B 0x74          DC8 6BH, 74H, 6FH, 70H, 5CH, 66H, 6CH, 69H
+   \              0x6F 0x70    
+   \              0x5C 0x66    
+   \              0x6C 0x69    
+   \       0x20   0x67 0x68          DC8 67H, 68H, 74H, 43H, 6FH, 6EH, 74H, 72H
+   \              0x74 0x43    
+   \              0x6F 0x6E    
+   \              0x74 0x72    
+   \       0x28   0x6F 0x6C          DC8 6FH, 6CH, 6CH, 65H, 72H, 2DH, 31H, 5CH
+   \              0x6C 0x65    
+   \              0x72 0x2D    
+   \              0x31 0x5C    
+   \       0x30   0x66 0x6C          DC8 66H, 6CH, 69H, 67H, 68H, 74H, 43H, 6FH
+   \              0x69 0x67    
+   \              0x68 0x74    
+   \              0x43 0x6F    
+   \       0x38   0x6E 0x74          DC8 6EH, 74H, 72H, 6FH, 6CH, 6CH, 65H, 72H
+   \              0x72 0x6F    
+   \              0x6C 0x6C    
+   \              0x65 0x72    
+   \       0x40   0x2D 0x31          DC8 2DH, 31H, 5CH, 70H, 72H, 6FH, 67H, 72H
+   \              0x5C 0x70    
+   \              0x72 0x6F    
+   \              0x67 0x72    
+   \       0x48   0x61 0x6D          DC8 61H, 6DH, 5CH, 6CH, 69H, 62H, 5CH, 4CH
+   \              0x5C 0x6C    
+   \              0x69 0x62    
+   \              0x5C 0x4C    
+   \       0x50   0x50 0x4C          DC8 50H, 4CH, 44H, 5CH, 48H, 57H, 5CH, 49H
+   \              0x44 0x5C    
+   \              0x48 0x57    
+   \              0x5C 0x49    
+   \       0x58   0x32 0x43          DC8 32H, 43H, 2EH, 63H, 0
+   \              0x2E 0x63    
+   \              0x00         
+   \       0x5D   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+    488            
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   I2C0_IRQHandler()
+         8   -- Indirect call
+       8   I2C1_IRQHandler()
+         8   -- Indirect call
+      24   I2C_Deinit
+        24   -> __NVIC_DisableIRQ(IRQn)
+      24   I2C_DisableIrq
+        24   -> __NVIC_DisableIRQ(IRQn)
+      24   I2C_EnableIrq
+        24   -> __NVIC_EnableIRQ(IRQn)
+      48   I2C_Init
+        48   -> assert_failed
+       0   I2C_ReStart
+       0   I2C_ReadByte
+       0   I2C_SetMasterWR
+       0   I2C_Start
+      16   I2C_StartTrans
+        16   -> I2C_Start
+        16   -> I2C_WriteByte
+       0   I2C_Stop
+       4   I2C_WaitAck
+       0   I2C_WriteByte
+       0   __NVIC_DisableIRQ(IRQn)
+       0   __NVIC_EnableIRQ(IRQn)
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable7
+       4  ??DataTable7_1
+       4  ??DataTable7_10
+       4  ??DataTable7_11
+       4  ??DataTable7_12
+       4  ??DataTable7_13
+       4  ??DataTable7_14
+       4  ??DataTable7_15
+       4  ??DataTable7_16
+       4  ??DataTable7_17
+       4  ??DataTable7_18
+       4  ??DataTable7_19
+       4  ??DataTable7_2
+       4  ??DataTable7_20
+       4  ??DataTable7_3
+       4  ??DataTable7_4
+       4  ??DataTable7_5
+       4  ??DataTable7_6
+       4  ??DataTable7_7
+       4  ??DataTable7_8
+       4  ??DataTable7_9
+      96  ?_0
+      70  I2C0_IRQHandler()
+      70  I2C1_IRQHandler()
+      70  I2C_Deinit
+      44  I2C_DisableIrq
+      36  I2C_EnableIrq
+       8  I2C_ISR
+     352  I2C_Init
+      10  I2C_ReStart
+       8  I2C_ReadByte
+      28  I2C_SetMasterWR
+      18  I2C_Start
+      28  I2C_StartTrans
+      18  I2C_Stop
+      54  I2C_WaitAck
+       4  I2C_WriteByte
+      40  __NVIC_DisableIRQ(IRQn)
+      32  __NVIC_EnableIRQ(IRQn)
+      24  -- Other
+
+ 
+  24 bytes in section .ARM.exidx
+   8 bytes in section .bss
+  96 bytes in section .rodata
+ 966 bytes in section .text
+ 
+ 966 bytes of CODE  memory
+ 120 bytes of CONST memory
+   8 bytes of DATA  memory
+
+Errors: none
+Warnings: none

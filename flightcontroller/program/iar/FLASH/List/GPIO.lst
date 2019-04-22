@@ -1,0 +1,1079 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM         31/Aug/2018  16:56:50
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\LPLD\HW\GPIO.c
+#    Command line =  
+#        -f C:\Users\XSK199~1\AppData\Local\Temp\EW6420.tmp
+#        (C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\LPLD\HW\GPIO.c
+#        -D K60 -D USE_K60F15 -D ARM_MATH_CM4 -D __FPU_PRESENT=1 -D
+#        __FPU_USED=1 -lCN
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -lB
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List
+#        -o
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config
+#        D:\iar\arm\inc\c\DLib_Config_Full.h -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\app\Sensor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\CPU\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\HW\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\DEV\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\LPLD\FUNC\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Ports\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\uCOS-II\Source\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\FatFs\option\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\common\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\driver\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\descriptor\
+#        -I
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\..\lib\USB\class\
+#        -On --c++ -I D:\iar\arm\CMSIS\Core\Include\ -I
+#        D:\iar\arm\CMSIS\DSP\Include\ -D ARM_MATH_CM4)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\List\GPIO.lst
+#    Object file  =  
+#        C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\iar\FLASH\Obj\GPIO.o
+#
+###############################################################################
+
+C:\Users\xsk19940910\Desktop\flightController-1\flightController-1\program\lib\LPLD\HW\GPIO.c
+      1          /**
+      2           * @file GPIO.c
+      3           * @version 3.03[By LPLD]
+      4           * @date 2014-2-10
+      5           * @brief GPIO底层模块相关函数
+      6           *
+      7           * 更改建议:不建议修改
+      8           *
+      9           * 版权所有:北京拉普兰德电子技术有限公司
+     10           * http://www.lpld.cn
+     11           * mail:support@lpld.cn
+     12           *
+     13           * @par
+     14           * 本代码由拉普兰德[LPLD]开发并维护，并向所有使用者开放源代码。
+     15           * 开发者可以随意修使用或改源代码。但本段及以上注释应予以保留。
+     16           * 不得更改或删除原版权所有者姓名，二次开发者可以加注二次版权所有者。
+     17           * 但应在遵守此协议的基础上，开放源代码、不得出售代码本身。
+     18           * 拉普兰德不负责由于使用本代码所带来的任何事故、法律责任或相关不良影响。
+     19           * 拉普兰德无义务解释、说明本代码的具体原理、功能、实现方法。
+     20           * 除非拉普兰德[LPLD]授权，开发者不得将本代码用于商业产品。
+     21           */
+     22          #include "common.h"
+
+   \                                 In section .text, align 2, keep-with-next
+   \   static __interwork __softfp void __NVIC_EnableIRQ(IRQn)
+   \                     _ZN27_INTERNAL_6_GPIO_c_db00cdf916__NVIC_EnableIRQE4IRQn: (+1)
+   \        0x0   0x0001             MOVS     R1,R0
+   \        0x2   0xB249             SXTB     R1,R1            ;; SignExt  R1,R1,#+24,#+24
+   \        0x4   0x2900             CMP      R1,#+0
+   \        0x6   0xD409             BMI.N    ??__NVIC_EnableIRQ_0
+   \        0x8   0x2201             MOVS     R2,#+1
+   \        0xA   0xF010 0x011F      ANDS     R1,R0,#0x1F
+   \        0xE   0x408A             LSLS     R2,R2,R1
+   \       0x10   0x....             LDR.N    R1,??DataTable9  ;; 0xe000e100
+   \       0x12   0x0003             MOVS     R3,R0
+   \       0x14   0xB25B             SXTB     R3,R3            ;; SignExt  R3,R3,#+24,#+24
+   \       0x16   0x095B             LSRS     R3,R3,#+5
+   \       0x18   0xF841 0x2023      STR      R2,[R1, R3, LSL #+2]
+   \                     ??__NVIC_EnableIRQ_0: (+1)
+   \       0x1C   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+   \   static __interwork __softfp void __NVIC_DisableIRQ(IRQn)
+   \                     _ZN27_INTERNAL_6_GPIO_c_db00cdf917__NVIC_DisableIRQE4IRQn: (+1)
+   \        0x0   0x0001             MOVS     R1,R0
+   \        0x2   0xB249             SXTB     R1,R1            ;; SignExt  R1,R1,#+24,#+24
+   \        0x4   0x2900             CMP      R1,#+0
+   \        0x6   0xD40D             BMI.N    ??__NVIC_DisableIRQ_0
+   \        0x8   0x2201             MOVS     R2,#+1
+   \        0xA   0xF010 0x011F      ANDS     R1,R0,#0x1F
+   \        0xE   0x408A             LSLS     R2,R2,R1
+   \       0x10   0x....             LDR.N    R1,??DataTable9_1  ;; 0xe000e180
+   \       0x12   0x0003             MOVS     R3,R0
+   \       0x14   0xB25B             SXTB     R3,R3            ;; SignExt  R3,R3,#+24,#+24
+   \       0x16   0x095B             LSRS     R3,R3,#+5
+   \       0x18   0xF841 0x2023      STR      R2,[R1, R3, LSL #+2]
+   \       0x1C   0xF3BF 0x8F4F      DSB      SY
+   \       0x20   0xF3BF 0x8F6F      ISB      SY
+   \                     ??__NVIC_DisableIRQ_0: (+1)
+   \       0x24   0x4770             BX       LR               ;; return
+     23          #include "GPIO.h"
+     24          
+     25          
+     26          //用户自定义中断服务函数数组
+
+   \                                 In section .bss, align 4
+     27          GPIO_ISR_CALLBACK GPIO_ISR[5];
+   \                     GPIO_ISR:
+   \        0x0                      DS8 20
+     28          
+     29          /*
+     30           * GPIO_Init
+     31           * GPIO通用初始化函数
+     32           * 
+     33           * 参数:
+     34           *    gpio_init_structure--GPIO初始化结构体，
+     35           *                        具体定义见GPIO_InitTypeDef
+     36           *
+     37           * 输出:
+     38           *    0--配置错误
+     39           *    1--配置成功
+     40           */
+
+   \                                 In section .text, align 2, keep-with-next
+     41          uint8 GPIO_Init(GPIO_InitTypeDef gpio_init_structure)
+     42          {
+   \                     GPIO_Init: (+1)
+   \        0x0   0xB40F             PUSH     {R0-R3}
+   \        0x2   0xE92D 0x43F8      PUSH     {R3-R9,LR}
+     43            uint8 i;
+     44            PORT_Type *portx;
+     45            uint32 pcr = PORT_PCR_MUX(1)| gpio_init_structure.GPIO_PinControl; 
+   \        0x6   0x9C0A             LDR      R4,[SP, #+40]
+   \        0x8   0xF454 0x7480      ORRS     R4,R4,#0x100
+     46            GPIO_Type *ptx = gpio_init_structure.GPIO_PTx;
+   \        0xC   0x9D08             LDR      R5,[SP, #+32]
+     47            uint32 pins = gpio_init_structure.GPIO_Pins;
+   \        0xE   0x9E09             LDR      R6,[SP, #+36]
+     48            uint8 dir = gpio_init_structure.GPIO_Dir;
+   \       0x10   0xF89D 0x702C      LDRB     R7,[SP, #+44]
+     49            uint8 output = gpio_init_structure.GPIO_Output;
+   \       0x14   0xF89D 0x802D      LDRB     R8,[SP, #+45]
+     50            GPIO_ISR_CALLBACK isr_func = gpio_init_structure.GPIO_Isr;
+   \       0x18   0xF8DD 0x9030      LDR      R9,[SP, #+48]
+     51            
+     52            //参数检查
+     53            ASSERT( ptx <= PTE);                  //判断端口
+   \       0x1C   0x....             LDR.N    R0,??DataTable9_2  ;; 0x400ff101
+   \       0x1E   0x4285             CMP      R5,R0
+   \       0x20   0xD303             BCC.N    ??GPIO_Init_0
+   \       0x22   0x2135             MOVS     R1,#+53
+   \       0x24   0x....             LDR.N    R0,??DataTable9_3
+   \       0x26   0x.... 0x....      BL       assert_failed
+     54            ASSERT( dir <= 1 );                   //判断方向
+   \                     ??GPIO_Init_0: (+1)
+   \       0x2A   0x0038             MOVS     R0,R7
+   \       0x2C   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x2E   0x2802             CMP      R0,#+2
+   \       0x30   0xDB03             BLT.N    ??GPIO_Init_1
+   \       0x32   0x2136             MOVS     R1,#+54
+   \       0x34   0x....             LDR.N    R0,??DataTable9_3
+   \       0x36   0x.... 0x....      BL       assert_failed
+     55            ASSERT( output <= 1 );                //判断输出电平状态
+   \                     ??GPIO_Init_1: (+1)
+   \       0x3A   0x4640             MOV      R0,R8
+   \       0x3C   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x3E   0x2802             CMP      R0,#+2
+   \       0x40   0xDB03             BLT.N    ??GPIO_Init_2
+   \       0x42   0x2137             MOVS     R1,#+55
+   \       0x44   0x....             LDR.N    R0,??DataTable9_3
+   \       0x46   0x.... 0x....      BL       assert_failed
+     56            
+     57            if(ptx == PTA)
+   \                     ??GPIO_Init_2: (+1)
+   \       0x4A   0x....             LDR.N    R0,??DataTable9_4  ;; 0x400ff000
+   \       0x4C   0x4285             CMP      R5,R0
+   \       0x4E   0xD102             BNE.N    ??GPIO_Init_3
+     58            {
+     59              portx = PORTA;  
+   \       0x50   0x....             LDR.N    R2,??DataTable9_5  ;; 0x40049000
+     60              i = 0;
+   \       0x52   0x2100             MOVS     R1,#+0
+   \       0x54   0xE019             B.N      ??GPIO_Init_4
+     61            }
+     62            else if(ptx == PTB) 
+   \                     ??GPIO_Init_3: (+1)
+   \       0x56   0x....             LDR.N    R0,??DataTable9_6  ;; 0x400ff040
+   \       0x58   0x4285             CMP      R5,R0
+   \       0x5A   0xD102             BNE.N    ??GPIO_Init_5
+     63            {
+     64              portx = PORTB;
+   \       0x5C   0x....             LDR.N    R2,??DataTable9_7  ;; 0x4004a000
+     65              i = 1;
+   \       0x5E   0x2101             MOVS     R1,#+1
+   \       0x60   0xE013             B.N      ??GPIO_Init_4
+     66            }
+     67            else if(ptx == PTC) 
+   \                     ??GPIO_Init_5: (+1)
+   \       0x62   0x....             LDR.N    R0,??DataTable9_8  ;; 0x400ff080
+   \       0x64   0x4285             CMP      R5,R0
+   \       0x66   0xD102             BNE.N    ??GPIO_Init_6
+     68            {
+     69              portx = PORTC;
+   \       0x68   0x....             LDR.N    R2,??DataTable9_9  ;; 0x4004b000
+     70              i = 2;
+   \       0x6A   0x2102             MOVS     R1,#+2
+   \       0x6C   0xE00D             B.N      ??GPIO_Init_4
+     71            }
+     72            else if(ptx == PTD) 
+   \                     ??GPIO_Init_6: (+1)
+   \       0x6E   0x....             LDR.N    R0,??DataTable9_10  ;; 0x400ff0c0
+   \       0x70   0x4285             CMP      R5,R0
+   \       0x72   0xD102             BNE.N    ??GPIO_Init_7
+     73            {
+     74              portx = PORTD;
+   \       0x74   0x....             LDR.N    R2,??DataTable9_11  ;; 0x4004c000
+     75              i = 3; 
+   \       0x76   0x2103             MOVS     R1,#+3
+   \       0x78   0xE007             B.N      ??GPIO_Init_4
+     76            }
+     77            else if(ptx == PTE) 
+   \                     ??GPIO_Init_7: (+1)
+   \       0x7A   0x....             LDR.N    R0,??DataTable9_12  ;; 0x400ff100
+   \       0x7C   0x4285             CMP      R5,R0
+   \       0x7E   0xD102             BNE.N    ??GPIO_Init_8
+     78            {
+     79              portx = PORTE;
+   \       0x80   0x....             LDR.N    R2,??DataTable9_13  ;; 0x4004d000
+     80              i = 4;
+   \       0x82   0x2104             MOVS     R1,#+4
+   \       0x84   0xE001             B.N      ??GPIO_Init_4
+     81            }
+     82            else
+     83              return 0;
+   \                     ??GPIO_Init_8: (+1)
+   \       0x86   0x2000             MOVS     R0,#+0
+   \       0x88   0xE029             B.N      ??GPIO_Init_9
+     84            
+     85            //输入或输出设置
+     86            if(dir==DIR_OUTPUT)
+   \                     ??GPIO_Init_4: (+1)
+   \       0x8A   0x0038             MOVS     R0,R7
+   \       0x8C   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x8E   0x2801             CMP      R0,#+1
+   \       0x90   0xD10A             BNE.N    ??GPIO_Init_10
+     87            {
+     88              ptx->PDDR |= pins;
+   \       0x92   0x6968             LDR      R0,[R5, #+20]
+   \       0x94   0x4330             ORRS     R0,R6,R0
+   \       0x96   0x6168             STR      R0,[R5, #+20]
+     89              //设置初始输出
+     90              if(output==OUTPUT_H)
+   \       0x98   0x4640             MOV      R0,R8
+   \       0x9A   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x9C   0x2801             CMP      R0,#+1
+   \       0x9E   0xD101             BNE.N    ??GPIO_Init_11
+     91              {
+     92                ptx->PSOR = pins; 
+   \       0xA0   0x606E             STR      R6,[R5, #+4]
+   \       0xA2   0xE004             B.N      ??GPIO_Init_12
+     93              }
+     94              else
+     95              {
+     96                ptx->PCOR = pins;
+   \                     ??GPIO_Init_11: (+1)
+   \       0xA4   0x60AE             STR      R6,[R5, #+8]
+   \       0xA6   0xE002             B.N      ??GPIO_Init_12
+     97              }
+     98            }
+     99            else
+    100            { 
+    101              ptx->PDDR &= ~(pins);
+   \                     ??GPIO_Init_10: (+1)
+   \       0xA8   0x6968             LDR      R0,[R5, #+20]
+   \       0xAA   0x43B0             BICS     R0,R0,R6
+   \       0xAC   0x6168             STR      R0,[R5, #+20]
+    102            }
+    103            
+    104            //配置所选引脚的控制寄存器
+    105            for(uint8 i=0; i<32; i++)
+   \                     ??GPIO_Init_12: (+1)
+   \       0xAE   0x2000             MOVS     R0,#+0
+   \                     ??GPIO_Init_13: (+1)
+   \       0xB0   0x0003             MOVS     R3,R0
+   \       0xB2   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
+   \       0xB4   0x2B20             CMP      R3,#+32
+   \       0xB6   0xDA09             BGE.N    ??GPIO_Init_14
+    106            {
+    107              if(pins&(1ul<<i))
+   \       0xB8   0x0033             MOVS     R3,R6
+   \       0xBA   0x40C3             LSRS     R3,R3,R0
+   \       0xBC   0x07DB             LSLS     R3,R3,#+31
+   \       0xBE   0xD503             BPL.N    ??GPIO_Init_15
+    108              {
+    109                portx->PCR[i] = pcr;
+   \       0xC0   0x0003             MOVS     R3,R0
+   \       0xC2   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
+   \       0xC4   0xF842 0x4023      STR      R4,[R2, R3, LSL #+2]
+    110              }
+    111            }
+   \                     ??GPIO_Init_15: (+1)
+   \       0xC8   0x1C40             ADDS     R0,R0,#+1
+   \       0xCA   0xE7F1             B.N      ??GPIO_Init_13
+    112          
+    113            if(isr_func!=NULL)
+   \                     ??GPIO_Init_14: (+1)
+   \       0xCC   0x4648             MOV      R0,R9
+   \       0xCE   0x2800             CMP      R0,#+0
+   \       0xD0   0xD004             BEQ.N    ??GPIO_Init_16
+    114              GPIO_ISR[i] = isr_func;
+   \       0xD2   0x....             LDR.N    R0,??DataTable9_14
+   \       0xD4   0x000B             MOVS     R3,R1
+   \       0xD6   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
+   \       0xD8   0xF840 0x9023      STR      R9,[R0, R3, LSL #+2]
+    115            
+    116            return 1;
+   \                     ??GPIO_Init_16: (+1)
+   \       0xDC   0x2001             MOVS     R0,#+1
+   \                     ??GPIO_Init_9: (+1)
+   \       0xDE   0xE8BD 0x03F2      POP      {R1,R4-R9}
+   \       0xE2   0xF85D 0xFB14      LDR      PC,[SP], #+20    ;; return
+    117          }
+    118          
+    119          /*
+    120           * GPIO_EnableIrq
+    121           * 使能GPIO外部中断
+    122           * 
+    123           * 参数:
+    124           *    gpio_init_structure--GPIO初始化结构体，
+    125           *                        具体定义见GPIO_InitTypeDef
+    126           *
+    127           * 输出:
+    128           *    0--配置错误
+    129           *    1--配置成功
+    130           *
+    131           */
+
+   \                                 In section .text, align 2, keep-with-next
+    132          uint8 GPIO_EnableIrq(GPIO_InitTypeDef gpio_init_structure)
+    133          {
+   \                     GPIO_EnableIrq: (+1)
+   \        0x0   0xB40F             PUSH     {R0-R3}
+   \        0x2   0xB538             PUSH     {R3-R5,LR}
+    134            uint8 i;
+    135            GPIO_Type *ptx = gpio_init_structure.GPIO_PTx;
+   \        0x4   0x9D04             LDR      R5,[SP, #+16]
+    136            
+    137            //参数检查
+    138            ASSERT( ptx <= PTE);                  //判断端口
+   \        0x6   0x....             LDR.N    R0,??DataTable9_2  ;; 0x400ff101
+   \        0x8   0x4285             CMP      R5,R0
+   \        0xA   0xD303             BCC.N    ??GPIO_EnableIrq_0
+   \        0xC   0x218A             MOVS     R1,#+138
+   \        0xE   0x....             LDR.N    R0,??DataTable9_3
+   \       0x10   0x.... 0x....      BL       assert_failed
+    139            
+    140            if(ptx == PTA)
+   \                     ??GPIO_EnableIrq_0: (+1)
+   \       0x14   0x....             LDR.N    R0,??DataTable9_4  ;; 0x400ff000
+   \       0x16   0x4285             CMP      R5,R0
+   \       0x18   0xD101             BNE.N    ??GPIO_EnableIrq_1
+    141              i = 0;
+   \       0x1A   0x2400             MOVS     R4,#+0
+   \       0x1C   0xE00F             B.N      ??GPIO_EnableIrq_2
+    142            else if(ptx == PTB) 
+   \                     ??GPIO_EnableIrq_1: (+1)
+   \       0x1E   0x....             LDR.N    R0,??DataTable9_6  ;; 0x400ff040
+   \       0x20   0x4285             CMP      R5,R0
+   \       0x22   0xD101             BNE.N    ??GPIO_EnableIrq_3
+    143              i = 1;
+   \       0x24   0x2401             MOVS     R4,#+1
+   \       0x26   0xE00A             B.N      ??GPIO_EnableIrq_2
+    144            else if(ptx == PTC) 
+   \                     ??GPIO_EnableIrq_3: (+1)
+   \       0x28   0x....             LDR.N    R0,??DataTable9_8  ;; 0x400ff080
+   \       0x2A   0x4285             CMP      R5,R0
+   \       0x2C   0xD101             BNE.N    ??GPIO_EnableIrq_4
+    145              i = 2;
+   \       0x2E   0x2402             MOVS     R4,#+2
+   \       0x30   0xE005             B.N      ??GPIO_EnableIrq_2
+    146            else if(ptx == PTD) 
+   \                     ??GPIO_EnableIrq_4: (+1)
+   \       0x32   0x....             LDR.N    R0,??DataTable9_10  ;; 0x400ff0c0
+   \       0x34   0x4285             CMP      R5,R0
+   \       0x36   0xD101             BNE.N    ??GPIO_EnableIrq_5
+    147              i = 3;
+   \       0x38   0x2403             MOVS     R4,#+3
+   \       0x3A   0xE000             B.N      ??GPIO_EnableIrq_2
+    148            else
+    149              i = 4;
+   \                     ??GPIO_EnableIrq_5: (+1)
+   \       0x3C   0x2404             MOVS     R4,#+4
+    150          
+    151            enable_irq((IRQn_Type)(i + PORTA_IRQn));
+   \                     ??GPIO_EnableIrq_2: (+1)
+   \       0x3E   0xF114 0x0057      ADDS     R0,R4,#+87
+   \       0x42   0xB240             SXTB     R0,R0            ;; SignExt  R0,R0,#+24,#+24
+   \       0x44   0x.... 0x....      BL       _ZN27_INTERNAL_6_GPIO_c_db00cdf916__NVIC_EnableIRQE4IRQn
+    152            
+    153            return 1;
+   \       0x48   0x2001             MOVS     R0,#+1
+   \                     ??GPIO_EnableIrq_6: (+1)
+   \       0x4A   0xBC32             POP      {R1,R4,R5}
+   \       0x4C   0xF85D 0xFB14      LDR      PC,[SP], #+20    ;; return
+    154          }
+    155          
+    156          /*
+    157           * GPIO_DisableIrq
+    158           * 禁用GPIO外部中断
+    159           * 
+    160           * 参数:
+    161           *    gpio_init_structure--GPIO初始化结构体，
+    162           *                        具体定义见GPIO_InitTypeDef
+    163           *
+    164           * 输出:
+    165           *    0--配置错误
+    166           *    1--配置成功
+    167           *
+    168           */
+
+   \                                 In section .text, align 2, keep-with-next
+    169          uint8 GPIO_DisableIrq(GPIO_InitTypeDef gpio_init_structure)
+    170          {
+   \                     GPIO_DisableIrq: (+1)
+   \        0x0   0xB40F             PUSH     {R0-R3}
+   \        0x2   0xB538             PUSH     {R3-R5,LR}
+    171            uint8 i;
+    172            GPIO_Type *ptx = gpio_init_structure.GPIO_PTx;
+   \        0x4   0x9D04             LDR      R5,[SP, #+16]
+    173            
+    174            //参数检查
+    175            ASSERT( ptx <= PTE);                  //判断端口
+   \        0x6   0x....             LDR.N    R0,??DataTable9_2  ;; 0x400ff101
+   \        0x8   0x4285             CMP      R5,R0
+   \        0xA   0xD303             BCC.N    ??GPIO_DisableIrq_0
+   \        0xC   0x21AF             MOVS     R1,#+175
+   \        0xE   0x....             LDR.N    R0,??DataTable9_3
+   \       0x10   0x.... 0x....      BL       assert_failed
+    176            
+    177            if(ptx == PTA)
+   \                     ??GPIO_DisableIrq_0: (+1)
+   \       0x14   0x....             LDR.N    R0,??DataTable9_4  ;; 0x400ff000
+   \       0x16   0x4285             CMP      R5,R0
+   \       0x18   0xD101             BNE.N    ??GPIO_DisableIrq_1
+    178              i = 0;
+   \       0x1A   0x2400             MOVS     R4,#+0
+   \       0x1C   0xE00F             B.N      ??GPIO_DisableIrq_2
+    179            else if(ptx == PTB) 
+   \                     ??GPIO_DisableIrq_1: (+1)
+   \       0x1E   0x....             LDR.N    R0,??DataTable9_6  ;; 0x400ff040
+   \       0x20   0x4285             CMP      R5,R0
+   \       0x22   0xD101             BNE.N    ??GPIO_DisableIrq_3
+    180              i = 1;
+   \       0x24   0x2401             MOVS     R4,#+1
+   \       0x26   0xE00A             B.N      ??GPIO_DisableIrq_2
+    181            else if(ptx == PTC) 
+   \                     ??GPIO_DisableIrq_3: (+1)
+   \       0x28   0x....             LDR.N    R0,??DataTable9_8  ;; 0x400ff080
+   \       0x2A   0x4285             CMP      R5,R0
+   \       0x2C   0xD101             BNE.N    ??GPIO_DisableIrq_4
+    182              i = 2;
+   \       0x2E   0x2402             MOVS     R4,#+2
+   \       0x30   0xE005             B.N      ??GPIO_DisableIrq_2
+    183            else if(ptx == PTD) 
+   \                     ??GPIO_DisableIrq_4: (+1)
+   \       0x32   0x....             LDR.N    R0,??DataTable9_10  ;; 0x400ff0c0
+   \       0x34   0x4285             CMP      R5,R0
+   \       0x36   0xD101             BNE.N    ??GPIO_DisableIrq_5
+    184              i = 3;
+   \       0x38   0x2403             MOVS     R4,#+3
+   \       0x3A   0xE000             B.N      ??GPIO_DisableIrq_2
+    185            else
+    186              i = 4;
+   \                     ??GPIO_DisableIrq_5: (+1)
+   \       0x3C   0x2404             MOVS     R4,#+4
+    187            
+    188            disable_irq((IRQn_Type)(i + PORTA_IRQn));
+   \                     ??GPIO_DisableIrq_2: (+1)
+   \       0x3E   0xF114 0x0057      ADDS     R0,R4,#+87
+   \       0x42   0xB240             SXTB     R0,R0            ;; SignExt  R0,R0,#+24,#+24
+   \       0x44   0x.... 0x....      BL       _ZN27_INTERNAL_6_GPIO_c_db00cdf917__NVIC_DisableIRQE4IRQn
+    189            
+    190            return 1;
+   \       0x48   0x2001             MOVS     R0,#+1
+   \                     ??GPIO_DisableIrq_6: (+1)
+   \       0x4A   0xBC32             POP      {R1,R4,R5}
+   \       0x4C   0xF85D 0xFB14      LDR      PC,[SP], #+20    ;; return
+    191          }
+    192          
+    193          /*
+    194           * GPIO_Ouptut
+    195           * 设置GPIO端口0~31位的输出
+    196           * 
+    197           * 参数:
+    198           *    ptx--端口号
+    199           *      |__PTA        --Port A
+    200           *      |__PTB        --Port B
+    201           *      |__PTC        --Port C
+    202           *      |__PTD        --Port D
+    203           *      |__PTE        --Port E
+    204           *    data32--输出数据
+    205           *      |__0x00000000~0xFFFFFFFF--低到高代表GPIO口的第0~31位数据
+    206           *
+    207           * 输出:
+    208           *
+    209           */
+    210          __INLINE void GPIO_Output(GPIO_Type *ptx, uint32 data32)
+    211          { 
+    212            ptx->PDOR = data32;
+    213          }
+    214          
+    215          /*
+    216           * GPIO_Ouptut_b
+    217           * 设置GPIO端口一位的输出
+    218           * 
+    219           * 参数:
+    220           *    ptx--端口号
+    221           *      |__PTA        --Port A
+    222           *      |__PTB        --Port B
+    223           *      |__PTC        --Port C
+    224           *      |__PTD        --Port D
+    225           *      |__PTE        --Port E
+    226           *    lsb_num--端口引脚位数编号
+    227           *      |__0~31       --GPIO口的第0~31位
+    228           *    data1--输出数据
+    229           *      |__0          --输出低电平
+    230           *      |__1          --输出高电平
+    231           *
+    232           * 输出:
+    233           *
+    234           */
+    235          //inline 放到头文件中
+    236          
+    237          /*
+    238           * GPIO_Ouptut_8b
+    239           * 设置GPIO端口8位的输出
+    240           * 
+    241           * 参数:
+    242           *    ptx--端口号
+    243           *      |__PTA        --Port A
+    244           *      |__PTB        --Port B
+    245           *      |__PTC        --Port C
+    246           *      |__PTD        --Port D
+    247           *      |__PTE        --Port E
+    248           *    lsb_num--代表8个端口引脚的最低位数编号
+    249           *      |__0~24       --GPIO口的第0~24位
+    250           *    data8--输出数据
+    251           *      |__0x00~0xFF--代表GPIO口输出的8位数据
+    252           *
+    253           * 输出:
+    254           *
+    255           */
+    256          __INLINE void GPIO_Output_8b(GPIO_Type *ptx, uint8 lsb_num, uint8 data8)
+    257          {
+    258            ptx->PDOR = (ptx->PDOR & ~(0xFFL<<lsb_num)) | (uint32)data8<<lsb_num;
+    259          }
+    260          
+    261          /*
+    262           * GPIO_Toggle
+    263           * 设置GPIO端口0~31的电平翻转
+    264           * 
+    265           * 参数:
+    266           *    ptx--端口号
+    267           *      |__PTA        --Port A
+    268           *      |__PTB        --Port B
+    269           *      |__PTC        --Port C
+    270           *      |__PTD        --Port D
+    271           *      |__PTE        --Port E
+    272           *    data32--翻转数据
+    273           *      |__0x00000000~0xFFFFFFFF--低到高代表GPIO口的第0~31位的翻转，1为反转，0为保持不变。
+    274           *
+    275           * 输出:
+    276           *
+    277           */
+    278          __INLINE void GPIO_Toggle(GPIO_Type *ptx, uint32 data32)
+    279          {  
+    280            ptx->PTOR = data32;
+    281          }
+    282          
+    283          /*
+    284           * GPIO_Toggle_b
+    285           * 设置GPIO端口一位的翻转
+    286           * 
+    287           * 参数:
+    288           *    ptx--端口号
+    289           *      |__PTA        --Port A
+    290           *      |__PTB        --Port B
+    291           *      |__PTC        --Port C
+    292           *      |__PTD        --Port D
+    293           *      |__PTE        --Port E
+    294           *    lsb_num--端口引脚位数编号
+    295           *      |__0~31       --GPIO口的第0~31位
+    296           *
+    297           * 输出:
+    298           *
+    299           */
+    300          __INLINE void GPIO_Toggle_b(GPIO_Type *ptx, uint8 lsb_num)
+    301          {  
+    302            ptx->PTOR = 0x01L<<lsb_num;
+    303          }
+    304          
+    305          /*
+    306           * GPIO_Toggle_8b
+    307           * 设置GPIO端口8位的翻转
+    308           * 
+    309           * 参数:
+    310           *    ptx--端口号
+    311           *      |__PTA        --Port A
+    312           *      |__PTB        --Port B
+    313           *      |__PTC        --Port C
+    314           *      |__PTD        --Port D
+    315           *      |__PTE        --Port E
+    316           *    lsb_num--代表8个端口引脚的最低位数编号
+    317           *      |__0~24       --GPIO口的第0~24位
+    318           *    data8--输出数据
+    319           *      |__0x00~0xFF--代表GPIO口输出的8位数据
+    320           *
+    321           * 输出:
+    322           *
+    323           */
+    324          __INLINE void GPIO_Toggle_8b(GPIO_Type *ptx, uint8 lsb_num, uint8 data8)
+    325          {
+    326            ptx->PTOR = (uint32)data8<<lsb_num;
+    327          }
+    328          
+    329          /*
+    330           * GPIO_Input
+    331           * 取得GPIO口0~31位的数据
+    332           * 
+    333           * 参数:
+    334           *    ptx--端口号
+    335           *      |__PTA        --Port A
+    336           *      |__PTB        --Port B
+    337           *      |__PTC        --Port C
+    338           *      |__PTD        --Port D
+    339           *      |__PTE        --Port E
+    340           *
+    341           * 输出:
+    342           *    指定GPIO口的32位输入
+    343           *
+    344           */
+    345          __INLINE uint32 GPIO_Input(GPIO_Type *ptx)
+    346          {
+    347            return ptx->PDIR;
+    348          }
+    349          
+    350          /*
+    351           * GPIO_Input_b
+    352           * 取得GPIO口某一位的数据
+    353           * 
+    354           * 参数:
+    355           *    ptx--端口号
+    356           *      |__PTA        --Port A
+    357           *      |__PTB        --Port B
+    358           *      |__PTC        --Port C
+    359           *      |__PTD        --Port D
+    360           *      |__PTE        --Port E
+    361           *    lsb_num--端口引脚位数编号
+    362           *      |__0~31       --GPIO口的第0~31位
+    363           *
+    364           * 输出:
+    365           *    指定GPIO口的指定位数的电平
+    366           *
+    367           */
+    368          __INLINE uint8 GPIO_Input_b(GPIO_Type *ptx, uint8 lsb_num)
+    369          {  
+    370            return (uint8)((ptx->PDIR>>lsb_num)&0x01L);
+    371          }
+    372          
+    373          /*
+    374           * GPIO_Input_8b
+    375           * 取得GPIO端口8位数据的输入
+    376           * 
+    377           * 参数:
+    378           *    ptx--端口号
+    379           *      |__PTA        --Port A
+    380           *      |__PTB        --Port B
+    381           *      |__PTC        --Port C
+    382           *      |__PTD        --Port D
+    383           *      |__PTE        --Port E
+    384           *    lsb_num--代表8个端口引脚的最低位数编号
+    385           *      |__0~24       --GPIO口的第0~24位
+    386           *
+    387           * 输出:
+    388           *    指定GPIO口的8位数据的电平
+    389           *
+    390           */
+    391          __INLINE uint8 GPIO_Input_8b(GPIO_Type *ptx, uint8 lsb_num)
+    392          {
+    393            return (uint8)((ptx->PDIR>>lsb_num)&0xFFL);
+    394          }
+    395          
+    396          /*
+    397           * PORTA--PORTE中断处理函数
+    398           * 与启动文件startup_K60.s中的中断向量表关联
+    399           * 用户无需修改，程序自动进入对应通道中断函数
+    400           */
+
+   \                                 In section .text, align 2, keep-with-next
+    401          void PORTA_IRQHandler(void)
+    402          {
+   \                     _Z16PORTA_IRQHandlerv: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+    403          #if (UCOS_II > 0u)
+    404            OS_CPU_SR  cpu_sr = 0u;
+    405            OS_ENTER_CRITICAL(); //告知系统此时已经进入了中断服务子函数
+    406            OSIntEnter();
+    407            OS_EXIT_CRITICAL();
+    408          #endif
+    409            
+    410            //调用用户自定义中断服务
+    411            GPIO_ISR[0](); 
+   \        0x2   0x....             LDR.N    R0,??DataTable9_14
+   \        0x4   0x6800             LDR      R0,[R0, #+0]
+   \        0x6   0x4780             BLX      R0
+    412            PORTA->ISFR =0xFFFFFFFF;
+   \        0x8   0xF05F 0x30FF      MOVS     R0,#-1
+   \        0xC   0x....             LDR.N    R1,??DataTable9_15  ;; 0x400490a0
+   \        0xE   0x6008             STR      R0,[R1, #+0]
+    413            
+    414          #if (UCOS_II > 0u)
+    415            OSIntExit();          //告知系统此时即将离开中断服务子函数
+    416          #endif
+    417          }//           ;87:  PORT A interrupt
+   \                     ??PORTA_IRQHandler_0: (+1)
+   \       0x10   0xBD01             POP      {R0,PC}          ;; return
+    418          
+
+   \                                 In section .text, align 2, keep-with-next
+    419          void PORTB_IRQHandler(void)
+    420          {
+   \                     _Z16PORTB_IRQHandlerv: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+    421          #if (UCOS_II > 0u)
+    422            OS_CPU_SR  cpu_sr = 0u;
+    423            OS_ENTER_CRITICAL(); //告知系统此时已经进入了中断服务子函数
+    424            OSIntEnter();
+    425            OS_EXIT_CRITICAL();
+    426          #endif
+    427            
+    428            //调用用户自定义中断服务
+    429            GPIO_ISR[1](); 
+   \        0x2   0x....             LDR.N    R0,??DataTable9_14
+   \        0x4   0x6840             LDR      R0,[R0, #+4]
+   \        0x6   0x4780             BLX      R0
+    430            PORTB->ISFR =0xFFFFFFFF;
+   \        0x8   0xF05F 0x30FF      MOVS     R0,#-1
+   \        0xC   0x....             LDR.N    R1,??DataTable9_16  ;; 0x4004a0a0
+   \        0xE   0x6008             STR      R0,[R1, #+0]
+    431            
+    432          #if (UCOS_II > 0u)
+    433            OSIntExit();          //告知系统此时即将离开中断服务子函数
+    434          #endif
+    435          }//           ;88:  PORT B interrupt
+   \                     ??PORTB_IRQHandler_0: (+1)
+   \       0x10   0xBD01             POP      {R0,PC}          ;; return
+    436          
+
+   \                                 In section .text, align 2, keep-with-next
+    437          void PORTC_IRQHandler(void)
+    438          {
+   \                     _Z16PORTC_IRQHandlerv: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+    439          #if (UCOS_II > 0u)
+    440            OS_CPU_SR  cpu_sr = 0u;
+    441            OS_ENTER_CRITICAL(); //告知系统此时已经进入了中断服务子函数
+    442            OSIntEnter();
+    443            OS_EXIT_CRITICAL();
+    444          #endif
+    445            
+    446            //调用用户自定义中断服务
+    447            GPIO_ISR[2](); 
+   \        0x2   0x....             LDR.N    R0,??DataTable9_14
+   \        0x4   0x6880             LDR      R0,[R0, #+8]
+   \        0x6   0x4780             BLX      R0
+    448            PORTC->ISFR =0xFFFFFFFF;
+   \        0x8   0xF05F 0x30FF      MOVS     R0,#-1
+   \        0xC   0x....             LDR.N    R1,??DataTable9_17  ;; 0x4004b0a0
+   \        0xE   0x6008             STR      R0,[R1, #+0]
+    449            
+    450          #if (UCOS_II > 0u)
+    451            OSIntExit();          //告知系统此时即将离开中断服务子函数
+    452          #endif
+    453          }//           ;89:  PORT C interrupt
+   \                     ??PORTC_IRQHandler_0: (+1)
+   \       0x10   0xBD01             POP      {R0,PC}          ;; return
+    454          
+
+   \                                 In section .text, align 2, keep-with-next
+    455          void PORTD_IRQHandler(void)
+    456          {
+   \                     _Z16PORTD_IRQHandlerv: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+    457          #if (UCOS_II > 0u)
+    458            OS_CPU_SR  cpu_sr = 0u;
+    459            OS_ENTER_CRITICAL(); //告知系统此时已经进入了中断服务子函数
+    460            OSIntEnter();
+    461            OS_EXIT_CRITICAL();
+    462          #endif
+    463            
+    464            //调用用户自定义中断服务
+    465            GPIO_ISR[3](); 
+   \        0x2   0x....             LDR.N    R0,??DataTable9_14
+   \        0x4   0x68C0             LDR      R0,[R0, #+12]
+   \        0x6   0x4780             BLX      R0
+    466            PORTD->ISFR =0xFFFFFFFF;
+   \        0x8   0xF05F 0x30FF      MOVS     R0,#-1
+   \        0xC   0x....             LDR.N    R1,??DataTable9_18  ;; 0x4004c0a0
+   \        0xE   0x6008             STR      R0,[R1, #+0]
+    467            
+    468          #if (UCOS_II > 0u)
+    469            OSIntExit();          //告知系统此时即将离开中断服务子函数
+    470          #endif
+    471          }//           ;90:  PORT D interrupt
+   \                     ??PORTD_IRQHandler_0: (+1)
+   \       0x10   0xBD01             POP      {R0,PC}          ;; return
+    472          
+
+   \                                 In section .text, align 2, keep-with-next
+    473          void PORTE_IRQHandler(void)
+    474          {
+   \                     _Z16PORTE_IRQHandlerv: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+    475          #if (UCOS_II > 0u)
+    476            OS_CPU_SR  cpu_sr = 0u;
+    477            OS_ENTER_CRITICAL(); //告知系统此时已经进入了中断服务子函数
+    478            OSIntEnter();
+    479            OS_EXIT_CRITICAL();
+    480          #endif
+    481            
+    482            //调用用户自定义中断服务
+    483            GPIO_ISR[4](); 
+   \        0x2   0x....             LDR.N    R0,??DataTable9_14
+   \        0x4   0x6900             LDR      R0,[R0, #+16]
+   \        0x6   0x4780             BLX      R0
+    484            PORTE->ISFR =0xFFFFFFFF;
+   \        0x8   0xF05F 0x30FF      MOVS     R0,#-1
+   \        0xC   0x....             LDR.N    R1,??DataTable9_19  ;; 0x4004d0a0
+   \        0xE   0x6008             STR      R0,[R1, #+0]
+    485            
+    486          #if (UCOS_II > 0u)
+    487            OSIntExit();          //告知系统此时即将离开中断服务子函数
+    488          #endif
+    489          }//           ;91:  PORT E interrupt
+   \                     ??PORTE_IRQHandler_0: (+1)
+   \       0x10   0xBD01             POP      {R0,PC}          ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable9:
+   \        0x0   0xE000'E100        DC32     0xe000e100
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable9_1:
+   \        0x0   0xE000'E180        DC32     0xe000e180
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable9_2:
+   \        0x0   0x400F'F101        DC32     0x400ff101
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable9_3:
+   \        0x0   0x....'....        DC32     ?_0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable9_4:
+   \        0x0   0x400F'F000        DC32     0x400ff000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable9_5:
+   \        0x0   0x4004'9000        DC32     0x40049000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable9_6:
+   \        0x0   0x400F'F040        DC32     0x400ff040
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable9_7:
+   \        0x0   0x4004'A000        DC32     0x4004a000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable9_8:
+   \        0x0   0x400F'F080        DC32     0x400ff080
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable9_9:
+   \        0x0   0x4004'B000        DC32     0x4004b000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable9_10:
+   \        0x0   0x400F'F0C0        DC32     0x400ff0c0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable9_11:
+   \        0x0   0x4004'C000        DC32     0x4004c000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable9_12:
+   \        0x0   0x400F'F100        DC32     0x400ff100
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable9_13:
+   \        0x0   0x4004'D000        DC32     0x4004d000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable9_14:
+   \        0x0   0x....'....        DC32     GPIO_ISR
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable9_15:
+   \        0x0   0x4004'90A0        DC32     0x400490a0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable9_16:
+   \        0x0   0x4004'A0A0        DC32     0x4004a0a0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable9_17:
+   \        0x0   0x4004'B0A0        DC32     0x4004b0a0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable9_18:
+   \        0x0   0x4004'C0A0        DC32     0x4004c0a0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable9_19:
+   \        0x0   0x4004'D0A0        DC32     0x4004d0a0
+
+   \                                 In section .rodata, align 4
+   \                     ?_0:
+   \        0x0   0x43 0x3A          DC8 43H, 3AH, 5CH, 55H, 73H, 65H, 72H, 73H
+   \              0x5C 0x55    
+   \              0x73 0x65    
+   \              0x72 0x73    
+   \        0x8   0x5C 0x78          DC8 5CH, 78H, 73H, 6BH, 31H, 39H, 39H, 34H
+   \              0x73 0x6B    
+   \              0x31 0x39    
+   \              0x39 0x34    
+   \       0x10   0x30 0x39          DC8 30H, 39H, 31H, 30H, 5CH, 44H, 65H, 73H
+   \              0x31 0x30    
+   \              0x5C 0x44    
+   \              0x65 0x73    
+   \       0x18   0x6B 0x74          DC8 6BH, 74H, 6FH, 70H, 5CH, 66H, 6CH, 69H
+   \              0x6F 0x70    
+   \              0x5C 0x66    
+   \              0x6C 0x69    
+   \       0x20   0x67 0x68          DC8 67H, 68H, 74H, 43H, 6FH, 6EH, 74H, 72H
+   \              0x74 0x43    
+   \              0x6F 0x6E    
+   \              0x74 0x72    
+   \       0x28   0x6F 0x6C          DC8 6FH, 6CH, 6CH, 65H, 72H, 2DH, 31H, 5CH
+   \              0x6C 0x65    
+   \              0x72 0x2D    
+   \              0x31 0x5C    
+   \       0x30   0x66 0x6C          DC8 66H, 6CH, 69H, 67H, 68H, 74H, 43H, 6FH
+   \              0x69 0x67    
+   \              0x68 0x74    
+   \              0x43 0x6F    
+   \       0x38   0x6E 0x74          DC8 6EH, 74H, 72H, 6FH, 6CH, 6CH, 65H, 72H
+   \              0x72 0x6F    
+   \              0x6C 0x6C    
+   \              0x65 0x72    
+   \       0x40   0x2D 0x31          DC8 2DH, 31H, 5CH, 70H, 72H, 6FH, 67H, 72H
+   \              0x5C 0x70    
+   \              0x72 0x6F    
+   \              0x67 0x72    
+   \       0x48   0x61 0x6D          DC8 61H, 6DH, 5CH, 6CH, 69H, 62H, 5CH, 4CH
+   \              0x5C 0x6C    
+   \              0x69 0x62    
+   \              0x5C 0x4C    
+   \       0x50   0x50 0x4C          DC8 50H, 4CH, 44H, 5CH, 48H, 57H, 5CH, 47H
+   \              0x44 0x5C    
+   \              0x48 0x57    
+   \              0x5C 0x47    
+   \       0x58   0x50 0x49          DC8 50H, 49H, 4FH, 2EH, 63H, 0
+   \              0x4F 0x2E    
+   \              0x63 0x00    
+   \       0x5E   0x00 0x00          DC8 0, 0
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      32   GPIO_DisableIrq
+        32   -> __NVIC_DisableIRQ(IRQn)
+        32   -> assert_failed
+      32   GPIO_EnableIrq
+        32   -> __NVIC_EnableIRQ(IRQn)
+        32   -> assert_failed
+      48   GPIO_Init
+        48   -> assert_failed
+       8   PORTA_IRQHandler()
+         8   -- Indirect call
+       8   PORTB_IRQHandler()
+         8   -- Indirect call
+       8   PORTC_IRQHandler()
+         8   -- Indirect call
+       8   PORTD_IRQHandler()
+         8   -- Indirect call
+       8   PORTE_IRQHandler()
+         8   -- Indirect call
+       0   __NVIC_DisableIRQ(IRQn)
+       0   __NVIC_EnableIRQ(IRQn)
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable9
+       4  ??DataTable9_1
+       4  ??DataTable9_10
+       4  ??DataTable9_11
+       4  ??DataTable9_12
+       4  ??DataTable9_13
+       4  ??DataTable9_14
+       4  ??DataTable9_15
+       4  ??DataTable9_16
+       4  ??DataTable9_17
+       4  ??DataTable9_18
+       4  ??DataTable9_19
+       4  ??DataTable9_2
+       4  ??DataTable9_3
+       4  ??DataTable9_4
+       4  ??DataTable9_5
+       4  ??DataTable9_6
+       4  ??DataTable9_7
+       4  ??DataTable9_8
+       4  ??DataTable9_9
+      96  ?_0
+      80  GPIO_DisableIrq
+      80  GPIO_EnableIrq
+      20  GPIO_ISR
+     230  GPIO_Init
+      18  PORTA_IRQHandler()
+      18  PORTB_IRQHandler()
+      18  PORTC_IRQHandler()
+      18  PORTD_IRQHandler()
+      18  PORTE_IRQHandler()
+      38  __NVIC_DisableIRQ(IRQn)
+      30  __NVIC_EnableIRQ(IRQn)
+      64  -- Other
+
+ 
+  64 bytes in section .ARM.exidx
+  20 bytes in section .bss
+  96 bytes in section .rodata
+ 628 bytes in section .text
+ 
+ 628 bytes of CODE  memory
+ 160 bytes of CONST memory
+  20 bytes of DATA  memory
+
+Errors: none
+Warnings: none

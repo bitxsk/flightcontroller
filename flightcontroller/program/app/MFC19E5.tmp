@@ -1,0 +1,52 @@
+#ifndef __UltrasoundUART_H
+#define __UltrasoundUART_H
+#include "includes.h"
+
+class CUltrasoundUART
+{
+public:
+  char DMA_CHn_Rx, DMA_CHn_Tx;
+  char uartData[500];
+  int byteInterval, byte_lastTime, byte_lastAddress;
+  CoordinateElement distanceRaw, distance;
+  jumpFilter__ distanceFilter;
+  Coordinate position, vel;
+  bool newPackageFlag = false;
+    
+  class TX_
+  {
+  public:
+    char data[10];
+    int  index;
+    int  sendPackageCnt;
+    
+    inline void add(char tmp)
+    {
+      data[index++] = tmp;
+    }
+    
+    inline void clear()
+    {
+      //memset(data, 0, 10 * sizeof(char));
+      index = 0;
+    }
+    
+    void startDMA_Transmit(CUltrasoundUART *);
+  };
+  TX_   TX;
+  
+  
+  CUltrasoundUART()
+  {
+    distanceFilter.setParameter(0.15, 100, 20);
+  }
+  void sendMeasureRequest();
+  void newData();
+  void update();
+};
+extern CUltrasoundUART *UltrasoundUART1, *UltrasoundUART2, *UltrasoundUART3;
+
+
+void UltrasoundUART_Init();
+
+#endif
